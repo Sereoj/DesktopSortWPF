@@ -9,5 +9,20 @@
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="Height" Value="36"/>
         <Setter Property="Cursor" Value="IBeam"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border CornerRadius="15" Background="{TemplateBinding Background}">
+                        <ContentPresenter
+                    Margin="15,0,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Content="{TemplateBinding Text}"
+                    Focusable="True"
+                    />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 </ResourceDictionary>
