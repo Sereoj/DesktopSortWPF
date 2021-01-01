@@ -15,6 +15,7 @@
                 <ResourceDictionary Source="/Resources/Colors/light.xaml"/>
                 <ResourceDictionary Source="/Resources/Styles/Buttons.xaml" />
                 <ResourceDictionary Source="/Resources/Styles/TextBlocks.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/TextBox.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
@@ -75,49 +76,37 @@
 
         <TextBlock Grid.Row="2" Text="Укажите путь до папки" Style="{StaticResource TextBlockLeft}"/>
         <TextBlock Grid.Row="3" Text="Укажите путь до папки" Style="{StaticResource TextBlockLeft}"/>
-        
-        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding TextBoxPath}">
-            <TextBox.Style>
-                <Style TargetType="TextBox">
-                    <Setter Property="Foreground" Value="Black"/>
-                    <Setter Property="Height" Value="36"/>
-                    <Setter Property="Cursor" Value="IBeam"/>
-                </Style>
-            </TextBox.Style>
-                <TextBox.Template>
-                    <ControlTemplate TargetType="TextBox">
-                        <Border CornerRadius="15" Background="{TemplateBinding Background}">
-                            <ContentPresenter
-                        Margin="15,0,0,0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Content="{TemplateBinding Text}"
-                        Focusable="True"
-                        />
-                        </Border>
-                    </ControlTemplate>
-                </TextBox.Template>
-            </TextBox>
-        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding TextBoxPath1}">
-            <TextBox.Style>
-                <Style TargetType="TextBox">
-                    <Setter Property="Foreground" Value="Black"/>
-                    <Setter Property="Height" Value="36"/>
-                    <Setter Property="Cursor" Value="IBeam"/>
-                </Style>
-            </TextBox.Style>
+
+        <TextBox Grid.Row="2" Grid.Column="1" 
+                 Text="{Binding TextBoxPath}" Style="{StaticResource TextBoxStyle}">
             <TextBox.Template>
                 <ControlTemplate TargetType="TextBox">
-                        <Border CornerRadius="15" Background="{TemplateBinding Background}">
-                            <ContentPresenter
+                    <Border CornerRadius="15" Background="{TemplateBinding Background}">
+                        <ContentPresenter
+                    Margin="15,0,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Content="{TemplateBinding Text}"
+                    Focusable="True"
+                    />
+                    </Border>
+                </ControlTemplate>
+            </TextBox.Template>
+        </TextBox>
+        <TextBox Grid.Row="3" Grid.Column="1" 
+                    Text="{Binding TextBoxPath1}" Style="{StaticResource TextBoxStyle}">
+            <TextBox.Template>
+                <ControlTemplate TargetType="TextBox">
+                    <Border CornerRadius="15" Background="{TemplateBinding Background}">
+                        <ContentPresenter
                         Margin="15,0,0,0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
                         Content="{TemplateBinding Text}"
                         Focusable="True"
                         />
-                        </Border>
-                    </ControlTemplate>
+                    </Border>
+                </ControlTemplate>
             </TextBox.Template>
         </TextBox>
         <Button Grid.Row="2" Grid.Column="2" Content="&#xE92f;" Style="{StaticResource ButtonIcons}">
