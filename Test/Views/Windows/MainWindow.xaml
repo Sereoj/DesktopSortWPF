@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:Test.ViewModels"
         Title="{Binding Title}" Height="506" Width="764" 
-        ResizeMode="NoResize" WindowStyle="None" WindowState="{Binding MainWindowState, Mode=TwoWay}">
+        ResizeMode="NoResize" WindowStyle="None" 
+        WindowState="{Binding MainWindowState, Mode=TwoWay}">
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Resources/Colors/light.xaml"/>
                 <ResourceDictionary Source="/Resources/Styles/Buttons.xaml" />
                 <ResourceDictionary Source="/Resources/Styles/TextBlocks.xaml" />
                 <ResourceDictionary Source="/Resources/Styles/TextBox.xaml" />
@@ -44,33 +44,33 @@
             <ColumnDefinition  Width="45"/>
             <ColumnDefinition  Width="45"/>
         </Grid.ColumnDefinitions>
+
+        <Grid Grid.ColumnSpan="4" Cursor="SizeAll" MouseDown="Grid_MouseDown" Background="{DynamicResource Primary}"/>
+
+        <TextBlock Grid.Column="0" Text="{Binding Title}" Style="{DynamicResource TextBlockTitle}"/>
+
+        <Button Grid.Column="2" Content="&#x005F;" Style="{DynamicResource ButtonToolbar}" Command="{Binding MinimalizeApplicationCommand}"/>
+        <Button Grid.Column="3" Content="&#x0078;" Style="{DynamicResource ButtonToolbar}" Command="{Binding CloseApplicationCommand}"/>
+
+        <TextBlock Grid.Row="2" Text="Укажите путь до папки" Style="{DynamicResource TextBlockLeft}"/>
+        <TextBlock Grid.Row="3" Text="Укажите путь до папки" Style="{DynamicResource TextBlockLeft}"/>
+
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding TextBoxPath}" Style="{DynamicResource TextBoxStyle}"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding TextBoxPath1}" Style="{DynamicResource TextBoxStyle}"/>
+
+
+        <Button Grid.Row="2" Grid.Column="2" Content="&#xE92f;" Style="{DynamicResource ButtonIcons}"/>
+        <Button Grid.Row="3" Grid.Column="2" Content="&#xE92f;" Style="{DynamicResource ButtonIcons}"/>
+
+        <Button Grid.Row="4" Grid.Column="1" Content="Копировать" HorizontalAlignment="Left" Style="{DynamicResource ButtonStyle}" Command="{Binding CopyButtonCommand}"/>
+        <Button Grid.Row="4" Grid.Column="1" Content="Вырезать" HorizontalAlignment="Right" Style="{DynamicResource ButtonStyle}" Command="{Binding CutButtonCommand}"/>
+
+        <Button Grid.Row="5" Grid.Column="3" Content="&#xE994;" Style="{DynamicResource ButtonIcons}" Command="{Binding SettingsButtonCommand}" />
+        <Button Grid.Row="5" Grid.Column="2" Content="&#xE900;" Style="{DynamicResource ButtonIcons}" Command="{Binding InfoButtonCommand}"/>
         
-        <Grid Background="#FF2E1795" Grid.ColumnSpan="4" Cursor="SizeAll" MouseDown="Grid_MouseDown"/>
-        
-        <TextBlock Grid.Column="0" Text="{Binding Title}" Style="{StaticResource TextBlockTitle}"/>
-        
-        <Button Grid.Column="2" Content="&#x005F;" Style="{StaticResource ButtonToolbar}" Command="{Binding MinimalizeApplicationCommand}"/>
-        <Button Grid.Column="3" Content="&#x0078;" Style="{StaticResource ButtonToolbar}" Command="{Binding CloseApplicationCommand}"/>
-
-        <TextBlock Grid.Row="2" Text="Укажите путь до папки" Style="{StaticResource TextBlockLeft}"/>
-        <TextBlock Grid.Row="3" Text="Укажите путь до папки" Style="{StaticResource TextBlockLeft}"/>
-
-        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding TextBoxPath}" Style="{StaticResource TextBoxStyle}"/>
-        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding TextBoxPath1}" Style="{StaticResource TextBoxStyle}"/>
-
-
-        <Button Grid.Row="2" Grid.Column="2" Content="&#xE92f;" Style="{StaticResource ButtonIcons}"/>
-        <Button Grid.Row="3" Grid.Column="2" Content="&#xE92f;" Style="{StaticResource ButtonIcons}"/>
-
-        <Button Grid.Row="4" Grid.Column="1" Content="Копировать" HorizontalAlignment="Left" Style="{StaticResource ButtonStyle}" Command="{Binding CopyButtonCommand}"/>
-        <Button Grid.Row="4" Grid.Column="1" Content="Вырезать" HorizontalAlignment="Right" Style="{StaticResource ButtonStyle}" Command="{Binding CutButtonCommand}"/>
-
-        <Button Grid.Row="5" Grid.Column="3" Content="&#xE994;" Style="{StaticResource ButtonIcons}" Command="{Binding SettingsButtonCommand}" />
-        <Button Grid.Row="5" Grid.Column="2" Content="&#xE900;" Style="{StaticResource ButtonIcons}" Command="{Binding InfoButtonCommand}"/>
-        
-        <StatusBar Grid.Row="6" Grid.ColumnSpan="4" Background="#FF2E1795">
+        <StatusBar Grid.Row="6" Grid.ColumnSpan="4" Background="{DynamicResource Primary}">
             <StatusBarItem>
-                <TextBlock Text="Статус" Foreground="{StaticResource TextForegroundTitle}" Margin="15,0,0,0"></TextBlock>
+                <TextBlock Text="Статус" Foreground="{DynamicResource TextForegroundTitle}" Margin="15,0,0,0"></TextBlock>
             </StatusBarItem>
         </StatusBar>
         </Grid>

@@ -133,6 +133,7 @@
     <Folder Include="Data\" />
     <Folder Include="Services\" />
     <Folder Include="Templates\" />
+    <Folder Include="Views\Controls\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

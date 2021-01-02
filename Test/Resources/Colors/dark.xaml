@@ -2,8 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <!--Colors UI-->
 
-    <SolidColorBrush Color="#FF2E1795" x:Key="Primary" />
-    <SolidColorBrush Color="#FF150851" x:Key="Secondary" />
+    <SolidColorBrush Color="#30475e" x:Key="Primary" />
+    <SolidColorBrush Color="#222831" x:Key="Secondary" />
 
     <SolidColorBrush Color="#FFCED3CC" x:Key="TextTitle" />
     <SolidColorBrush Color="White" x:Key="Text" />

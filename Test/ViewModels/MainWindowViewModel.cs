@@ -78,6 +78,12 @@ namespace Test.ViewModels
         private bool CanSettingsButtonCommandExecute(object p) => true;
         private void OnSettingsButtonCommandExecuted(object p)
         {
+            ResourceDictionary dictionary = new ResourceDictionary();
+            dictionary.Source = new Uri("/Resources/Colors/dark.xaml", UriKind.Relative);
+            Application.Current.Resources.Clear();
+
+            // Динамически меняем коллекцию MergedDictionaries
+            Application.Current.Resources.MergedDictionaries.Add(dictionary);
             MessageBox.Show("Settings");
         }
         #endregion
