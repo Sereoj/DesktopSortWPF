@@ -40,7 +40,8 @@
 
         <Button Grid.Column="2" Content="&#x005F;" Style="{DynamicResource ButtonToolbar}" Command="{Binding MinimalizeApplicationCommand}"/>
         <Button Grid.Column="3" Content="&#x0078;" Style="{DynamicResource ButtonToolbar}" Command="{Binding CloseApplicationCommand}"/>
-        <uc:Main Grid.Row="1" Grid.ColumnSpan="4"/>
+            <uc:Main Grid.Row="1" Grid.ColumnSpan="4" Visibility="Visible"/>
+            <uc:Settings Grid.Row="1" Grid.ColumnSpan="4" Visibility="Hidden"/>
         <Button Grid.Row="2" Grid.Column="3" Content="&#xE994;" Style="{DynamicResource ButtonIcons}" Command="{Binding SettingsButtonCommand}" />
         <Button Grid.Row="2" Grid.Column="2" Content="&#xE900;" Style="{DynamicResource ButtonIcons}" Command="{Binding InfoButtonCommand}"/>
         

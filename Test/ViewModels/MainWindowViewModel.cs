@@ -12,6 +12,7 @@ namespace Test.ViewModels
         #region Values
         private string _Title = "Desktop Sort 0.1";
         private WindowState _MainWindowState;
+        private string _UserControl;
 
         private string _PathImageBackground = "/Images/Background.bmp";
 
@@ -23,7 +24,10 @@ namespace Test.ViewModels
 
 
         public string Title { get => _Title; set => Set(ref _Title, value); }
+
         public WindowState MainWindowState { get => _MainWindowState; set => Set(ref _MainWindowState, value); }
+        public string userControl { get => _UserControl; set => Set(ref _UserControl, value); }
+
         public string PathImageBackground { get => _PathImageBackground; set => Set(ref _PathImageBackground, value); }
 
         public string TextBoxPath { get => _TextBoxPath; set => Set(ref _TextBoxPath, value); }
