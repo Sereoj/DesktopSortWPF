@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Input;
 using Test.Infrastucture.Commands;
+using Test.Models;
 using Test.ViewModels.Base;
 
 namespace Test.ViewModels
@@ -10,6 +11,7 @@ namespace Test.ViewModels
     {
         #region Values
         private string _Title = "Desktop Sort 0.1";
+        private WindowState _MainWindowState;
 
         private string _PathImageBackground = "/Images/Background.bmp";
 
@@ -21,6 +23,7 @@ namespace Test.ViewModels
 
 
         public string Title { get => _Title; set => Set(ref _Title, value); }
+        public WindowState MainWindowState { get => _MainWindowState; set => Set(ref _MainWindowState, value); }
         public string PathImageBackground { get => _PathImageBackground; set => Set(ref _PathImageBackground, value); }
 
         public string TextBoxPath { get => _TextBoxPath; set => Set(ref _TextBoxPath, value); }
@@ -29,6 +32,16 @@ namespace Test.ViewModels
 
         #region Commands
 
+        #region Buttons
+        #region MinimalizeApplicationCommand
+        public ICommand MinimalizeApplicationCommand { get; }
+
+        private bool CanMinimalizeApplicationCommanddExecute(object p) => true;
+        private void OnMinimalizeApplicationCommandExecuted(object p)
+        {
+            MainWindowState = WindowState.Minimized;
+        }
+        #endregion
         #region CloseApplicationCommand
         public ICommand CloseApplicationCommand { get; }
 
@@ -38,12 +51,60 @@ namespace Test.ViewModels
             Application.Current.Shutdown();
         }
         #endregion
+
+        #region CopyButtonCommand
+        public ICommand CopyButtonCommand { get; }
+
+        private bool CanCopyButtonCommandExecute(object p) => true;
+        private void OnCopyButtonCommandExecuted(object p)
+        {
+            MessageBox.Show("Copy");
+        }
+        #endregion
+
+        #region CutButtonCommand
+        public ICommand CutButtonCommand { get; }
+
+        private bool CanCutButtonCommandExecute(object p) => true;
+        private void OnCutButtonCommandExecuted(object p)
+        {
+            MessageBox.Show("Cut");
+        }
+        #endregion
+
+        #region SettingsButtonCommand
+        public ICommand SettingsButtonCommand { get; }
+
+        private bool CanSettingsButtonCommandExecute(object p) => true;
+        private void OnSettingsButtonCommandExecuted(object p)
+        {
+            MessageBox.Show("Settings");
+        }
+        #endregion
+
+        #region InfoButtonCommand
+        public ICommand InfoButtonCommand { get; }
+
+        private bool CanInfoButtonCommandExecute(object p) => true;
+        private void OnInfoButtonCommandExecuted(object p)
+        {
+            MessageBox.Show("Info");
+        }
+        #endregion
+
+        #endregion
+
         #endregion
 
         public MainWindowViewModel()
         {
             #region Commands
+            MinimalizeApplicationCommand = new RelayCommand(OnMinimalizeApplicationCommandExecuted, CanMinimalizeApplicationCommanddExecute);
             CloseApplicationCommand = new RelayCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute);
+            CopyButtonCommand = new RelayCommand(OnCopyButtonCommandExecuted, CanCopyButtonCommandExecute);
+            CutButtonCommand = new RelayCommand(OnCutButtonCommandExecuted, CanCutButtonCommandExecute);
+            SettingsButtonCommand = new RelayCommand(OnSettingsButtonCommandExecuted, CanSettingsButtonCommandExecute);
+            InfoButtonCommand = new RelayCommand(OnInfoButtonCommandExecuted, CanInfoButtonCommandExecute);
             #endregion
         }
     }

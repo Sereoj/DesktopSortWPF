@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:Test.ViewModels"
         Title="{Binding Title}" Height="506" Width="764" 
-        ResizeMode="NoResize" WindowStyle="None">
+        ResizeMode="NoResize" WindowStyle="None" WindowState="{Binding MainWindowState, Mode=TwoWay}">
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
@@ -49,7 +49,7 @@
         
         <TextBlock Grid.Column="0" Text="{Binding Title}" Style="{StaticResource TextBlockTitle}"/>
         
-        <Button Grid.Column="2" Content="&#x005F;" Style="{StaticResource ButtonToolbar}"/>
+        <Button Grid.Column="2" Content="&#x005F;" Style="{StaticResource ButtonToolbar}" Command="{Binding MinimalizeApplicationCommand}"/>
         <Button Grid.Column="3" Content="&#x0078;" Style="{StaticResource ButtonToolbar}" Command="{Binding CloseApplicationCommand}"/>
 
         <TextBlock Grid.Row="2" Text="Укажите путь до папки" Style="{StaticResource TextBlockLeft}"/>
@@ -62,11 +62,11 @@
         <Button Grid.Row="2" Grid.Column="2" Content="&#xE92f;" Style="{StaticResource ButtonIcons}"/>
         <Button Grid.Row="3" Grid.Column="2" Content="&#xE92f;" Style="{StaticResource ButtonIcons}"/>
 
-        <Button Grid.Row="4" Grid.Column="1" Content="Копировать" HorizontalAlignment="Left" Style="{StaticResource ButtonStyle}" />
-        <Button Grid.Row="4" Grid.Column="1" Content="Вырезать" HorizontalAlignment="Right" Style="{StaticResource ButtonStyle}" />
-        
-        <Button Grid.Row="5" Grid.Column="3" Content="&#xE994;" Style="{StaticResource ButtonIcons}"/>
-        <Button Grid.Row="5" Grid.Column="2" Content="&#xE900;" Style="{StaticResource ButtonIcons}"/>
+        <Button Grid.Row="4" Grid.Column="1" Content="Копировать" HorizontalAlignment="Left" Style="{StaticResource ButtonStyle}" Command="{Binding CopyButtonCommand}"/>
+        <Button Grid.Row="4" Grid.Column="1" Content="Вырезать" HorizontalAlignment="Right" Style="{StaticResource ButtonStyle}" Command="{Binding CutButtonCommand}"/>
+
+        <Button Grid.Row="5" Grid.Column="3" Content="&#xE994;" Style="{StaticResource ButtonIcons}" Command="{Binding SettingsButtonCommand}" />
+        <Button Grid.Row="5" Grid.Column="2" Content="&#xE900;" Style="{StaticResource ButtonIcons}" Command="{Binding InfoButtonCommand}"/>
         
         <StatusBar Grid.Row="6" Grid.ColumnSpan="4" Background="#FF2E1795">
             <StatusBarItem>
