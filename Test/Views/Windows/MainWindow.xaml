@@ -4,22 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:Test.ViewModels"
+        xmlns:uc="clr-namespace:Test.Views.Controls"
         Title="{Binding Title}" Height="506" Width="764" 
         ResizeMode="NoResize" WindowStyle="None" 
         WindowState="{Binding MainWindowState, Mode=TwoWay}">
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
-    <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Resources/Styles/Buttons.xaml" />
-                <ResourceDictionary Source="/Resources/Styles/TextBlocks.xaml" />
-                <ResourceDictionary Source="/Resources/Styles/TextBox.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Window.Resources>
-<Grid>
+    <Grid>
     <Grid.ColumnDefinitions>
         <ColumnDefinition Width="625*"/>
         <ColumnDefinition Width="139*"/>
@@ -29,13 +21,10 @@
     
     <Grid Grid.ColumnSpan="2">
         <Grid.RowDefinitions>
-            <RowDefinition Height="28"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="28"/>
+                <RowDefinition Height="28"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="28"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -51,24 +40,11 @@
 
         <Button Grid.Column="2" Content="&#x005F;" Style="{DynamicResource ButtonToolbar}" Command="{Binding MinimalizeApplicationCommand}"/>
         <Button Grid.Column="3" Content="&#x0078;" Style="{DynamicResource ButtonToolbar}" Command="{Binding CloseApplicationCommand}"/>
-
-        <TextBlock Grid.Row="2" Text="Укажите путь до папки" Style="{DynamicResource TextBlockLeft}"/>
-        <TextBlock Grid.Row="3" Text="Укажите путь до папки" Style="{DynamicResource TextBlockLeft}"/>
-
-        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding TextBoxPath}" Style="{DynamicResource TextBoxStyle}"/>
-        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding TextBoxPath1}" Style="{DynamicResource TextBoxStyle}"/>
-
-
-        <Button Grid.Row="2" Grid.Column="2" Content="&#xE92f;" Style="{DynamicResource ButtonIcons}"/>
-        <Button Grid.Row="3" Grid.Column="2" Content="&#xE92f;" Style="{DynamicResource ButtonIcons}"/>
-
-        <Button Grid.Row="4" Grid.Column="1" Content="Копировать" HorizontalAlignment="Left" Style="{DynamicResource ButtonStyle}" Command="{Binding CopyButtonCommand}"/>
-        <Button Grid.Row="4" Grid.Column="1" Content="Вырезать" HorizontalAlignment="Right" Style="{DynamicResource ButtonStyle}" Command="{Binding CutButtonCommand}"/>
-
-        <Button Grid.Row="5" Grid.Column="3" Content="&#xE994;" Style="{DynamicResource ButtonIcons}" Command="{Binding SettingsButtonCommand}" />
-        <Button Grid.Row="5" Grid.Column="2" Content="&#xE900;" Style="{DynamicResource ButtonIcons}" Command="{Binding InfoButtonCommand}"/>
+        <uc:Main Grid.Row="1" Grid.ColumnSpan="4"/>
+        <Button Grid.Row="2" Grid.Column="3" Content="&#xE994;" Style="{DynamicResource ButtonIcons}" Command="{Binding SettingsButtonCommand}" />
+        <Button Grid.Row="2" Grid.Column="2" Content="&#xE900;" Style="{DynamicResource ButtonIcons}" Command="{Binding InfoButtonCommand}"/>
         
-        <StatusBar Grid.Row="6" Grid.ColumnSpan="4" Background="{DynamicResource Primary}">
+        <StatusBar Grid.Row="3" Grid.ColumnSpan="4" Background="{DynamicResource Primary}">
             <StatusBarItem>
                 <TextBlock Text="Статус" Foreground="{DynamicResource TextForegroundTitle}" Margin="15,0,0,0"></TextBlock>
             </StatusBarItem>
