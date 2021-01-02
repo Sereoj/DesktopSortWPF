@@ -4,6 +4,7 @@ using System.Windows.Input;
 using Test.Infrastucture.Commands;
 using Test.Models;
 using Test.ViewModels.Base;
+using Test.Views.Controls;
 
 namespace Test.ViewModels
 {
@@ -12,7 +13,6 @@ namespace Test.ViewModels
         #region Values
         private string _Title = "Desktop Sort 0.1";
         private WindowState _MainWindowState;
-        private string _UserControl;
 
         private string _PathImageBackground = "/Images/Background.bmp";
 
@@ -22,11 +22,15 @@ namespace Test.ViewModels
         private string _TextBoxPath = "C://Windows";
         private string _TextBoxPath1 = "C://Windows/Backup";
 
+        private Main main = new Main();
+        private Settings settings = new Settings();
+
+        private object _SelectedItem;
+        public object SelectedItem { get => _SelectedItem; set => Set(ref _SelectedItem, value); }
 
         public string Title { get => _Title; set => Set(ref _Title, value); }
 
         public WindowState MainWindowState { get => _MainWindowState; set => Set(ref _MainWindowState, value); }
-        public string userControl { get => _UserControl; set => Set(ref _UserControl, value); }
 
         public string PathImageBackground { get => _PathImageBackground; set => Set(ref _PathImageBackground, value); }
 
@@ -76,31 +80,31 @@ namespace Test.ViewModels
         }
         #endregion
 
-        #region SettingsButtonCommand
-        public ICommand SettingsButtonCommand { get; }
+        #region PageButtonCommand
+        public ICommand PageButtonCommand { get; }
 
-        private bool CanSettingsButtonCommandExecute(object p) => true;
-        private void OnSettingsButtonCommandExecuted(object p)
+        private bool CanPageButtonCommandExecute(object p) => true;
+        private void OnPageButtonCommandExecuted(object p)
         {
-            ResourceDictionary dictionary = new ResourceDictionary();
-            dictionary.Source = new Uri("/Resources/Colors/dark.xaml", UriKind.Relative);
-            Application.Current.Resources.Clear();
+            //ResourceDictionary dictionary = new ResourceDictionary();
+            //dictionary.Source = new Uri("/Resources/Colors/dark.xaml", UriKind.Relative);
+            //Application.Current.Resources.Clear();
 
-            // Динамически меняем коллекцию MergedDictionaries
-            Application.Current.Resources.MergedDictionaries.Add(dictionary);
-            MessageBox.Show("Settings");
+            //// Динамически меняем коллекцию MergedDictionaries
+            //Application.Current.Resources.MergedDictionaries.Add(dictionary);
+            //MessageBox.Show("Settings");
+            switch (p)
+            {
+                case "settings":
+                    SelectedItem = settings;
+                break;
+                case "home":
+                    SelectedItem = main;
+                break;
+            }
         }
         #endregion
 
-        #region InfoButtonCommand
-        public ICommand InfoButtonCommand { get; }
-
-        private bool CanInfoButtonCommandExecute(object p) => true;
-        private void OnInfoButtonCommandExecuted(object p)
-        {
-            MessageBox.Show("Info");
-        }
-        #endregion
 
         #endregion
 
@@ -108,13 +112,15 @@ namespace Test.ViewModels
 
         public MainWindowViewModel()
         {
+            //По умоланию Home
+            OnPageButtonCommandExecuted("home");
+
             #region Commands
             MinimalizeApplicationCommand = new RelayCommand(OnMinimalizeApplicationCommandExecuted, CanMinimalizeApplicationCommanddExecute);
             CloseApplicationCommand = new RelayCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute);
             CopyButtonCommand = new RelayCommand(OnCopyButtonCommandExecuted, CanCopyButtonCommandExecute);
             CutButtonCommand = new RelayCommand(OnCutButtonCommandExecuted, CanCutButtonCommandExecute);
-            SettingsButtonCommand = new RelayCommand(OnSettingsButtonCommandExecuted, CanSettingsButtonCommandExecute);
-            InfoButtonCommand = new RelayCommand(OnInfoButtonCommandExecuted, CanInfoButtonCommandExecute);
+            PageButtonCommand = new RelayCommand(OnPageButtonCommandExecuted, CanPageButtonCommandExecute);
             #endregion
         }
     }

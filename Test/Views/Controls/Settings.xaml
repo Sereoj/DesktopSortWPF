@@ -7,6 +7,27 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="764">
     <Grid>
-        <TextBlock Text="Hello Settings" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="48" Foreground="{DynamicResource TextTitle}"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="6*"/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.RowSpan="8" Background="{DynamicResource Secondary}" 
+                Margin="10" CornerRadius="10">
+        </Border>
+
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="Hello Settings" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="48" Foreground="{DynamicResource TextTitle}"/>
+        <Button Grid.Row="0" Content="&#xE994;" Style="{DynamicResource ButtonIcons}"/>
+        <Button Grid.Row="1" Content="&#xE995;" Style="{DynamicResource ButtonIcons}"/>
+        <Button Grid.Row="2" Content="&#xEA2E;" Style="{DynamicResource ButtonIcons}"/>
     </Grid>
 </UserControl>
