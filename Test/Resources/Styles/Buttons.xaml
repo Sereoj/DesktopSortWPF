@@ -7,13 +7,12 @@
         <!--Верхняя панель кнопок-->
 <Style x:Key="ButtonToolbar" TargetType="Button">
     <Setter Property="FontFamily" Value="/Fonts/#IcoMoon-Free"/>
-    <Setter Property="FontSize" Value="15"/>
+    <Setter Property="FontSize" Value="16"/>
     <Setter Property="BorderBrush" Value="{StaticResource Primary}"/>
     <Setter Property="Background" Value="{StaticResource Primary}"/>
     <Setter Property="Foreground" Value="{StaticResource TextForegroundTitle}"/>
     <Setter Property="Cursor" Value="Hand"/>
-
-    <Setter Property="Template">
+        <Setter Property="Template">
         <Setter.Value>
             <ControlTemplate TargetType="Button">
                 <Border Background="{TemplateBinding Background}">

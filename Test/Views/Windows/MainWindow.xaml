@@ -70,7 +70,7 @@
         
         <StatusBar Grid.Row="6" Grid.ColumnSpan="4" Background="#FF2E1795">
             <StatusBarItem>
-                <TextBlock Text="Статус" Foreground="White" Margin="15,0,0,0"></TextBlock>
+                <TextBlock Text="Статус" Foreground="{StaticResource TextForegroundTitle}" Margin="15,0,0,0"></TextBlock>
             </StatusBarItem>
         </StatusBar>
         </Grid>
