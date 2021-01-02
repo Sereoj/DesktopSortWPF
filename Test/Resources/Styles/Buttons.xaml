@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Test.Resources.Styles">
     <!--Верхняя панель кнопок-->
-<Style x:Key="ButtonToolbar" TargetType="Button">
+    <Style x:Key="ButtonToolbar" TargetType="Button">
     <Setter Property="FontFamily" Value="/Fonts/#IcoMoon-Free"/>
     <Setter Property="FontSize" Value="16"/>
     <Setter Property="BorderBrush" Value="{DynamicResource Primary}"/>
@@ -54,7 +54,15 @@
         </Setter.Value>
     </Setter>
 </Style>
-<!--Кнопки стилизованные-->
+    <!--Наследник ButtonStyle добавление иконки-->
+<Style x:Key="ButtonCut" TargetType="TextBlock">
+    <Setter Property="Text" Value="&#xE92F;"/>
+    <Setter Property="Width" Value="20"/>
+    <Setter Property="Height" Value="20"/>
+    <Setter Property="Margin" Value="0,0,0,0"/>
+</Style>
+
+    <!--Кнопки стилизованные-->
 <Style x:Key="ButtonStyle" TargetType="Button">
     <Setter Property="FontFamily" Value="/Fonts/#Open Sans"/>
     <Setter Property="FontSize" Value="14.5"/>
@@ -66,20 +74,32 @@
     <Setter Property="Template">
         <Setter.Value>
             <ControlTemplate TargetType="Button">
-                <Border CornerRadius="10" Background="{TemplateBinding Background}">
-                    <ContentPresenter Content= "{TemplateBinding Content}"
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Center"
-                                    />
-                </Border>
-                <ControlTemplate.Triggers>
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="{DynamicResource Secondary}"/>
-                    </Trigger>
-                </ControlTemplate.Triggers>
-            </ControlTemplate>
+                    <Border CornerRadius="10" Background="{TemplateBinding Background}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
+                                       FontFamily="/Fonts/#IcoMoon-Free" 
+                                       Style="{DynamicResource ButtonCut}"/>
+                            <ContentPresenter
+                                Grid.Column="1"
+                                Content= "{TemplateBinding Content}"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left"
+                            />
+                        </Grid>
+                    </Border>
+                        <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource Secondary}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
         </Setter.Value>
     </Setter>
-    </Style>
+</Style>
+
 
 </ResourceDictionary>
