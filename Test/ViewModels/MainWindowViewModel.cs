@@ -86,22 +86,25 @@ namespace Test.ViewModels
         private bool CanPageButtonCommandExecute(object p) => true;
         private void OnPageButtonCommandExecuted(object p)
         {
-            //ResourceDictionary dictionary = new ResourceDictionary();
+            ResourceDictionary dictionary = new ResourceDictionary();
             //dictionary.Source = new Uri("/Resources/Colors/dark.xaml", UriKind.Relative);
-            //Application.Current.Resources.Clear();
 
-            //// Динамически меняем коллекцию MergedDictionaries
+            //Application.Current.Resources.Clear();
+            // Динамически меняем коллекцию MergedDictionaries
             //Application.Current.Resources.MergedDictionaries.Add(dictionary);
-            //MessageBox.Show("Settings");
             switch (p)
             {
                 case "settings":
                     SelectedItem = settings;
-                break;
+                    dictionary.Source = new Uri("/Resources/Colors/dark.xaml", UriKind.Relative);
+                    break;
                 case "home":
                     SelectedItem = main;
-                break;
+                    dictionary.Source = new Uri("/Resources/Colors/light.xaml", UriKind.Relative);
+                    break;
             }
+            Application.Current.Resources.Clear();
+            Application.Current.Resources.MergedDictionaries.Add(dictionary);
         }
         #endregion
 

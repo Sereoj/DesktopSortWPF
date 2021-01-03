@@ -19,15 +19,23 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="10*"/>
         </Grid.ColumnDefinitions>
-        <Border Grid.RowSpan="8" Background="{DynamicResource Secondary}" 
-                Margin="10" CornerRadius="10">
+        <Border Grid.Row="1" Grid.RowSpan="8" Background="{DynamicResource Primary}" 
+                Margin="10" CornerRadius="10" Opacity="0.8">
         </Border>
 
-        <TextBlock Grid.Row="1" Grid.Column="1" Text="Hello Settings" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="48" Foreground="{DynamicResource TextTitle}"/>
-        <Button Grid.Row="0" Content="&#xE994;" Style="{DynamicResource ButtonIcons}"/>
-        <Button Grid.Row="1" Content="&#xE995;" Style="{DynamicResource ButtonIcons}"/>
-        <Button Grid.Row="2" Content="&#xEA2E;" Style="{DynamicResource ButtonIcons}"/>
+        <Border Grid.Column="1" Grid.Row="1" Grid.RowSpan="8" 
+                Background="{DynamicResource Primary}" 
+                Margin="0,10,10,10" CornerRadius="10" Opacity="0.8">
+        </Border>
+
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="Hello Settings" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="26" Foreground="{DynamicResource TextTitle}"/>
+        <Button Grid.Row="2" Content="&#xE994;"
+                Style="{DynamicResource ButtonIconsSettings}"
+                />
+        <Button Grid.Row="3" Content="&#xE995;" Style="{DynamicResource ButtonIconsSettings}"/>
+        <Button Grid.Row="4" Content="&#x0069;" Style="{DynamicResource ButtonIconsSettings}"/>
+        <Button Grid.Row="5" Content="&#xEA2E;" Style="{DynamicResource ButtonIconsSettings}"/>
     </Grid>
 </UserControl>
