@@ -19,13 +19,13 @@
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
-    <Grid>
+    <Grid Background="AliceBlue">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="625*"/>
             <ColumnDefinition Width="139*"/>
         </Grid.ColumnDefinitions>
 
-        <Image Source="{Binding PathImageBackground}" Stretch="Fill" Grid.ColumnSpan="2"/>
+        <Image Source="{Binding PathImageBackground}" Stretch="Fill" Grid.ColumnSpan="2" Visibility="Hidden"/>
 
         <Grid Grid.ColumnSpan="2">
             <Grid.RowDefinitions>

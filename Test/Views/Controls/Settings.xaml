@@ -4,11 +4,21 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Test.Views.Controls"
+             xmlns:uc="clr-namespace:Test.Views.Controls"
+             xmlns:vm="clr-namespace:Test.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="764">
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type uc:FirstSettings}">
+            <local:FirstSettings/>
+        </DataTemplate>
+    </UserControl.Resources>
+    <UserControl.DataContext>
+        <vm:SettingsWindowViewModel/>
+    </UserControl.DataContext>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -22,20 +32,22 @@
             <ColumnDefinition Width="10*"/>
         </Grid.ColumnDefinitions>
         <Border Grid.Row="1" Grid.RowSpan="8" Background="{DynamicResource Primary}" 
-                Margin="10" CornerRadius="10" Opacity="0.8">
+                Margin="10" CornerRadius="10" Opacity="0.8" Width="50" Height="373">
         </Border>
 
         <Border Grid.Column="1" Grid.Row="1" Grid.RowSpan="8" 
                 Background="{DynamicResource Primary}" 
-                Margin="0,10,10,10" CornerRadius="10" Opacity="0.8">
+                Margin="0,10,10,10" CornerRadius="10" Opacity="0.8" Width="684" Height="373">
+            <ContentPresenter Content="{Binding SelectedItem, Mode=TwoWay}"/>
         </Border>
-
-        <TextBlock Grid.Row="1" Grid.Column="1" Text="Hello Settings" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="26" Foreground="{DynamicResource TextTitle}"/>
-        <Button Grid.Row="2" Content="&#xE994;"
-                Style="{DynamicResource ButtonIconsSettings}"
-                />
-        <Button Grid.Row="3" Content="&#xE995;" Style="{DynamicResource ButtonIconsSettings}"/>
-        <Button Grid.Row="4" Content="&#x0069;" Style="{DynamicResource ButtonIconsSettings}"/>
-        <Button Grid.Row="5" Content="&#xEA2E;" Style="{DynamicResource ButtonIconsSettings}"/>
+        <Button Grid.Row="2" Content="&#xE994;" Style="{DynamicResource ButtonIconsSettings}" 
+                Command="{Binding PageButtonCommand}" CommandParameter="first"/>
+        <Button Grid.Row="3" Content="&#xE995;" Style="{DynamicResource ButtonIconsSettings}"
+                Command="{Binding PageButtonCommand}" CommandParameter="second"/>
+        <Button Grid.Row="4" Content="&#x0069;" Style="{DynamicResource ButtonIconsSettings}"
+                Command="{Binding PageButtonCommand}" CommandParameter="info"/>
+        <Button Grid.Row="5" Content="&#xEA2E;" Style="{DynamicResource ButtonIconsSettings}"
+                Command="{Binding PageButtonCommand}" CommandParameter="first"/>
+        
     </Grid>
 </UserControl>

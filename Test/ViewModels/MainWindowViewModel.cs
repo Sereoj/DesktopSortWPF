@@ -96,11 +96,11 @@ namespace Test.ViewModels
             {
                 case "settings":
                     SelectedItem = settings;
-                    dictionary.Source = new Uri("/Resources/Colors/dark.xaml", UriKind.Relative);
+                    dictionary.Source = new Uri("Resources/Colors/dark.xaml", UriKind.Relative);
                     break;
                 case "home":
                     SelectedItem = main;
-                    dictionary.Source = new Uri("/Resources/Colors/light.xaml", UriKind.Relative);
+                    dictionary.Source = new Uri("Resources/Colors/light.xaml", UriKind.Relative);
                     break;
             }
             Application.Current.Resources.Clear();
