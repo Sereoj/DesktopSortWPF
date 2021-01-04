@@ -122,6 +122,7 @@
     <Compile Include="Models\Base\DirectoryManager.cs" />
     <Compile Include="Models\FileManager.cs" />
     <Compile Include="Models\Setting.cs" />
+    <Compile Include="Models\Settings\Background.cs" />
     <Compile Include="ViewModels\Base\ViewModel.cs" />
     <Compile Include="ViewModels\SettingsWindowViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />

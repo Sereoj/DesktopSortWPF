@@ -10,6 +10,9 @@ namespace Test.Models
          * Extension - Расширение объектов для формирование Каталога.
          */
 
+        public string ID { get; set; }
+        public bool IsChecked { get; set; }
+
         public string Catalog { get; set; }
         public string Extension { get; set; }
     }
