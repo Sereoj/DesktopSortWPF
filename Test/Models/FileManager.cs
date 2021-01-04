@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Test.Models.Base;
+using Test.ViewModels.Base;
 
 namespace Test.Models
 {

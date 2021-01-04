@@ -3,7 +3,7 @@
     <!--Верхняя панель кнопок-->
     <Style x:Key="TextBoxStyle" TargetType="TextBox">
         <Setter Property="Foreground" Value="Black"/>
-        <Setter Property="SelectionBrush" Value="{DynamicResource Primary}"/>
+        <Setter Property="SelectionBrush" Value="{DynamicResource BackSelectedColor}"/>
         <Setter Property="Height" Value="36"/>
         <Setter Property="Cursor" Value="IBeam"/>
         <Setter Property="AllowDrop" Value="true"/>

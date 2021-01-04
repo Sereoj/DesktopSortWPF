@@ -1,10 +1,49 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <!--Colors UI-->
-    <SolidColorBrush Color="#FF2E1795" x:Key="Primary" />
-    <SolidColorBrush Color="#FF150851" x:Key="Secondary" />
-    
-    <SolidColorBrush Color="#FFCED3CC" x:Key="TextForegroundTitle" />
-    <SolidColorBrush Color="White" x:Key="Text" />
-    
+    <!--Control colors.-->
+
+    <SolidColorBrush x:Key="WindowColor">#FFE8EDF9</SolidColorBrush>
+    <!--Цвет текста светлый-->
+    <SolidColorBrush x:Key="ForeContentLightColor">#FFC5CBF9</SolidColorBrush>
+    <!--Цвет текста темный-->
+    <SolidColorBrush x:Key="ForeContentDarkColor">#FF7381F9</SolidColorBrush>
+
+    <!--Цвет отключенного текста светлый-->
+    <SolidColorBrush x:Key="BackDisabledLightColor">#FFE8EDF9</SolidColorBrush>
+    <!--Цвет отключенного текста темный-->
+    <SolidColorBrush x:Key="BackDisabledDarkColor">#FFC5CBF9</SolidColorBrush>
+    <SolidColorBrush x:Key="ForeDisabledColor">#FF888888</SolidColorBrush>
+
+    <SolidColorBrush x:Key="BackSelectedColor">#FFC5CBF9</SolidColorBrush>
+    <SolidColorBrush x:Key="UnfocusedSelectedColor">#FFDDDDDD</SolidColorBrush>
+
+    <SolidColorBrush x:Key="BackLightColor">White</SolidColorBrush>
+    <SolidColorBrush x:Key="BackMediumColor">#FF7381F9</SolidColorBrush>
+    <SolidColorBrush x:Key="BackDarkColor">#FF211AA9</SolidColorBrush>
+
+    <SolidColorBrush x:Key="BackMouseOverColor">#FF3843C4</SolidColorBrush>
+    <SolidColorBrush x:Key="BackPressedColor">#FF211AA9</SolidColorBrush>
+
+
+    <SolidColorBrush x:Key="GlyphColor">#FF444444</SolidColorBrush>
+    <SolidColorBrush x:Key="GlyphMouseOver">sc#1, 0.004391443, 0.002428215, 0.242281124</SolidColorBrush>
+
+    <!--Border colors-->
+    <SolidColorBrush x:Key="BorderLightColor">#FFCCCCCC</SolidColorBrush>
+    <SolidColorBrush x:Key="BorderMediumColor">#FF888888</SolidColorBrush>
+    <SolidColorBrush x:Key="BorderDarkColor">#FF444444</SolidColorBrush>
+
+    <SolidColorBrush x:Key="PressedBorderLightColor">#FF888888</SolidColorBrush>
+    <SolidColorBrush x:Key="PressedBorderDarkColor">#FF444444</SolidColorBrush>
+
+    <SolidColorBrush x:Key="DisabledBorderLightColor">#FFAAAAAA</SolidColorBrush>
+    <SolidColorBrush x:Key="DisabledBorderDarkColor">#FF888888</SolidColorBrush>
+
+    <SolidColorBrush x:Key="DefaultBorderBrushDarkColor">Black</SolidColorBrush>
+
+    <!--Control-specific resources.-->
+    <SolidColorBrush x:Key="HeaderTopColor">#FFC5CBF9</SolidColorBrush>
+    <SolidColorBrush x:Key="DatagridCurrentCellBorderColor">Black</SolidColorBrush>
+    <SolidColorBrush x:Key="SliderTrackDarkColor">#FFC5CBF9</SolidColorBrush>
+
 </ResourceDictionary>

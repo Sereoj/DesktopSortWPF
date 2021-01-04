@@ -7,7 +7,9 @@
         xmlns:uc="clr-namespace:Test.Views.Controls"
         Title="{Binding Title}" Height="506" Width="764" 
         ResizeMode="NoResize" WindowStyle="None" 
-        WindowState="{Binding MainWindowState, Mode=TwoWay}">
+        WindowState="{Binding MainWindowState, Mode=TwoWay}"
+        Icon="/Images/Icon/window.ico"
+        >
     <Window.Resources>
         <DataTemplate DataType="{x:Type uc:Main}">
             <uc:Main/>
@@ -19,13 +21,13 @@
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
-    <Grid Background="AliceBlue">
+    <Grid Background="{DynamicResource BackMediumColor}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="625*"/>
             <ColumnDefinition Width="139*"/>
         </Grid.ColumnDefinitions>
 
-        <Image Source="{Binding PathImageBackground}" Stretch="Fill" Grid.ColumnSpan="2" Visibility="Hidden"/>
+        <Image Source="{Binding PathImageBackground}" Stretch="Fill" Grid.ColumnSpan="2" Visibility="Visible"/>
 
         <Grid Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
@@ -42,7 +44,7 @@
                 <ColumnDefinition  Width="45"/>
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.ColumnSpan="4" Cursor="SizeAll" MouseDown="Grid_MouseDown" Background="{DynamicResource Primary}"/>
+            <Grid Grid.ColumnSpan="4" Cursor="SizeAll" MouseDown="Grid_MouseDown" Background="{DynamicResource BackDarkColor}"/>
 
             <TextBlock Grid.Column="0" Text="{Binding Title}" Style="{DynamicResource TextBlockTitle}"/>
 
@@ -54,9 +56,9 @@
             <Button Grid.Row="2" Grid.Column="3" Content="&#xE994;" Style="{DynamicResource ButtonIcons}" Command="{Binding PageButtonCommand}" CommandParameter="settings" />
             <Button Grid.Row="2" Grid.Column="2" Content="&#xE900;" Style="{DynamicResource ButtonIcons}" Command="{Binding PageButtonCommand}" CommandParameter="home"/>
 
-            <StatusBar Grid.Row="3" Grid.ColumnSpan="4" Background="{DynamicResource Primary}">
+            <StatusBar Grid.Row="3" Grid.ColumnSpan="4" Background="{DynamicResource BackDarkColor}">
                 <StatusBarItem>
-                    <TextBlock Text="Статус" Foreground="{DynamicResource TextForegroundTitle}" Margin="15,0,0,0"></TextBlock>
+                    <TextBlock Text="Статус" Foreground="{DynamicResource WindowColor}" Margin="15,0,0,0"></TextBlock>
                 </StatusBarItem>
             </StatusBar>
         </Grid>

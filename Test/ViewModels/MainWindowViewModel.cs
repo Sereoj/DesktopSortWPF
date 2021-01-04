@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Windows;
 using System.Windows.Input;
 using Test.Infrastucture.Commands;
 using Test.Models;
 using Test.ViewModels.Base;
 using Test.Views.Controls;
+using WK.Libraries.BetterFolderBrowserNS;
 
 namespace Test.ViewModels
 {
@@ -19,8 +22,8 @@ namespace Test.ViewModels
         //private string _ColorPrimary = "#FF2E1795";
         //private string _ColorSecondary = "#FF150851";
 
-        private string _TextBoxPath = "C://Windows";
-        private string _TextBoxPath1 = "C://Windows/Backup";
+        private string _TextBoxPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+        private string _TextBoxPath1 = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
         private Main main = new Main();
         private Settings settings = new Settings();
@@ -60,13 +63,54 @@ namespace Test.ViewModels
         }
         #endregion
 
+
+        #region FileDialogButtonCommand
+        public ICommand FileDialogButtonCommand { get; }
+
+        private bool CanFileDialogButtonCommandExecute(object p) => true;
+        private void OnFileDialogButtonCommandExecuted(object p)
+        {
+            BetterFolderBrowser betterFolder = new BetterFolderBrowser();
+            if(betterFolder.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                switch (p)
+                {
+                    case "input":
+                        TextBoxPath = betterFolder.SelectedFolder;
+                        break;
+                    case "output":
+                        TextBoxPath1 = betterFolder.SelectedFolder;
+                        break;
+                }
+            }
+
+        }
+        #endregion
+
         #region CopyButtonCommand
         public ICommand CopyButtonCommand { get; }
 
         private bool CanCopyButtonCommandExecute(object p) => true;
         private void OnCopyButtonCommandExecuted(object p)
         {
-            MessageBox.Show("Copy");
+
+            var Files = new List<Setting>
+            {
+                new Setting()
+                {
+                    Catalog = "Text Files",
+                    Extension = "*.txt"
+                },
+                new Setting()
+                {
+                    Catalog = "Others",
+                    Extension = "*.txt1, *.txt1"
+                }
+
+            };
+
+            FileManager manager = new FileManager( TextBoxPath , TextBoxPath1);
+            manager.SearchFiles(Files, FileManager.FileMode.Copy);
         }
         #endregion
 
@@ -86,7 +130,7 @@ namespace Test.ViewModels
         private bool CanPageButtonCommandExecute(object p) => true;
         private void OnPageButtonCommandExecuted(object p)
         {
-            ResourceDictionary dictionary = new ResourceDictionary();
+            //ResourceDictionary dictionary = new ResourceDictionary();
             //dictionary.Source = new Uri("/Resources/Colors/dark.xaml", UriKind.Relative);
 
             //Application.Current.Resources.Clear();
@@ -96,15 +140,15 @@ namespace Test.ViewModels
             {
                 case "settings":
                     SelectedItem = settings;
-                    dictionary.Source = new Uri("Resources/Colors/dark.xaml", UriKind.Relative);
+                    //dictionary.Source = new Uri("Resources/Colors/dark.xaml", UriKind.Relative);
                     break;
                 case "home":
                     SelectedItem = main;
-                    dictionary.Source = new Uri("Resources/Colors/light.xaml", UriKind.Relative);
+                    //dictionary.Source = new Uri("Resources/Colors/light.xaml", UriKind.Relative);
                     break;
             }
-            Application.Current.Resources.Clear();
-            Application.Current.Resources.MergedDictionaries.Add(dictionary);
+            //Application.Current.Resources.Clear();
+            //Application.Current.Resources.MergedDictionaries.Add(dictionary);
         }
         #endregion
 
@@ -124,6 +168,7 @@ namespace Test.ViewModels
             CopyButtonCommand = new RelayCommand(OnCopyButtonCommandExecuted, CanCopyButtonCommandExecute);
             CutButtonCommand = new RelayCommand(OnCutButtonCommandExecuted, CanCutButtonCommandExecute);
             PageButtonCommand = new RelayCommand(OnPageButtonCommandExecuted, CanPageButtonCommandExecute);
+            FileDialogButtonCommand = new RelayCommand(OnFileDialogButtonCommandExecuted, CanFileDialogButtonCommandExecute);
             #endregion
         }
     }

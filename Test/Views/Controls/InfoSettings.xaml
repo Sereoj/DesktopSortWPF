@@ -30,6 +30,17 @@
                        TextWrapping="Wrap" 
                        FontWeight="Light"/>
             <Grid Grid.Row="1" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition  Height="24"/>
+                    <RowDefinition  Height="24"/>
+                    <RowDefinition  Height="24"/>
+                    <RowDefinition  Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="24"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="1" Text="Благодарности" FontSize="14" Margin="-5,5,0,0" Style="{DynamicResource TextBlockTitle}"/>
             </Grid>
         </Grid>
     </Grid>

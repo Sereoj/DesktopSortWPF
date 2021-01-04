@@ -29,24 +29,30 @@
                 <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <CheckBox Content="Microsoft Word" Style="{DynamicResource CheckBoxStyle}"/>
-            <CheckBox Content="Microsoft Excel" Grid.Row="1" Grid.Column="0" Style="{DynamicResource CheckBoxStyle}"/>
-            <CheckBox Content="Microsoft Access" Grid.Row="2" Grid.Column="0" Style="{DynamicResource CheckBoxStyle}"/>
-            <CheckBox Content="Microsoft Project" Grid.Row="3" Grid.Column="0" Style="{DynamicResource CheckBoxStyle}"/>
-            <CheckBox Content="Microsoft PowerPoint" Grid.Row="4" Grid.Column="0" Style="{DynamicResource CheckBoxStyle}"/>
-            <CheckBox Content="Microsoft OneNote" Grid.Row="5" Grid.Column="0" Style="{DynamicResource CheckBoxStyle}"/>
-            <CheckBox Content="Изображения" Grid.Row="6" Grid.Column="0" Style="{DynamicResource CheckBoxStyle}"/>
-            <CheckBox Content="Мультимедия" Grid.Row="0" Grid.Column="1" Style="{DynamicResource CheckBoxStyle}"/>
-            <CheckBox Content="Архивы" Grid.Row="1" Grid.Column="1" Style="{DynamicResource CheckBoxStyle}"/>
-            <CheckBox Content="Электронные книги" Grid.Row="2" Grid.Column="1" Style="{DynamicResource CheckBoxStyle}"/>
-            <CheckBox Content="Шаблон 1" Grid.Row="3" Grid.Column="1" Style="{DynamicResource CheckBoxStyle}"/>
-            <CheckBox Content="Шаблон 2" Grid.Row="4" Grid.Column="1" Style="{DynamicResource CheckBoxStyle}"/>
-            <CheckBox Content="Шаблон 3" Grid.Row="5" Grid.Column="1" Style="{DynamicResource CheckBoxStyle}"/>
-            <CheckBox Content="Шаблон 4" Grid.Row="6" Grid.Column="1" Style="{DynamicResource CheckBoxStyle}"/>
-            <CheckBox Content="Шаблон 5" Grid.Row="0" Grid.Column="2" Style="{DynamicResource CheckBoxStyle}"/>
-            <CheckBox Content="Шаблон 6" Grid.Row="1" Grid.Column="2" Style="{DynamicResource CheckBoxStyle}"/>
-            <CheckBox Content="Шаблон 7" Grid.Row="2" Grid.Column="2" Style="{DynamicResource CheckBoxStyle}"/>
-            <CheckBox Content="Шаблон 8" Grid.Row="3" Grid.Column="2" Style="{DynamicResource CheckBoxStyle}"/>
+            <CheckBox Content="Microsoft Word" Name="CheckFormat1" Style="{DynamicResource CheckBoxStyle}"/>
+            <CheckBox Content="Microsoft Excel" Name="CheckFormat2" Grid.Row="1" Grid.Column="0" Style="{DynamicResource CheckBoxStyle}"/>
+            <CheckBox Content="Microsoft Access" Name="CheckFormat3" Grid.Row="2" Grid.Column="0" Style="{DynamicResource CheckBoxStyle}"/>
+            <CheckBox Content="Microsoft Project" Name="CheckFormat4" Grid.Row="3" Grid.Column="0" Style="{DynamicResource CheckBoxStyle}"/>
+            <CheckBox Content="Microsoft PowerPoint" Name="CheckFormat5" Grid.Row="4" Grid.Column="0" Style="{DynamicResource CheckBoxStyle}"/>
+            <CheckBox Content="Microsoft OneNote" Name="CheckFormat6" Grid.Row="5" Grid.Column="0" Style="{DynamicResource CheckBoxStyle}"/>
+            <CheckBox Content="Изображения" Name="CheckFormat7" Grid.Row="6" Grid.Column="0" Style="{DynamicResource CheckBoxStyle}"/>
+            <CheckBox Content="Мультимедия" Name="CheckFormat8" Grid.Row="0" Grid.Column="1" Style="{DynamicResource CheckBoxStyle}"/>
+            <CheckBox Content="Архивы" Name="CheckFormat9" Grid.Row="1" Grid.Column="1" Style="{DynamicResource CheckBoxStyle}"/>
+            <CheckBox Content="Электронные книги" Name="CheckFormat10" Grid.Row="2" Grid.Column="1" Style="{DynamicResource CheckBoxStyle}"/>
+            <CheckBox Content="Шаблон 1" Name="CheckFormat11" Grid.Row="3" Grid.Column="1" Style="{DynamicResource CheckBoxStyle}"/>
+            <CheckBox Content="Шаблон 2" Name="CheckFormat12" Grid.Row="4" Grid.Column="1" Style="{DynamicResource CheckBoxStyle}"/>
+            <CheckBox Content="Шаблон 3" Name="CheckFormat13" Grid.Row="5" Grid.Column="1" Style="{DynamicResource CheckBoxStyle}"/>
+            <CheckBox Content="Шаблон 4" Name="CheckFormat14" Grid.Row="6" Grid.Column="1" Style="{DynamicResource CheckBoxStyle}"/>
+            <CheckBox Content="Шаблон 5" Name="CheckFormat15" Grid.Row="0" Grid.Column="2" Style="{DynamicResource CheckBoxStyle}"/>
+            <CheckBox Content="Шаблон 6" Name="CheckFormat16" Grid.Row="1" Grid.Column="2" Style="{DynamicResource CheckBoxStyle}"/>
+            <CheckBox Content="Шаблон 7" Name="CheckFormat17" Grid.Row="2" Grid.Column="2" Style="{DynamicResource CheckBoxStyle}"/>
+            <CheckBox Content="Шаблон 8" Name="CheckFormat18" Grid.Row="3" Grid.Column="2" Style="{DynamicResource CheckBoxStyle}"/>
+            <CheckBox Content="Шаблон 9" Name="CheckFormat19" Grid.Row="4" Grid.Column="2" Style="{DynamicResource CheckBoxStyle}"/>
+            <CheckBox Content="Шаблон 10" Name="CheckFormat20" Grid.Row="5" Grid.Column="2" Style="{DynamicResource CheckBoxStyle}"/>
+
+            <Button Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" Content="&#xE931;" Margin="0,0,10,0"  Style="{DynamicResource ButtonIconsSettings}"/>
+            <TextBlock Grid.Row="0" Grid.Column="3" Text="Иконка для папки:" Style="{DynamicResource TextBlockLeft}" Foreground="{DynamicResource WindowColor}" Margin="10,10,45,6"/>
+
         </Grid>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
@@ -54,6 +60,10 @@
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Создаваемая папка:" Style="{DynamicResource TextBlockLeft}" Foreground="{DynamicResource WindowColor}" Margin="10,-30,0,0"/>
+            <TextBox Grid.Column="0" Text="Images" Style="{DynamicResource TextBoxStyle}" Margin="5,35,5,0"/>
+            <TextBlock Grid.Column="1" Text="Расширения:" Style="{DynamicResource TextBlockLeft}" Foreground="{DynamicResource WindowColor}" Margin="10,-30,0,0"/>
+            <TextBox Grid.Column="1" Text="png,svg,ico" Style="{DynamicResource TextBoxStyle}" Margin="5,35,5,0"/>
         </Grid>
     </Grid>
 </UserControl>

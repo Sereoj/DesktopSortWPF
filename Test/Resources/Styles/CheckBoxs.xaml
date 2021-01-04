@@ -15,8 +15,8 @@
                         <BulletDecorator.Bullet>
                             <Border
                                 SnapsToDevicePixels="True"
-                                Background="AntiqueWhite"
-                                BorderBrush="{DynamicResource Secondary}"
+                                Background="{DynamicResource BackLightColor}"
+                                BorderBrush="{DynamicResource BorderDarkColor}"
                                 BorderThickness="1,1,1,1"
                                 CornerRadius="5"
                                 Width="18"
@@ -26,26 +26,26 @@
                                            VerticalAlignment="Center"
                                            Text="&#xEA10;" 
                                            FontFamily="/Fonts/#IcoMoon-Free"
-                                           Foreground="{DynamicResource Primary}"
+                                           Foreground="{DynamicResource ForeContentDarkColor}"
                                            FontSize="10"
                                            Visibility="Hidden"/>
                             </Border>
                         </BulletDecorator.Bullet>
 
-                        <TextBlock Margin="4,0,0,0" HorizontalAlignment="Left" Text="{TemplateBinding Content}" Foreground="{DynamicResource TextForegroundTitle}" />
+                        <TextBlock Margin="4,0,0,0" HorizontalAlignment="Left" Text="{TemplateBinding Content}" Foreground="{DynamicResource WindowColor}" />
                     </BulletDecorator>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="CheckBoxMark" Property="Visibility" Value="Visible"/>
-                            <Setter Property="BorderBrush" Value="Wheat"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource BorderDarkColor}"/>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="False">
                             <Setter TargetName="CheckBoxMark" Property="Visibility" Value="Hidden"/>
-                            <Setter Property="BorderBrush" Value="AntiqueWhite"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource BorderLightColor}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="CheckBoxMark" Property="Visibility" Value="Hidden"/>
-                            <Setter Property="BorderBrush" Value="WhiteSmoke"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource DisabledBorderLightColor}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
