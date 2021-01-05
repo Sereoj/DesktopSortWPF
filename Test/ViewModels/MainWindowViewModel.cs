@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using Test.Infrastucture.Commands;
@@ -14,7 +16,7 @@ namespace Test.ViewModels
     internal class MainWindowViewModel : ViewModel
     {
         #region Values
-        private string _Title = "Desktop Sort 0.1";
+        private string _Title = "Desktop Sort WPF";
         private WindowState _MainWindowState;
 
         private string _PathImageBackground = "/Images/Background.bmp";
@@ -25,8 +27,9 @@ namespace Test.ViewModels
         private string _TextBoxPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
         private string _TextBoxPath1 = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
-        private Main main = new Main();
-        private Settings settings = new Settings();
+        private readonly Main main = new Main();
+        private readonly Settings settings = new Settings();
+        private readonly FileManager model;
 
         private object _SelectedItem;
         public object SelectedItem { get => _SelectedItem; set => Set(ref _SelectedItem, value); }
@@ -39,6 +42,8 @@ namespace Test.ViewModels
 
         public string TextBoxPath { get => _TextBoxPath; set => Set(ref _TextBoxPath, value); }
         public string TextBoxPath1 { get => _TextBoxPath1; set => Set(ref _TextBoxPath1, value); }
+
+        public string Result { get => model.GetMessage; }
         #endregion
 
         #region Commands
@@ -93,24 +98,23 @@ namespace Test.ViewModels
         private bool CanCopyButtonCommandExecute(object p) => true;
         private void OnCopyButtonCommandExecuted(object p)
         {
-
             var Files = new List<Setting>
             {
-                new Setting()
-                {
-                    Catalog = "Text Files",
-                    Extension = "*.txt"
-                },
-                new Setting()
-                {
-                    Catalog = "Others",
-                    Extension = "*.txt1, *.txt1"
-                }
-
+                new Setting(){ Catalog = "Word", Extension = "*.docx,*.dotx,*.doc,*.dot" },
+                new Setting(){ Catalog = "Excel", Extension = "*.xlsx,*.xlsm,*.xltx,*.xltm,*.xlam,*.xls,*.xlt,*.xla" },
+                new Setting(){ Catalog = "Access", Extension = "*.accdb,*.mdb" },
+                new Setting(){ Catalog = "Image", Extension = "*.bmp,*.tif,*.jpg,*.gif,*.png,*.ico" },
+                new Setting(){ Catalog = "Text files", Extension = "*.txt,*.log" },
+                new Setting(){ Catalog = "Project", Extension = "*.mpp" },
+                new Setting(){ Catalog = "Archive", Extension = "*.rar,*.zip,*.7z" },
+                new Setting(){ Catalog = "eBook", Extension = "*.fb2,*.epub,*.mobi,*.pdf,*.djvu" },
+                new Setting(){ Catalog = "Media", Extension = "*.avi,*.mp4,*.mpeg,*.wmv,*.mp3" }
             };
 
-            FileManager manager = new FileManager( TextBoxPath , TextBoxPath1);
-            manager.SearchFiles(Files, FileManager.FileMode.Copy);
+            model.SetInput(TextBoxPath);
+            model.SetOutput(TextBoxPath1);
+            Task.Run(() => model.SearchFiles(Files, FileManager.FileMode.Ignore));
+
         }
         #endregion
 
@@ -120,7 +124,22 @@ namespace Test.ViewModels
         private bool CanCutButtonCommandExecute(object p) => true;
         private void OnCutButtonCommandExecuted(object p)
         {
-            MessageBox.Show("Cut");
+            var Files = new List<Setting>
+            {
+                new Setting(){ Catalog = "Word", Extension = "*.docx,*.dotx,*.doc,*.dot" },
+                new Setting(){ Catalog = "Excel", Extension = "*.xlsx,*.xlsm,*.xltx,*.xltm,*.xlam,*.xls,*.xlt,*.xla" },
+                new Setting(){ Catalog = "Access", Extension = "*.accdb,*.mdb" },
+                new Setting(){ Catalog = "Image", Extension = "*.bmp,*.tif,*.jpg,*.gif,*.png,*.ico" },
+                new Setting(){ Catalog = "Text files", Extension = "*.txt,*.log" },
+                new Setting(){ Catalog = "Project", Extension = "*.mpp" },
+                new Setting(){ Catalog = "Archive", Extension = "*.rar,*.zip,*.7z" },
+                new Setting(){ Catalog = "eBook", Extension = "*.fb2,*.epub,*.mobi,*.pdf,*.djvu" },
+                new Setting(){ Catalog = "Media", Extension = "*.avi,*.mp4,*.mpeg,*.wmv,*.mp3" }
+            };
+
+            model.SetInput(TextBoxPath);
+            model.SetOutput(TextBoxPath1);
+            Task.Run(() => model.SearchFiles(Files, FileManager.FileMode.Ignore));
         }
         #endregion
 
@@ -157,11 +176,13 @@ namespace Test.ViewModels
 
         #endregion
 
+
         public MainWindowViewModel()
         {
             //По умоланию Home
             OnPageButtonCommandExecuted("home");
-
+            model = FileManager.Model;
+            model.PropertyChanged += Model_PropertyChanged;
             #region Commands
             MinimalizeApplicationCommand = new RelayCommand(OnMinimalizeApplicationCommandExecuted, CanMinimalizeApplicationCommanddExecute);
             CloseApplicationCommand = new RelayCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute);
@@ -170,6 +191,12 @@ namespace Test.ViewModels
             PageButtonCommand = new RelayCommand(OnPageButtonCommandExecuted, CanPageButtonCommandExecute);
             FileDialogButtonCommand = new RelayCommand(OnFileDialogButtonCommandExecuted, CanFileDialogButtonCommandExecute);
             #endregion
+        }
+
+        private void Model_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "MessageChange")
+                OnPropertyChanged("Result");
         }
     }
 }

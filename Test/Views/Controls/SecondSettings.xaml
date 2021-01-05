@@ -13,5 +13,6 @@
             <RowDefinition Height="90"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Text="Выберите необходимые форматы" FontSize="16" Margin="10,5,0,0" Style="{DynamicResource TextBlockTitle}" />
+        
     </Grid>
 </UserControl>

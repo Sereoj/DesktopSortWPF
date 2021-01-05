@@ -1,19 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
-using Test.Models.Base;
 using Test.ViewModels.Base;
 
 namespace Test.Models
-{
-    internal class FileManager : DirectoryManager
+{ 
+    internal class FileManager: ViewModel
     {
-        public string DEFAULT_PATH { get; }
-        public string OUTPUT_PATH { get; }
-        public bool DeleteDefaultDirectory { get; }
+
+        #region закрытые поля
+        private string INPUT_PATH;
+        private string OUTPUT_PATH;
+        private bool DeleteDefaultDirectory;
+        private string Message;
+        private int delay = 100;
+        #endregion
+
+
+        public string GetMessage { get => Message;}
+
+        static FileManager _model;
+        public static FileManager Model => _model ?? (_model = new FileManager());
 
         public enum FileMode : byte
         {
@@ -22,83 +35,120 @@ namespace Test.Models
             Ignore // Игнорирование, использование в качестве тестирования функционала, игнорирования работы с файлами. 
         }
 
-        public FileManager(string default_path, string path_output, bool deleteOutputDirectory = false)
+        public FileManager()
         {
-            if (string.IsNullOrWhiteSpace(default_path))
-                throw new ArgumentNullException(default_path, "Default path is NULL.");
-            if (string.IsNullOrWhiteSpace(path_output))
-                throw new ArgumentNullException(path_output, "Output path is NULL.");
+        }
 
 
-            if ((IsPathExists(default_path) && IsPathExists(path_output)) != true)
+        #region Публичные методы
+
+        public void SetInput(string input)
+        {
+            if (Validate(input))
             {
-                DEFAULT_PATH = default_path;
-                OUTPUT_PATH = path_output;
-                DeleteDefaultDirectory = deleteOutputDirectory;
-
-                CreateDirectory(default_path); // Создаем, если пользователь указал неверный первичный путь
-                CreateDirectory(path_output); // Создаем, если пользователь указал неверно вторичный путь.
+                INPUT_PATH = input;
+                SetMessage(input);
             }
+        }
+
+        public void SetOutput(string output)
+        {
+            if (Validate(output))
+            {
+                OUTPUT_PATH = output;
+                SetMessage(output);
+            }
+        }
+
+        public void SetDeleteDirectory(bool directory = false)
+        {
+            DeleteDefaultDirectory = directory;
         }
 
         /*
         * Поиск файлов небезопасный, получение данных исключительно от программы.
         * Первая функция.
         */
-        public bool SearchFiles(List<Setting> Files, FileMode modeFile)
+        public async Task SearchFiles(List<Setting> Files, FileMode modeFile)
         {
             foreach (var file in Files)
             {
-                SearchFiles(file.Catalog, file.Extension, modeFile);
+                await Task.Delay(delay);
+                await SearchFilesAsyn(file.Catalog, file.Extension, modeFile);
             }
-            return false;
+            SetMessage("Работа завершилась!");
         }
 
         /*
         * Поиск файлов небезопасный, получение данных исключительно от программы.
         * Вторая функция.
         */
-        public bool SearchFiles(string PathNewDirectory, string PatternExtension, FileMode modeFile)
+        public async Task SearchFilesAsyn(string PathNewDirectory, string PatternExtension, FileMode modeFile)
         {
-            var NewDirectory = OUTPUT_PATH + PathNewDirectory + @"\";
+            var NewDirectory = Path.Combine(OUTPUT_PATH, PathNewDirectory);
             if (IsPathExists(NewDirectory))
                 CreateDirectory(NewDirectory);
 
-            foreach (var GetAllFiles in Directory.GetFiles(DEFAULT_PATH, PatternExtension.ToLower(), SearchOption.TopDirectoryOnly))
-            {
-                try
-                {
-                    var GetExtension = Path.GetExtension(GetAllFiles);
-                    if (GetExtension != null && PatternExtension.Contains(GetExtension.ToLower()) && GetExtension.Length > 0)
-                    {
-                        FileInfo InfoFile = new FileInfo(GetAllFiles);
-                        if (!File.Exists(Path.Combine(NewDirectory, InfoFile.Name)))
-                        {
-                            switch (modeFile)
-                            {
-                                case FileMode.Copy:
-                                    InfoFile.CopyTo(Path.Combine(NewDirectory, InfoFile.Name), true);
-                                    break;
-                                case FileMode.Move:
-                                    InfoFile.MoveTo(Path.Combine(NewDirectory, InfoFile.Name));
-                                    break;
-                                case FileMode.Ignore:
-                                    break;
-                            }
+            SetMessage("Начало выполнения: " + PathNewDirectory);
+            await Task.Delay(delay);
 
-                            return true;
-                        }
-                    }
-                }
-                catch (ArgumentException Message)
-                {
-                    Console.WriteLine(Message.Message);
-                }
-            }
             if (DeleteDefaultDirectory != false)
-                DeleteDirectory(DEFAULT_PATH); // Удаление начальной папки
+                DeleteDirectory(INPUT_PATH); // Удаление начальной папки
 
-            return false;
+            SetMessage("Завершение выполнения:" + PathNewDirectory);
+            await Task.Delay(delay);
+            //SetMessage("Работа закончилась!");
+        } 
+        #endregion
+
+        #region Закрытые методы
+        /// <summary>Создание директории</summary>
+        /// <param name="Path"></param>
+        private void CreateDirectory(string Path)
+        {
+            Directory.CreateDirectory(Path);
         }
+        /// <summary>Проверка директории</summary>
+        /// <param name="Path"></param>
+        private bool IsPathExists(string Path)
+        {
+            return !Directory.Exists(Path) ? true : false;
+        }
+        /// <summary>Удаление директории</summary>
+        /// <param name="Path"></param>
+        private void DeleteDirectory(string Path)
+        {
+            Directory.Delete(Path);
+        }
+        /// <summary>Валидация пути</summary>
+        /// <param name="Path"></param>
+        private bool Validate(string Path)
+        {
+            if (string.IsNullOrWhiteSpace(Path))
+                Path = Environment.CurrentDirectory;
+                //throw new ArgumentNullException(Path, "Path is NULL.");
+
+            if (!IsPathExists(Path))
+            {
+                CreateDirectory(Path);
+                return true;
+            }
+            return true;
+        }
+
+        private void SetMessage(string message)
+        {
+            if( message.Length > 0 )
+            {
+                Message = message;
+                OnPropertyChanged("MessageChange");
+            }
+            else
+            {
+                Message = "...";
+                OnPropertyChanged("MessageChange");
+            }
+        }
+        #endregion
     }
 }

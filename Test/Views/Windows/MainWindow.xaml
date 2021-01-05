@@ -58,7 +58,7 @@
 
             <StatusBar Grid.Row="3" Grid.ColumnSpan="4" Background="{DynamicResource BackDarkColor}">
                 <StatusBarItem>
-                    <TextBlock Text="Статус" Foreground="{DynamicResource WindowColor}" Margin="15,0,0,0"></TextBlock>
+                    <TextBlock Text="{Binding Result}" Foreground="{DynamicResource WindowColor}" Margin="15,0,0,0"></TextBlock>
                 </StatusBarItem>
             </StatusBar>
         </Grid>
