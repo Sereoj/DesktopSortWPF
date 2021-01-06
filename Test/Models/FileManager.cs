@@ -47,7 +47,7 @@ namespace Test.Models
             if (Validate(input))
             {
                 INPUT_PATH = input;
-                SetMessage(input);
+                SetMessage("Проверка: " + input);
             }
         }
 
@@ -56,7 +56,7 @@ namespace Test.Models
             if (Validate(output))
             {
                 OUTPUT_PATH = output;
-                SetMessage(output);
+                SetMessage("Проверка: " + output);
             }
         }
 
@@ -91,6 +91,33 @@ namespace Test.Models
 
             SetMessage("Начало выполнения: " + PathNewDirectory);
             await Task.Delay(delay);
+
+            try
+            {
+                var files = GetFilesList(INPUT_PATH, PatternExtension);
+                foreach (string fileSingle in files)
+                {
+                    string NewFile = Path.Combine(NewDirectory + "\\" + Path.GetFileName(fileSingle));
+
+                    switch (modeFile)
+                    {
+                        case FileMode.Copy:
+                            File.Copy(fileSingle, NewFile, true);
+                            break;
+                        case FileMode.Move:
+                            File.Move(fileSingle, NewFile);
+                            break;
+                        case FileMode.Ignore:
+                            File.Copy(fileSingle, NewFile, true);
+                            break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
 
             if (DeleteDefaultDirectory != false)
                 DeleteDirectory(INPUT_PATH); // Удаление начальной папки
@@ -134,6 +161,14 @@ namespace Test.Models
                 return true;
             }
             return true;
+        }
+
+        private static IEnumerable<string> GetFilesList(string path, string formats)
+        {
+            string[] formatsLower = formats.Split(new char[] { ' ', ',', '\t' });
+            return Directory.EnumerateFiles(path, "*.*", SearchOption.TopDirectoryOnly)
+                .Where(s => formatsLower.Contains(Path.GetExtension(s).ToLowerInvariant()
+                .Trim()));
         }
 
         private void SetMessage(string message)

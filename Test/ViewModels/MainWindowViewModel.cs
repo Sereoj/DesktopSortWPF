@@ -16,7 +16,7 @@ namespace Test.ViewModels
     internal class MainWindowViewModel : ViewModel
     {
         #region Values
-        private string _Title = "Desktop Sort WPF";
+        private string _Title = "Desktop Sort 1.0";
         private WindowState _MainWindowState;
 
         private string _PathImageBackground = "/Images/Background.bmp";
@@ -100,20 +100,20 @@ namespace Test.ViewModels
         {
             var Files = new List<Setting>
             {
-                new Setting(){ Catalog = "Word", Extension = "*.docx,*.dotx,*.doc,*.dot" },
-                new Setting(){ Catalog = "Excel", Extension = "*.xlsx,*.xlsm,*.xltx,*.xltm,*.xlam,*.xls,*.xlt,*.xla" },
-                new Setting(){ Catalog = "Access", Extension = "*.accdb,*.mdb" },
-                new Setting(){ Catalog = "Image", Extension = "*.bmp,*.tif,*.jpg,*.gif,*.png,*.ico" },
-                new Setting(){ Catalog = "Text files", Extension = "*.txt,*.log" },
-                new Setting(){ Catalog = "Project", Extension = "*.mpp" },
-                new Setting(){ Catalog = "Archive", Extension = "*.rar,*.zip,*.7z" },
-                new Setting(){ Catalog = "eBook", Extension = "*.fb2,*.epub,*.mobi,*.pdf,*.djvu" },
-                new Setting(){ Catalog = "Media", Extension = "*.avi,*.mp4,*.mpeg,*.wmv,*.mp3" }
+                new Setting(){ Catalog = "Word", Extension = ".docx,.dotx,.doc,.dot" },
+                new Setting(){ Catalog = "Excel", Extension = ".xlsx,.xlsm,.xltx,.xltm,.xlam,.xls,.xlt,.xla" },
+                new Setting(){ Catalog = "Access", Extension = ".accdb,.mdb" },
+                new Setting(){ Catalog = "Image", Extension = ".bmp,.tif,.jpg,.gif,.png,.ico" },
+                new Setting(){ Catalog = "Text files", Extension = ".txt,.log" },
+                new Setting(){ Catalog = "Project", Extension = ".mpp" },
+                new Setting(){ Catalog = "Archive", Extension = ".rar,.zip,.7z" },
+                new Setting(){ Catalog = "eBook", Extension = ".fb2,.epub,.mobi,.pdf,.djvu" },
+                new Setting(){ Catalog = "Media", Extension = ".avi,.mp4,.mpeg,.wmv,.mp3" }
             };
 
             model.SetInput(TextBoxPath);
             model.SetOutput(TextBoxPath1);
-            Task.Run(() => model.SearchFiles(Files, FileManager.FileMode.Ignore));
+            Task.Run(() => model.SearchFiles(Files, FileManager.FileMode.Copy));
 
         }
         #endregion
