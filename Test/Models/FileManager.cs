@@ -85,8 +85,6 @@ namespace Test.Models
         public async Task SearchFilesAsyn(string PathNewDirectory, string PatternExtension, FileMode modeFile)
         {
             var NewDirectory = Path.Combine(OUTPUT_PATH, PathNewDirectory);
-            if (IsPathExists(NewDirectory))
-                CreateDirectory(NewDirectory);
 
             SetMessage("Начало выполнения: " + PathNewDirectory);
             await Task.Delay(delay);
@@ -94,6 +92,10 @@ namespace Test.Models
             try
             {
                 var files = GetFilesList(INPUT_PATH, PatternExtension);
+
+                if (files != null && (IsPathExists(NewDirectory) && files.ToList().Count > 0))
+                    CreateDirectory(NewDirectory);
+
                 foreach (var fileSingle in files)
                 {
                     var NewFile = Path.Combine(NewDirectory + "\\" + Path.GetFileName(fileSingle));
