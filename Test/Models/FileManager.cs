@@ -1,33 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
+using Test.Models.Settings;
 using Test.ViewModels.Base;
 
 namespace Test.Models
-{ 
-    internal class FileManager: ViewModel
+{
+    internal class FileManager : ViewModel
     {
-
-        #region закрытые поля
-        private string INPUT_PATH;
-        private string OUTPUT_PATH;
-        private bool DeleteDefaultDirectory;
-        private string Message;
-        private int delay = 100;
-        #endregion
-
-
-        public string GetMessage { get => Message;}
-
-        static FileManager _model;
-        public static FileManager Model => _model ?? (_model = new FileManager());
-
         public enum FileMode : byte
         {
             Copy, // Копирование
@@ -35,9 +17,25 @@ namespace Test.Models
             Ignore // Игнорирование, использование в качестве тестирования функционала, игнорирования работы с файлами. 
         }
 
-        public FileManager()
+        private static FileManager _model;
+
+
+        public string GetMessage { get; private set; }
+
+        public static FileManager Model => _model ??= new FileManager();
+
+        ~FileManager()
         {
         }
+
+        #region закрытые поля
+
+        private string INPUT_PATH;
+        private string OUTPUT_PATH;
+        private bool DeleteDefaultDirectory;
+        private readonly int delay = 100;
+
+        #endregion
 
 
         #region Публичные методы
@@ -76,6 +74,7 @@ namespace Test.Models
                 await Task.Delay(delay);
                 await SearchFilesAsyn(file.Catalog, file.Extension, modeFile);
             }
+
             SetMessage("Работа завершилась!");
         }
 
@@ -95,95 +94,107 @@ namespace Test.Models
             try
             {
                 var files = GetFilesList(INPUT_PATH, PatternExtension);
-                foreach (string fileSingle in files)
+                foreach (var fileSingle in files)
                 {
-                    string NewFile = Path.Combine(NewDirectory + "\\" + Path.GetFileName(fileSingle));
+                    var NewFile = Path.Combine(NewDirectory + "\\" + Path.GetFileName(fileSingle));
 
                     switch (modeFile)
                     {
                         case FileMode.Copy:
                             File.Copy(fileSingle, NewFile, true);
+                            await Task.Delay(delay);
+                            SetMessage(NewFile);
                             break;
                         case FileMode.Move:
                             File.Move(fileSingle, NewFile);
+                            await Task.Delay(delay);
+                            SetMessage(NewFile);
                             break;
                         case FileMode.Ignore:
                             File.Copy(fileSingle, NewFile, true);
+                            await Task.Delay(delay);
+                            SetMessage(NewFile);
                             break;
                     }
                 }
             }
             catch (Exception ex)
             {
-
                 Console.WriteLine(ex.Message);
             }
 
-            if (DeleteDefaultDirectory != false)
+            if (DeleteDefaultDirectory)
                 DeleteDirectory(INPUT_PATH); // Удаление начальной папки
 
             SetMessage("Завершение выполнения:" + PathNewDirectory);
             await Task.Delay(delay);
             //SetMessage("Работа закончилась!");
-        } 
+        }
+
         #endregion
 
         #region Закрытые методы
+
         /// <summary>Создание директории</summary>
         /// <param name="Path"></param>
         private void CreateDirectory(string Path)
         {
             Directory.CreateDirectory(Path);
         }
+
         /// <summary>Проверка директории</summary>
         /// <param name="Path"></param>
         private bool IsPathExists(string Path)
         {
             return !Directory.Exists(Path) ? true : false;
         }
+
         /// <summary>Удаление директории</summary>
         /// <param name="Path"></param>
         private void DeleteDirectory(string Path)
         {
             Directory.Delete(Path);
         }
+
         /// <summary>Валидация пути</summary>
         /// <param name="Path"></param>
         private bool Validate(string Path)
         {
             if (string.IsNullOrWhiteSpace(Path))
                 Path = Environment.CurrentDirectory;
-                //throw new ArgumentNullException(Path, "Path is NULL.");
+            //throw new ArgumentNullException(Path, "Path is NULL.");
 
             if (!IsPathExists(Path))
             {
                 CreateDirectory(Path);
                 return true;
             }
+
             return true;
         }
 
         private static IEnumerable<string> GetFilesList(string path, string formats)
         {
-            string[] formatsLower = formats.Split(new char[] { ' ', ',', '\t' });
+            var formatsLower = formats.Split(' ', ',', '\t');
             return Directory.EnumerateFiles(path, "*.*", SearchOption.TopDirectoryOnly)
                 .Where(s => formatsLower.Contains(Path.GetExtension(s).ToLowerInvariant()
-                .Trim()));
+                    .Trim()));
         }
 
-        private void SetMessage(string message)
+        public void SetMessage(string message)
         {
-            if( message.Length > 0 )
+            if (message.Length > 0)
             {
-                Message = message;
+                GetMessage = message;
                 OnPropertyChanged("MessageChange");
             }
             else
             {
-                Message = "...";
+                GetMessage = "...";
                 OnPropertyChanged("MessageChange");
             }
         }
+
         #endregion
     }
 }

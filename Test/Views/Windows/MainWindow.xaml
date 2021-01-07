@@ -5,60 +5,66 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:Test.ViewModels"
         xmlns:uc="clr-namespace:Test.Views.Controls"
-        Title="{Binding Title}" Height="506" Width="764" 
-        ResizeMode="NoResize" WindowStyle="None" 
+        Title="{Binding Title}" Height="506" Width="764"
+        ResizeMode="NoResize" WindowStyle="None"
         WindowState="{Binding MainWindowState, Mode=TwoWay}"
-        Icon="/Images/Icon/window.ico"
-        >
+        Icon="/Images/Icon/window.ico">
     <Window.Resources>
         <DataTemplate DataType="{x:Type uc:Main}">
-            <uc:Main/>
+            <uc:Main />
         </DataTemplate>
         <DataTemplate DataType="{x:Type uc:Settings}">
-            <uc:Settings/>
+            <uc:Settings />
         </DataTemplate>
     </Window.Resources>
     <Window.DataContext>
-        <vm:MainWindowViewModel/>
+        <vm:MainWindowViewModel />
     </Window.DataContext>
     <Grid Background="{DynamicResource BackMediumColor}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="625*"/>
-            <ColumnDefinition Width="139*"/>
+            <ColumnDefinition Width="625*" />
+            <ColumnDefinition Width="139*" />
         </Grid.ColumnDefinitions>
 
-        <Image Source="{Binding PathImageBackground}" Stretch="Fill" Grid.ColumnSpan="2" Visibility="Visible"/>
+        <Image Source="{Binding PathImageBackground}" Stretch="Fill" Grid.ColumnSpan="2" Visibility="Visible" />
 
         <Grid Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
-                <RowDefinition Height="28"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="28"/>
+                <RowDefinition Height="28" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="28" />
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition  Width="*"/>
-                <ColumnDefinition  Width="3*"/>
-                <ColumnDefinition  Width="45"/>
-                <ColumnDefinition  Width="45"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="45" />
+                <ColumnDefinition Width="45" />
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.ColumnSpan="4" Cursor="SizeAll" MouseDown="Grid_MouseDown" Background="{DynamicResource BackDarkColor}"/>
+            <Grid Grid.ColumnSpan="4" Cursor="SizeAll" MouseDown="Grid_MouseDown"
+                  Background="{DynamicResource BackDarkColor}" />
 
-            <TextBlock Grid.Column="0" Text="{Binding Title}" Style="{DynamicResource TextBlockTitle}"/>
+            <TextBlock Grid.Column="0" Style="{DynamicResource TextBlockTitle}">
+                <Run Text="Desktop Sort " /><LineBreak /><Run Text="16.PreAlpha" />
+            </TextBlock>
 
-            <Button Grid.Column="2" Content="&#x005F;" Style="{DynamicResource ButtonToolbar}" Command="{Binding MinimalizeApplicationCommand}"/>
-            <Button Grid.Column="3" Content="&#x0078;" Style="{DynamicResource ButtonToolbar}" Command="{Binding CloseApplicationCommand}"/>
-            <ContentPresenter Grid.Row="1" Grid.ColumnSpan="4" Content="{Binding SelectedItem, Mode=TwoWay}"/>
+            <Button Grid.Column="2" Content="&#x005F;" Style="{DynamicResource ButtonToolbar}"
+                    Command="{Binding MinimalizeApplicationCommand}" />
+            <Button Grid.Column="3" Content="&#x0078;" Style="{DynamicResource ButtonToolbar}"
+                    Command="{Binding CloseApplicationCommand}" />
+            <ContentPresenter Grid.Row="1" Grid.ColumnSpan="4" Content="{Binding SelectedItem, Mode=TwoWay}" />
             <!--<uc:Main Grid.Row="1" Grid.ColumnSpan="4" Visibility="Visible"/>
             <uc:Settings Grid.Row="1" Grid.ColumnSpan="4" Visibility="Hidden"/>-->
-            <Button Grid.Row="2" Grid.Column="3" Content="&#xE994;" Style="{DynamicResource ButtonIcons}" Command="{Binding PageButtonCommand}" CommandParameter="settings" />
-            <Button Grid.Row="2" Grid.Column="2" Content="&#xE900;" Style="{DynamicResource ButtonIcons}" Command="{Binding PageButtonCommand}" CommandParameter="home"/>
+            <Button Grid.Row="2" Grid.Column="3" Content="&#xE994;" Style="{DynamicResource ButtonIcons}"
+                    Command="{Binding PageButtonCommand}" CommandParameter="settings" />
+            <Button Grid.Row="2" Grid.Column="2" Content="&#xE900;" Style="{DynamicResource ButtonIcons}"
+                    Command="{Binding PageButtonCommand}" CommandParameter="home" />
 
             <StatusBar Grid.Row="3" Grid.ColumnSpan="4" Background="{DynamicResource BackDarkColor}">
                 <StatusBarItem>
-                    <TextBlock Text="{Binding Result}" Foreground="{DynamicResource WindowColor}" Margin="15,0,0,0"></TextBlock>
+                    <TextBlock Text="{Binding Result}" Foreground="{DynamicResource WindowColor}" Margin="15,0,0,0" />
                 </StatusBarItem>
             </StatusBar>
         </Grid>

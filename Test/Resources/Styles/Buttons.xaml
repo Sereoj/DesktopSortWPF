@@ -2,133 +2,129 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <!--Верхняя панель кнопок-->
     <Style x:Key="ButtonToolbar" TargetType="Button">
-    <Setter Property="FontFamily" Value="/Fonts/#IcoMoon-Free"/>
-    <Setter Property="FontSize" Value="16"/>
-    <Setter Property="BorderBrush" Value="{DynamicResource BackDarkColor}"/>
-    <Setter Property="Background" Value="{DynamicResource BackDarkColor}"/>
-    <Setter Property="Foreground" Value="{DynamicResource HeaderTopColor}"/>
-    <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FontFamily" Value="/Fonts/#IcoMoon-Free" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BackDarkColor}" />
+        <Setter Property="Background" Value="{DynamicResource BackDarkColor}" />
+        <Setter Property="Foreground" Value="{DynamicResource HeaderTopColor}" />
+        <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Template">
-        <Setter.Value>
-            <ControlTemplate TargetType="Button">
-                <Border Background="{TemplateBinding Background}">
-                    <ContentPresenter Content="{TemplateBinding Content}"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center"
-                                />
-                </Border>
-                <ControlTemplate.Triggers>
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="{DynamicResource BackMouseOverColor}"/>
-                    </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource BackPressedColor}"/>
-                        </Trigger>
-                </ControlTemplate.Triggers>
-            </ControlTemplate>
-        </Setter.Value>
-    </Setter>
-</Style>
-<!--Кнопки иконки-->
-<Style x:Key="ButtonIcons" TargetType="Button">
-    <Setter Property="FontFamily" Value="/Fonts/#IcoMoon-Free"/>
-    <Setter Property="FontSize" Value="24"/>
-    <Setter Property="Background" Value="Transparent"/>
-    <Setter Property="Foreground" Value="{DynamicResource BackDarkColor}"/>
-    <Setter Property="Cursor" Value="Hand"/>
-    <Setter Property="Height" Value="24"/>
-    <Setter Property="Width" Value="24"/>
-    <Setter Property="Template">
-        <Setter.Value>
-            <ControlTemplate TargetType="Button">
-                <Border Background="{TemplateBinding Background}">
-                    <ContentPresenter Content="{TemplateBinding Content}"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center"
-                                />
-                </Border>
-                <ControlTemplate.Triggers>
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Foreground" Value="{DynamicResource BackMouseOverColor}"/>
-                    </Trigger>
-                    <Trigger Property="IsPressed" Value="True">
-                        <Setter Property="Foreground" Value="{DynamicResource BackPressedColor}"/>
-                    </Trigger>
-                    </ControlTemplate.Triggers>
-            </ControlTemplate>
-        </Setter.Value>
-    </Setter>
-</Style>
-<!--Кнопки иконки SETTIGS-->
-<Style x:Key="ButtonIconsSettings" TargetType="Button">
-    <Setter Property="FontFamily" Value="/Fonts/#IcoMoon-Free"/>
-    <Setter Property="FontSize" Value="20"/>
-    <Setter Property="Background" Value="Transparent"/>
-    <Setter Property="Foreground" Value="{DynamicResource ForeContentLightColor}"/>
-    <Setter Property="Cursor" Value="Hand"/>
-    <Setter Property="Height" Value="24"/>
-    <Setter Property="Width" Value="24"/>
-    <Setter Property="Template">
-        <Setter.Value>
-            <ControlTemplate TargetType="Button">
-                <Border Background="{TemplateBinding Background}">
-                    <ContentPresenter Content="{TemplateBinding Content}"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center"
-                            />
-                </Border>
-                <ControlTemplate.Triggers>
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter Content="{TemplateBinding Content}"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="{DynamicResource ForeContentDarkColor}"/>
+                            <Setter Property="Background" Value="{DynamicResource BackMouseOverColor}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource BackPressedColor}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
-            </ControlTemplate>
-        </Setter.Value>
-    </Setter>
-</Style>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--Кнопки иконки-->
+    <Style x:Key="ButtonIcons" TargetType="Button">
+        <Setter Property="FontFamily" Value="/Fonts/#IcoMoon-Free" />
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource BackDarkColor}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Height" Value="24" />
+        <Setter Property="Width" Value="24" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter Content="{TemplateBinding Content}"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="{DynamicResource BackMouseOverColor}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Foreground" Value="{DynamicResource BackPressedColor}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--Кнопки иконки SETTIGS-->
+    <Style x:Key="ButtonIconsSettings" TargetType="Button">
+        <Setter Property="FontFamily" Value="/Fonts/#IcoMoon-Free" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource ForeContentLightColor}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Height" Value="24" />
+        <Setter Property="Width" Value="24" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter Content="{TemplateBinding Content}"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="{DynamicResource ForeContentDarkColor}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <!--Наследник ButtonStyle добавление иконки-->
-<Style x:Key="ButtonCut" TargetType="TextBlock">
-    <Setter Property="Text" Value="&#xE92F;"/>
-    <Setter Property="Width" Value="20"/>
-    <Setter Property="Height" Value="20"/>
-    <Setter Property="Margin" Value="0,0,0,0"/>
-</Style>
+    <Style x:Key="ButtonCut" TargetType="TextBlock">
+        <Setter Property="Text" Value="&#xE92F;" />
+        <Setter Property="Width" Value="20" />
+        <Setter Property="Height" Value="20" />
+        <Setter Property="Margin" Value="0,0,0,0" />
+    </Style>
 
     <!--Кнопки стилизованные-->
     <Style x:Key="ButtonStyle" TargetType="Button">
-        <Setter Property="FontFamily" Value="/Fonts/#Open Sans"/>
-        <Setter Property="FontSize" Value="14.5"/>
-        <Setter Property="Background" Value="{DynamicResource BackDarkColor}"/>
-        <Setter Property="Foreground" Value="{DynamicResource WindowColor}"/>
-        <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="Height" Value="43"/>
-        <Setter Property="Width" Value="241"/>
+        <Setter Property="FontFamily" Value="/Fonts/#Open Sans" />
+        <Setter Property="FontSize" Value="14.5" />
+        <Setter Property="Background" Value="{DynamicResource BackDarkColor}" />
+        <Setter Property="Foreground" Value="{DynamicResource WindowColor}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Height" Value="43" />
+        <Setter Property="Width" Value="241" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Border CornerRadius="10" Background="{TemplateBinding Background}">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="60"/>
-                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="60" />
+                                <ColumnDefinition Width="2*" />
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0"
-                                       FontFamily="/Fonts/#IcoMoon-Free" 
-                                       Style="{DynamicResource ButtonCut}"/>
+                                       FontFamily="/Fonts/#IcoMoon-Free"
+                                       Style="{DynamicResource ButtonCut}" />
                             <ContentPresenter
                                 Grid.Column="1"
-                                Content= "{TemplateBinding Content}"
+                                Content="{TemplateBinding Content}"
                                 VerticalAlignment="Center"
-                                HorizontalAlignment="Left"
-                            />
+                                HorizontalAlignment="Left" />
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource BackMouseOverColor}"/>
+                            <Setter Property="Background" Value="{DynamicResource BackMouseOverColor}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource BackPressedColor}"/>
+                            <Setter Property="Background" Value="{DynamicResource BackPressedColor}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

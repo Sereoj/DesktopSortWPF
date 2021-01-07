@@ -1,36 +1,42 @@
 ﻿<UserControl x:Class="Test.Views.Controls.Main"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Test.Views.Controls"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="764">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="2*" />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition  Width="*"/>
-            <ColumnDefinition  Width="3*"/>
-            <ColumnDefinition  Width="45"/>
-            <ColumnDefinition  Width="45"/>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="45" />
+            <ColumnDefinition Width="45" />
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="1" Name="TextBoxInput" Text="Укажите путь до папки" Style="{DynamicResource TextBlockLeft}" Foreground="{DynamicResource BackLightColor}"/>
-        <TextBlock Grid.Row="2" Name="TextBoxOutput" Text="Укажите путь до папки" Style="{DynamicResource TextBlockLeft}" Foreground="{DynamicResource BackLightColor}"/>
+        <TextBlock Grid.Row="1" Name="TextBoxInput" Text="Укажите путь до папки"
+                   Style="{DynamicResource TextBlockLeft}" Foreground="{DynamicResource BackLightColor}" />
+        <TextBlock Grid.Row="2" Name="TextBoxOutput" Text="Укажите путь до папки"
+                   Style="{DynamicResource TextBlockLeft}" Foreground="{DynamicResource BackLightColor}" />
 
-        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding TextBoxPath}" Style="{DynamicResource TextBoxStyle}"/>
-        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding TextBoxPath1}" Style="{DynamicResource TextBoxStyle}"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding TextBoxPath}" Style="{DynamicResource TextBoxStyle}" />
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding TextBoxPath1}" Style="{DynamicResource TextBoxStyle}" />
 
-        <Button Grid.Row="1" Grid.Column="2" Content="&#xE92f;" Style="{DynamicResource ButtonIcons}" Command="{Binding FileDialogButtonCommand}" CommandParameter="input"/>
-        <Button Grid.Row="2" Grid.Column="2" Content="&#xE92f;" Style="{DynamicResource ButtonIcons}" Command="{Binding FileDialogButtonCommand}" CommandParameter="output"/>
-        
+        <Button Grid.Row="1" Grid.Column="2" Content="&#xE92f;" Style="{DynamicResource ButtonIcons}"
+                Command="{Binding FileDialogButtonCommand}" CommandParameter="input" />
+        <Button Grid.Row="2" Grid.Column="2" Content="&#xE92f;" Style="{DynamicResource ButtonIcons}"
+                Command="{Binding FileDialogButtonCommand}" CommandParameter="output" />
 
-        <Button Grid.Row="3" Grid.Column="1" Content="Копировать" HorizontalAlignment="Left" Style="{DynamicResource ButtonStyle}" Command="{Binding CopyButtonCommand}"/>
-        <Button Grid.Row="3" Grid.Column="1" Content="Вырезать" HorizontalAlignment="Right" Style="{DynamicResource ButtonStyle}" Command="{Binding CutButtonCommand}"/>
+
+        <Button Grid.Row="3" Grid.Column="1" Content="Копировать" HorizontalAlignment="Left"
+                Style="{DynamicResource ButtonStyle}" Command="{Binding CopyButtonCommand}" />
+        <Button Grid.Row="3" Grid.Column="1" Content="Вырезать" HorizontalAlignment="Right"
+                Style="{DynamicResource ButtonStyle}" Command="{Binding CutButtonCommand}" />
     </Grid>
 </UserControl>

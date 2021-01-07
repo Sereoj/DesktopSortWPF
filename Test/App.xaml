@@ -6,8 +6,8 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources/Colors/dark.xaml" x:Name="dark"/>
-                <ResourceDictionary Source="Resources/Colors/light.xaml" x:Name="light"/>
+                <ResourceDictionary Source="Resources/Colors/dark.xaml" x:Name="dark" />
+                <ResourceDictionary Source="Resources/Colors/light.xaml" x:Name="light" />
 
                 <ResourceDictionary Source="Resources/Styles/Buttons.xaml" />
                 <ResourceDictionary Source="Resources/Styles/TextBlocks.xaml" />
