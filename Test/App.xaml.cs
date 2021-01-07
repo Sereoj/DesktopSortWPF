@@ -14,7 +14,7 @@ namespace Test
             var args = e.Args;
 
             SettingsModel.CreateInstance();
-            SettingsModel.Load<SettingsModel>("data.xml");
+            //SettingsModel.Load<SettingsModel>("data.xml");
         }
     }
 }

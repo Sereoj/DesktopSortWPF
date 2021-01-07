@@ -71,7 +71,7 @@ namespace Test.ViewModels
             switch (p)
             {
                 case "word":
-                    MessageBox.Show(Model.Setting[1].ID);
+                    MessageBox.Show(Model.Logger.ToString());
                     break;
                 case "second":
                     SelectedItem = SecondSettings;
