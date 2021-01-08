@@ -130,7 +130,7 @@ namespace Test.Models
 
             SetMessage("Завершение выполнения:" + PathNewDirectory);
             await Task.Delay(delay);
-            //SetMessage("Работа закончилась!");
+            
         }
 
         #endregion

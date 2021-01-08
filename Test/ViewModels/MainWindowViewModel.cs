@@ -60,13 +60,14 @@ namespace Test.ViewModels
         {
             //По умолчанию Home
             OnPageButtonCommandExecuted("home");
+
+            if (model2.Advanced.AdvancedConfig.IsBackground) PathImageBackground = model2.Advanced.AdvancedConfig.Background;
+
             // Применение title
             SetTitle();
             SetMessage("Добро пожаловать! Версия: " + model1.GetVersion(false));
 
             await Task.Delay(2000);
-
-            if (model2.Advanced.AdvancedConfig.IsBackground) PathImageBackground = model2.Advanced.AdvancedConfig.Background;
 
             SetMessage(!model2.Advanced.AdvancedConfig.Update
                 ? "Внимание, проверка на обновления приложения была выключена в настройках"
@@ -218,10 +219,24 @@ namespace Test.ViewModels
 
         private void OnCopyButtonCommandExecuted(object p)
         {
+            try
+            {
+                model.SetInput(TextBoxPath);
+                model.SetOutput(TextBoxPath1);
 
-            model.SetInput(TextBoxPath);
-            model.SetOutput(TextBoxPath1);
-            //Task.Run(() => model.SearchFiles(Files, FileManager.FileMode.Copy));
+                foreach (var test in model2.Items)
+                {
+                    if (test.IsChecked)
+                        Task.Run(() => model.SearchFilesAsyn(test.Catalog, test.Extension, FileManager.FileMode.Copy));
+                }
+                model.SetMessage("Работа завершилась!");
+            }
+            catch (Exception e)
+            {
+                model.SetMessage(e.Message);
+                throw;
+            }
+
         }
 
         #endregion
@@ -239,7 +254,13 @@ namespace Test.ViewModels
         {
             model.SetInput(TextBoxPath);
             model.SetOutput(TextBoxPath1);
-            //Task.Run(() => model.SearchFiles(Files, FileManager.FileMode.Ignore));
+
+            foreach (var test in model2.Items)
+            {
+                if (test.IsChecked)
+                    Task.Run(() => model.SearchFilesAsyn(test.Catalog, test.Extension, FileManager.FileMode.Move));
+            }
+            model.SetMessage("Работа завершилась!");
         }
 
         #endregion

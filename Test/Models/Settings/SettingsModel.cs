@@ -34,19 +34,19 @@ namespace Test.Models.Settings
             {
                 Advanced = new AdvancedSettings
                 {
-                    AdvancedConfig = new AdvancedConfig{ Update = true, Background = "/Images/Background.bmp", IsBackground = true, Logger = false}
+                    AdvancedConfig = new AdvancedConfig{ Update = true, Background = "/Test;component/Images/Background.bmp", IsBackground = true, Logger = false}
                 },
                 Items = new List<BasicConfig>
                 {
-                    new BasicConfig{ID = "CheckWord", IsChecked = true, Catalog = "Word", Extension = "*.docx,*.dotx,*.doc,*.dot"},
-                    new BasicConfig{ID = "CheckExcel", IsChecked = true, Catalog = "Excel", Extension = "*.xlsx,*.xlsm,*.xltx,*.xltm,*.xlam,*.xls,*.xlt,*.xla"},
-                    new BasicConfig{ID = "CheckAccess", IsChecked = true, Catalog = "Access", Extension = "*.accdb,*.mdb"},
-                    new BasicConfig{ID = "CheckImage", IsChecked = true, Catalog = "Image", Extension = "*.bmp,*.tif,*.jpg,*.gif,*.png,*.ico"},
-                    new BasicConfig{ID = "CheckTextDoc", IsChecked = true, Catalog = "Text", Extension = "*.txt,*.log"},
-                    new BasicConfig{ID = "CheckProject", IsChecked = false, Catalog = "Project", Extension = "*.mpp"},
-                    new BasicConfig{ID = "CheckArchive", IsChecked = false, Catalog = "Archive", Extension = "*.rar,*.zip,*.7z"},
-                    new BasicConfig{ID = "CheckPDF", IsChecked = false, Catalog = "eBook", Extension = "*.fb2,*.epub,*.mobi,*.pdf,*.djvu"},
-                    new BasicConfig{ID = "CheckMedia", IsChecked = false, Catalog = "Media", Extension = "*.avi,*.mp4,*.mpeg,*.wmv,*.mp3"},
+                    new BasicConfig{ID = "CheckWord", IsChecked = true, Catalog = "Word", Extension = ".docx,.dotx,.doc,.dot"},
+                    new BasicConfig{ID = "CheckExcel", IsChecked = true, Catalog = "Excel", Extension = ".xlsx,.xlsm,.xltx,.xltm,.xlam,.xls,.xlt,.xla"},
+                    new BasicConfig{ID = "CheckAccess", IsChecked = true, Catalog = "Access", Extension = ".accdb,.mdb"},
+                    new BasicConfig{ID = "CheckImage", IsChecked = true, Catalog = "Image", Extension = ".bmp,.tif,.jpg,.gif,.png,.ico"},
+                    new BasicConfig{ID = "CheckTextDoc", IsChecked = true, Catalog = "Text", Extension = ".txt,.log"},
+                    new BasicConfig{ID = "CheckProject", IsChecked = false, Catalog = "Project", Extension = ".mpp"},
+                    new BasicConfig{ID = "CheckArchive", IsChecked = false, Catalog = "Archive", Extension = ".rar,.zip,.7z"},
+                    new BasicConfig{ID = "CheckPDF", IsChecked = false, Catalog = "eBook", Extension = ".fb2,.epub,.mobi,.pdf,.djvu"},
+                    new BasicConfig{ID = "CheckMedia", IsChecked = false, Catalog = "Media", Extension = ".avi,.mp4,.mpeg,.wmv,.mp3"},
                     new BasicConfig{ID = "Template1", IsChecked = false, Catalog = "Other\\Template1", Extension = ""},
                     new BasicConfig{ID = "Template2", IsChecked = false, Catalog = "Other\\Template2", Extension = ""},
                     new BasicConfig{ID = "Template3", IsChecked = false, Catalog = "Other\\Template3", Extension = ""},

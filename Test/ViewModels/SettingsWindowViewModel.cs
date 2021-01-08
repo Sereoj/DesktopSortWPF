@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 using Test.Infrastucture.Commands;
+using Test.Models;
 using Test.Models.Settings;
 using Test.ViewModels.Base;
 using Test.Views.Controls;
@@ -116,14 +117,6 @@ namespace Test.ViewModels
                 case "archive":
                     UpdateTextDirectory = _model.Items[8].Catalog;
                     UpdateTextExtension = _model.Items[8].Extension;
-                    break;
-                case "archive1":
-                    UpdateTextDirectory = _model.Items[9].Catalog;
-                    UpdateTextExtension = _model.Items[9].Extension;
-                    break;
-                case "archive2":
-                    UpdateTextDirectory = _model.Items[10].Catalog;
-                    UpdateTextExtension = _model.Items[10].Extension;
                     break;
             }
         }
