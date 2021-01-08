@@ -67,7 +67,7 @@ namespace Test.Models
         * Поиск файлов небезопасный, получение данных исключительно от программы.
         * Первая функция.
         */
-        public async Task SearchFiles(List<Setting> Files, FileMode modeFile)
+        public async Task SearchFiles(List<BasicConfig> Files, FileMode modeFile)
         {
             foreach (var file in Files)
             {
@@ -146,10 +146,7 @@ namespace Test.Models
 
         /// <summary>Проверка директории</summary>
         /// <param name="Path"></param>
-        private bool IsPathExists(string Path)
-        {
-            return !Directory.Exists(Path) ? true : false;
-        }
+        private bool IsPathExists(string Path) => !Directory.Exists(Path);
 
         /// <summary>Удаление директории</summary>
         /// <param name="Path"></param>

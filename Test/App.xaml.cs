@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using Test.Models.Settings;
+using Test.Views.Controls;
 
 namespace Test
 {
@@ -12,9 +13,7 @@ namespace Test
         {
             base.OnStartup(e);
             var args = e.Args;
-
             SettingsModel.CreateInstance();
-            //SettingsModel.Load<SettingsModel>("data.xml");
         }
     }
 }

@@ -12,6 +12,7 @@ using Test.ViewModels.Base;
 using Test.Views.Controls;
 using WK.Libraries.BetterFolderBrowserNS;
 using Application = System.Windows.Application;
+using MessageBox = System.Windows.MessageBox;
 using Version = Test.Models.Version;
 
 namespace Test.ViewModels
@@ -22,6 +23,10 @@ namespace Test.ViewModels
         {
             model = FileManager.Model;
             model1 = Version.Model;
+            model2 = SettingsModel.Instance;
+
+
+
             model.PropertyChanged += Model_PropertyChanged;
 
             #region Commands
@@ -53,17 +58,22 @@ namespace Test.ViewModels
 
         private async Task Init()
         {
-            //По умоланию Home
+            //По умолчанию Home
             OnPageButtonCommandExecuted("home");
             // Применение title
             SetTitle();
             SetMessage("Добро пожаловать! Версия: " + model1.GetVersion(false));
 
-            if (!SettingsModel.Instance.Update)
-            {
-                await Task.Delay(3000);
-                SetMessage("Внимание, проверка на обновления приложения была выключена в настройках");
-            }
+            await Task.Delay(2000);
+
+            if (model2.Advanced.AdvancedConfig.IsBackground) PathImageBackground = model2.Advanced.AdvancedConfig.Background;
+
+            SetMessage(!model2.Advanced.AdvancedConfig.Update
+                ? "Внимание, проверка на обновления приложения была выключена в настройках"
+                : "Настройки для обновления приложения были применены");
+
+
+            
         }
 
         private void Model_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -77,7 +87,7 @@ namespace Test.ViewModels
         private string _Title;
         private WindowState _MainWindowState;
 
-        private string _PathImageBackground = "/Images/Background.bmp";
+        private string _PathImageBackground;
 
         //private string _ColorPrimary = "#FF2E1795";
         //private string _ColorSecondary = "#FF150851";
@@ -88,8 +98,8 @@ namespace Test.ViewModels
         private readonly Main main = new Main();
         private readonly Settings settings = new Settings();
         private readonly FileManager model;
+        private readonly SettingsModel model2;
         private readonly Version model1;
-
         private object _SelectedItem;
 
         public object SelectedItem
@@ -208,22 +218,10 @@ namespace Test.ViewModels
 
         private void OnCopyButtonCommandExecuted(object p)
         {
-            var Files = new List<Setting>
-            {
-                new Setting {Catalog = "Word", Extension = ".docx,.dotx,.doc,.dot"},
-                new Setting {Catalog = "Excel", Extension = ".xlsx,.xlsm,.xltx,.xltm,.xlam,.xls,.xlt,.xla"},
-                new Setting {Catalog = "Access", Extension = ".accdb,.mdb"},
-                new Setting {Catalog = "Image", Extension = ".bmp,.tif,.jpg,.gif,.png,.ico"},
-                new Setting {Catalog = "Text files", Extension = ".txt,.log"},
-                new Setting {Catalog = "Project", Extension = ".mpp"},
-                new Setting {Catalog = "Archive", Extension = ".rar,.zip,.7z"},
-                new Setting {Catalog = "eBook", Extension = ".fb2,.epub,.mobi,.pdf,.djvu"},
-                new Setting {Catalog = "Media", Extension = ".avi,.mp4,.mpeg,.wmv,.mp3"}
-            };
 
             model.SetInput(TextBoxPath);
             model.SetOutput(TextBoxPath1);
-            Task.Run(() => model.SearchFiles(Files, FileManager.FileMode.Copy));
+            //Task.Run(() => model.SearchFiles(Files, FileManager.FileMode.Copy));
         }
 
         #endregion
@@ -239,22 +237,9 @@ namespace Test.ViewModels
 
         private void OnCutButtonCommandExecuted(object p)
         {
-            var Files = new List<Setting>
-            {
-                new Setting {Catalog = "Word", Extension = ".docx,.dotx,.doc,.dot"},
-                new Setting {Catalog = "Excel", Extension = ".xlsx,.xlsm,.xltx,.xltm,.xlam,.xls,.xlt,.xla"},
-                new Setting {Catalog = "Access", Extension = ".accdb,.mdb"},
-                new Setting {Catalog = "Image", Extension = ".bmp,.tif,.jpg,.gif,.png,.ico"},
-                new Setting {Catalog = "Text files", Extension = ".txt,.log"},
-                new Setting {Catalog = "Project", Extension = ".mpp"},
-                new Setting {Catalog = "Archive", Extension = ".rar,.zip,.7z"},
-                new Setting {Catalog = "eBook", Extension = ".fb2,.epub,.mobi,.pdf,.djvu"},
-                new Setting {Catalog = "Media", Extension = ".avi,.mp4,.mpeg,.wmv,.mp3"}
-            };
-
             model.SetInput(TextBoxPath);
             model.SetOutput(TextBoxPath1);
-            Task.Run(() => model.SearchFiles(Files, FileManager.FileMode.Ignore));
+            //Task.Run(() => model.SearchFiles(Files, FileManager.FileMode.Ignore));
         }
 
         #endregion

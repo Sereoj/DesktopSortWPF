@@ -126,7 +126,10 @@
     <Compile Include="Infrastucture\Commands\Base\Command.cs" />
     <Compile Include="Infrastucture\Commands\RelayCommand.cs" />
     <Compile Include="Models\FileManager.cs" />
-    <Compile Include="Models\Settings\Settings.cs" />
+    <Compile Include="Models\Settings\AdvancedSettings.cs" />
+    <Compile Include="Models\Settings\BasicConfig.cs" />
+    <Compile Include="Models\Settings\AdvancedConfig.cs" />
+    <Compile Include="Models\Settings\SettingsModel.cs" />
     <Compile Include="Models\Version.cs" />
     <Compile Include="ViewModels\Base\ViewModel.cs" />
     <Compile Include="ViewModels\SettingsWindowViewModel.cs" />
