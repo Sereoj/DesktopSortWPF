@@ -229,7 +229,6 @@ namespace Test.ViewModels
                     if (test.IsChecked)
                         Task.Run(() => model.SearchFilesAsyn(test.Catalog, test.Extension, FileManager.FileMode.Copy));
                 }
-                model.SetMessage("Работа завершилась!");
             }
             catch (Exception e)
             {

@@ -49,6 +49,7 @@ namespace Test.Models
             }
         }
 
+
         public void SetOutput(string output)
         {
             if (Validate(output))
@@ -85,7 +86,6 @@ namespace Test.Models
         public async Task SearchFilesAsyn(string PathNewDirectory, string PatternExtension, FileMode modeFile)
         {
             var NewDirectory = Path.Combine(OUTPUT_PATH, PathNewDirectory);
-
             SetMessage("Начало выполнения: " + PathNewDirectory);
             await Task.Delay(delay);
 
@@ -99,7 +99,6 @@ namespace Test.Models
                 foreach (var fileSingle in files)
                 {
                     var NewFile = Path.Combine(NewDirectory + "\\" + Path.GetFileName(fileSingle));
-
                     switch (modeFile)
                     {
                         case FileMode.Copy:
@@ -128,9 +127,8 @@ namespace Test.Models
             if (DeleteDefaultDirectory)
                 DeleteDirectory(INPUT_PATH); // Удаление начальной папки
 
-            SetMessage("Завершение выполнения:" + PathNewDirectory);
+            SetMessage("Задача завершена!");
             await Task.Delay(delay);
-            
         }
 
         #endregion
@@ -176,7 +174,8 @@ namespace Test.Models
         {
             var formatsLower = formats.Split(' ', ',', '\t');
             return Directory.EnumerateFiles(path, "*.*", SearchOption.TopDirectoryOnly)
-                .Where(s => formatsLower.Contains(Path.GetExtension(s).ToLowerInvariant()
+                .Where(s => formatsLower.Contains(Path.GetExtension(s)
+                    ?.ToLowerInvariant()
                     .Trim()));
         }
 
