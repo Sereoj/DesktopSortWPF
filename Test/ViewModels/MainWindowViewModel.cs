@@ -8,6 +8,7 @@ using System.Windows.Input;
 using Test.Infrastucture.Commands;
 using Test.Models;
 using Test.Models.Settings;
+using Test.Services.Theme;
 using Test.ViewModels.Base;
 using Test.Views.Controls;
 using WK.Libraries.BetterFolderBrowserNS;

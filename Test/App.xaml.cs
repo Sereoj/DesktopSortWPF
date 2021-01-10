@@ -2,6 +2,7 @@
 using System.Windows;
 using Test.Models;
 using Test.Models.Settings;
+using Test.Services.Theme;
 using Test.Views.Controls;
 
 namespace Test
@@ -16,6 +17,7 @@ namespace Test
             base.OnStartup(e);
             var args = e.Args;
             SettingsModel.CreateInstance();
+            Theme.Set("light");
         }
     }
 }

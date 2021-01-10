@@ -14,6 +14,8 @@ namespace Test.Models.Settings
         [XmlAttribute]
         public bool Update { get; set; }
         [XmlAttribute]
+        public string Theme { get; set; }
+        [XmlAttribute]
         public bool Logger { get; set; }
     }
 }
