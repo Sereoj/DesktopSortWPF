@@ -12,11 +12,10 @@ namespace Test.Services.Theme
 
         private static void Changer( string theme)
         {
-            //ResourceDictionary dictionary = new ResourceDictionary {Source = new Uri($"/Resources/Colors/{theme}.xaml", UriKind.Relative)};
-            //Application.Current.Resources.MergedDictionaries[0] = dictionary;
-
-            ResourceDictionary dictionary = new ResourceDictionary();
-            dictionary.Source = new Uri($"/Resources/Colors/{theme}.xaml", UriKind.Relative);
+            ResourceDictionary dictionary = new ResourceDictionary
+            {
+                Source = new Uri($"/Resources/Colors/{theme}.xaml", UriKind.Relative)
+            };
 
             Application.Current.Resources.Clear();
             Application.Current.Resources.MergedDictionaries.Add(dictionary);

@@ -17,7 +17,9 @@ namespace Test
             base.OnStartup(e);
             var args = e.Args;
             SettingsModel.CreateInstance();
-            Theme.Set("light");
+
+            var settingsModel = SettingsModel.Instance;
+            Theme.Set(settingsModel.Advanced.AdvancedConfig.Theme);
         }
     }
 }

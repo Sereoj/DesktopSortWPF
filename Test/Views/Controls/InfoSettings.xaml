@@ -15,23 +15,26 @@
         <TextBlock Grid.Row="0" Text="О программе" FontSize="16" Margin="10,5,0,0"
                    Style="{DynamicResource TextBlockTitle}" />
         <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="6*" />
-            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <TextBlock Grid.Column="1"
-                       Text="Desktop Sort - Это мгновенная сортировка файлов по папкам. Если придя за свое рабочее место вы обнаружите, что весь рабочий стол забит разными файлами, а ваш внутренний перфекционизм желает от этого всего избавиться, то Desktop Sort программа именно для вас!"
-                       Foreground="White"
-                       Margin="20,20,20,0"
-                       FontFamily="/Test;component/Fonts/OpenSans/#Open Sans Light"
-                       FontSize="14"
-                       TextWrapping="Wrap"
-                       FontWeight="Light" />
-            <Grid Grid.Row="1" Grid.Column="1">
+            <TextBlock
+                           Text="Desktop Sort - Это мгновенная сортировка файлов по папкам. Если придя за свое рабочее место вы обнаружите, что весь рабочий стол забит разными файлами, а ваш внутренний перфекционизм желает от этого всего избавиться, то Desktop Sort программа именно для вас!"
+                           Foreground="White"
+                           Margin="20,20,20,40"
+                           FontFamily="/Test;component/Fonts/OpenSans/#Open Sans Light"
+                           FontSize="14"
+                           TextWrapping="Wrap"
+                           FontWeight="Light" />
+            <TextBlock
+                           Text="Открытый исходный код! C# + WPF + MVVM / Дата старта 31.12.20"
+                           Foreground="White"
+                           Margin="20,90,0,20"
+                           FontFamily="/Test;component/Fonts/OpenSans/#Open Sans Light"
+                           FontSize="14"
+                           FontWeight="Light" />
+            <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="24" />
                     <RowDefinition Height="24" />
@@ -39,12 +42,34 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="24" />
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="1" Text="Благодарности" FontSize="14" Margin="-5,5,0,0"
-                           Style="{DynamicResource TextBlockTitle}" />
+
+                <TextBlock Text="Благодарности" FontSize="14" Margin="10,5,0,0"
+                                   Style="{DynamicResource TextBlockTitle}" Grid.ColumnSpan="2" />
+
+                <Button Grid.Row="1"  Content="&#xEAB0;" Style="{DynamicResource ButtonIconsSettingsInfo}" Height="Auto" Margin="0.5,0" Width="Auto"
+                                />
+
+                <TextBlock Grid.Column="1" Grid.Row="1" Text="SergioStrangeS - Контент менеджмент"
+                               Margin="5,5,0,0"
+                               Foreground="White"
+                               FontFamily="/Test;component/Fonts/OpenSans/#Open Sans Light"
+                               FontSize="12"/>
+                <Button Grid.Row="2"  Content="&#xEAB0;" Style="{DynamicResource ButtonIconsSettingsInfo}" Height="Auto" Margin="0.5,0" Width="Auto"
+                                />
+                <TextBlock Grid.Column="1" Grid.Row="2" Text="MerHI - Дизайн"
+                               Margin="5,5,0,0"
+                               Foreground="White"
+                               FontFamily="/Test;component/Fonts/OpenSans/#Open Sans Light"
+                               FontSize="12"/>
             </Grid>
+        </Grid>
+        <Grid Grid.Row="2">
+            <TextBlock Text="Контакты" FontSize="16" Margin="10,5,0,70"
+                   Style="{DynamicResource TextBlockTitle}"/>
+
         </Grid>
     </Grid>
 </UserControl>

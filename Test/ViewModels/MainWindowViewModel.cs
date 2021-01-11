@@ -8,6 +8,7 @@ using System.Windows.Input;
 using Test.Infrastucture.Commands;
 using Test.Models;
 using Test.Models.Settings;
+using Test.Services.GLUpdater;
 using Test.Services.Theme;
 using Test.ViewModels.Base;
 using Test.Views.Controls;
@@ -67,12 +68,30 @@ namespace Test.ViewModels
             // Применение title
             SetTitle();
             SetMessage("Добро пожаловать! Версия: " + model1.GetVersion(false));
+            GLUpdater.Model.Checker();
+
 
             await Task.Delay(2000);
 
-            SetMessage(!model2.Advanced.AdvancedConfig.Update
-                ? "Внимание, проверка на обновления приложения была выключена в настройках"
-                : "Настройки для обновления приложения были применены");
+            if(!model2.Advanced.AdvancedConfig.Update)
+            {
+                SetMessage("Внимание, проверка на обновления приложения была выключена в настройках");
+            }
+            else
+            {
+                SetMessage("Настройки для обновления приложения были применены");
+                
+                await Task.Delay(2000);
+
+                if (GLUpdater.Model.IsUpdate())
+                {
+                    SetMessage("Требуется обновление! до актуальной " + GLUpdater.Model.New_version);
+                }
+                else
+                {
+                    SetMessage("Обновление не найдено!" + GLUpdater.Model.New_version);
+                }
+            }
 
 
             

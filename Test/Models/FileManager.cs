@@ -4,11 +4,12 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Test.Models.Settings;
+using Test.Services.Message;
 using Test.ViewModels.Base;
 
 namespace Test.Models
 {
-    internal class FileManager : ViewModel
+    internal class FileManager: CLMessage
     {
         public enum FileMode : byte
         {
@@ -19,8 +20,6 @@ namespace Test.Models
 
         private static FileManager _model;
 
-
-        public string GetMessage { get; private set; }
 
         public static FileManager Model => _model ??= new FileManager();
 
@@ -130,7 +129,6 @@ namespace Test.Models
             SetMessage("Задача завершена!");
             await Task.Delay(delay);
         }
-
         #endregion
 
         #region Закрытые методы
@@ -177,20 +175,6 @@ namespace Test.Models
                 .Where(s => formatsLower.Contains(Path.GetExtension(s)
                     ?.ToLowerInvariant()
                     .Trim()));
-        }
-
-        public void SetMessage(string message)
-        {
-            if (message.Length > 0)
-            {
-                GetMessage = message;
-                OnPropertyChanged("MessageChange");
-            }
-            else
-            {
-                GetMessage = "...";
-                OnPropertyChanged("MessageChange");
-            }
         }
 
         #endregion
