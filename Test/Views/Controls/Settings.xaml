@@ -46,7 +46,7 @@
         <Button Grid.Row="4" Content="&#x0069;" Style="{DynamicResource ButtonIconsSettings}"
                 Command="{Binding PageButtonCommand}" CommandParameter="info" />
         <Button Grid.Row="5" Content="&#xEA2E;" Style="{DynamicResource ButtonIconsSettings}"
-                Command="{Binding PageButtonCommand}" CommandParameter="first" />
+                Command="{Binding PageButtonCommand}" CommandParameter="update" />
 
     </Grid>
 </UserControl>

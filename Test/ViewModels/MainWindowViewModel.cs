@@ -14,7 +14,6 @@ using Test.ViewModels.Base;
 using Test.Views.Controls;
 using WK.Libraries.BetterFolderBrowserNS;
 using Application = System.Windows.Application;
-using MessageBox = System.Windows.MessageBox;
 using Version = Test.Models.Version;
 
 namespace Test.ViewModels
@@ -68,8 +67,6 @@ namespace Test.ViewModels
             // Применение title
             SetTitle();
             SetMessage("Добро пожаловать! Версия: " + model1.GetVersion(false));
-            GLUpdater.Model.Checker();
-
 
             await Task.Delay(2000);
 
@@ -80,16 +77,16 @@ namespace Test.ViewModels
             else
             {
                 SetMessage("Настройки для обновления приложения были применены");
-                
+                GLUpdater.Model.Checker();
                 await Task.Delay(2000);
-
-                if (GLUpdater.Model.IsUpdate())
+                if(GLUpdater.Model.IsUpdate())
                 {
-                    SetMessage("Требуется обновление! до актуальной " + GLUpdater.Model.New_version);
+                    SetMessage("Требуется обновление! Релиз: " + GLUpdater.Model.New_version);
+                    OnPageButtonCommandExecuted("settings");
                 }
                 else
                 {
-                    SetMessage("Обновление не найдено!" + GLUpdater.Model.New_version);
+                    SetMessage("Вы используете актуальную версию!");
                 }
             }
 

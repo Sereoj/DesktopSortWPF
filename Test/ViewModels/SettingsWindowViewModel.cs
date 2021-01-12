@@ -1,13 +1,10 @@
-﻿using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using System.Windows.Input;
 using Test.Infrastucture.Commands;
-using Test.Models;
 using Test.Models.Settings;
+using Test.Services.GLUpdater;
 using Test.ViewModels.Base;
 using Test.Views.Controls;
-using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace Test.ViewModels
 {
@@ -19,7 +16,7 @@ namespace Test.ViewModels
         private readonly FirstSettings _firstSettings = new FirstSettings();
         private readonly SecondSettings _secondSettings = new SecondSettings();
         private readonly InfoSettings _infoSettings = new InfoSettings();
-
+        private readonly UpdateContol _updateContol = new UpdateContol();
         private SettingsModel Model { get; set; }
 
         private string _updateTextDirectory;
@@ -200,6 +197,9 @@ namespace Test.ViewModels
                 case "info":
                     SelectedItem = _infoSettings;
                     break;
+                case "update":
+                    SelectedItem = _updateContol;
+                    break;
             }
         }
 
@@ -352,6 +352,18 @@ namespace Test.ViewModels
         }
         #endregion
 
+        public ICommand UpdateApplicationButton { get; }
+
+        private bool CanUpdateApplicationButtonExecute(object p)
+        {
+            return true;
+        }
+
+        private void OnUpdateApplicationButtonExecuted(object p)
+        {
+            GLUpdater.Model.UpdateApplication();
+        }
+
         #endregion
 
         public SettingsWindowViewModel()
@@ -366,6 +378,7 @@ namespace Test.ViewModels
             PageButtonCommand = new RelayCommand(OnPageButtonCommandExecuted, CanPageButtonCommandExecute);
             UpdateCheckBox = new RelayCommand(OnUpdateCheckBoxCommandExecuted, CanUpdateCheckBoxCommandExecute);
             ButtonSaveCommand = new RelayCommand(OnButtonSaveCommandExecuted, CanButtonSaveCommandExecute);
+            UpdateApplicationButton = new RelayCommand(OnUpdateApplicationButtonExecuted, CanUpdateApplicationButtonExecute);
             #endregion
         }
     }
