@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows;
@@ -9,7 +8,6 @@ using Test.Infrastucture.Commands;
 using Test.Models;
 using Test.Models.Settings;
 using Test.Services.GLUpdater;
-using Test.Services.Theme;
 using Test.ViewModels.Base;
 using Test.Views.Controls;
 using WK.Libraries.BetterFolderBrowserNS;
@@ -70,7 +68,7 @@ namespace Test.ViewModels
 
             await Task.Delay(2000);
 
-            if(!model2.Advanced.AdvancedConfig.Update)
+            if (!model2.Advanced.AdvancedConfig.Update)
             {
                 SetMessage("Внимание, проверка на обновления приложения была выключена в настройках");
             }
@@ -79,7 +77,7 @@ namespace Test.ViewModels
                 SetMessage("Настройки для обновления приложения были применены");
                 GLUpdater.Model.Checker();
                 await Task.Delay(2000);
-                if(GLUpdater.Model.IsUpdate())
+                if (GLUpdater.Model.IsUpdate())
                 {
                     SetMessage("Требуется обновление! Релиз: " + GLUpdater.Model.New_version);
                     OnPageButtonCommandExecuted("settings");
@@ -91,7 +89,7 @@ namespace Test.ViewModels
             }
 
 
-            
+
         }
 
         private void Model_PropertyChanged(object sender, PropertyChangedEventArgs e)

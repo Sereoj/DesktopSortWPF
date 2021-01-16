@@ -1,16 +1,13 @@
-﻿using System.IO;
-using System.Windows;
-using Test.Models;
+﻿using System.Windows;
 using Test.Models.Settings;
 using Test.Services.Theme;
-using Test.Views.Controls;
 
 namespace Test
 {
     /// <summary>
     ///     Логика взаимодействия для App.xaml
     /// </summary>
-    public partial class App : Application
+    internal partial class App : Application
     {
         protected override void OnStartup(StartupEventArgs e)
         {

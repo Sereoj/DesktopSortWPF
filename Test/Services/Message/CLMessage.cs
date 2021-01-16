@@ -1,12 +1,12 @@
 ﻿using Test.ViewModels.Base;
 
 namespace Test.Services.Message
-{ 
-    
-/*
- * Модуль вывода сообщений на экран
- * 
- */
+{
+
+    /*
+     * Модуль вывода сообщений на экран
+     * 
+     */
 
     internal class CLMessage : ViewModel
     {

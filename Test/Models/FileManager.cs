@@ -5,11 +5,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Test.Models.Settings;
 using Test.Services.Message;
-using Test.ViewModels.Base;
 
 namespace Test.Models
 {
-    internal class FileManager: CLMessage
+    internal class FileManager : CLMessage
     {
         public enum FileMode : byte
         {

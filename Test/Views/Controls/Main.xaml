@@ -36,7 +36,7 @@
 
         <Button Grid.Row="3" Grid.Column="1" Content="Копировать" HorizontalAlignment="Left"
                 Style="{DynamicResource ButtonStyle}" Command="{Binding CopyButtonCommand}" />
-        <Button Grid.Row="3" Grid.Column="1" Content="Вырезать" HorizontalAlignment="Right"
+        <Button Grid.Row="3" Grid.Column="1" Content="Переместить" HorizontalAlignment="Right"
                 Style="{DynamicResource ButtonStyle}" Command="{Binding CutButtonCommand}" />
     </Grid>
 </UserControl>

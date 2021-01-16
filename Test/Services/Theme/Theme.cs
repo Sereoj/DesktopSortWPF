@@ -3,14 +3,14 @@ using System.Windows;
 
 namespace Test.Services.Theme
 {
-/*
-* Модуль смены темы приложения
-* 
-*/
+    /*
+    * Модуль смены темы приложения
+    * 
+    */
     internal class Theme
     {
 
-        private static void Changer( string theme)
+        private static void Changer(string theme)
         {
             ResourceDictionary dictionary = new ResourceDictionary
             {

@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
+             xmlns:local="clr-namespace:Test.ViewModels"
              d:DesignHeight="373" d:DesignWidth="684">
     <Grid>
         <Grid.RowDefinitions>
@@ -72,14 +73,14 @@
             <CheckBox Content="Шаблон 10" Name="CheckFormat21" Grid.Row="6" Grid.Column="2"      
                       Style="{DynamicResource CheckBoxStyle}" Command="{Binding UpdateCheckBox}" CommandParameter="{Binding ElementName=CheckFormat21}"/>
 
-            <Border Grid.RowSpan="7" Grid.Column="3" Background="{DynamicResource BackLightColor}" Margin="10,0" Opacity="0.3">
+            <Border Grid.RowSpan="7" Grid.Column="3" Background="{DynamicResource BackLightColor}" Margin="10,0" CornerRadius="5" Opacity="0.3">
                 <TextBlock Text="Данная возможность выйдет в новой версии" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="/Test;component/Fonts/OpenSans/#Open Sans" FontWeight="Bold" TextWrapping="Wrap" Margin="5"/>
             </Border>
 
-            <Button Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" Content="&#xE931;" Margin="0,0,10,0"
+            <Button Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" Content="&#xE931;" Margin="0,7,15,6"
                     Style="{DynamicResource ButtonIconsSettings}" />
             <TextBlock Grid.Row="0" Grid.Column="3" Text="Иконка для папки:" Style="{DynamicResource TextBlockLeft}"
-                       Foreground="{DynamicResource WindowColor}" Margin="10,10,45,6" />
+                       Foreground="{DynamicResource WindowColor}" Margin="16,11,39,5" />
 
         </Grid>
         <Grid Grid.Row="2">

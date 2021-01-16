@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using System.ComponentModel;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using Test.Infrastucture.Commands;
 using Test.Models.Settings;
@@ -16,7 +18,7 @@ namespace Test.ViewModels
         private readonly FirstSettings _firstSettings = new FirstSettings();
         private readonly SecondSettings _secondSettings = new SecondSettings();
         private readonly InfoSettings _infoSettings = new InfoSettings();
-        private readonly UpdateContol _updateContol = new UpdateContol();
+        private readonly UpdateControl _updateContol = new UpdateControl();
         private SettingsModel Model { get; set; }
 
         private string _updateTextDirectory;
@@ -35,7 +37,8 @@ namespace Test.ViewModels
 
 
         private string _updateTextExtension;
-        public string UpdateTextExtension {
+        public string UpdateTextExtension
+        {
             get => _updateTextExtension;
             set
             {
@@ -56,14 +59,14 @@ namespace Test.ViewModels
         #endregion
 
 
-        private void UpdateSettings(CheckBox LastActiveCheckBox)
+        private void UpdateSettings(CheckBox lastActiveCheckBox)
         {
 
-            switch (LastActiveCheckBox.Name)
+            switch (lastActiveCheckBox.Name)
             {
                 case "CheckFormat1":
-                     Model.Items[0].Catalog = UpdateTextDirectory;
-                     Model.Items[0].Extension = UpdateTextExtension;
+                    Model.Items[0].Catalog = UpdateTextDirectory;
+                    Model.Items[0].Extension = UpdateTextExtension;
                     break;
                 case "CheckFormat2":
                     Model.Items[1].Catalog = UpdateTextDirectory;
@@ -237,7 +240,7 @@ namespace Test.ViewModels
             var checkbox = p as CheckBox;
             var isChecked = checkbox?.IsChecked;
 
-            
+
             LastActiveCheckBox = checkbox;
 
             switch (checkbox.Name)
@@ -245,7 +248,7 @@ namespace Test.ViewModels
                 case "CheckFormat1":
                     UpdateTextDirectory = Model.Items[0].Catalog;
                     UpdateTextExtension = Model.Items[0].Extension;
-                    if (isChecked != null) Model.Items[0].IsChecked = (bool) isChecked;
+                    if (isChecked != null) Model.Items[0].IsChecked = (bool)isChecked;
                     break;
                 case "CheckFormat2":
                     UpdateTextDirectory = Model.Items[1].Catalog;
@@ -368,6 +371,9 @@ namespace Test.ViewModels
 
         public SettingsWindowViewModel()
         {
+            if (DesignerProperties.GetIsInDesignMode(new DependencyObject()))
+                return;
+
             Model = SettingsModel.Instance;
 
             //По умолчанию first

@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
-using System.Xml;
 using System.Xml.Serialization;
 
 namespace Test.Models.Settings
 {
-    [XmlRoot ("Settings")]
+    [XmlRoot("Settings")]
     [Serializable]
     public class SettingsModel
     {
@@ -43,7 +41,7 @@ namespace Test.Models.Settings
             {
                 Advanced = new AdvancedSettings
                 {
-                    AdvancedConfig = new AdvancedConfig{ Update = true, Background = "/Test;component/Images/Background.bmp", IsBackground = true, Theme = "light", Logger = false}
+                    AdvancedConfig = new AdvancedConfig { Update = true, Background = "/Test;component/Images/Background.bmp", IsBackground = true, Theme = "light", Logger = false }
                 },
                 Items = new List<BasicConfig>
                 {
