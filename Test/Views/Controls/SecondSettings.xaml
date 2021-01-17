@@ -12,8 +12,18 @@
             <RowDefinition />
             <RowDefinition Height="90" />
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="Выберите необходимые форматы" FontSize="16" Margin="10,5,0,0"
+        <TextBlock Grid.Row="0" Text="Настройки приложения" FontSize="16" Margin="10,5,0,0"
                    Style="{DynamicResource TextBlockTitle}" />
+        <Grid Grid.Row="1">
+            <CheckBox Content="Проверять обновления автоматически" Style="{DynamicResource CheckBoxStyle}" Margin="15,16,419,219"/>
+            <CheckBox Content="Отключить задний фон" Style="{DynamicResource CheckBoxStyle}" Margin="15,42,419,193"/>
+            <Separator/>
+            <TextBlock Text="Выбор темы:" Style="{DynamicResource BaseTextBlock}" Margin="395,17,184,218"/>
+            <ComboBox Height="24" Width="160" Margin="510,16,14,219">
+                <ComboBoxItem Content="Светлая"/>
+                <ComboBoxItem Content="Темная"/>
+            </ComboBox>
+        </Grid>
 
     </Grid>
 </UserControl>
