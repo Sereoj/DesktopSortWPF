@@ -30,7 +30,7 @@ namespace Test.Services.GLUpdater
         }
         public void Checker()
         {
-            Task.Run(RequestAsync).Wait(1000);
+            Task.Run(RequestAsync).Wait(100);
         }
 
         public void UpdateApplication()

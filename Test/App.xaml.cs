@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using Test.Models.Settings;
+using Test.Services.Console;
 using Test.Services.Theme;
 
 namespace Test
@@ -12,7 +13,7 @@ namespace Test
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            var args = e.Args;
+            Console.Model.Controller(e);
             SettingsModel.CreateInstance();
 
             var settingsModel = SettingsModel.Instance;
