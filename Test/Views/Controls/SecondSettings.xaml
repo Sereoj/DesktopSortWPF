@@ -17,13 +17,11 @@
         <Grid Grid.Row="1">
             <CheckBox Content="Проверять обновления автоматически" Style="{DynamicResource CheckBoxStyle}" Margin="15,16,419,219"/>
             <CheckBox Content="Отключить задний фон" Style="{DynamicResource CheckBoxStyle}" Margin="15,42,419,193"/>
-            <Separator/>
             <TextBlock Text="Выбор темы:" Style="{DynamicResource BaseTextBlock}" Margin="395,17,184,218"/>
             <ComboBox Height="24" Width="160" Margin="510,16,14,219">
                 <ComboBoxItem Content="Светлая"/>
                 <ComboBoxItem Content="Темная"/>
             </ComboBox>
         </Grid>
-
     </Grid>
 </UserControl>
