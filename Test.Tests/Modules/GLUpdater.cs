@@ -2,6 +2,7 @@
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Test.Tests.Modules
 {
@@ -11,76 +12,90 @@ namespace Test.Tests.Modules
 
             public static GLUpdater Model => _model ??= new GLUpdater();
 
-            public string New_version { get; set; }
+            private string new_version;
+            public string NewVersion
+            {
+                get => new_version;
+                private set => new_version = value;
+            }
+
+            private void ValidateVersion(string version)
+            {
+            /*
+             Todo: Проверка, что это именно версия, а не текст.
+             
+             */
+                if (!string.IsNullOrWhiteSpace(version))
+                {
+                    NewVersion = "1.0";
+                }
+            }
+            
+            private bool СompareVersions(Version current, Version actual)
+            {
+                var result = current.CompareTo(actual);
+                if (result > 0)
+                    return false;
+                else if (result < 0)
+                    return true;
+                else
+                    return true;
+            }
 
 
             public bool IsUpdate()
             {
-                try
-                {
-                    var v1 = new Version("1.0");
-                    var v2 = new Version(New_version);
-                    return v1.CompareTo(v2) <= -1;
-                }
-                catch(Exception ex )
-                {
-                Console.WriteLine(ex.Message);
-                    return false;
-                } 
-            }
-            public void Checker()
-            {
-                Task.Run(Update);
-            }
-
-            public void UpdateApplication()
-            {
-                if (IsUpdate())
-                {
-                    Task.Run(Download).GetAwaiter();
-                }
+                var version = RequestAsync().Result;
+                return СompareVersions(new Version("1.0"), new Version(version));
             }
             
-            public async Task Update()
+            public void GetNewApplication()
+            {
+                Task.Run(Download);
+            }
+
+            public string GetResult()
+            {
+            Task<string> task = RequestAsync();
+            return task.Result;
+            }
+
+            private async Task<string> RequestAsync()
             {
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
-                await RequestAsync();
-                await Task.Delay(1000);
-                IsUpdate();
-            }
-
-            private async Task RequestAsync()
-            {
-            using (var client = new WebClient())
-            {
-                try
+                using (var client = new WebClient())
                 {
-
-                    var getNewVersion = await client.OpenReadTaskAsync(new Uri("https://raw.githubusercontent.com/Sereoj/uploads/main/ds_new/version.txt", UriKind.Absolute));
-
-                    using (StreamReader StreamReader = new StreamReader(getNewVersion))
+                    try
                     {
-                        New_version = StreamReader.ReadToEnd().Trim();
-                        StreamReader.Close();
-                    }
 
+                        var getNewVersion = await client.OpenReadTaskAsync(new Uri("https://raw.githubusercontent.com/Sereoj/uploads/main/ds_new/version.txt", UriKind.Absolute));
+
+                        using (StreamReader StreamReader = new StreamReader(getNewVersion))
+                        {
+                            NewVersion = StreamReader.ReadToEnd().Trim();
+                            ValidateVersion(NewVersion);
+                            StreamReader.Close();
+                            return NewVersion;
+                        }
+                    }
+                    catch (WebException ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    client.Dispose();
                 }
-                catch (WebException ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                client.Dispose();
+            return "0.0";
             }
-        }
 
             private async Task Download()
             {
-                await Task.Delay(1000);
-
-                using WebClient client = new WebClient();
-                await client.DownloadFileTaskAsync(new Uri("https://raw.githubusercontent.com/Sereoj/uploads/main/ds_new/Test.exe"), "update.exe");
-                
+                using (WebClient client = new WebClient())
+                {
+                    IWebProxy webProxy = WebRequest.DefaultWebProxy;
+                    webProxy.Credentials = CredentialCache.DefaultCredentials;
+                    client.Proxy = webProxy;
+                    await client.DownloadFileTaskAsync(new Uri("https://raw.githubusercontent.com/Sereoj/uploads/main/ds_new/Test.exe"), "update.exe").ConfigureAwait(false); ;
+                }
             }
-
         }
     }

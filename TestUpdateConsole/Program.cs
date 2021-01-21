@@ -33,7 +33,25 @@ namespace TestUpdateConsole
                 }
                 client.Dispose();
             }
+            IsUpdate();
+
             Console.ReadLine();
+        }
+        private static bool СompareVersions(Version current, Version actual)
+        {
+            var result = current.CompareTo(actual);
+            if (result > 0)
+                return false;
+            else if (result < 0)
+                return true;
+            else
+                return false;
+        }
+
+
+        public static void IsUpdate()
+        {
+            Console.WriteLine(СompareVersions(new Version("1.0"), new Version("1.0")));
         }
     }
 }
