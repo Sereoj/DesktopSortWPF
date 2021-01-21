@@ -47,6 +47,16 @@ namespace Test.ViewModels
             }
         }
 
+        private string _updateInformation;
+        public string UpdateInformation
+        {
+            get => _updateInformation;
+            set
+            {
+                Set(ref _updateInformation, value);
+            }
+        }
+
         private object _selectedItem;
 
 
@@ -364,7 +374,7 @@ namespace Test.ViewModels
 
         private void OnUpdateApplicationButtonExecuted(object p)
         {
-            GLUpdater.Model.UpdateApplication();
+            GLUpdater.Model.GetNewApplication();
         }
 
         #endregion
@@ -376,8 +386,13 @@ namespace Test.ViewModels
 
             Model = SettingsModel.Instance;
 
+            //UpdateInformation = GLUpdater.Model.GetInformation();
+
             //По умолчанию first
             OnPageButtonCommandExecuted("first");
+
+            
+
             LoadCheckPoint();
             #region Commands
 

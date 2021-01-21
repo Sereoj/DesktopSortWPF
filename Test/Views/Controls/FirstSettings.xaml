@@ -73,16 +73,17 @@
             <CheckBox Content="Шаблон 10" Name="CheckFormat21" Grid.Row="6" Grid.Column="2"      
                       Style="{DynamicResource CheckBoxStyle}" Command="{Binding UpdateCheckBox}" CommandParameter="{Binding ElementName=CheckFormat21}"/>
 
-            <Border Grid.RowSpan="7" Grid.Column="3" Background="{DynamicResource BackLightColor}" Margin="10,0" CornerRadius="5" Opacity="0.3">
+            <Border Grid.RowSpan="7" Grid.Column="3" Background="{DynamicResource BackLightColor}" Margin="10,0" CornerRadius="5" Opacity="0.9">
                 <TextBlock Text="Данная возможность выйдет в новой версии" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="/Test;component/Fonts/OpenSans/#Open Sans" FontWeight="Bold" TextWrapping="Wrap" Margin="5"/>
             </Border>
+            <Grid Grid.RowSpan="7" Grid.Column="3" IsEnabled="False" Opacity="0.3" Background="Black">
+                <Button HorizontalAlignment="Right" Content="&#xE931;" Margin="0"
+                        Style="{DynamicResource ButtonIconsSettings}" />
+                <TextBlock Grid.Row="0" Grid.Column="3" Text="Иконка для папки:" Style="{DynamicResource TextBlockLeft}"
+                           Foreground="{DynamicResource WindowColor}" Margin="0" />
+            </Grid>
 
-            <Button Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" Content="&#xE931;" Margin="0,7,15,6"
-                    Style="{DynamicResource ButtonIconsSettings}" />
-            <TextBlock Grid.Row="0" Grid.Column="3" Text="Иконка для папки:" Style="{DynamicResource TextBlockLeft}"
-                       Foreground="{DynamicResource WindowColor}" Margin="16,11,39,5" />
-
-        </Grid>
+            </Grid>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*" />
