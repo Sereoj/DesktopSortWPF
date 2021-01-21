@@ -24,6 +24,7 @@ namespace Test.Models
 
         ~FileManager()
         {
+            Console.WriteLine("завершение работы");
         }
 
         #region закрытые поля

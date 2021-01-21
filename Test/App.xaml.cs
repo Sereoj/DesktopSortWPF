@@ -13,8 +13,10 @@ namespace Test
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            Console.Model.Controller(e);
+            GLConsole.Model.Controller(e);
             SettingsModel.CreateInstance();
+
+
 
             var settingsModel = SettingsModel.Instance;
             Theme.Set(settingsModel.Advanced.AdvancedConfig.Theme);

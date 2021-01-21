@@ -7,6 +7,7 @@ using System.Windows.Input;
 using Test.Infrastucture.Commands;
 using Test.Models;
 using Test.Models.Settings;
+using Test.Services.Console;
 using Test.Services.GLUpdater;
 using Test.ViewModels.Base;
 using Test.Views.Controls;
@@ -65,6 +66,12 @@ namespace Test.ViewModels
             // Применение title
             SetTitle();
             SetMessage("Добро пожаловать! Версия: " + model1.GetVersion(false));
+
+            if( GLConsole.Checker())
+            {
+                TextBoxPath = GLConsole.Param1;
+                TextBoxPath1 = GLConsole.Param2;
+            }
 
             await Task.Delay(2000);
 
