@@ -9,9 +9,18 @@ namespace Test.Tests
         [TestMethod]
         public void IsUpdateTrue()
         {
-             GLUpdater.Model.Checker();
-             Assert.IsTrue(GLUpdater.Model.IsUpdate());
+            Assert.IsTrue(GLUpdater.Model.IsUpdate());
+        }
+        public void IsUpdateFalse()
+        {
+            Assert.IsFalse(GLUpdater.Model.IsUpdate());
+        }
 
+        [TestMethod]
+        public void GetResultIsNotNull()
+        {
+            Assert.IsNotNull(GLUpdater.Model.GetResult());
         }
     }
+
 }
