@@ -1,9 +1,9 @@
 ﻿using System.Windows;
-using Test.ViewModels;
+using Test.Services.Message;
 
 namespace Test.Services.Console
 {
-    internal class GLConsole
+    internal class GLConsole : CLMessage
     {
         private static GLConsole _model;
 
