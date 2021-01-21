@@ -82,11 +82,10 @@ namespace Test.ViewModels
             else
             {
                 SetMessage("Настройки для обновления приложения были применены");
-                GLUpdater.Model.Checker();
                 await Task.Delay(2000);
                 if (GLUpdater.Model.IsUpdate())
                 {
-                    SetMessage("Требуется обновление! Релиз: " + GLUpdater.Model.New_version);
+                    SetMessage("Требуется обновление! Релиз: " + GLUpdater.Model.NewVersion);
                     OnPageButtonCommandExecuted("settings");
                 }
                 else

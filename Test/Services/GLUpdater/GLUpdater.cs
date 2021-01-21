@@ -18,57 +18,103 @@ namespace Test.Services.GLUpdater
 
         public static GLUpdater Model => _model ??= new GLUpdater();
 
-        public string New_version { get; set; }
+        private string new_version;
+        public string NewVersion
+        {
+            get => new_version;
+            private set => new_version = value;
+        }
+
+        private readonly string getVersion = "https://raw.githubusercontent.com/Sereoj/uploads/main/ds_new/version.txt";
+        private readonly string getInfo = "https://raw.githubusercontent.com/Sereoj/uploads/main/ds_new/info.txt";
+
+
+        private bool СompareVersions(System.Version current, System.Version actual)
+        {
+            var result = current.CompareTo(actual);
+            if (result > 0)
+                return false;
+            else if (result < 0)
+                return true;
+            else
+                return false;
+        }
 
 
         public bool IsUpdate()
         {
-            var v1 = new System.Version(Version.Model.GetVersion(false));
-            var v2 = new System.Version(New_version);
-
-            return v1.CompareTo(v2) <= -1;
-        }
-        public void Checker()
-        {
-            Task.Run(RequestAsync).Wait(100);
+            var version = RequestAsync(getVersion).Result;
+            ValidateVersion(NewVersion);
+            return СompareVersions(new System.Version(Version.Model.GetVersion(false)), new System.Version(version));
         }
 
-        public void UpdateApplication()
+        public void GetNewApplication()
         {
-            if (IsUpdate())
+            Task.Run(Download);
+        }
+
+        public string GetInformation()
+        {
+            return GetResult(getInfo);
+        }
+
+        private string GetResult(string url)
+        {
+            Task<string> task = RequestAsync(url);
+            return task.Result;
+        }
+
+        private void ValidateVersion(string version)
+        {
+            /*
+             Todo: Проверка, что это именно версия, а не текст.
+             
+             */
+            if (!string.IsNullOrWhiteSpace(version))
             {
-                Task.Run(Download).GetAwaiter();
+                NewVersion = "1.0";
             }
         }
 
 
-        private async Task RequestAsync()
+        private async Task<string> RequestAsync( string uri )
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://raw.githubusercontent.com/Sereoj/uploads/main/ds_new/version.txt");
-            request.CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore);
-            request.UserAgent = "Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US) AppleWebKit/534.20 (KHTML, like Gecko) Chrome/11.0.672.2 Safari/534.20";
-            HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync();
-            using (Stream stream = response.GetResponseStream())
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+            using (var client = new WebClient())
             {
-                using StreamReader reader = new StreamReader(stream);
-                New_version = reader.ReadToEnd();
+                try
+                {
+                    var getNewVersion = await client.OpenReadTaskAsync(new Uri(uri, UriKind.Absolute));
+
+                    using (StreamReader StreamReader = new StreamReader(getNewVersion))
+                    {
+                        return StreamReader.ReadToEnd().Trim();
+                    }
+                }
+                catch (WebException ex)
+                {
+                    SetMessage(ex.Message);
+                }
+                client.Dispose();
             }
-            response.Close();
+            return "0.0";
         }
 
         private async Task Download()
         {
-            await Task.Delay(1000);
-
-            using WebClient client = new WebClient();
-            client.DownloadFileCompleted += Client_DownloadFileCompleted;
-            client.DownloadFileAsync(new Uri("https://raw.githubusercontent.com/Sereoj/uploads/main/ds_new/Test.exe"), "update.exe");
-            //client.Dispose();
+            using (WebClient client = new WebClient())
+            {
+                IWebProxy webProxy = WebRequest.DefaultWebProxy;
+                webProxy.Credentials = CredentialCache.DefaultCredentials;
+                client.Proxy = webProxy;
+                await client.DownloadFileTaskAsync(new Uri("https://raw.githubusercontent.com/Sereoj/uploads/main/ds_new/Test.exe"), "update.exe").ConfigureAwait(false);
+                client.DownloadFileCompleted += Client_DownloadFileCompleted;
+            }
         }
 
         private void Client_DownloadFileCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
-        {
-            SetMessage("Обновление завершено!");
+            {
+                SetMessage("Обновление завершено!");
+            }
         }
-    }
 }
