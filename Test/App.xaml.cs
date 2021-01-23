@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using Test.Models.Settings;
 using Test.Services.Console;
+using Test.Services.GLUpdater;
 using Test.Services.Theme;
 
 namespace Test
@@ -15,8 +16,6 @@ namespace Test
             base.OnStartup(e);
             GLConsole.Model.Controller(e);
             SettingsModel.CreateInstance();
-
-
 
             var settingsModel = SettingsModel.Instance;
             Theme.Set(settingsModel.Advanced.AdvancedConfig.Theme);

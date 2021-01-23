@@ -31,15 +31,9 @@ namespace Test.ViewModels
 
             #region Commands
 
-            MinimalizeApplicationCommand = new RelayCommand(OnMinimalizeApplicationCommandExecuted,
-                CanMinimalizeApplicationCommanddExecute);
-            CloseApplicationCommand =
-                new RelayCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute);
-            CopyButtonCommand = new RelayCommand(OnCopyButtonCommandExecuted, CanCopyButtonCommandExecute);
-            CutButtonCommand = new RelayCommand(OnCutButtonCommandExecuted, CanCutButtonCommandExecute);
+            MinimalizeApplicationCommand = new RelayCommand(OnMinimalizeApplicationCommandExecuted,CanMinimalizeApplicationCommanddExecute);
+            CloseApplicationCommand = new RelayCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute);
             PageButtonCommand = new RelayCommand(OnPageButtonCommandExecuted, CanPageButtonCommandExecute);
-            FileDialogButtonCommand =
-                new RelayCommand(OnFileDialogButtonCommandExecuted, CanFileDialogButtonCommandExecute);
 
             #endregion
 
@@ -66,12 +60,6 @@ namespace Test.ViewModels
             // Применение title
             SetTitle();
             SetMessage("Добро пожаловать! Версия: " + model1.GetVersion(false));
-
-            if( GLConsole.Checker())
-            {
-                TextBoxPath = GLConsole.Param1;
-                TextBoxPath1 = GLConsole.Param2;
-            }
 
             await Task.Delay(2000);
 
@@ -114,8 +102,6 @@ namespace Test.ViewModels
         //private string _ColorPrimary = "#FF2E1795";
         //private string _ColorSecondary = "#FF150851";
 
-        private string _TextBoxPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-        private string _TextBoxPath1 = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
         private readonly Main main = new Main();
         private readonly Settings settings = new Settings();
@@ -148,17 +134,6 @@ namespace Test.ViewModels
             set => Set(ref _PathImageBackground, value);
         }
 
-        public string TextBoxPath
-        {
-            get => _TextBoxPath;
-            set => Set(ref _TextBoxPath, value);
-        }
-
-        public string TextBoxPath1
-        {
-            get => _TextBoxPath1;
-            set => Set(ref _TextBoxPath1, value);
-        }
 
         public string Result => model.GetMessage;
 
@@ -200,90 +175,6 @@ namespace Test.ViewModels
 
         #endregion
 
-
-        #region FileDialogButtonCommand
-
-        public ICommand FileDialogButtonCommand { get; }
-
-        private bool CanFileDialogButtonCommandExecute(object p)
-        {
-            return true;
-        }
-
-        private void OnFileDialogButtonCommandExecuted(object p)
-        {
-            var betterFolder = new BetterFolderBrowser();
-            if (betterFolder.ShowDialog() == DialogResult.OK)
-                switch (p)
-                {
-                    case "input":
-                        TextBoxPath = betterFolder.SelectedFolder;
-                        break;
-                    case "output":
-                        TextBoxPath1 = betterFolder.SelectedFolder;
-                        break;
-                }
-
-            betterFolder.Dispose();
-        }
-
-        #endregion
-
-        #region CopyButtonCommand
-
-        public ICommand CopyButtonCommand { get; }
-
-        private bool CanCopyButtonCommandExecute(object p)
-        {
-            return true;
-        }
-
-        private void OnCopyButtonCommandExecuted(object p)
-        {
-            try
-            {
-                model.SetInput(TextBoxPath);
-                model.SetOutput(TextBoxPath1);
-
-                foreach (var test in model2.Items)
-                {
-                    if (test.IsChecked)
-                        Task.Run(() => model.SearchFilesAsyn(test.Catalog, test.Extension, FileManager.FileMode.Copy));
-                }
-            }
-            catch (Exception e)
-            {
-                model.SetMessage(e.Message);
-                throw;
-            }
-
-        }
-
-        #endregion
-
-        #region CutButtonCommand
-
-        public ICommand CutButtonCommand { get; }
-
-        private bool CanCutButtonCommandExecute(object p)
-        {
-            return true;
-        }
-
-        private void OnCutButtonCommandExecuted(object p)
-        {
-            model.SetInput(TextBoxPath);
-            model.SetOutput(TextBoxPath1);
-
-            foreach (var test in model2.Items)
-            {
-                if (test.IsChecked)
-                    Task.Run(() => model.SearchFilesAsyn(test.Catalog, test.Extension, FileManager.FileMode.Move));
-            }
-            model.SetMessage("Работа завершилась!");
-        }
-
-        #endregion
 
         #region PageButtonCommand
 

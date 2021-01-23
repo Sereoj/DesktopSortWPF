@@ -149,6 +149,7 @@
     <Compile Include="Infrastucture\Commands\Base\Command.cs" />
     <Compile Include="Infrastucture\Commands\RelayCommand.cs" />
     <Compile Include="Models\FileManager.cs" />
+    <Compile Include="Models\FileManager.FileMode.cs" />
     <Compile Include="Models\Settings\AdvancedSettings.cs" />
     <Compile Include="Models\Settings\BasicConfig.cs" />
     <Compile Include="Models\Settings\AdvancedConfig.cs" />
@@ -159,8 +160,12 @@
     <Compile Include="Services\Message\CLMessage.cs" />
     <Compile Include="Services\Theme\Theme.cs" />
     <Compile Include="ViewModels\Base\ViewModel.cs" />
+    <Compile Include="ViewModels\FirstSettingsViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\SecondSettingViewModel.cs" />
     <Compile Include="ViewModels\SettingsWindowViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\UpdateControlViewModel.cs" />
     <Compile Include="Views\Controls\FirstSettings.xaml.cs">
       <DependentUpon>FirstSettings.xaml</DependentUpon>
     </Compile>

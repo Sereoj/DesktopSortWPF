@@ -25,8 +25,15 @@ namespace Test.Services.GLUpdater
             private set => new_version = value;
         }
 
-        private readonly string getVersion = "https://raw.githubusercontent.com/Sereoj/uploads/main/ds_new/version.txt";
-        private readonly string getInfo = "https://raw.githubusercontent.com/Sereoj/uploads/main/ds_new/info.txt";
+        private string getNewInfo;
+        public string GetNewInfo
+        {
+            get => getNewInfo;
+            private set => getNewInfo = value;
+        }
+
+        private readonly string URLVersion = "https://raw.githubusercontent.com/Sereoj/uploads/main/ds_new/version.txt";
+        private readonly string URLInformation = "https://raw.githubusercontent.com/Sereoj/uploads/main/ds_new/info.txt";
 
 
         private bool СompareVersions(System.Version current, System.Version actual)
@@ -43,7 +50,7 @@ namespace Test.Services.GLUpdater
 
         public bool IsUpdate()
         {
-            var version = RequestAsync(getVersion).Result;
+            var version = RequestAsync(URLVersion).Result;
             ValidateVersion(NewVersion);
             return СompareVersions(new System.Version(Version.Model.GetVersion(false)), new System.Version(version));
         }
@@ -55,7 +62,8 @@ namespace Test.Services.GLUpdater
 
         public string GetInformation()
         {
-            return GetResult(getInfo);
+            GetNewInfo = GetResult(URLInformation);
+            return GetNewInfo;
         }
 
         private string GetResult(string url)
