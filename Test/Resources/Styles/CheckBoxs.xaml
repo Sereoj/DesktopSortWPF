@@ -25,7 +25,7 @@
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"
                                            Text="&#xEA10;"
-                                           FontFamily="/Fonts/#IcoMoon-Free"
+                                           FontFamily="/Resources/Fonts/#IcoMoon-Free"
                                            Foreground="{DynamicResource ForeContentDarkColor}"
                                            FontSize="10"
                                            Visibility="Hidden" />

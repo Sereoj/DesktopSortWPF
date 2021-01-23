@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <!--Верхняя панель кнопок-->
     <Style x:Key="ButtonToolbar" TargetType="Button">
-        <Setter Property="FontFamily" Value="/Fonts/#IcoMoon-Free" />
+        <Setter Property="FontFamily" Value="/Resources/Fonts/#IcoMoon-Free" />
         <Setter Property="FontSize" Value="16" />
         <Setter Property="BorderBrush" Value="{DynamicResource BackDarkColor}" />
         <Setter Property="Background" Value="{DynamicResource BackDarkColor}" />
@@ -30,7 +30,7 @@
     </Style>
     <!--Кнопки иконки-->
     <Style x:Key="ButtonIcons" TargetType="Button">
-        <Setter Property="FontFamily" Value="/Fonts/#IcoMoon-Free" />
+        <Setter Property="FontFamily" Value="/Resources/Fonts/#IcoMoon-Free" />
         <Setter Property="FontSize" Value="24" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="{DynamicResource BackDarkColor}" />
@@ -59,7 +59,7 @@
     </Style>
     <!--Кнопки иконки SETTIGS-->
     <Style x:Key="ButtonIconsSettings" TargetType="Button">
-        <Setter Property="FontFamily" Value="/Fonts/#IcoMoon-Free" />
+        <Setter Property="FontFamily" Value="/Resources/Fonts/#IcoMoon-Free" />
         <Setter Property="FontSize" Value="20" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="{DynamicResource ForeContentLightColor}" />
@@ -85,7 +85,7 @@
     </Style>
     <!--Кнопки иконки SETTIGS-->
     <Style x:Key="ButtonIconsSettingsInfo" TargetType="Button">
-        <Setter Property="FontFamily" Value="/Fonts/#IcoMoon-Free" />
+        <Setter Property="FontFamily" Value="/Resources/Fonts/#IcoMoon-Free" />
         <Setter Property="FontSize" Value="20" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="{DynamicResource BackLightColor}" />
@@ -119,7 +119,7 @@
 
     <!--Кнопки стилизованные-->
     <Style x:Key="ButtonStyle" TargetType="Button">
-        <Setter Property="FontFamily" Value="/Fonts/#Open Sans" />
+        <Setter Property="FontFamily" Value="/Resources/Fonts/#Open Sans" />
         <Setter Property="FontSize" Value="14.5" />
         <Setter Property="Background" Value="{DynamicResource BackDarkColor}" />
         <Setter Property="Foreground" Value="{DynamicResource WindowColor}" />
@@ -136,7 +136,7 @@
                                 <ColumnDefinition Width="2*" />
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0"
-                                       FontFamily="/Fonts/#IcoMoon-Free"
+                                       FontFamily="/Resources/Fonts/#IcoMoon-Free"
                                        Style="{DynamicResource ButtonCut}" />
                             <ContentPresenter
                                 Grid.Column="1"
@@ -159,7 +159,7 @@
     </Style>
 
     <Style x:Key="ButtonStyleSettings" TargetType="Button">
-        <Setter Property="FontFamily" Value="/Fonts/#Open Sans" />
+        <Setter Property="FontFamily" Value="/Resources/Fonts/#Open Sans" />
         <Setter Property="FontSize" Value="14.5" />
         <Setter Property="Background" Value="{DynamicResource BackDarkColor}" />
         <Setter Property="Foreground" Value="{DynamicResource WindowColor}" />

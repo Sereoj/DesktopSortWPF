@@ -94,10 +94,8 @@ namespace Test.Services.GLUpdater
                 {
                     var getNewVersion = await client.OpenReadTaskAsync(new Uri(uri, UriKind.Absolute));
 
-                    using (StreamReader StreamReader = new StreamReader(getNewVersion))
-                    {
-                        return StreamReader.ReadToEnd().Trim();
-                    }
+                    using StreamReader StreamReader = new StreamReader(getNewVersion);
+                    return StreamReader.ReadToEnd().Trim();
                 }
                 catch (WebException ex)
                 {
@@ -110,14 +108,12 @@ namespace Test.Services.GLUpdater
 
         private async Task Download()
         {
-            using (WebClient client = new WebClient())
-            {
-                IWebProxy webProxy = WebRequest.DefaultWebProxy;
-                webProxy.Credentials = CredentialCache.DefaultCredentials;
-                client.Proxy = webProxy;
-                await client.DownloadFileTaskAsync(new Uri("https://raw.githubusercontent.com/Sereoj/uploads/main/ds_new/Test.exe"), "update.exe").ConfigureAwait(false);
-                client.DownloadFileCompleted += Client_DownloadFileCompleted;
-            }
+            using WebClient client = new WebClient();
+            IWebProxy webProxy = WebRequest.DefaultWebProxy;
+            webProxy.Credentials = CredentialCache.DefaultCredentials;
+            client.Proxy = webProxy;
+            await client.DownloadFileTaskAsync(new Uri("https://raw.githubusercontent.com/Sereoj/uploads/main/ds_new/Test.exe"), "update.exe").ConfigureAwait(false);
+            client.DownloadFileCompleted += Client_DownloadFileCompleted;
         }
 
         private void Client_DownloadFileCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
