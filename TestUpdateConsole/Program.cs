@@ -41,7 +41,9 @@ namespace TestUpdateConsole
                         return StreamReader.ReadToEnd().Trim();
                     }
                 }
+#pragma warning disable CS0168 // Переменная "ex" объявлена, но ни разу не использована.
                 catch (WebException ex)
+#pragma warning restore CS0168 // Переменная "ex" объявлена, но ни разу не использована.
                 {
                     //SetMessage(ex.Message);
                 }

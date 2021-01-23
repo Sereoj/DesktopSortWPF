@@ -8,7 +8,7 @@
         Title="{Binding Title}" Height="506" Width="764"
         ResizeMode="NoResize" WindowStyle="None"
         WindowState="{Binding MainWindowState, Mode=TwoWay}"
-        Icon="/Images/Icon/window.ico">
+        Icon="/Test;component/Resources/Images/Icon/window.ico">
     <Window.Resources>
         <DataTemplate DataType="{x:Type uc:Main}">
             <uc:Main />

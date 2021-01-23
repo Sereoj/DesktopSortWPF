@@ -1,17 +1,13 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Forms;
 using System.Windows.Input;
 using Test.Infrastucture.Commands;
 using Test.Models;
 using Test.Models.Settings;
-using Test.Services.Console;
 using Test.Services.GLUpdater;
 using Test.ViewModels.Base;
 using Test.Views.Controls;
-using WK.Libraries.BetterFolderBrowserNS;
 using Application = System.Windows.Application;
 using Version = Test.Models.Version;
 
@@ -188,7 +184,7 @@ namespace Test.ViewModels
         private void OnPageButtonCommandExecuted(object p)
         {
             //ResourceDictionary dictionary = new ResourceDictionary();
-            //dictionary.Source = new Uri("/Resources/Colors/dark.xaml", UriKind.Relative);
+            //dictionary.Source = new Uri("//Resources/Colors/dark.xaml", UriKind.Relative);
 
             //Application.Current.Resources.Clear();
             // Динамически меняем коллекцию MergedDictionaries
@@ -197,11 +193,11 @@ namespace Test.ViewModels
             {
                 case "settings":
                     SelectedItem = settings;
-                    //dictionary.Source = new Uri("Resources/Colors/dark.xaml", UriKind.Relative);
+                    //dictionary.Source = new Uri("/Resources/Colors/dark.xaml", UriKind.Relative);
                     break;
                 case "home":
                     SelectedItem = main;
-                    //dictionary.Source = new Uri("Resources/Colors/light.xaml", UriKind.Relative);
+                    //dictionary.Source = new Uri("/Resources/Colors/light.xaml", UriKind.Relative);
                     break;
             }
 
