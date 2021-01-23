@@ -5,7 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
              xmlns:local="clr-namespace:Test.ViewModels"
+             xmlns:vm="clr-namespace:Test.ViewModels"
              d:DesignHeight="373" d:DesignWidth="684">
+    <UserControl.DataContext>
+        <vm:FirstSettingsViewModel/>
+    </UserControl.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="24" />

@@ -4,8 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Test.Views.Controls"
+             xmlns:vm="clr-namespace:Test.ViewModels"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="764">
+    <UserControl.DataContext>
+        <vm:MainViewModel />
+    </UserControl.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*" />
