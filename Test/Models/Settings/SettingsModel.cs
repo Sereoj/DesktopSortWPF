@@ -41,7 +41,7 @@ namespace Test.Models.Settings
             {
                 Advanced = new AdvancedSettings
                 {
-                    AdvancedConfig = new AdvancedConfig { Update = true, Background = "/Test;component/Images/Background.bmp", IsBackground = true, Theme = "light", Logger = false }
+                    AdvancedConfig = new AdvancedConfig { Update = true, Background = "standard", IsBackground = true, Theme = "light", Logger = false }
                 },
                 Items = new List<BasicConfig>
                 {
