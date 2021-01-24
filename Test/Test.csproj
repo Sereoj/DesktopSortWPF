@@ -164,6 +164,7 @@
     <Compile Include="Services\Theme\Theme.cs" />
     <Compile Include="ViewModels\Base\ViewModel.cs" />
     <Compile Include="ViewModels\FirstSettingsViewModel.cs" />
+    <Compile Include="ViewModels\InfoSettingsViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\SecondSettingViewModel.cs" />
     <Compile Include="ViewModels\SettingsWindowViewModel.cs" />

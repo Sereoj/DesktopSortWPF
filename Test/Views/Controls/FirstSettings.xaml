@@ -96,10 +96,10 @@
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" Text="Создаваемая папка:" Style="{DynamicResource TextBlockLeft}"
                        Foreground="{DynamicResource WindowColor}" Margin="10,-30,0,0" />
-            <TextBox Name="TextBoxDirectory"  Grid.Column="0" Text="{Binding UpdateTextDirectory}" Style="{DynamicResource TextBoxStyle}" Margin="5,35,5,0"/>
+            <TextBox Name="TextBoxDirectory"  Grid.Column="0" Text="{Binding UpdateTextDirectory, Mode=TwoWay}" Style="{DynamicResource TextBoxStyle}" Margin="5,35,5,0"/>
             <TextBlock Grid.Column="1" Text="Расширения:" Style="{DynamicResource TextBlockLeft}"
                        Foreground="{DynamicResource WindowColor}" Margin="10,-30,0,0" />
-            <TextBox Name="TextBoxExtension"  Grid.Column="1" Text="{Binding UpdateTextExtension}" Style="{DynamicResource TextBoxStyle}" Margin="5,35,5,0" />
+            <TextBox Name="TextBoxExtension"  Grid.Column="1" Text="{Binding UpdateTextExtension, Mode=TwoWay}" Style="{DynamicResource TextBoxStyle}" Margin="5,35,5,0" />
 
             <Button Grid.Column="2" HorizontalAlignment="Right" Content="Применить" Margin="0,42,10,12"
                     Style="{DynamicResource ButtonStyleSettings}" Width="114" Command="{Binding ButtonSaveCommand}"/>
