@@ -3,7 +3,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using Test.Infrastucture.Commands;
-using Test.Models;
+using Test.Models.FileManagerModel;
+using Test.Models.Helpers;
 using Test.Models.Settings;
 using Test.Services.GLUpdater;
 using Test.ViewModels.Base;
@@ -51,7 +52,10 @@ namespace Test.ViewModels
             //По умолчанию Home
             OnPageButtonCommandExecuted("home");
 
-            if (model2.Advanced.AdvancedConfig.IsBackground) PathImageBackground = model2.Advanced.AdvancedConfig.Background;
+            if (model2.Advanced.AdvancedConfig.IsBackground)
+            {
+                PathImageBackground = Imager.Change(model2.Advanced.AdvancedConfig.Background);
+            }
 
             // Применение title
             SetTitle();

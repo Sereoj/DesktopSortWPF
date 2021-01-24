@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Test.Models.Settings;
 using Test.Services.Message;
 
-namespace Test.Models
+namespace Test.Models.FileManagerModel
 {
     internal partial class FileManager : CLMessage
     {
@@ -85,8 +85,8 @@ namespace Test.Models
             {
                 var files = GetFilesList(INPUT_PATH, PatternExtension);
 
-                if (files != null && (IsPathExists(NewDirectory) && files.ToList().Count > 0))
-                    CreateDirectory(NewDirectory);
+                if (files != null && (NewDirectory.IsPathExists() && files.ToList().Count > 0))
+                    NewDirectory.CreateDirectory();
 
                 foreach (var fileSingle in files)
                 {
@@ -117,7 +117,7 @@ namespace Test.Models
             }
 
             if (DeleteDefaultDirectory)
-                DeleteDirectory(INPUT_PATH); // Удаление начальной папки
+                INPUT_PATH.DeleteDirectory(); // Удаление начальной папки
 
             SetMessage("Задача завершена!");
             await Task.Delay(delay);
@@ -126,23 +126,6 @@ namespace Test.Models
 
         #region Закрытые методы
 
-        /// <summary>Создание директории</summary>
-        /// <param name="Path"></param>
-        private void CreateDirectory(string Path)
-        {
-            Directory.CreateDirectory(Path);
-        }
-
-        /// <summary>Проверка директории</summary>
-        /// <param name="Path"></param>
-        private bool IsPathExists(string Path) => !Directory.Exists(Path);
-
-        /// <summary>Удаление директории</summary>
-        /// <param name="Path"></param>
-        private void DeleteDirectory(string Path)
-        {
-            Directory.Delete(Path);
-        }
 
         /// <summary>Валидация пути</summary>
         /// <param name="Path"></param>
@@ -152,12 +135,11 @@ namespace Test.Models
                 Path = Environment.CurrentDirectory;
             //throw new ArgumentNullException(Path, "Path is NULL.");
 
-            if (!IsPathExists(Path))
+            if (Path.IsPathExists())
             {
-                CreateDirectory(Path);
+                Path.CreateDirectory();
                 return true;
             }
-
             return true;
         }
 
