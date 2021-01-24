@@ -60,10 +60,10 @@ namespace Test.Services.GLUpdater
             Task.Run(Download);
         }
 
-        public string GetInformation()
+        public void GetInformation()
         {
-            GetNewInfo = GetResult(URLInformation);
-            return GetNewInfo;
+            Task<string> task = RequestAsync(URLInformation);
+            GetNewInfo = task.Result;
         }
 
         private string GetResult(string url)
@@ -76,7 +76,6 @@ namespace Test.Services.GLUpdater
         {
             /*
              Todo: Проверка, что это именно версия, а не текст.
-             
              */
             if (!string.IsNullOrWhiteSpace(version))
             {

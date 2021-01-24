@@ -4,8 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Test.Views.Controls"
+             xmlns:vm2="clr-namespace:Test.ViewModels"
              mc:Ignorable="d"
              d:DesignHeight="373" d:DesignWidth="684">
+    <UserControl.DataContext>
+        <vm2:SecondSettingViewModel/>
+    </UserControl.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="24" />
@@ -21,7 +25,7 @@
             </Border>
             <Grid IsEnabled="False" Opacity="0.3" Background="Black">
                 <CheckBox Content="Проверять обновления автоматически" Style="{DynamicResource CheckBoxStyle}" Margin="15,16,419,219"/>
-                <CheckBox Content="Отключить задний фон" Style="{DynamicResource CheckBoxStyle}" Margin="15,42,419,193"/>
+                <CheckBox Content="Отключить задний фон" Style="{DynamicResource CheckBoxStyle}" Margin="15,42,419,193" IsChecked="{Binding IsBackground}"/>
                 <TextBlock Text="Выбор темы:" Style="{DynamicResource BaseTextBlock}" Margin="395,17,184,218"/>
                 <ComboBox Height="24" Width="160" Margin="510,16,14,219">
                     <ComboBoxItem Content="Светлая"/>

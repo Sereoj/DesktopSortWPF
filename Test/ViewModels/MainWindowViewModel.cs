@@ -99,8 +99,6 @@ namespace Test.ViewModels
 
         private string _PathImageBackground;
 
-        //private string _ColorPrimary = "#FF2E1795";
-        //private string _ColorSecondary = "#FF150851";
 
 
         private readonly Main main = new Main();
@@ -187,26 +185,15 @@ namespace Test.ViewModels
 
         private void OnPageButtonCommandExecuted(object p)
         {
-            //ResourceDictionary dictionary = new ResourceDictionary();
-            //dictionary.Source = new Uri("//Resources/Colors/dark.xaml", UriKind.Relative);
-
-            //Application.Current.Resources.Clear();
-            // Динамически меняем коллекцию MergedDictionaries
-            //Application.Current.Resources.MergedDictionaries.Add(dictionary);
             switch (p)
             {
                 case "settings":
                     SelectedItem = settings;
-                    //dictionary.Source = new Uri("/Resources/Colors/dark.xaml", UriKind.Relative);
                     break;
                 case "home":
                     SelectedItem = main;
-                    //dictionary.Source = new Uri("/Resources/Colors/light.xaml", UriKind.Relative);
                     break;
             }
-
-            //Application.Current.Resources.Clear();
-            //Application.Current.Resources.MergedDictionaries.Add(dictionary);
         }
 
         #endregion

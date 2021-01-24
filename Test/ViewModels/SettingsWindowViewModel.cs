@@ -30,6 +30,23 @@ namespace Test.ViewModels
 
         #endregion
 
+        public SettingsWindowViewModel()
+        {
+
+            _firstSettings = new FirstSettings();
+            _infoSettings = new InfoSettings();
+            _secondSettings = new SecondSettings();
+            _updateContol = new UpdateControl();
+
+            //По умолчанию first
+            OnPageButtonCommandExecuted("first");
+
+            #region Commands
+            PageButtonCommand = new RelayCommand(OnPageButtonCommandExecuted, CanPageButtonCommandExecute);
+            #endregion
+        }
+
+
         #region Commands
 
         #region PageButtonCommand
@@ -66,21 +83,6 @@ namespace Test.ViewModels
 
         #endregion
 
-        public SettingsWindowViewModel()
-        {
 
-            _firstSettings = new FirstSettings();
-            _infoSettings = new InfoSettings();
-            _secondSettings = new SecondSettings();
-            _updateContol = new UpdateControl();
-
-            //По умолчанию first
-            OnPageButtonCommandExecuted("first");
-
-            #region Commands
-
-            PageButtonCommand = new RelayCommand(OnPageButtonCommandExecuted, CanPageButtonCommandExecute);
-            #endregion
-        }
     }
 }
