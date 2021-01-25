@@ -25,7 +25,7 @@ namespace Test.Models.Settings
 
         public static void CreateInstance()
         {
-            //Instance = new SettingsModel() {Advanced = new AdvancedSettings(), Items = new List<BasicConfig>()};
+            Instance = new SettingsModel();
             Instance = Load<SettingsModel>("data.xml");
         }
 
@@ -41,7 +41,7 @@ namespace Test.Models.Settings
             {
                 Advanced = new AdvancedSettings
                 {
-                    AdvancedConfig = new AdvancedConfig { Update = true, Background = "standard", IsBackground = true, Theme = "light", Logger = false }
+                    AdvancedConfig = new AdvancedConfig { Update = true, Background = "standard", IsBackground = true, Theme = "light" }
                 },
                 Items = new List<BasicConfig>
                 {

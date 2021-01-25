@@ -17,7 +17,7 @@ namespace Test.Models.FileManagerModel
 
         ~FileManager()
         {
-            Console.WriteLine("завершение работы");
+            GC.Collect(4, GCCollectionMode.Forced, true);
         }
 
         #region закрытые поля
