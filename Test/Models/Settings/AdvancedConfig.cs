@@ -13,7 +13,10 @@ namespace Test.Models.Settings
         public bool Update { get; set; }
         [XmlAttribute]
         public string Theme { get; set; }
+
         [XmlAttribute]
-        public bool Logger { get; set; }
+        public string InputPath { get; set; }
+        [XmlAttribute]
+        public string OutputPath { get; set; }
     }
 }

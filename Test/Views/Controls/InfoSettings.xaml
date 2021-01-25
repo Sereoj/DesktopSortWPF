@@ -54,7 +54,7 @@
                                    Style="{DynamicResource TextBlockTitle}" Grid.ColumnSpan="2" />
 
                 <Button Grid.Row="1"  Content="&#xEAB0;" Style="{DynamicResource ButtonIconsSettingsInfo}" Height="Auto" Margin="0.5,0" Width="Auto"
-                                Command="{Binding HelpMember1}" />
+                                Command="{Binding HelpMembers}" CommandParameter="member1" />
 
                 <TextBlock Grid.Column="1" Grid.Row="1" Text="SergioStrangeS - Контент менеджмент"
                                Margin="5,5,0,0"
@@ -62,7 +62,7 @@
                                FontFamily="/Test;component/Fonts/OpenSans/#Open Sans Light"
                                FontSize="12"/>
                 <Button Grid.Row="2"  Content="&#xEAB0;" Style="{DynamicResource ButtonIconsSettingsInfo}" Height="Auto" Margin="0.5,0" Width="Auto"
-                                Command="{Binding HelpMember2}"/>
+                                Command="{Binding HelpMembers}" CommandParameter="member2"/>
                 <TextBlock Grid.Column="1" Grid.Row="2" Text="MerHI - Дизайн"
                                Margin="5,5,0,0"
                                Foreground="White"
@@ -73,6 +73,16 @@
         <Grid Grid.Row="2">
             <TextBlock Text="Контакты" FontSize="16" Margin="10,5,0,70"
                    Style="{DynamicResource TextBlockTitle}"/>
+            <Grid Margin="20,40,20,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="180"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="180"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="1" Content="&#xE9CA;" Style="{DynamicResource ButtonIconsSettingsInfo}" Margin="15,7,100,9" Command="{Binding HelpMembers}" CommandParameter="site" />
+                <Button Grid.Column="2" Content="&#xEAB0;" Style="{DynamicResource ButtonIconsSettingsInfo}" Margin="15,7,100,9" Command="{Binding HelpMembers}" CommandParameter="github" />
+            </Grid>
 
         </Grid>
     </Grid>

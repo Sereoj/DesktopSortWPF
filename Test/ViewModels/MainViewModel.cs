@@ -73,6 +73,7 @@ namespace Test.ViewModels
                 }
 
             betterFolder.Dispose();
+            GC.Collect(4, GCCollectionMode.Forced, true);
         }
 
         #endregion

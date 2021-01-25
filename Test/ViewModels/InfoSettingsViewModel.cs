@@ -7,33 +7,36 @@ namespace Test.ViewModels
 {
     internal class InfoSettingsViewModel : ViewModel
     {
-        public ICommand HelpMember1 { get; }
+        public ICommand HelpMembers { get; }
 
-        private bool CanHelpMember1CommandExecute(object p)
+        private bool CanHelpMembersCommandExecute(object p)
         {
             return true;
         }
 
-        private void OnHelpMember1CommandExecuted(object p)
+        private void OnHelpMembersCommandExecuted(object p)
         {
-            Process.Start("https://github.com/sergiostranges");
+            switch(p)
+            {
+                case "member1":
+                    Process.Start("https://github.com/sergiostranges");
+                    break;
+                case "member2":
+                    Process.Start("https://github.com/Mer-hi");
+                    break;
+                case "site":
+                    Process.Start("https://w2me.ru");
+                    break;
+                case "github":
+                    Process.Start("https://github.com/sereoj");
+                    break;
+            }
         }
 
-        public ICommand HelpMember2 { get; }
 
-        private bool CanHelpMember2CommandExecute(object p)
-        {
-            return true;
-        }
-
-        private void OnHelpMember2CommandExecuted(object p)
-        {
-            Process.Start("https://github.com/Mer-hi");
-        }
         public InfoSettingsViewModel()
         {
-            HelpMember1 = new RelayCommand(OnHelpMember1CommandExecuted, CanHelpMember1CommandExecute);
-            HelpMember2 = new RelayCommand(OnHelpMember2CommandExecuted, CanHelpMember2CommandExecute);
+            HelpMembers = new RelayCommand(OnHelpMembersCommandExecuted, CanHelpMembersCommandExecute);
         }
     }
 }

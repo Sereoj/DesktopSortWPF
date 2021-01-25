@@ -20,17 +20,11 @@
                    Style="{DynamicResource TextBlockTitle}" />
         <Grid Grid.Row="1">
             
-            <Border Background="{DynamicResource BackLightColor}" Margin="10,0" CornerRadius="5" Opacity="0.9">
-                <TextBlock Text="Данная возможность выйдет в новой версии" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="/Test;component/Fonts/OpenSans/#Open Sans" FontWeight="Bold" TextWrapping="Wrap" Margin="5"/>
-            </Border>
-            <Grid IsEnabled="False" Opacity="0.3" Background="Black">
-                <CheckBox Content="Проверять обновления автоматически" Style="{DynamicResource CheckBoxStyle}" Margin="15,16,419,219"/>
-                <CheckBox Content="Отключить задний фон" Style="{DynamicResource CheckBoxStyle}" Margin="15,42,419,193" IsChecked="{Binding IsBackground}"/>
+            <Grid IsEnabled="True">
+                <CheckBox Content="Проверять обновления автоматически" Style="{DynamicResource CheckBoxStyle}" Margin="15,16,419,219" IsChecked="{Binding IsUpdate, Mode=TwoWay}"/>
+                <CheckBox Content="Отключить задний фон" Style="{DynamicResource CheckBoxStyle}" Margin="15,42,419,193" IsChecked="{Binding IsBackground, Mode=TwoWay}"/>
                 <TextBlock Text="Выбор темы:" Style="{DynamicResource BaseTextBlock}" Margin="395,17,184,218"/>
-                <ComboBox Height="24" Width="160" Margin="510,16,14,219">
-                    <ComboBoxItem Content="Светлая"/>
-                    <ComboBoxItem Content="Темная"/>
-                </ComboBox>
+                <ComboBox Height="24" Width="160" Margin="510,16,14,219" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding ThemeTypesList, Mode=TwoWay}" SelectedItem="{Binding ItemSelected, Mode=TwoWay}"/>
             </Grid>
 
         </Grid>

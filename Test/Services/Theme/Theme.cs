@@ -16,29 +16,30 @@ namespace Test.Services.Theme
 
         public static ThemeTypes CurrentTheme { get; set; }
 
-        private static ResourceDictionary ThemeDictionary
+        private static void ChangeTheme(string theme)
         {
-            get { return Application.Current.Resources.MergedDictionaries[0]; }
-            set { Application.Current.Resources.MergedDictionaries[0] = value; }
+            ResourceDictionary dictionary = new ResourceDictionary
+            {
+                Source = new Uri($"/Resources/Colors/{theme}.xaml", UriKind.Relative)
+            };
+
+            Application.Current.Resources.Clear();
+            Application.Current.Resources.MergedDictionaries.Add(dictionary);
         }
-        private static void ChangeTheme(Uri uri)
-        {
-            ThemeDictionary = new ResourceDictionary() { Source = uri };
-        }
-        private static void SetTheme(ThemeTypes theme)
+        public static void SetTheme(ThemeTypes theme)
         {
             string themeName = null;
             CurrentTheme = theme;
             switch (theme)
             {
-                case ThemeTypes.Dark: themeName = "Dark"; break;
-                case ThemeTypes.Light: themeName = "Light"; break;
+                case ThemeTypes.Dark: themeName = "dark"; break;
+                case ThemeTypes.Light: themeName = "light"; break;
             }
 
             try
             {
                 if (!string.IsNullOrEmpty(themeName))
-                    ChangeTheme(new Uri($"/Resources/Colors/{themeName}.xaml", UriKind.Relative));
+                    ChangeTheme(themeName);
             }
             catch { }
         }
