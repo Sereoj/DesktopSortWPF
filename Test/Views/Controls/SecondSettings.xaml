@@ -21,9 +21,9 @@
         <Grid Grid.Row="1">
             
             <Grid IsEnabled="True">
-                <CheckBox Content="Проверять обновления автоматически" Style="{DynamicResource CheckBoxStyle}" Margin="15,16,419,219" IsChecked="{Binding IsUpdate, Mode=TwoWay}"/>
-                <CheckBox Content="Отключить задний фон" Style="{DynamicResource CheckBoxStyle}" Margin="15,42,419,193" IsChecked="{Binding IsBackground, Mode=TwoWay}"/>
-                <TextBlock Text="Выбор темы:" Style="{DynamicResource BaseTextBlock}" Margin="395,17,184,218"/>
+                <CheckBox Name="CheckIsUpdate" Content="Проверять обновления автоматически" Style="{DynamicResource CheckBoxStyle}" Margin="15,16,419,219" Command="{Binding UpdateCheckBox}" CommandParameter="{Binding ElementName=CheckIsUpdate}"/>
+                <CheckBox Name="CheckIsBackground" Content="Отключить задний фон" Style="{DynamicResource CheckBoxStyle}" Margin="15,42,419,193" Command="{Binding UpdateCheckBox}" CommandParameter="{Binding ElementName=CheckIsBackground}"/>
+                <TextBlock Text="Выбор темы:" Style="{DynamicResource BaseTextBlock}" Margin="395,17,184,218" Foreground="{DynamicResource ForeContentLightColor}"/>
                 <ComboBox Height="24" Width="160" Margin="510,16,14,219" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding ThemeTypesList, Mode=TwoWay}" SelectedItem="{Binding ItemSelected, Mode=TwoWay}"/>
             </Grid>
 

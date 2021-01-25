@@ -184,7 +184,6 @@ namespace Test.ViewModels
         public FirstSettingsViewModel()
         {
             Model = SettingsModel.Instance;
-            LoadCheckPoint();
 
             UpdateCheckBox = new RelayCommand(OnUpdateCheckBoxCommandExecuted, CanUpdateCheckBoxCommandExecute);
             ButtonSaveCommand = new RelayCommand(OnButtonSaveCommandExecuted, CanButtonSaveCommandExecute);
@@ -282,8 +281,5 @@ namespace Test.ViewModels
             }
         }
 
-        private void LoadCheckPoint()
-        {
-        }
     }
 }
