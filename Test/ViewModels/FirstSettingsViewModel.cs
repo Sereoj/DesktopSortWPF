@@ -163,17 +163,17 @@ namespace Test.ViewModels
                 case "CheckFormat19":
                     UpdateTextDirectory = Model.Items[18].Catalog;
                     UpdateTextExtension = Model.Items[18].Extension;
-                    if (isChecked != null) Model.Items[0].IsChecked = (bool)isChecked;
+                    if (isChecked != null) Model.Items[18].IsChecked = (bool)isChecked;
                     break;
                 case "CheckFormat20":
                     UpdateTextDirectory = Model.Items[19].Catalog;
                     UpdateTextExtension = Model.Items[19].Extension;
-                    if (isChecked != null) Model.Items[0].IsChecked = (bool)isChecked;
+                    if (isChecked != null) Model.Items[19].IsChecked = (bool)isChecked;
                     break;
                 case "CheckFormat21":
                     UpdateTextDirectory = Model.Items[20].Catalog;
                     UpdateTextExtension = Model.Items[20].Extension;
-                    if (isChecked != null) Model.Items[0].IsChecked = (bool)isChecked;
+                    if (isChecked != null) Model.Items[20].IsChecked = (bool)isChecked;
                     break;
             }
 
