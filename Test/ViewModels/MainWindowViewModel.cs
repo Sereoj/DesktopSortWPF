@@ -52,7 +52,7 @@ namespace Test.ViewModels
             //По умолчанию Home
             OnPageButtonCommandExecuted("home");
 
-            if (model2.Advanced.AdvancedConfig.IsBackground)
+            if (!model2.Advanced.AdvancedConfig.IsBackground)
             {
                 PathImageBackground = Imager.Change(model2.Advanced.AdvancedConfig.Background);
             }
