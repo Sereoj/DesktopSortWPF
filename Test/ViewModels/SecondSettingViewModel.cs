@@ -50,7 +50,7 @@ namespace Test.ViewModels
         }
         private void ThemeSet()
         {
-            string theme = "";
+            string theme;
             switch(ItemSelected)
             {
                 case ThemeTypes.Dark:

@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Test.Resources.Styles">
+    
+    <ControlTemplate x:Key="ComboBoxTextBox"
+                 TargetType="{x:Type TextBox}">
+        <Border x:Name="PART_ContentHost"
+          CornerRadius="10"
+          Background="White"
+          Focusable="False"/>
+    </ControlTemplate>
+
+    <Style x:Key="ComboBoxStyle" TargetType="ComboBox">
+        <Setter Property="OverridesDefaultStyle" Value="False"/>
+    </Style>
+</ResourceDictionary>
