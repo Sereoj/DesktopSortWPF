@@ -16,8 +16,13 @@ namespace Test.Views.Controls
             InitializeComponent();
             model2 = SettingsModel.Instance;
             UpdateCheckBox();
+            UpdateTheme();
         }
 
+        private void UpdateTheme()
+        {
+            BoxTheme.SelectedItem = model2.Advanced.AdvancedConfig.Theme;
+        }
         private void UpdateCheckBox()
         {
             CheckIsUpdate.IsChecked = model2.Advanced.AdvancedConfig.Update;
