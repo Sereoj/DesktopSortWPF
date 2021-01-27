@@ -36,8 +36,7 @@ namespace Test.ViewModels
 
         public UpdateControlViewModel()
         {
-            //GLUpdater.Model.GetInformation();
-            UpdateInformation = "Нет информации..."; 
+            UpdateInformation = GLUpdater.Model.GetResult();
             UpdateApplicationButton = new RelayCommand(OnUpdateApplicationButtonExecuted, CanUpdateApplicationButtonExecute);
         }
     }

@@ -2,6 +2,7 @@
 using System.IO;
 using System.Net;
 using System.Net.Cache;
+using System.Text;
 using System.Threading.Tasks;
 using Test.Services.Message;
 using Version = Test.Models.Version;
@@ -60,16 +61,17 @@ namespace Test.Services.GLUpdater
             Task.Run(Download);
         }
 
-        public void GetInformation()
-        {
-            Task<string> task = RequestAsync(URLInformation);
-            GetNewInfo = task.Result;
-        }
 
-        private string GetResult(string url)
+        public string GetResult()
         {
-            Task<string> task = RequestAsync(url);
-            return task.Result;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+            using (WebClient client = new WebClient())
+            {
+                client.Encoding = Encoding.UTF8;
+                string s = client.DownloadString(URLInformation);
+                client.Dispose();
+                return s;
+            }
         }
 
         private void ValidateVersion(string version)
