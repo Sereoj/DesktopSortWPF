@@ -19,7 +19,7 @@ namespace Test.Models
 
         private static Version _model;
 
-        public StageVersion State = StageVersion.Beta;
+        public StageVersion State = StageVersion.Stable;
 
 
         public static Version Model => _model ??= new Version();
