@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace Test.ViewModels.Base
@@ -30,6 +31,7 @@ namespace Test.ViewModels.Base
         {
             if (!disponsig || _disposed) return;
             _disposed = true;
+            GC.SuppressFinalize(this);
         }
     }
 }

@@ -71,8 +71,12 @@ namespace Test.ViewModels
                         TextBoxPath1 = betterFolder.SelectedFolder;
                         break;
                 }
-
+            betterFolder.Disposed += BetterFolder_Disposed;
             betterFolder.Dispose();
+        }
+
+        private void BetterFolder_Disposed(object sender, EventArgs e)
+        {
             GC.Collect(4, GCCollectionMode.Forced, true);
         }
 

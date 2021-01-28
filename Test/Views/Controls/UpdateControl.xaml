@@ -34,7 +34,9 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="150"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="1" Content="Загрузить" Style="{DynamicResource ButtonStyleSettings}" Height="40" Width="200" Command="{Binding UpdateApplicationButton}"/>
+            <Button Grid.Column="1" Content="Загрузить" Style="{DynamicResource ButtonStyleSettings}" 
+                    Height="40" Width="200" Command="{Binding UpdateApplicationButton}" 
+                    Visibility="{Binding VisibilityUpdate, Mode=TwoWay}"/>
         </Grid>
 </Grid>
 </UserControl>
