@@ -22,6 +22,14 @@ namespace Test.ViewModels
             }
         }
 
+        private string _VisibilityUpdate;
+
+        public string VisibilityUpdate
+        {
+            get => _VisibilityUpdate;
+            set => Set(ref _VisibilityUpdate, value);
+        }
+
         public ICommand UpdateApplicationButton { get; }
 
         private bool CanUpdateApplicationButtonExecute(object p)
@@ -31,11 +39,12 @@ namespace Test.ViewModels
 
         private void OnUpdateApplicationButtonExecuted(object p)
         {
-            GLUpdater.Model.GetNewApplication();
+            GLUpdater.Model.GetNewApplication();       
         }
 
         public UpdateControlViewModel()
         {
+            VisibilityUpdate = "Visible";
             UpdateInformation = GLUpdater.Model.GetResult();
             UpdateApplicationButton = new RelayCommand(OnUpdateApplicationButtonExecuted, CanUpdateApplicationButtonExecute);
         }

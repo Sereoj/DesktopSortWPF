@@ -14,14 +14,9 @@ namespace Test.Services.Message
 
         public void SetMessage(string message)
         {
-            if (message.Length > 0)
+            if (message.Length > 0 && !string.IsNullOrEmpty(message))
             {
                 GetMessage = message;
-                OnPropertyChanged("MessageChange");
-            }
-            else
-            {
-                GetMessage = "...";
                 OnPropertyChanged("MessageChange");
             }
         }

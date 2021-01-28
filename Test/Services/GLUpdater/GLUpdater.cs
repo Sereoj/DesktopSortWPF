@@ -4,6 +4,7 @@ using System.Net;
 using System.Net.Cache;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Test.Services.Message;
 using Version = Test.Models.Version;
 
@@ -33,9 +34,21 @@ namespace Test.Services.GLUpdater
             private set => getNewInfo = value;
         }
 
+        private bool update;
+        public bool Update
+        {
+            get => update;
+            private set => update = value;
+        }
+
         private readonly string URLVersion = "https://raw.githubusercontent.com/Sereoj/uploads/main/ds_new/version.txt";
         private readonly string URLInformation = "https://raw.githubusercontent.com/Sereoj/uploads/main/ds_new/info.txt";
 
+
+        ~GLUpdater()
+        {
+            GC.Collect(4, GCCollectionMode.Optimized, true);
+        }
 
         private bool СompareVersions(System.Version current, System.Version actual)
         {
@@ -52,8 +65,15 @@ namespace Test.Services.GLUpdater
         public bool IsUpdate()
         {
             var version = RequestAsync(URLVersion).Result;
-            ValidateVersion(NewVersion);
-            return СompareVersions(new System.Version(Version.Model.GetVersion(false)), new System.Version(version));
+            ValidateVersion(version);
+            if(СompareVersions(new System.Version(Version.Model.GetVersion(false)), new System.Version(version)))
+            {
+                NewVersion = version;
+                Update = true;
+                return true;
+            }
+            Update = false;
+            return false;
         }
 
         public void GetNewApplication()
