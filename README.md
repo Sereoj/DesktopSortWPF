@@ -23,4 +23,5 @@
 **.Net Framework 4.5**
 
 Рекомендую: [Загрузить последнюю версию DesktopSort WPF](https://github.com/Sereoj/DesktopSortWPF/releases)
-Note: All download options are compatible with Windows 7 or higher. Other operating systems are not supported.
+
+*Note: All download options are compatible with Windows 7 or higher. Other operating systems are not supported.
