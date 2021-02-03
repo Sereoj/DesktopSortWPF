@@ -1,37 +1,27 @@
-## Welcome to GitHub Pages
+# DesktopSortWPF
+**Desktop Sort** - Это мгновенная сортировка файлов по папкам. Если придя за свое рабочее место вы обнаружите, что весь рабочий стол забит разными файлами, а ваш внутренний перфекционизм желает от этого всего избавиться, то **Desktop Sort** программа именно для вас!
 
-You can use the [editor on GitHub](https://github.com/Sereoj/DesktopSortWPF/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+⚠️ **Статус проекта: В разработке. (Возможны незначительные ошибки)**
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Приложение не требует установку, все настройки записываются и применяются из файла конфиругации data.xml
 
-### Markdown
+## Суть
+В образовательных учреждениях чаще всего полностью засорянные компьютеры, как рабочие столы, так и документы. В таком формате ф.. что найдешь, а иногда хочется порядка.
+Приложение копирует / перемещает файлы из одной области в другую, сортируя по указанным папкам.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## Возможности
 
-```markdown
-Syntax highlighted code block
+- Возможность запуска с аргументами ( File.exe C:\\Input C:\\Output )
+- Имеется темы (Светлая / Темная )
+- Проверка обновлений / Добавление своего заднего фона / Отключение фона.
+- 11 Стандартных шаблонов для сортировки форматов.
+- 10 Шаблонов для своих форматов с указанием своих папок.
+- Редактирование директорий и расширений для каждого переключателя.
 
-# Header 1
-## Header 2
-### Header 3
+## Скачать
 
-- Bulleted
-- List
+**.Net Framework 4.5**
 
-1. Numbered
-2. List
+Рекомендую: [Загрузить последнюю версию DesktopSort WPF](https://github.com/Sereoj/DesktopSortWPF/releases)
 
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Sereoj/DesktopSortWPF/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+*Note: All download options are compatible with Windows 7 or higher. Other operating systems are not supported.*
