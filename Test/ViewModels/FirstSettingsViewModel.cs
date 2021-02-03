@@ -1,12 +1,8 @@
-﻿using System.ComponentModel;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using System.Windows.Input;
 using Test.Infrastucture.Commands;
 using Test.Models.Settings;
-using Test.Services.GLUpdater;
 using Test.ViewModels.Base;
-using Test.Views.Controls;
 
 namespace Test.ViewModels
 {
@@ -176,7 +172,6 @@ namespace Test.ViewModels
                     if (isChecked != null) Model.Items[20].IsChecked = (bool)isChecked;
                     break;
             }
-
         }
         #endregion 
         #endregion
