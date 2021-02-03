@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:Test.ViewModels"
         xmlns:uc="clr-namespace:Test.Views.Controls"
+        xmlns:local="clr-namespace:Test.Models.Helpers"
         Title="{Binding Title}" Height="506" Width="764"
         ResizeMode="NoResize" WindowStyle="None"
         WindowState="{Binding MainWindowState, Mode=TwoWay}"
@@ -16,9 +17,10 @@
         <DataTemplate DataType="{x:Type uc:Settings}">
             <uc:Settings />
         </DataTemplate>
+        <local:NullImageConverter x:Key="nullImageConverter"/>
     </Window.Resources>
     <Window.DataContext>
-        <vm:MainWindowViewModel />
+        <vm:MainWindowViewModel/>
     </Window.DataContext>
     <Grid Background="{DynamicResource BackMediumColor}">
         <Grid.ColumnDefinitions>
@@ -26,7 +28,7 @@
             <ColumnDefinition Width="139*" />
         </Grid.ColumnDefinitions>
 
-        <Image Source="{Binding PathImageBackground}" Stretch="Fill" Grid.ColumnSpan="2" Visibility="Visible" />
+        <Image Source="{Binding PathImageBackground, Converter={StaticResource nullImageConverter}}" Stretch="Fill" Grid.ColumnSpan="2" Visibility="Visible" />
 
         <Grid Grid.ColumnSpan="2">
             <Grid.RowDefinitions>

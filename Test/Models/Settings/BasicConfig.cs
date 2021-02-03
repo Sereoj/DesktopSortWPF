@@ -5,7 +5,7 @@ namespace Test.Models.Settings
     public class BasicConfig
     {
         /*
-        Индувидуальная настройка каждого объекта, который имеет id и "включен" ли он. 
+        Индивидуальная настройка каждого объекта, который имеет id и "включен" ли он. 
         */
         [XmlAttribute]
         public string ID { get; set; }
