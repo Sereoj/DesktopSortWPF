@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Windows;
+﻿using System.Collections.ObjectModel;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Test.Infrastucture.Commands;
+using Test.Models.Helpers;
 using Test.Models.Settings;
-using Test.Services.Theme;
 using Test.ViewModels.Base;
 using static Test.Services.Theme.Theme;
 
@@ -16,8 +14,7 @@ namespace Test.ViewModels
 
         private ThemeTypes _itemSelected;
         private SettingsModel Settings { get; set; }
-
-
+        public Imager Imager { get; }
         public ObservableCollection<ThemeTypes> ThemeTypesList { get; set; }
         public ThemeTypes ItemSelected { 
             set{
@@ -44,6 +41,13 @@ namespace Test.ViewModels
                     break;
                 case "CheckIsBackground":
                     Settings.Advanced.AdvancedConfig.IsBackground = (bool)checkbox.IsChecked;
+                    if (!(bool)checkbox.IsChecked)
+                    {
+                        Imager.Visible = System.Windows.Visibility.Visible;
+                        Imager.Set(Settings.Advanced.AdvancedConfig.Background);
+                    }
+                    else
+                        Imager.Visible = System.Windows.Visibility.Hidden;
                     break;
             }
             SettingsModel.Update(Settings);
@@ -72,6 +76,8 @@ namespace Test.ViewModels
         public SecondSettingViewModel()
         {
             Settings = SettingsModel.Instance;
+
+            Imager = Imager.Model;
 
             ThemeTypesList = new ObservableCollection<ThemeTypes>() { ThemeTypes.Light, ThemeTypes.Dark};
 

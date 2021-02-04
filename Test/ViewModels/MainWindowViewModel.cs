@@ -16,26 +16,6 @@ namespace Test.ViewModels
 {
     internal class MainWindowViewModel : ViewModel
     {
-        public MainWindowViewModel()
-        {
-            model = FileManager.Model;
-            model1 = Version.Model;
-            model2 = SettingsModel.Instance;
-
-
-
-            model.PropertyChanged += Model_PropertyChanged;
-
-            #region Commands
-
-            MinimalizeApplicationCommand = new RelayCommand(OnMinimalizeApplicationCommandExecuted,CanMinimalizeApplicationCommanddExecute);
-            CloseApplicationCommand = new RelayCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute);
-            PageButtonCommand = new RelayCommand(OnPageButtonCommandExecuted, CanPageButtonCommandExecute);
-
-            #endregion
-
-            Task.Run(Init);
-        }
 
         private void SetTitle()
         {
@@ -54,7 +34,7 @@ namespace Test.ViewModels
 
             if (!model2.Advanced.AdvancedConfig.IsBackground)
             {
-                PathImageBackground = Imager.Change(model2.Advanced.AdvancedConfig.Background);
+                PathImageBackground = Imager.Set(model2.Advanced.AdvancedConfig.Background);
             }
 
             // Применение title
@@ -92,19 +72,42 @@ namespace Test.ViewModels
                 OnPropertyChanged("Result");
         }
 
+        private void Imager_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            //MessageBox.Show(e.PropertyName);
+            switch (e.PropertyName)
+            {
+                case "BackVisible":
+                    VisibilityImageBackground = Visibility.Visible;
+                    SetMessage("Visible");
+                    break;
+                case "BackHidden":
+                    VisibilityImageBackground = Visibility.Hidden;
+                    SetMessage("Hidden");
+                    break;
+                case "Uri":
+                    PathImageBackground = Imager.Uri;
+                    SetMessage("BackChanged");
+                    break;
+            }
+        }
+
         #region Values
 
         private string _Title;
         private WindowState _MainWindowState;
 
         private string _PathImageBackground;
+        private Visibility _VisibilityImageBackground;
 
 
-
-        private readonly Main main = new Main();
-        private readonly Settings settings = new Settings();
+        private readonly Main main;
+        private readonly Settings settings;
         private readonly FileManager model;
         private readonly SettingsModel model2;
+
+        public Imager Imager { get; }
+
         private readonly Version model1;
         private object _SelectedItem;
 
@@ -130,6 +133,12 @@ namespace Test.ViewModels
         {
             get => _PathImageBackground;
             set => Set(ref _PathImageBackground, value);
+        }
+
+        public Visibility VisibilityImageBackground
+        {
+            get => _VisibilityImageBackground;
+            set => Set(ref _VisibilityImageBackground, value);
         }
 
 
@@ -201,5 +210,32 @@ namespace Test.ViewModels
         #endregion
 
         #endregion
+
+
+        public MainWindowViewModel()
+        {
+            settings = new Settings();
+            main = new Main();
+
+            model = FileManager.Model;
+            model1 = Version.Model;
+            model2 = SettingsModel.Instance;
+
+            Imager = Imager.Model;
+            Imager.PropertyChanged += Imager_PropertyChanged;
+
+            model.PropertyChanged += Model_PropertyChanged;
+
+            #region Commands
+
+            MinimalizeApplicationCommand = new RelayCommand(OnMinimalizeApplicationCommandExecuted, CanMinimalizeApplicationCommanddExecute);
+            CloseApplicationCommand = new RelayCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute);
+            PageButtonCommand = new RelayCommand(OnPageButtonCommandExecuted, CanPageButtonCommandExecute);
+
+            #endregion
+
+            Task.Run(Init);
+        }
+
     }
 }

@@ -6,7 +6,7 @@
         xmlns:vm="clr-namespace:Test.ViewModels"
         xmlns:uc="clr-namespace:Test.Views.Controls"
         xmlns:local="clr-namespace:Test.Models.Helpers"
-        Title="{Binding Title}" Height="506" Width="764"
+        Title="DesktopSortWPF" Height="506" Width="764"
         ResizeMode="NoResize" WindowStyle="None"
         WindowState="{Binding MainWindowState, Mode=TwoWay}"
         Icon="/Test;component/Resources/Images/Icon/window.ico">
@@ -28,7 +28,7 @@
             <ColumnDefinition Width="139*" />
         </Grid.ColumnDefinitions>
 
-        <Image Source="{Binding PathImageBackground, Converter={StaticResource nullImageConverter}}" Stretch="Fill" Grid.ColumnSpan="2" Visibility="Visible" />
+        <Image Source="{Binding PathImageBackground, Converter={StaticResource nullImageConverter}}" Stretch="Fill" Grid.ColumnSpan="2" Visibility="{Binding VisibilityImageBackground}" />
 
         <Grid Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
