@@ -61,6 +61,7 @@ namespace Test.ViewModels
         {
             VisibilityUpdate = "Visible";
             UpdateInformation = GLUpdater.Model.GetResult();
+
             UpdateApplicationButton = new RelayCommand(OnUpdateApplicationButtonExecuted, CanUpdateApplicationButtonExecute);
         }
     }

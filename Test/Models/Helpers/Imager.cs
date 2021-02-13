@@ -1,26 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Windows;
+using Test.ViewModels.Base;
 
 namespace Test.Models.Helpers
 {
-    internal static class Imager
+    internal class Imager : ViewModel
     {
-        private static string Uri { get; set; }
 
-        public static string Change(string uri)
+        private static Imager _model;
+
+        public static Imager Model => _model ??= new Imager();
+
+
+        private string uri;
+        private Visibility visible;
+        public string Uri
         {
-            return SetBackground(uri);
+            get => uri;
+            set
+            {
+                Set(ref uri, value);
+            }
         }
 
-        private static string SetBackground(string uri)
+
+        public Visibility Visible
+        {
+            get => visible;
+            set
+            {
+                visible = value;
+                if (visible  == Visibility.Hidden)
+                    OnPropertyChanged("BackHidden");
+                else
+                    OnPropertyChanged("BackVisible");
+            }
+        }
+
+        public string Set(string uri)
         {
             switch (uri)
             {
                 case "standard":
                     Uri = "/Test;component/Resources/Images/Background.bmp";
+                    OnPropertyChanged("Uri");
                     break;
                 case "light":
                     Uri = "/Test;component/Resources/Images/light.bmp";
@@ -30,7 +52,9 @@ namespace Test.Models.Helpers
                     break;
                 default:
                     if (uri.IsFile())
+                    {
                         Uri = uri;
+                    }
                     break;
             }
             return Uri;

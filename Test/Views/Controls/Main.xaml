@@ -29,8 +29,22 @@
         <TextBlock Grid.Row="2" Name="TextBoxOutput" Text="Укажите путь до папки"
                    Style="{DynamicResource TextBlockLeft}" Foreground="{DynamicResource ForegroundTextD}" />
 
-        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding TextBoxPath, Mode=TwoWay}" Style="{DynamicResource TextBoxStyle}" />
-        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding TextBoxPath1, Mode=TwoWay}" Style="{DynamicResource TextBoxStyle}" />
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding TextBoxPath, Mode=TwoWay}" Style="{DynamicResource TextBoxStyle}">
+            <TextBox.ToolTip>
+                <ToolTip Content="Используйте клавишу Enter"/>
+            </TextBox.ToolTip>
+            <TextBox.InputBindings>
+                <KeyBinding Key="Enter" Command="{Binding FileDialogButtonCommand}" CommandParameter="input"/>
+            </TextBox.InputBindings>
+        </TextBox>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding TextBoxPath1, Mode=TwoWay}" Style="{DynamicResource TextBoxStyle}">
+            <TextBox.ToolTip>
+                <ToolTip Content="Используйте клавишу Enter"/>
+            </TextBox.ToolTip>
+            <TextBox.InputBindings>
+                <KeyBinding Key="Enter" Command="{Binding FileDialogButtonCommand}" CommandParameter="output"/>
+            </TextBox.InputBindings>
+        </TextBox>
 
         <Button Grid.Row="1" Grid.Column="2" Content="&#xE92f;" Style="{DynamicResource ButtonIcons}"
                 Command="{Binding FileDialogButtonCommand}" CommandParameter="input" />
