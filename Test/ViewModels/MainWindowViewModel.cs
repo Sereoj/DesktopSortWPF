@@ -34,7 +34,7 @@ namespace Test.ViewModels
 
             #endregion
 
-            Task.Run(Init);
+            Task.Run(() => Init());
         }
 
         private void SetTitle()

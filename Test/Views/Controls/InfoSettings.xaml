@@ -16,7 +16,7 @@
             <RowDefinition />
             <RowDefinition Height="90" />
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="О программе" FontSize="16" Margin="10,5,0,0"
+        <TextBlock Grid.Row="0" Text="{Binding Name}" FontSize="16" Margin="10,5,0,0"
                    Style="{DynamicResource TextBlockTitle}" />
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
@@ -25,7 +25,7 @@
             </Grid.RowDefinitions>
             <TextBlock
                            Text="Desktop Sort - Это мгновенная сортировка файлов по папкам. Если придя за свое рабочее место вы обнаружите, что весь рабочий стол забит разными файлами, а ваш внутренний перфекционизм желает от этого всего избавиться, то Desktop Sort программа именно для вас!"
-                           Foreground="White"
+                           Foreground="{DynamicResource ForegroundTextD}"
                            Margin="20,20,20,40"
                            FontFamily="/Test;component/Fonts/OpenSans/#Open Sans Light"
                            FontSize="14"
@@ -33,7 +33,7 @@
                            FontWeight="Light" />
             <TextBlock
                            Text="Открытый исходный код! C# + WPF + MVVM / Дата старта 31.12.20"
-                           Foreground="White"
+                           Foreground="{DynamicResource ForegroundTextD}"
                            Margin="20,90,0,20"
                            FontFamily="/Test;component/Fonts/OpenSans/#Open Sans Light"
                            FontSize="14"
@@ -54,24 +54,24 @@
                                    Style="{DynamicResource TextBlockTitle}" Grid.ColumnSpan="2" />
 
                 <Button Grid.Row="1"  Content="&#xEAB0;" Style="{DynamicResource ButtonIconsSettingsInfo}" Height="Auto" Margin="0.5,0" Width="Auto"
-                                Command="{Binding HelpMembers}" CommandParameter="member1" />
+                                Command="{Binding HelpMembers}" CommandParameter="member1" Foreground="{DynamicResource ForegroundTextD}" />
 
                 <TextBlock Grid.Column="1" Grid.Row="1" Text="SergioStrangeS - Контент менеджмент"
                                Margin="5,5,0,0"
-                               Foreground="White"
+                               Foreground="{DynamicResource ForegroundTextD}"
                                FontFamily="/Test;component/Fonts/OpenSans/#Open Sans Light"
                                FontSize="12"/>
-                <Button Grid.Row="2"  Content="&#xEAB0;" Style="{DynamicResource ButtonIconsSettingsInfo}" Height="Auto" Margin="0.5,0" Width="Auto"
-                                Command="{Binding HelpMembers}" CommandParameter="member2"/>
+                <Button Grid.Row="2"  Content="&#xEAB0;" Style="{DynamicResource ButtonIconsSettingsInfo}" Height="Auto" Margin="0.5,0" Width="Auto" 
+                                Command="{Binding HelpMembers}" CommandParameter="member2" Foreground="{DynamicResource ForegroundTextD}"/>
                 <TextBlock Grid.Column="1" Grid.Row="2" Text="MerHI - Дизайн"
                                Margin="5,5,0,0"
-                               Foreground="White"
+                               Foreground="{DynamicResource ForegroundTextD}"
                                FontFamily="/Test;component/Fonts/OpenSans/#Open Sans Light"
                                FontSize="12"/>
             </Grid>
         </Grid>
         <Grid Grid.Row="2">
-            <TextBlock Text="Контакты" FontSize="16" Margin="10,5,0,70"
+            <TextBlock Text="Контакты" FontSize="16" Margin="10,5,0,63"
                    Style="{DynamicResource TextBlockTitle}"/>
             <Grid Margin="20,40,20,10">
                 <Grid.ColumnDefinitions>
@@ -80,8 +80,8 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="180"/>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="1" Content="&#xE9CA;" Style="{DynamicResource ButtonIconsSettingsInfo}" Margin="15,7,100,9" Command="{Binding HelpMembers}" CommandParameter="site" />
-                <Button Grid.Column="2" Content="&#xEAB0;" Style="{DynamicResource ButtonIconsSettingsInfo}" Margin="15,7,100,9" Command="{Binding HelpMembers}" CommandParameter="github" />
+                <Button Grid.Column="1" Content="&#xE9CA;" Style="{DynamicResource ButtonIconsSettingsInfo}" Foreground="{DynamicResource ForegroundTextD}" Margin="15,7,100,9" Command="{Binding HelpMembers}" CommandParameter="site" />
+                <Button Grid.Column="2" Content="&#xEAB0;" Style="{DynamicResource ButtonIconsSettingsInfo}" Foreground="{DynamicResource ForegroundTextD}" Margin="15,7,100,9" Command="{Binding HelpMembers}" CommandParameter="github" />
             </Grid>
 
         </Grid>

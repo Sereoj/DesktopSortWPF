@@ -1,16 +1,12 @@
-﻿using System.ComponentModel;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using System.Windows.Input;
 using Test.Infrastucture.Commands;
 using Test.Models.Settings;
-using Test.Services.GLUpdater;
 using Test.ViewModels.Base;
-using Test.Views.Controls;
 
 namespace Test.ViewModels
 {
-    internal class FirstSettingsViewModel : ViewModel
+    internal class FirstSettingsViewModel : ViewModel, IApplicationContentView
     {
         #region values
         private SettingsModel Model { get; set; }
@@ -29,6 +25,11 @@ namespace Test.ViewModels
             get => _updateTextExtension;
             set => Set(ref _updateTextExtension, value);
         }
+
+        public string Name => "Настройки // Фильтрация";
+
+        private bool _isLoading;
+        public bool IsLoading { get => _isLoading; set => Set(ref _isLoading, value); }
         #endregion
 
         #region Commands
@@ -191,95 +192,101 @@ namespace Test.ViewModels
 
         private void UpdateSettings(CheckBox lastActiveCheckBox)
         {
-
-            switch (lastActiveCheckBox.Name)
+            if(lastActiveCheckBox != null)
             {
-                case "CheckFormat1":
-                    Model.Items[0].Catalog = UpdateTextDirectory;
-                    Model.Items[0].Extension = UpdateTextExtension;
-                    break;
-                case "CheckFormat2":
-                    Model.Items[1].Catalog = UpdateTextDirectory;
-                    Model.Items[1].Extension = UpdateTextExtension;
-                    break;
-                case "CheckFormat3":
-                    Model.Items[2].Catalog = UpdateTextDirectory;
-                    Model.Items[2].Extension = UpdateTextExtension;
-                    break;
-                case "CheckFormat4":
-                    Model.Items[3].Catalog = UpdateTextDirectory;
-                    Model.Items[3].Extension = UpdateTextExtension;
-                    break;
-                case "CheckFormat5":
-                    Model.Items[4].Catalog = UpdateTextDirectory;
-                    Model.Items[4].Extension = UpdateTextExtension;
-                    break;
-                case "CheckFormat6":
-                    Model.Items[5].Catalog = UpdateTextDirectory;
-                    Model.Items[5].Extension = UpdateTextExtension;
-                    break;
-                case "CheckFormat7":
-                    Model.Items[6].Catalog = UpdateTextDirectory;
-                    Model.Items[6].Extension = UpdateTextExtension;
-                    break;
-                case "CheckFormat8":
-                    Model.Items[7].Catalog = UpdateTextDirectory;
-                    Model.Items[7].Extension = UpdateTextExtension;
-                    break;
-                case "CheckFormat9":
-                    Model.Items[8].Catalog = UpdateTextDirectory;
-                    Model.Items[8].Extension = UpdateTextExtension;
-                    break;
-                case "CheckFormat10":
-                    Model.Items[9].Catalog = UpdateTextDirectory;
-                    Model.Items[9].Extension = UpdateTextExtension;
-                    break;
-                case "CheckFormat11":
-                    Model.Items[10].Catalog = UpdateTextDirectory;
-                    Model.Items[10].Extension = UpdateTextExtension;
-                    break;
-                case "CheckFormat12":
-                    Model.Items[11].Catalog = UpdateTextDirectory;
-                    Model.Items[11].Extension = UpdateTextExtension;
-                    break;
-                case "CheckFormat13":
-                    Model.Items[12].Catalog = UpdateTextDirectory;
-                    Model.Items[12].Extension = UpdateTextExtension;
-                    break;
-                case "CheckFormat14":
-                    Model.Items[13].Catalog = UpdateTextDirectory;
-                    Model.Items[13].Extension = UpdateTextExtension;
-                    break;
-                case "CheckFormat15":
-                    Model.Items[14].Catalog = UpdateTextDirectory;
-                    Model.Items[14].Extension = UpdateTextExtension;
-                    break;
-                case "CheckFormat16":
-                    Model.Items[15].Catalog = UpdateTextDirectory;
-                    Model.Items[15].Extension = UpdateTextExtension;
-                    break;
-                case "CheckFormat17":
-                    Model.Items[16].Catalog = UpdateTextDirectory;
-                    Model.Items[16].Extension = UpdateTextExtension;
-                    break;
-                case "CheckFormat18":
-                    Model.Items[17].Catalog = UpdateTextDirectory;
-                    Model.Items[17].Extension = UpdateTextExtension;
-                    break;
-                case "CheckFormat19":
-                    Model.Items[18].Catalog = UpdateTextDirectory;
-                    Model.Items[18].Extension = UpdateTextExtension;
-                    break;
-                case "CheckFormat20":
-                    Model.Items[19].Catalog = UpdateTextDirectory;
-                    Model.Items[19].Extension = UpdateTextExtension;
-                    break;
-                case "CheckFormat21":
-                    Model.Items[20].Catalog = UpdateTextDirectory;
-                    Model.Items[20].Extension = UpdateTextExtension;
-                    break;
+                switch (lastActiveCheckBox.Name)
+                {
+                    case "CheckFormat1":
+                        Model.Items[0].Catalog = UpdateTextDirectory;
+                        Model.Items[0].Extension = UpdateTextExtension;
+                        break;
+                    case "CheckFormat2":
+                        Model.Items[1].Catalog = UpdateTextDirectory;
+                        Model.Items[1].Extension = UpdateTextExtension;
+                        break;
+                    case "CheckFormat3":
+                        Model.Items[2].Catalog = UpdateTextDirectory;
+                        Model.Items[2].Extension = UpdateTextExtension;
+                        break;
+                    case "CheckFormat4":
+                        Model.Items[3].Catalog = UpdateTextDirectory;
+                        Model.Items[3].Extension = UpdateTextExtension;
+                        break;
+                    case "CheckFormat5":
+                        Model.Items[4].Catalog = UpdateTextDirectory;
+                        Model.Items[4].Extension = UpdateTextExtension;
+                        break;
+                    case "CheckFormat6":
+                        Model.Items[5].Catalog = UpdateTextDirectory;
+                        Model.Items[5].Extension = UpdateTextExtension;
+                        break;
+                    case "CheckFormat7":
+                        Model.Items[6].Catalog = UpdateTextDirectory;
+                        Model.Items[6].Extension = UpdateTextExtension;
+                        break;
+                    case "CheckFormat8":
+                        Model.Items[7].Catalog = UpdateTextDirectory;
+                        Model.Items[7].Extension = UpdateTextExtension;
+                        break;
+                    case "CheckFormat9":
+                        Model.Items[8].Catalog = UpdateTextDirectory;
+                        Model.Items[8].Extension = UpdateTextExtension;
+                        break;
+                    case "CheckFormat10":
+                        Model.Items[9].Catalog = UpdateTextDirectory;
+                        Model.Items[9].Extension = UpdateTextExtension;
+                        break;
+                    case "CheckFormat11":
+                        Model.Items[10].Catalog = UpdateTextDirectory;
+                        Model.Items[10].Extension = UpdateTextExtension;
+                        break;
+                    case "CheckFormat12":
+                        Model.Items[11].Catalog = UpdateTextDirectory;
+                        Model.Items[11].Extension = UpdateTextExtension;
+                        break;
+                    case "CheckFormat13":
+                        Model.Items[12].Catalog = UpdateTextDirectory;
+                        Model.Items[12].Extension = UpdateTextExtension;
+                        break;
+                    case "CheckFormat14":
+                        Model.Items[13].Catalog = UpdateTextDirectory;
+                        Model.Items[13].Extension = UpdateTextExtension;
+                        break;
+                    case "CheckFormat15":
+                        Model.Items[14].Catalog = UpdateTextDirectory;
+                        Model.Items[14].Extension = UpdateTextExtension;
+                        break;
+                    case "CheckFormat16":
+                        Model.Items[15].Catalog = UpdateTextDirectory;
+                        Model.Items[15].Extension = UpdateTextExtension;
+                        break;
+                    case "CheckFormat17":
+                        Model.Items[16].Catalog = UpdateTextDirectory;
+                        Model.Items[16].Extension = UpdateTextExtension;
+                        break;
+                    case "CheckFormat18":
+                        Model.Items[17].Catalog = UpdateTextDirectory;
+                        Model.Items[17].Extension = UpdateTextExtension;
+                        break;
+                    case "CheckFormat19":
+                        Model.Items[18].Catalog = UpdateTextDirectory;
+                        Model.Items[18].Extension = UpdateTextExtension;
+                        break;
+                    case "CheckFormat20":
+                        Model.Items[19].Catalog = UpdateTextDirectory;
+                        Model.Items[19].Extension = UpdateTextExtension;
+                        break;
+                    case "CheckFormat21":
+                        Model.Items[20].Catalog = UpdateTextDirectory;
+                        Model.Items[20].Extension = UpdateTextExtension;
+                        break;
+                }
             }
         }
 
+        public void Init()
+        {
+           // throw new System.NotImplementedException();
+        }
     }
 }

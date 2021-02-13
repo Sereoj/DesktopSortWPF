@@ -90,6 +90,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Resources\Colors\classic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Resources\Colors\dark.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -157,6 +161,7 @@
     <Compile Include="Models\FileManagerModel\StringHelperDirectory.cs" />
     <Compile Include="Models\Helpers\Imager.cs" />
     <Compile Include="Models\Helpers\StringHelperFile.cs" />
+    <Compile Include="Models\PathValidationRule.cs" />
     <Compile Include="Models\Settings\AdvancedSettings.cs" />
     <Compile Include="Models\Settings\BasicConfig.cs" />
     <Compile Include="Models\Settings\AdvancedConfig.cs" />
@@ -166,8 +171,10 @@
     <Compile Include="Services\GLUpdater\GLUpdater.cs" />
     <Compile Include="Services\Message\CLMessage.cs" />
     <Compile Include="Services\Theme\Theme.cs" />
+    <Compile Include="ViewModels\ApplicationNavigationMode.cs" />
     <Compile Include="ViewModels\Base\ViewModel.cs" />
     <Compile Include="ViewModels\FirstSettingsViewModel.cs" />
+    <Compile Include="ViewModels\IApplicationContentView.cs" />
     <Compile Include="ViewModels\InfoSettingsViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\SecondSettingViewModel.cs" />
@@ -234,7 +241,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Base\" />
-    <Folder Include="Templates\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\Icon\window.ico" />

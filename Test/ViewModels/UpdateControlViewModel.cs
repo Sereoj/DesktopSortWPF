@@ -10,7 +10,7 @@ using Test.Views.Controls;
 
 namespace Test.ViewModels
 {
-    internal class UpdateControlViewModel : ViewModel
+    internal class UpdateControlViewModel : ViewModel, IApplicationContentView
     {
         private string _updateInformation;
         public string UpdateInformation
@@ -23,6 +23,7 @@ namespace Test.ViewModels
         }
 
         private string _VisibilityUpdate;
+        private bool _isLoading;
 
         public string VisibilityUpdate
         {
@@ -30,7 +31,16 @@ namespace Test.ViewModels
             set => Set(ref _VisibilityUpdate, value);
         }
 
+        public string Name => "Настройки // Обновление";
+
+        public bool IsLoading
+        {
+            get => _isLoading;
+            set => Set(ref _isLoading, value);
+        }
+
         public ICommand UpdateApplicationButton { get; }
+
 
         private bool CanUpdateApplicationButtonExecute(object p)
         {
@@ -40,6 +50,11 @@ namespace Test.ViewModels
         private void OnUpdateApplicationButtonExecuted(object p)
         {
             GLUpdater.Model.GetNewApplication();       
+        }
+
+        public void Init()
+        {
+            throw new System.NotImplementedException();
         }
 
         public UpdateControlViewModel()

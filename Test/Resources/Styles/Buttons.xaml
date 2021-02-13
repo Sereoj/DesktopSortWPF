@@ -4,9 +4,8 @@
     <Style x:Key="ButtonToolbar" TargetType="Button">
         <Setter Property="FontFamily" Value="/Resources/Fonts/#IcoMoon-Free" />
         <Setter Property="FontSize" Value="16" />
-        <Setter Property="BorderBrush" Value="{DynamicResource BackDarkColor}" />
-        <Setter Property="Background" Value="{DynamicResource BackDarkColor}" />
-        <Setter Property="Foreground" Value="{DynamicResource HeaderTopColor}" />
+        <Setter Property="Background" Value="{DynamicResource BackgroundWindowL}" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundTextD}" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Template">
             <Setter.Value>
@@ -18,10 +17,10 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource BackMouseOverColor}" />
+                            <Setter Property="Background" Value="{DynamicResource BackgroundWindowD}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource BackPressedColor}" />
+                            <Setter Property="Opacity" Value="0.8" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -33,7 +32,7 @@
         <Setter Property="FontFamily" Value="/Resources/Fonts/#IcoMoon-Free" />
         <Setter Property="FontSize" Value="24" />
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Foreground" Value="{DynamicResource BackDarkColor}" />
+        <Setter Property="Foreground" Value="{DynamicResource BackgroundControlD}" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Height" Value="24" />
         <Setter Property="Width" Value="24" />
@@ -47,10 +46,10 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="{DynamicResource BackMouseOverColor}" />
+                            <Setter Property="Foreground" Value="{DynamicResource BackgroundControlL}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Foreground" Value="{DynamicResource BackPressedColor}" />
+                            <Setter Property="Opacity" Value="0.8" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -62,7 +61,7 @@
         <Setter Property="FontFamily" Value="/Resources/Fonts/#IcoMoon-Free" />
         <Setter Property="FontSize" Value="20" />
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Foreground" Value="{DynamicResource ForeContentLightColor}" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundTextD}" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Height" Value="24" />
         <Setter Property="Width" Value="24" />
@@ -76,7 +75,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="{DynamicResource ForeContentDarkColor}" />
+                            <Setter Property="Opacity" Value="0.8" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -121,8 +120,8 @@
     <Style x:Key="ButtonStyle" TargetType="Button">
         <Setter Property="FontFamily" Value="/Resources/Fonts/#Open Sans" />
         <Setter Property="FontSize" Value="14.5" />
-        <Setter Property="Background" Value="{DynamicResource BackDarkColor}" />
-        <Setter Property="Foreground" Value="{DynamicResource WindowColor}" />
+        <Setter Property="Background" Value="{DynamicResource BackgroundControlD}" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundTextL}" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Height" Value="43" />
         <Setter Property="Width" Value="241" />
@@ -147,10 +146,10 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource BackMouseOverColor}" />
+                            <Setter Property="Background" Value="{DynamicResource BackgroundControlL}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource BackPressedColor}" />
+                            <Setter Property="Opacity" Value="0.8" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -161,8 +160,8 @@
     <Style x:Key="ButtonStyleSettings" TargetType="Button">
         <Setter Property="FontFamily" Value="/Resources/Fonts/#Open Sans" />
         <Setter Property="FontSize" Value="14.5" />
-        <Setter Property="Background" Value="{DynamicResource BackDarkColor}" />
-        <Setter Property="Foreground" Value="{DynamicResource WindowColor}" />
+        <Setter Property="Background" Value="{DynamicResource BackgroundControlD}" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundTextL}" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Height" Value="36" />
         <Setter Property="Width" Value="110" />
@@ -177,10 +176,10 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource BackMouseOverColor}" />
+                            <Setter Property="Background" Value="{DynamicResource BackgroundControlL}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource BackPressedColor}" />
+                            <Setter Property="Opacity" Value="0.8" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

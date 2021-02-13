@@ -13,7 +13,6 @@ namespace Test
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            base.OnStartup(e);
             GLConsole.Model.Controller(e);
             SettingsModel.CreateInstance();
 

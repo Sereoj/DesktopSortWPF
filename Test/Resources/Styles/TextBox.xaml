@@ -2,16 +2,16 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <!--Верхняя панель кнопок-->
     <Style x:Key="TextBoxStyle" TargetType="TextBox">
-        <Setter Property="Foreground" Value="Black" />
-        <Setter Property="SelectionBrush" Value="{DynamicResource BackSelectedColor}" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundTextD}" />
+        <Setter Property="SelectionBrush" Value="{DynamicResource BackgroundWindowM}" />
         <Setter Property="Height" Value="36" />
         <Setter Property="Cursor" Value="IBeam" />
         <Setter Property="AllowDrop" Value="true" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
-                    <Border CornerRadius="15" Background="{TemplateBinding Background}">
-                        <ScrollViewer Margin="15,0,0,0"
+                    <Border CornerRadius="15" Background ="{DynamicResource BackgroundWindowD}" BorderBrush="{DynamicResource BackgroundControlL}" BorderThickness="1">
+                        <ScrollViewer Margin="15,0,20,0"
                                       HorizontalAlignment="Left"
                                       VerticalAlignment="Center"
                                       Focusable="True"

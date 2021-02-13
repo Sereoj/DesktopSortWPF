@@ -16,7 +16,7 @@
             <RowDefinition />
             <RowDefinition Height="90" />
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="Выберите необходимые форматы" FontSize="16" Margin="10,5,0,0"
+        <TextBlock Grid.Row="0" Text="{Binding Name}" FontSize="16" Margin="10,5,0,0"
                    Style="{DynamicResource TextBlockTitle}" />
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -57,9 +57,9 @@
             <CheckBox Content="Электронные книги" Name="CheckFormat11" Grid.Row="3" Grid.Column="1"
                       Style="{DynamicResource CheckBoxStyle}" Command="{Binding UpdateCheckBox}" CommandParameter="{Binding ElementName=CheckFormat11}"/>
             <CheckBox Content="Шаблон 1" Name="CheckFormat12" Grid.Row="4" Grid.Column="1"
-                      Style="{DynamicResource CheckBoxStyle}" Command="{Binding UpdateCheckBox}" CommandParameter="{Binding ElementName=CheckFormat12}"/>
+                      Style="{DynamicResource CheckBoxStyle}" Command="{Binding UpdateCheckBox}" CommandParameter="{Binding ElementName=CheckFormat12}" />
             <CheckBox Content="Шаблон 2" Name="CheckFormat13" Grid.Row="5" Grid.Column="1"
-                      Style="{DynamicResource CheckBoxStyle}" Command="{Binding UpdateCheckBox}" CommandParameter="{Binding ElementName=CheckFormat13}"/>
+                      Style="{DynamicResource CheckBoxStyle}" Command="{Binding UpdateCheckBox}" CommandParameter="{Binding ElementName=CheckFormat13}" />
             <CheckBox Content="Шаблон 3" Name="CheckFormat14" Grid.Row="6" Grid.Column="1"
                       Style="{DynamicResource CheckBoxStyle}" Command="{Binding UpdateCheckBox}" CommandParameter="{Binding ElementName=CheckFormat14}"/>
             <CheckBox Content="Шаблон 4" Name="CheckFormat15" Grid.Row="0" Grid.Column="2"
@@ -77,10 +77,10 @@
             <CheckBox Content="Шаблон 10" Name="CheckFormat21" Grid.Row="6" Grid.Column="2"      
                       Style="{DynamicResource CheckBoxStyle}" Command="{Binding UpdateCheckBox}" CommandParameter="{Binding ElementName=CheckFormat21}"/>
 
-            <Border Grid.RowSpan="7" Grid.Column="3" Background="{DynamicResource BackLightColor}" Margin="10,0" CornerRadius="5" Opacity="0.9">
+            <Border Grid.RowSpan="7" Grid.Column="3" Background="{DynamicResource ForegroundTextD}" Margin="10,0" CornerRadius="5" Opacity="0.9">
                 <TextBlock Text="Данная возможность выйдет в новой версии" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="/Test;component/Fonts/OpenSans/#Open Sans" FontWeight="Bold" TextWrapping="Wrap" Margin="5"/>
             </Border>
-            <Grid Grid.RowSpan="7" Grid.Column="3" IsEnabled="False" Opacity="0.3" Margin="10,0" Background="Black">
+            <Grid Grid.RowSpan="7" Grid.Column="3" IsEnabled="False" Opacity="0.8" Margin="10,0" Background="#858588">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
@@ -92,7 +92,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <TextBlock Text="Иконка для папки:" Style="{DynamicResource TextBlockLeft}"
-                           Foreground="{DynamicResource WindowColor}" Margin="5,5,0,0"/>
+                           Foreground="{DynamicResource ForegroundTextL}" Margin="5,5,0,0"/>
                 <Button HorizontalAlignment="Right" Content="&#xE931;"
                         Style="{DynamicResource ButtonIconsSettings}" Margin="0,0,5,0"/>
             </Grid>
@@ -105,14 +105,14 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" Text="Создаваемая папка:" Style="{DynamicResource TextBlockLeft}"
-                       Foreground="{DynamicResource WindowColor}" Margin="10,-30,0,0" />
+                       Foreground="{DynamicResource ForegroundTextD}" Margin="10,-30,0,0" />
             <TextBox Name="TextBoxDirectory"  Grid.Column="0" Text="{Binding UpdateTextDirectory, Mode=TwoWay}" Style="{DynamicResource TextBoxStyle}" Margin="5,35,5,0"/>
             <TextBlock Grid.Column="1" Text="Расширения:" Style="{DynamicResource TextBlockLeft}"
-                       Foreground="{DynamicResource WindowColor}" Margin="10,-30,0,0" />
+                       Foreground="{DynamicResource ForegroundTextD}" Margin="10,-30,0,0" />
             <TextBox Name="TextBoxExtension"  Grid.Column="1" Text="{Binding UpdateTextExtension, Mode=TwoWay}" Style="{DynamicResource TextBoxStyle}" Margin="5,35,5,0" />
 
-            <Button Grid.Column="2" HorizontalAlignment="Right" Content="Применить" Margin="0,42,10,12"
-                    Style="{DynamicResource ButtonStyleSettings}" Width="114" Command="{Binding ButtonSaveCommand}"/>
+            <Button Grid.Column="2" HorizontalAlignment="Right" Content="Применить" Margin="0,42,14,12"
+                    Style="{DynamicResource ButtonStyleSettings}" Width="115" Command="{Binding ButtonSaveCommand}"/>
         </Grid>
     </Grid>
 </UserControl>
