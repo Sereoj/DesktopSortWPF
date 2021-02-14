@@ -5,8 +5,8 @@
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Cursor" Value="Hand" />
-        <Setter Property="Margin" Value="10" />
-        <Setter Property="Height" Value="24" />
+        <Setter Property="Margin" Value="8" />
+        <Setter Property="Height" Value="20" />
         <Setter Property="Content" Value="" />
         <Setter Property="Template">
             <Setter.Value>
@@ -15,8 +15,8 @@
                         <BulletDecorator.Bullet>
                             <Border
                                 SnapsToDevicePixels="True"
-                                Background="{DynamicResource BackLightColor}"
-                                BorderBrush="{DynamicResource BorderDarkColor}"
+                                Background="{DynamicResource BackgroundWindowD}"
+                                BorderBrush="{DynamicResource BackgroundControlL}"
                                 BorderThickness="1,1,1,1"
                                 CornerRadius="5"
                                 Width="18"
@@ -26,27 +26,27 @@
                                            VerticalAlignment="Center"
                                            Text="&#xEA10;"
                                            FontFamily="/Resources/Fonts/#IcoMoon-Free"
-                                           Foreground="{DynamicResource ForeContentDarkColor}"
+                                           Foreground="{DynamicResource ForegroundTextD}"
                                            FontSize="10"
                                            Visibility="Hidden" />
                             </Border>
                         </BulletDecorator.Bullet>
 
                         <TextBlock Margin="4,0,0,0" HorizontalAlignment="Left" Text="{TemplateBinding Content}"
-                                   Foreground="{DynamicResource WindowColor}" />
+                                   Foreground="{DynamicResource ForegroundTextD}" />
                     </BulletDecorator>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="CheckBoxMark" Property="Visibility" Value="Visible" />
-                            <Setter Property="BorderBrush" Value="{DynamicResource BorderDarkColor}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource BackgroundControlL}" />
                         </Trigger>
                         <Trigger Property="IsChecked" Value="False">
                             <Setter TargetName="CheckBoxMark" Property="Visibility" Value="Hidden" />
-                            <Setter Property="BorderBrush" Value="{DynamicResource BorderLightColor}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource BackgroundControlD}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="CheckBoxMark" Property="Visibility" Value="Hidden" />
-                            <Setter Property="BorderBrush" Value="{DynamicResource DisabledBorderLightColor}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource BackgroundControlL}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

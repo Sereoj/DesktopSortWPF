@@ -25,9 +25,9 @@
             <ColumnDefinition Width="45" />
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="1" Name="TextBoxInput" Text="Укажите путь до папки"
-                   Style="{DynamicResource TextBlockLeft}" Foreground="{DynamicResource BackLightColor}" />
+                   Style="{DynamicResource TextBlockLeft}" Foreground="{DynamicResource ForegroundTextD}" />
         <TextBlock Grid.Row="2" Name="TextBoxOutput" Text="Укажите путь до папки"
-                   Style="{DynamicResource TextBlockLeft}" Foreground="{DynamicResource BackLightColor}" />
+                   Style="{DynamicResource TextBlockLeft}" Foreground="{DynamicResource ForegroundTextD}" />
 
         <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding TextBoxPath, Mode=TwoWay}" Style="{DynamicResource TextBoxStyle}">
             <TextBox.ToolTip>

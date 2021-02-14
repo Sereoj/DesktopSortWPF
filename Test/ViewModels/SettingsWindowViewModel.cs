@@ -20,8 +20,15 @@ namespace Test.ViewModels
         private readonly InfoSettings _infoSettings;
         private readonly UpdateControl _updateContol;
 
+
+        private Visibility visibility;
         private object _selectedItem;
 
+        public Visibility VisibilityUpdate
+        {
+            get => visibility;
+            set => Set(ref visibility, value);
+        }
         public object SelectedItem
         {
             get => _selectedItem;

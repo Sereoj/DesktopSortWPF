@@ -22,7 +22,7 @@
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
-    <Grid Background="{DynamicResource BackMediumColor}">
+    <Grid Background="{DynamicResource BackgroundWindowL}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="625*" />
             <ColumnDefinition Width="139*" />
@@ -46,16 +46,16 @@
             </Grid.ColumnDefinitions>
 
             <Grid Grid.ColumnSpan="4" Cursor="SizeAll" MouseDown="Grid_MouseDown"
-                  Background="{DynamicResource BackDarkColor}" />
-
-            <TextBlock Grid.Column="0" Style="{DynamicResource TextBlockTitle}">
-                <Run Text="Desktop Sort " /><LineBreak /><Run Text="16.PreAlpha" />
-            </TextBlock>
+                  Background="{DynamicResource BackgroundWindowL}" />
+            <Border Background="{DynamicResource BackgroundWindowM}" CornerRadius="100" Width="18" Height="18" HorizontalAlignment="Left" Margin="8,0,0,0" Opacity="0.6">
+                <Image Source="/Test;component/Resources/Images/Icon/window.ico" Height="12" Width="12"/>
+            </Border>
+            <TextBlock Grid.Column="0" Style="{DynamicResource TextBlockTitle}" Text="Desktop Sort" Margin="28,5,54,1.8" VerticalAlignment="Center" Height="21.373"/>
 
             <Button Grid.Column="2" Content="&#x005F;" Style="{DynamicResource ButtonToolbar}"
                     Command="{Binding MinimalizeApplicationCommand}" />
             <Button Grid.Column="3" Content="&#x0078;" Style="{DynamicResource ButtonToolbar}"
-                    Command="{Binding CloseApplicationCommand}" />
+                    Command="{Binding CloseApplicationCommand}"/>
             <ContentPresenter Grid.Row="1" Grid.ColumnSpan="4" Content="{Binding SelectedItem, Mode=TwoWay}" />
             <!--<uc:Main Grid.Row="1" Grid.ColumnSpan="4" Visibility="Visible"/>
             <uc:Settings Grid.Row="1" Grid.ColumnSpan="4" Visibility="Hidden"/>-->
@@ -64,10 +64,14 @@
             <Button Grid.Row="2" Grid.Column="2" Content="&#xE900;" Style="{DynamicResource ButtonIcons}"
                     Command="{Binding PageButtonCommand}" CommandParameter="home" />
 
-            <StatusBar Grid.Row="3" Grid.ColumnSpan="4" Background="{DynamicResource BackDarkColor}">
+            <StatusBar Grid.Row="3" Grid.ColumnSpan="4" Background="{DynamicResource BackgroundWindowL}">
                 <StatusBarItem>
-                    <TextBlock Text="{Binding Result}" Foreground="{DynamicResource WindowColor}" Margin="15,0,0,0" />
+                    <TextBlock Text="Info: " Foreground="{DynamicResource ForegroundTextD}" Margin="15,0,0,0"/>
                 </StatusBarItem>
+                <StatusBarItem>
+                    <TextBlock Text="{Binding Result}" Foreground="{DynamicResource ForegroundTextD}" Margin="15,0,0,0" />
+                </StatusBarItem>
+                
             </StatusBar>
         </Grid>
     </Grid>

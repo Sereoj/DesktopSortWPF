@@ -16,17 +16,30 @@
             <RowDefinition />
             <RowDefinition Height="90" />
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="Настройки приложения" FontSize="16" Margin="10,5,0,0"
+        <TextBlock Grid.Row="0" Text="{Binding Name}" FontSize="16" Margin="10,5,0,0"
                    Style="{DynamicResource TextBlockTitle}" />
         <Grid Grid.Row="1">
-            
+
             <Grid IsEnabled="True">
                 <CheckBox Name="CheckIsUpdate" Content="Проверять обновления автоматически" Style="{DynamicResource CheckBoxStyle}" Margin="15,16,419,219" Command="{Binding UpdateCheckBox}" CommandParameter="{Binding ElementName=CheckIsUpdate}"/>
                 <CheckBox Name="CheckIsBackground" Content="Отключить задний фон" Style="{DynamicResource CheckBoxStyle}" Margin="15,42,419,193" Command="{Binding UpdateCheckBox}" CommandParameter="{Binding ElementName=CheckIsBackground}"/>
-                <TextBlock Text="Выбор темы:" Style="{DynamicResource BaseTextBlock}" Margin="395,17,184,218" Foreground="{DynamicResource ForeContentLightColor}"/>
+                <CheckBox Name="DeleteImputDirectory" Content="Удалить первоначальную папку [Не рекомендуется]" Style="{DynamicResource CheckBoxStyle}" Margin="15,66,354,169" Command="{Binding UpdateCheckBox}" CommandParameter="{Binding ElementName=CheckIsBackground}"/>
+                <TextBlock Text="Выбор темы:" Style="{DynamicResource BaseTextBlock}" Margin="395,17,184,221" Foreground="{DynamicResource ForegroundTextD}" FontSize="14.5"/>
                 <ComboBox Name="BoxTheme"  Height="24" Width="160" Margin="510,16,14,219" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding ThemeTypesList, Mode=TwoWay}" SelectedItem="{Binding ItemSelected, Mode=TwoWay}" Style="{DynamicResource ComboBoxStyle}"/>
+
+
             </Grid>
 
+        </Grid>
+
+        <Grid Grid.Row="2" >
+            <Grid IsEnabled="False" Opacity="0.8" Margin="0,0" Background="#858588">
+                <TextBlock Text="Укажите путь для установки заднего изображения" Style="{DynamicResource BaseTextBlock}" FontSize="12" Foreground="{DynamicResource ForegroundTextD}" Margin="15,2,369,66"/>
+                <TextBox Text="standart" Style="{DynamicResource TextBoxStyle}" Margin="15,27,139,27"/>
+                <Button HorizontalAlignment="Right" Content="Применить" Margin="0,27,15,27"
+                    Style="{DynamicResource ButtonStyleSettings}" Width="114" Command="{Binding ButtonSaveCommand}"/>
+                <TextBlock HorizontalAlignment="Left" Margin="100,36.4,0,0" TextWrapping="Wrap" Text="Данная возможность выйдет в новой версии" Foreground="{DynamicResource ForegroundTextD}" VerticalAlignment="Top" Width="410"/>
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>

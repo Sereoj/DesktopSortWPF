@@ -16,6 +16,28 @@ namespace Test.ViewModels
 {
     internal class MainWindowViewModel : ViewModel
     {
+        public MainWindowViewModel()
+        {
+            model = FileManager.Model;
+            model1 = Version.Model;
+            model2 = SettingsModel.Instance;
+            imager = Imager.Model;
+
+
+
+            model.PropertyChanged += Model_PropertyChanged;
+            imager.PropertyChanged += Imager_PropertyChanged;
+
+            #region Commands
+
+            MinimalizeApplicationCommand = new RelayCommand(OnMinimalizeApplicationCommandExecuted,CanMinimalizeApplicationCommanddExecute);
+            CloseApplicationCommand = new RelayCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute);
+            PageButtonCommand = new RelayCommand(OnPageButtonCommandExecuted, CanPageButtonCommandExecute);
+
+            #endregion
+
+            Task.Run(() => Init());
+        }
 
         private void SetTitle()
         {
@@ -34,12 +56,12 @@ namespace Test.ViewModels
 
             if (!model2.Advanced.AdvancedConfig.IsBackground)
             {
-                PathImageBackground = Imager.Set(model2.Advanced.AdvancedConfig.Background);
+                PathImageBackground = imager.Set(model2.Advanced.AdvancedConfig.Background);
             }
 
             // Применение title
             SetTitle();
-            SetMessage("Добро пожаловать! Версия: " + model1.GetVersion(false));
+            SetMessage("Добро пожаловать! Версия: " + model1.GetVersion(true));
 
             await Task.Delay(2000);
 
@@ -71,23 +93,18 @@ namespace Test.ViewModels
             if (e.PropertyName == "MessageChange")
                 OnPropertyChanged("Result");
         }
-
         private void Imager_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            //MessageBox.Show(e.PropertyName);
             switch (e.PropertyName)
             {
                 case "BackVisible":
                     VisibilityImageBackground = Visibility.Visible;
-                    SetMessage("Visible");
                     break;
                 case "BackHidden":
                     VisibilityImageBackground = Visibility.Hidden;
-                    SetMessage("Hidden");
                     break;
                 case "Uri":
-                    PathImageBackground = Imager.Uri;
-                    SetMessage("BackChanged");
+                    PathImageBackground = imager.Uri;
                     break;
             }
         }
@@ -101,13 +118,12 @@ namespace Test.ViewModels
         private Visibility _VisibilityImageBackground;
 
 
-        private readonly Main main;
-        private readonly Settings settings;
+
+        private readonly Main main = new Main();
+        private readonly Settings settings = new Settings();
         private readonly FileManager model;
         private readonly SettingsModel model2;
-
-        public Imager Imager { get; }
-
+        private readonly Imager imager;
         private readonly Version model1;
         private object _SelectedItem;
 
@@ -117,6 +133,11 @@ namespace Test.ViewModels
             set => Set(ref _SelectedItem, value);
         }
 
+        public Visibility VisibilityImageBackground
+        {
+            get => _VisibilityImageBackground;
+            set => Set(ref _VisibilityImageBackground, value);
+        }
         public string Title
         {
             get => _Title;
@@ -133,12 +154,6 @@ namespace Test.ViewModels
         {
             get => _PathImageBackground;
             set => Set(ref _PathImageBackground, value);
-        }
-
-        public Visibility VisibilityImageBackground
-        {
-            get => _VisibilityImageBackground;
-            set => Set(ref _VisibilityImageBackground, value);
         }
 
 
@@ -210,32 +225,5 @@ namespace Test.ViewModels
         #endregion
 
         #endregion
-
-
-        public MainWindowViewModel()
-        {
-            settings = new Settings();
-            main = new Main();
-
-            model = FileManager.Model;
-            model1 = Version.Model;
-            model2 = SettingsModel.Instance;
-
-            Imager = Imager.Model;
-            Imager.PropertyChanged += Imager_PropertyChanged;
-
-            model.PropertyChanged += Model_PropertyChanged;
-
-            #region Commands
-
-            MinimalizeApplicationCommand = new RelayCommand(OnMinimalizeApplicationCommandExecuted, CanMinimalizeApplicationCommanddExecute);
-            CloseApplicationCommand = new RelayCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute);
-            PageButtonCommand = new RelayCommand(OnPageButtonCommandExecuted, CanPageButtonCommandExecute);
-
-            #endregion
-
-            Task.Run(Init);
-        }
-
     }
 }

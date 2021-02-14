@@ -11,7 +11,7 @@ namespace Test.Services.Theme
     {
         public enum ThemeTypes
         {
-            Light, Dark, Test
+            Light, Dark, Classic
         }
 
         public static ThemeTypes CurrentTheme { get; set; }
@@ -34,6 +34,7 @@ namespace Test.Services.Theme
             {
                 case ThemeTypes.Dark: themeName = "dark"; break;
                 case ThemeTypes.Light: themeName = "light"; break;
+                case ThemeTypes.Classic: themeName = "classic"; break;
             }
 
             try
@@ -50,6 +51,7 @@ namespace Test.Services.Theme
             {
                 case "dark": SetTheme(ThemeTypes.Dark); break;
                 case "light": SetTheme(ThemeTypes.Light); break;
+                case "classic": SetTheme(ThemeTypes.Classic); break;
             }
         }
     }

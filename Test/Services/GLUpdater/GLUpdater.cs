@@ -99,7 +99,7 @@ namespace Test.Services.GLUpdater
             /*
              Todo: Проверка, что это именно версия, а не текст.
              */
-            if (!string.IsNullOrWhiteSpace(version))
+            if (string.IsNullOrWhiteSpace(version))
             {
                 NewVersion = "1.0";
             }

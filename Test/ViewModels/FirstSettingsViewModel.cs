@@ -6,7 +6,7 @@ using Test.ViewModels.Base;
 
 namespace Test.ViewModels
 {
-    internal class FirstSettingsViewModel : ViewModel
+    internal class FirstSettingsViewModel : ViewModel, IApplicationContentView
     {
         #region values
         private SettingsModel Model { get; set; }
@@ -25,6 +25,11 @@ namespace Test.ViewModels
             get => _updateTextExtension;
             set => Set(ref _updateTextExtension, value);
         }
+
+        public string Name => "Настройки // Фильтрация";
+
+        private bool _isLoading;
+        public bool IsLoading { get => _isLoading; set => Set(ref _isLoading, value); }
         #endregion
 
         #region Commands
@@ -61,8 +66,8 @@ namespace Test.ViewModels
             var checkbox = p as CheckBox;
             var isChecked = checkbox?.IsChecked;
 
-            if(checkbox != null)
-                LastActiveCheckBox = checkbox;
+
+            LastActiveCheckBox = checkbox;
 
             switch (checkbox.Name)
             {
@@ -172,6 +177,7 @@ namespace Test.ViewModels
                     if (isChecked != null) Model.Items[20].IsChecked = (bool)isChecked;
                     break;
             }
+
         }
         #endregion 
         #endregion
@@ -186,7 +192,7 @@ namespace Test.ViewModels
 
         private void UpdateSettings(CheckBox lastActiveCheckBox)
         {
-            if (lastActiveCheckBox != null)
+            if(lastActiveCheckBox != null)
             {
                 switch (lastActiveCheckBox.Name)
                 {
@@ -278,5 +284,9 @@ namespace Test.ViewModels
             }
         }
 
+        public void Init()
+        {
+           // throw new System.NotImplementedException();
+        }
     }
 }
