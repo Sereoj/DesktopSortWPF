@@ -1,12 +1,14 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Test.Infrastucture.Commands;
 using Test.Models.Helpers;
 using Test.Models.Settings;
+using Test.Services.Theme;
 using Test.ViewModels.Base;
-using static Test.Models.Theme.Theme;
+using static Test.Services.Theme.Theme;
 
 namespace Test.ViewModels
 {
@@ -15,7 +17,6 @@ namespace Test.ViewModels
 
         private ThemeTypes _itemSelected;
         private bool _isLoading;
-        private string _BackgroundChanger;
 
         public string Name => "Настройки // Параметры приложения";
 
@@ -25,18 +26,9 @@ namespace Test.ViewModels
             set => Set(ref _isLoading, value);
         }
 
-        public string BackgroundChanger
-        {
-            get => _BackgroundChanger;
-            set
-            {
-                Set(ref _BackgroundChanger, value);
-                BackgroundChange();
-            }
-        }
-
         private SettingsModel Settings { get; set; }
         public Imager Imager { get; }
+
 
         public ObservableCollection<ThemeTypes> ThemeTypesList { get; set; }
         public ThemeTypes ItemSelected { 
@@ -70,35 +62,23 @@ namespace Test.ViewModels
         private void OnUpdateCheckBoxCommandExecuted(object p)
         {
             var checkbox = p as CheckBox;
-            if ( checkbox != null )
+            switch (checkbox.Name)
             {
-                switch ( checkbox.Name )
-                {
-                    case "CheckIsUpdate":
-                        Settings.Advanced.AdvancedConfig.Update = (bool)checkbox.IsChecked;
+                case "CheckIsUpdate":
+                    Settings.Advanced.AdvancedConfig.Update = (bool)checkbox.IsChecked;
                     break;
-                    case "CheckIsBackground":
-                        Settings.Advanced.AdvancedConfig.IsBackground = (bool)checkbox.IsChecked;
-                        if ( !(bool)checkbox.IsChecked )
-                        {
-                            Imager.Visible = Visibility.Visible;
-                            Imager.Set(Settings.Advanced.AdvancedConfig.Background);
-                        }
-                        else
-                            Imager.Visible = Visibility.Hidden;
+                case "CheckIsBackground":
+                    Settings.Advanced.AdvancedConfig.IsBackground = (bool)checkbox.IsChecked;
+                    if (!(bool)checkbox.IsChecked)
+                    {
+                        Imager.Visible = Visibility.Visible;
+                        Imager.Set(Settings.Advanced.AdvancedConfig.Background);
+                    }
+                    else
+                        Imager.Visible = Visibility.Hidden;
                     break;
-                    case "CheckIsDeleteDefaultDirectory":
-                        Settings.Advanced.AdvancedConfig.DeleteDefaultDirectory = (bool)checkbox.IsChecked;
-                    break;
-                }
             }
             SettingsModel.Update(Settings);
-        }
-
-        private void BackgroundChange()
-        {
-            Imager.Set(BackgroundChanger);
-            Settings.Advanced.AdvancedConfig.Background = BackgroundChanger;
         }
         private void ThemeSet()
         {
@@ -127,13 +107,14 @@ namespace Test.ViewModels
 
         public void Init()
         {
+            throw new NotImplementedException();
         }
 
         public SecondSettingViewModel()
         {
             Settings = SettingsModel.Instance;
             Imager = Imager.Model;
-            ThemeTypesList = new ObservableCollection<ThemeTypes>() { ThemeTypes.Light, ThemeTypes.Dark};
+            ThemeTypesList = new ObservableCollection<ThemeTypes>() { ThemeTypes.Light, ThemeTypes.Dark, ThemeTypes.Classic};
 
             UpdateCheckBox = new RelayCommand(OnUpdateCheckBoxCommandExecuted, CanUpdateCheckBoxCommandExecute);
             ButtonSaveCommand = new RelayCommand(OnButtonSaveCommandExecuted, CanButtonSaveCommandExecute);
