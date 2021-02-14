@@ -16,5 +16,7 @@ namespace Test.Models.Settings
         public string Catalog { get; set; }
         [XmlAttribute]
         public string Extension { get; set; }
+        [XmlAttribute]
+        public string IconPath { get; set; }
     }
 }

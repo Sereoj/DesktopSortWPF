@@ -21,10 +21,12 @@ namespace Test.ViewModels
             model = FileManager.Model;
             model1 = Version.Model;
             model2 = SettingsModel.Instance;
+            imager = Imager.Model;
 
 
 
             model.PropertyChanged += Model_PropertyChanged;
+            imager.PropertyChanged += Imager_PropertyChanged;
 
             #region Commands
 
@@ -54,12 +56,12 @@ namespace Test.ViewModels
 
             if (!model2.Advanced.AdvancedConfig.IsBackground)
             {
-                PathImageBackground = Imager.Change(model2.Advanced.AdvancedConfig.Background);
+                PathImageBackground = imager.Set(model2.Advanced.AdvancedConfig.Background);
             }
 
             // Применение title
             SetTitle();
-            SetMessage("Добро пожаловать! Версия: " + model1.GetVersion(false));
+            SetMessage("Добро пожаловать! Версия: " + model1.GetVersion(true));
 
             await Task.Delay(2000);
 
@@ -91,6 +93,21 @@ namespace Test.ViewModels
             if (e.PropertyName == "MessageChange")
                 OnPropertyChanged("Result");
         }
+        private void Imager_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            switch (e.PropertyName)
+            {
+                case "BackVisible":
+                    VisibilityImageBackground = Visibility.Visible;
+                    break;
+                case "BackHidden":
+                    VisibilityImageBackground = Visibility.Hidden;
+                    break;
+                case "Uri":
+                    PathImageBackground = imager.Uri;
+                    break;
+            }
+        }
 
         #region Values
 
@@ -98,6 +115,7 @@ namespace Test.ViewModels
         private WindowState _MainWindowState;
 
         private string _PathImageBackground;
+        private Visibility _VisibilityImageBackground;
 
 
 
@@ -105,6 +123,7 @@ namespace Test.ViewModels
         private readonly Settings settings = new Settings();
         private readonly FileManager model;
         private readonly SettingsModel model2;
+        private readonly Imager imager;
         private readonly Version model1;
         private object _SelectedItem;
 
@@ -114,6 +133,11 @@ namespace Test.ViewModels
             set => Set(ref _SelectedItem, value);
         }
 
+        public Visibility VisibilityImageBackground
+        {
+            get => _VisibilityImageBackground;
+            set => Set(ref _VisibilityImageBackground, value);
+        }
         public string Title
         {
             get => _Title;
