@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -17,6 +18,7 @@ namespace Test.ViewModels
 
         private ThemeTypes _itemSelected;
         private bool _isLoading;
+        private string _BackgroundChanger;
 
         public string Name => "Настройки // Параметры приложения";
 
@@ -24,6 +26,16 @@ namespace Test.ViewModels
         {
             get => _isLoading;
             set => Set(ref _isLoading, value);
+        }
+
+        public string BackgroundChanger
+        {
+            get => _BackgroundChanger;
+            set
+            {
+                Set(ref _BackgroundChanger, value);
+                BackgroundChange();
+            }
         }
 
         private SettingsModel Settings { get; set; }
@@ -80,6 +92,15 @@ namespace Test.ViewModels
             }
             SettingsModel.Update(Settings);
         }
+
+        private void BackgroundChange()
+        {
+            if ( File.Exists(BackgroundChanger) )
+            {
+                Imager.Set(BackgroundChanger);
+                Settings.Advanced.AdvancedConfig.Background = BackgroundChanger;
+            }
+        }
         private void ThemeSet()
         {
             string theme;
@@ -107,7 +128,6 @@ namespace Test.ViewModels
 
         public void Init()
         {
-            throw new NotImplementedException();
         }
 
         public SecondSettingViewModel()
