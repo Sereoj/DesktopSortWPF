@@ -5,10 +5,10 @@ using System.Net.Cache;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using Test.Services.Message;
+using Test.Models.Message;
 using Version = Test.Models.Version;
 
-namespace Test.Services.GLUpdater
+namespace Test.Models.GLUpdater
 {
     /*
      * Модуль обновления приложения

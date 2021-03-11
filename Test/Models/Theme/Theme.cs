@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 
-namespace Test.Services.Theme
+namespace Test.Models.Theme
 {
     /*
     * Модуль смены темы приложения

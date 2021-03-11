@@ -168,10 +168,10 @@
     <Compile Include="Models\Settings\AdvancedConfig.cs" />
     <Compile Include="Models\Settings\SettingsModel.cs" />
     <Compile Include="Models\Version.cs" />
-    <Compile Include="Services\Console\GLConsole.cs" />
-    <Compile Include="Services\GLUpdater\GLUpdater.cs" />
-    <Compile Include="Services\Message\CLMessage.cs" />
-    <Compile Include="Services\Theme\Theme.cs" />
+    <Compile Include="Models\Console\GLConsole.cs" />
+    <Compile Include="Models\GLUpdater\GLUpdater.cs" />
+    <Compile Include="Models\Message\CLMessage.cs" />
+    <Compile Include="Models\Theme\Theme.cs" />
     <Compile Include="ViewModels\ApplicationNavigationMode.cs" />
     <Compile Include="ViewModels\Base\ViewModel.cs" />
     <Compile Include="ViewModels\FirstSettingsViewModel.cs" />

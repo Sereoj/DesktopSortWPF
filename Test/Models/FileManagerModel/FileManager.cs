@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Test.Models.Settings;
-using Test.Services.Message;
+using Test.Models.Message;
 
 namespace Test.Models.FileManagerModel
 {
@@ -113,7 +113,6 @@ namespace Test.Models.FileManagerModel
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
             }
 
             if (DeleteDefaultDirectory)

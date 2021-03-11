@@ -1,8 +1,8 @@
 ﻿using System.Windows;
 using Test.Models.Settings;
-using Test.Services.Console;
-using Test.Services.GLUpdater;
-using Test.Services.Theme;
+using Test.Models.Console;
+using Test.Models.GLUpdater;
+using Test.Models.Theme;
 
 namespace Test
 {

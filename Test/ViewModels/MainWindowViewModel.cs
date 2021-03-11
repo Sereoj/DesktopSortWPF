@@ -6,7 +6,7 @@ using Test.Infrastucture.Commands;
 using Test.Models.FileManagerModel;
 using Test.Models.Helpers;
 using Test.Models.Settings;
-using Test.Services.GLUpdater;
+using Test.Models.GLUpdater;
 using Test.ViewModels.Base;
 using Test.Views.Controls;
 using Application = System.Windows.Application;

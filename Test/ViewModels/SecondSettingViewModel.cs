@@ -7,9 +7,9 @@ using System.Windows.Input;
 using Test.Infrastucture.Commands;
 using Test.Models.Helpers;
 using Test.Models.Settings;
-using Test.Services.Theme;
+using Test.Models.Theme;
 using Test.ViewModels.Base;
-using static Test.Services.Theme.Theme;
+using static Test.Models.Theme.Theme;
 
 namespace Test.ViewModels
 {

@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using Test.Infrastucture.Commands;
 using Test.Models.Settings;
-using Test.Services.GLUpdater;
+using Test.Models.GLUpdater;
 using Test.ViewModels.Base;
 using Test.Views.Controls;
 

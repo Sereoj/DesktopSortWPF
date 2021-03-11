@@ -47,6 +47,7 @@
                     Command="{Binding UpdateCheckBox}"
                     CommandParameter="{Binding ElementName=CheckIsBackground}"
                     Content="Удалить первоначальную папку [Не рекомендуется]"
+                    IsEnabled="False"
                     Style="{DynamicResource CheckBoxStyle}" />
                 <TextBlock
                     Margin="395,17,184,221"

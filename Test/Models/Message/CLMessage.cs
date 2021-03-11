@@ -1,6 +1,6 @@
 ﻿using Test.ViewModels.Base;
 
-namespace Test.Services.Message
+namespace Test.Models.Message
 {
 
     /*

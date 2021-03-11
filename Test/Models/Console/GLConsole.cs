@@ -1,7 +1,7 @@
 ﻿using System.Windows;
-using Test.Services.Message;
+using Test.Models.Message;
 
-namespace Test.Services.Console
+namespace Test.Models.Console
 {
     internal class GLConsole : CLMessage
     {

@@ -5,7 +5,7 @@ using System.Windows.Input;
 using Test.Infrastucture.Commands;
 using Test.Models.FileManagerModel;
 using Test.Models.Settings;
-using Test.Services.Console;
+using Test.Models.Console;
 using Test.ViewModels.Base;
 using WK.Libraries.BetterFolderBrowserNS;
 
