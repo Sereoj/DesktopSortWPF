@@ -40,8 +40,15 @@ namespace Test.ViewModels
             model = FileManager.Model;
             model2 = SettingsModel.Instance;
 
+            var InputPath = model2.Advanced.AdvancedConfig.InputPath;
+            var OutputPath = model2.Advanced.AdvancedConfig.OutputPath;
 
-            if (GLConsole.Checker())
+            // Костыль
+            if(!string.IsNullOrEmpty(InputPath) && !string.IsNullOrEmpty(OutputPath))
+            {
+                TextBoxPath = InputPath;
+                TextBoxPath1 = OutputPath;
+            }else if( GLConsole.Checker() )
             {
                 TextBoxPath = GLConsole.Param1;
                 TextBoxPath1 = GLConsole.Param2;
@@ -98,10 +105,10 @@ namespace Test.ViewModels
                 model.SetInput(TextBoxPath);
                 model.SetOutput(TextBoxPath1);
 
-                foreach (var test in model2.Items)
+                foreach (BasicConfig config in model2.Items)
                 {
-                    if (test.IsChecked)
-                        Task.Run(() => model.SearchFilesAsyn(test.Catalog, test.Extension, FileManager.FileMode.Copy));
+                    if (config.IsChecked)
+                        Task.Run(() => model.SearchFilesAsyn(config, FileManager.FileMode.Copy));
                 }
             }
             catch (Exception e)
@@ -128,10 +135,10 @@ namespace Test.ViewModels
             model.SetInput(TextBoxPath);
             model.SetOutput(TextBoxPath1);
 
-            foreach (var test in model2.Items)
+            foreach ( BasicConfig config in model2.Items)
             {
-                if (test.IsChecked)
-                    Task.Run(() => model.SearchFilesAsyn(test.Catalog, test.Extension, FileManager.FileMode.Move));
+                if (config.IsChecked)
+                    Task.Run(() => model.SearchFilesAsyn(config, FileManager.FileMode.Move));
             }
             model.SetMessage("Работа завершилась!");
         }

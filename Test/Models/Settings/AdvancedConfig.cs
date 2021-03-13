@@ -15,6 +15,9 @@ namespace Test.Models.Settings
         public string Theme { get; set; }
 
         [XmlAttribute]
+        public bool DeleteDefaultDirectory { get; set; }
+
+        [XmlAttribute]
         public string InputPath { get; set; }
         [XmlAttribute]
         public string OutputPath { get; set; }

@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.IO;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Test.Infrastucture.Commands;
 using Test.Models.Helpers;
 using Test.Models.Settings;
-using Test.Models.Theme;
 using Test.ViewModels.Base;
 using static Test.Models.Theme.Theme;
 
@@ -40,7 +37,6 @@ namespace Test.ViewModels
 
         private SettingsModel Settings { get; set; }
         public Imager Imager { get; }
-
 
         public ObservableCollection<ThemeTypes> ThemeTypesList { get; set; }
         public ThemeTypes ItemSelected { 
@@ -95,11 +91,8 @@ namespace Test.ViewModels
 
         private void BackgroundChange()
         {
-            if ( File.Exists(BackgroundChanger) )
-            {
-                Imager.Set(BackgroundChanger);
-                Settings.Advanced.AdvancedConfig.Background = BackgroundChanger;
-            }
+            Imager.Set(BackgroundChanger);
+            Settings.Advanced.AdvancedConfig.Background = BackgroundChanger;
         }
         private void ThemeSet()
         {

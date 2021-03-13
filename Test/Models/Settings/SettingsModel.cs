@@ -41,12 +41,21 @@ namespace Test.Models.Settings
             {
                 Advanced = new AdvancedSettings
                 {
-                    AdvancedConfig = new AdvancedConfig { Update = true, Background = "standard", IsBackground = true, Theme = "light" }
+                    AdvancedConfig = new AdvancedConfig
+                    {
+                        Update = true,
+                        Background = "standard",
+                        IsBackground = true,
+                        Theme = "light",
+                        InputPath = string.Empty,
+                        OutputPath = string.Empty,
+                        DeleteDefaultDirectory = false
+                    }
                 },
                 Items = new List<BasicConfig>
                 {
                     new BasicConfig{ID = "1", IsChecked = false, Catalog = "Word", Extension = ".docx,.dotx,.doc,.dot"},
-                    new BasicConfig{ID = "2", IsChecked = false, Catalog = "Excel", Extension = ".xlsx,.xlsm,.xltx,.xltm,.xlam,.xls,.xlt,.xla"},
+                    new BasicConfig{ID = "2", IsChecked = false, Catalog = "Excel", Extension = ".xlsx,.xlsm,.xltx,.xltm,.xlam,.xls,.xlt,.xla", IconPath=@"C:\Users\ser12\source\repos\Test\Test\bin\Debug\favicon.ico"},
                     new BasicConfig{ID = "3", IsChecked = false, Catalog = "Access", Extension = ".accdb,.mdb"},
                     new BasicConfig{ID = "4", IsChecked = false, Catalog = "Project", Extension = ".mpp"},
                     new BasicConfig{ID = "5", IsChecked = false, Catalog = "PowerPoint", Extension = ""},

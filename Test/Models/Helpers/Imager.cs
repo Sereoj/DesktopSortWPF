@@ -63,7 +63,5 @@ namespace Test.Models.Helpers
             }
             return Uri;
         }
-
-
     }
 }

@@ -163,6 +163,7 @@
     <Compile Include="Models\Helpers\Imager.cs" />
     <Compile Include="Models\Helpers\NullImageConverter.cs" />
     <Compile Include="Models\Helpers\StringHelperFile.cs" />
+    <Compile Include="Models\IconChanger\IconChanger.cs" />
     <Compile Include="Models\Settings\AdvancedSettings.cs" />
     <Compile Include="Models\Settings\BasicConfig.cs" />
     <Compile Include="Models\Settings\AdvancedConfig.cs" />

@@ -62,10 +62,10 @@ namespace Test.Models.FileManagerModel
         */
         public async Task SearchFiles(List<BasicConfig> Files, FileMode modeFile)
         {
-            foreach (var file in Files)
+            foreach (BasicConfig file in Files)
             {
                 await Task.Delay(delay);
-                await SearchFilesAsyn(file.Catalog, file.Extension, modeFile);
+                await SearchFilesAsyn(file, modeFile);
             }
 
             SetMessage("Работа завершилась!");
@@ -75,8 +75,12 @@ namespace Test.Models.FileManagerModel
         * Поиск файлов небезопасный, получение данных исключительно от программы.
         * Вторая функция.
         */
-        public async Task SearchFilesAsyn(string PathNewDirectory, string PatternExtension, FileMode modeFile)
+        public async Task SearchFilesAsyn(BasicConfig config, FileMode modeFile)
         {
+            string PathNewDirectory = @config.Catalog;
+            string PatternExtension = config.Extension;
+            string Icon = @config.IconPath;
+
             var NewDirectory = Path.Combine(OUTPUT_PATH, PathNewDirectory);
             SetMessage("Начало выполнения: " + PathNewDirectory);
             await Task.Delay(delay);
@@ -85,8 +89,11 @@ namespace Test.Models.FileManagerModel
             {
                 var files = GetFilesList(INPUT_PATH, PatternExtension);
 
-                if (files != null && (NewDirectory.IsPathExists() && files.ToList().Count > 0))
+                if (files != null && NewDirectory.IsPathExists() && files.ToList().Count > 0 )
+                {
                     NewDirectory.CreateDirectory();
+                    IconChanger.IconChanger.FolderIcon(NewDirectory, Icon);
+                }
 
                 foreach (var fileSingle in files)
                 {
@@ -111,9 +118,7 @@ namespace Test.Models.FileManagerModel
                     }
                 }
             }
-            catch (Exception ex)
-            {
-            }
+            catch{}
 
             if (DeleteDefaultDirectory)
                 INPUT_PATH.DeleteDirectory(); // Удаление начальной папки
