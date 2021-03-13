@@ -223,7 +223,7 @@
                 </Grid.RowDefinitions>
                 <TextBlock
                     Margin="5,5,0,0"
-                    Foreground="{DynamicResource ForegroundTextL}"
+                    Foreground="{DynamicResource ForegroundTextD}"
                     Style="{DynamicResource TextBlockLeft}"
                     Text="Иконка для папки:" />
                 <Button
