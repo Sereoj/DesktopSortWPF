@@ -50,6 +50,10 @@ namespace Test.Models.Helpers
                 case "dark":
                     Uri = "/Test;component/Resources/Images/dark.bmp";
                     break;
+                case "/Test;component/Images/Background.bmp":
+                    Uri = "/Test;component/Resources/Images/Background.bmp";
+                    OnPropertyChanged("Uri");
+                    break;
                 default:
                     if (uri.IsFile())
                     {
