@@ -42,12 +42,11 @@
                     Content="Отключить задний фон"
                     Style="{DynamicResource CheckBoxStyle}" />
                 <CheckBox
-                    Name="DeleteImputDirectory"
+                    Name="CheckIsDeleteDefaultDirectory"
                     Margin="15,66,354,169"
                     Command="{Binding UpdateCheckBox}"
-                    CommandParameter="{Binding ElementName=CheckIsBackground}"
+                    CommandParameter="{Binding ElementName=CheckIsDeleteDefaultDirectory}"
                     Content="Удалить первоначальную папку [Не рекомендуется]"
-                    IsEnabled="False"
                     Style="{DynamicResource CheckBoxStyle}" />
                 <TextBlock
                     Margin="395,17,184,221"

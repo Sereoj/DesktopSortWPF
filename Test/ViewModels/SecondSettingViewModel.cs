@@ -70,21 +70,27 @@ namespace Test.ViewModels
         private void OnUpdateCheckBoxCommandExecuted(object p)
         {
             var checkbox = p as CheckBox;
-            switch (checkbox.Name)
+            if ( checkbox != null )
             {
-                case "CheckIsUpdate":
-                    Settings.Advanced.AdvancedConfig.Update = (bool)checkbox.IsChecked;
+                switch ( checkbox.Name )
+                {
+                    case "CheckIsUpdate":
+                        Settings.Advanced.AdvancedConfig.Update = (bool)checkbox.IsChecked;
                     break;
-                case "CheckIsBackground":
-                    Settings.Advanced.AdvancedConfig.IsBackground = (bool)checkbox.IsChecked;
-                    if (!(bool)checkbox.IsChecked)
-                    {
-                        Imager.Visible = Visibility.Visible;
-                        Imager.Set(Settings.Advanced.AdvancedConfig.Background);
-                    }
-                    else
-                        Imager.Visible = Visibility.Hidden;
+                    case "CheckIsBackground":
+                        Settings.Advanced.AdvancedConfig.IsBackground = (bool)checkbox.IsChecked;
+                        if ( !(bool)checkbox.IsChecked )
+                        {
+                            Imager.Visible = Visibility.Visible;
+                            Imager.Set(Settings.Advanced.AdvancedConfig.Background);
+                        }
+                        else
+                            Imager.Visible = Visibility.Hidden;
                     break;
+                    case "CheckIsDeleteDefaultDirectory":
+                        Settings.Advanced.AdvancedConfig.DeleteDefaultDirectory = (bool)checkbox.IsChecked;
+                    break;
+                }
             }
             SettingsModel.Update(Settings);
         }

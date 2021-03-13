@@ -51,9 +51,10 @@ namespace Test.Models.FileManagerModel
             }
         }
 
-        public void SetDeleteDirectory(bool directory = false)
+        public void DeleteDirectory(string path,bool directory = false)
         {
-            DeleteDefaultDirectory = directory;
+            if ( directory )
+                path.DeleteDirectory();
         }
 
         /*
@@ -119,9 +120,6 @@ namespace Test.Models.FileManagerModel
                 }
             }
             catch{}
-
-            if (DeleteDefaultDirectory)
-                INPUT_PATH.DeleteDirectory(); // Удаление начальной папки
 
             SetMessage("Задача завершена!");
             await Task.Delay(delay);

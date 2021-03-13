@@ -11,6 +11,9 @@ namespace Test.ViewModels
         #region values
         private SettingsModel Model { get; set; }
         private CheckBox LastActiveCheckBox { get; set; }
+
+        public string IconPath { get; set; }
+
         private string _updateTextDirectory;
         public string UpdateTextDirectory
         {
@@ -34,6 +37,26 @@ namespace Test.ViewModels
 
         #region Commands
 
+        public ICommand ButtonIconChanger { get; }
+
+        public bool CanButtonIconChangerExecute(object p)
+        {
+            return true;
+        }
+        public void OnButtonIconChangerExecuted(object p)
+        {
+            using ( System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog() )
+            {
+                openFileDialog.Filter = "icon files (*.ico)|*.ico";
+                if ( openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK )
+                {
+                    @IconPath = openFileDialog.FileName;
+                    
+                }
+            }
+        }
+
+
         #region ButtonSaveCommand
         public ICommand ButtonSaveCommand { get; }
 
@@ -45,7 +68,6 @@ namespace Test.ViewModels
         private void OnButtonSaveCommandExecuted(object p)
         {
             UpdateSettings(LastActiveCheckBox);
-            //MessageBox.Show(Model.Items[0].Catalog);
             SettingsModel.Update(Model);
         }
 
@@ -188,6 +210,7 @@ namespace Test.ViewModels
 
             UpdateCheckBox = new RelayCommand(OnUpdateCheckBoxCommandExecuted, CanUpdateCheckBoxCommandExecute);
             ButtonSaveCommand = new RelayCommand(OnButtonSaveCommandExecuted, CanButtonSaveCommandExecute);
+            ButtonIconChanger = new RelayCommand(OnButtonIconChangerExecuted, CanButtonIconChangerExecute);
         }
 
         private void UpdateSettings(CheckBox lastActiveCheckBox)
@@ -199,88 +222,110 @@ namespace Test.ViewModels
                     case "CheckFormat1":
                         Model.Items[0].Catalog = UpdateTextDirectory;
                         Model.Items[0].Extension = UpdateTextExtension;
+                        Model.Items[0].IconPath = IconPath;
                         break;
                     case "CheckFormat2":
                         Model.Items[1].Catalog = UpdateTextDirectory;
                         Model.Items[1].Extension = UpdateTextExtension;
+                        Model.Items[1].IconPath = IconPath;
                         break;
                     case "CheckFormat3":
                         Model.Items[2].Catalog = UpdateTextDirectory;
                         Model.Items[2].Extension = UpdateTextExtension;
+                        Model.Items[2].IconPath = IconPath;
                         break;
                     case "CheckFormat4":
                         Model.Items[3].Catalog = UpdateTextDirectory;
                         Model.Items[3].Extension = UpdateTextExtension;
+                        Model.Items[3].IconPath = IconPath;
                         break;
                     case "CheckFormat5":
                         Model.Items[4].Catalog = UpdateTextDirectory;
                         Model.Items[4].Extension = UpdateTextExtension;
+                        Model.Items[4].IconPath = IconPath;
                         break;
                     case "CheckFormat6":
                         Model.Items[5].Catalog = UpdateTextDirectory;
                         Model.Items[5].Extension = UpdateTextExtension;
+                        Model.Items[5].IconPath = IconPath;
                         break;
                     case "CheckFormat7":
                         Model.Items[6].Catalog = UpdateTextDirectory;
                         Model.Items[6].Extension = UpdateTextExtension;
+                        Model.Items[6].IconPath = IconPath;
                         break;
                     case "CheckFormat8":
                         Model.Items[7].Catalog = UpdateTextDirectory;
                         Model.Items[7].Extension = UpdateTextExtension;
+                        Model.Items[7].IconPath = IconPath;
                         break;
                     case "CheckFormat9":
                         Model.Items[8].Catalog = UpdateTextDirectory;
                         Model.Items[8].Extension = UpdateTextExtension;
+                        Model.Items[8].IconPath = IconPath;
                         break;
                     case "CheckFormat10":
                         Model.Items[9].Catalog = UpdateTextDirectory;
                         Model.Items[9].Extension = UpdateTextExtension;
+                        Model.Items[9].IconPath = IconPath;
                         break;
                     case "CheckFormat11":
                         Model.Items[10].Catalog = UpdateTextDirectory;
                         Model.Items[10].Extension = UpdateTextExtension;
+                        Model.Items[10].IconPath = IconPath;
                         break;
                     case "CheckFormat12":
                         Model.Items[11].Catalog = UpdateTextDirectory;
                         Model.Items[11].Extension = UpdateTextExtension;
+                        Model.Items[11].IconPath = IconPath;
                         break;
                     case "CheckFormat13":
                         Model.Items[12].Catalog = UpdateTextDirectory;
                         Model.Items[12].Extension = UpdateTextExtension;
+                        Model.Items[12].IconPath = IconPath;
                         break;
                     case "CheckFormat14":
                         Model.Items[13].Catalog = UpdateTextDirectory;
                         Model.Items[13].Extension = UpdateTextExtension;
+                        Model.Items[13].IconPath = IconPath;
                         break;
                     case "CheckFormat15":
                         Model.Items[14].Catalog = UpdateTextDirectory;
                         Model.Items[14].Extension = UpdateTextExtension;
+                        Model.Items[14].IconPath = IconPath;
                         break;
                     case "CheckFormat16":
                         Model.Items[15].Catalog = UpdateTextDirectory;
                         Model.Items[15].Extension = UpdateTextExtension;
+                        Model.Items[15].IconPath = IconPath;
                         break;
                     case "CheckFormat17":
                         Model.Items[16].Catalog = UpdateTextDirectory;
                         Model.Items[16].Extension = UpdateTextExtension;
+                        Model.Items[16].IconPath = IconPath;
                         break;
                     case "CheckFormat18":
                         Model.Items[17].Catalog = UpdateTextDirectory;
                         Model.Items[17].Extension = UpdateTextExtension;
+                        Model.Items[17].IconPath = IconPath;
                         break;
                     case "CheckFormat19":
                         Model.Items[18].Catalog = UpdateTextDirectory;
                         Model.Items[18].Extension = UpdateTextExtension;
+                        Model.Items[18].IconPath = IconPath;
                         break;
                     case "CheckFormat20":
                         Model.Items[19].Catalog = UpdateTextDirectory;
                         Model.Items[19].Extension = UpdateTextExtension;
+                        Model.Items[19].IconPath = IconPath;
                         break;
                     case "CheckFormat21":
                         Model.Items[20].Catalog = UpdateTextDirectory;
                         Model.Items[20].Extension = UpdateTextExtension;
+                        Model.Items[20].IconPath = IconPath;
                         break;
                 }
+                IconPath = string.Empty;
             }
         }
 

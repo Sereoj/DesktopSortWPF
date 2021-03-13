@@ -17,7 +17,7 @@ namespace Test.Models.FileManagerModel
         /// <param name="Path"></param>
         public static void DeleteDirectory(this string Path)
         {
-            Directory.Delete(Path);
+            Directory.Delete(Path, true);
         }
     }
 }

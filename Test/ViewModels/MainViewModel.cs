@@ -100,22 +100,16 @@ namespace Test.ViewModels
 
         private void OnCopyButtonCommandExecuted(object p)
         {
-            try
-            {
-                model.SetInput(TextBoxPath);
-                model.SetOutput(TextBoxPath1);
+            model.SetInput(TextBoxPath);
+            model.SetOutput(TextBoxPath1);
 
-                foreach (BasicConfig config in model2.Items)
-                {
-                    if (config.IsChecked)
-                        Task.Run(() => model.SearchFilesAsyn(config, FileManager.FileMode.Copy));
-                }
-            }
-            catch (Exception e)
+            foreach ( BasicConfig config in model2.Items )
             {
-                model.SetMessage(e.Message);
-                throw;
+                if ( config.IsChecked )
+                    Task.Run(( ) => model.SearchFilesAsyn(config, FileManager.FileMode.Copy));
             }
+            model.DeleteDirectory(TextBoxPath, model2.Advanced.AdvancedConfig.DeleteDefaultDirectory);
+            model.SetMessage("Работа завершилась!");
 
         }
 
@@ -140,6 +134,7 @@ namespace Test.ViewModels
                 if (config.IsChecked)
                     Task.Run(() => model.SearchFilesAsyn(config, FileManager.FileMode.Move));
             }
+            model.DeleteDirectory(TextBoxPath, model2.Advanced.AdvancedConfig.DeleteDefaultDirectory);
             model.SetMessage("Работа завершилась!");
         }
 

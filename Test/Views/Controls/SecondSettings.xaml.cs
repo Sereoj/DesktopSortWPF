@@ -27,6 +27,7 @@ namespace Test.Views.Controls
         {
             CheckIsUpdate.IsChecked = model2.Advanced.AdvancedConfig.Update;
             CheckIsBackground.IsChecked = model2.Advanced.AdvancedConfig.IsBackground;
+            CheckIsDeleteDefaultDirectory.IsChecked = model2.Advanced.AdvancedConfig.DeleteDefaultDirectory;
         }
     }
 }
