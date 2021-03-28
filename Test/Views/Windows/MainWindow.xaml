@@ -38,11 +38,7 @@
             Margin="-10,0,-10,0"
             Source="{Binding PathImageBackground, Converter={StaticResource nullImageConverter}}"
             Stretch="Fill"
-            Visibility="{Binding VisibilityImageBackground}">
-            <Image.Effect>
-                <BlurEffect Radius="20" />
-            </Image.Effect>
-        </Image>
+            Visibility="{Binding VisibilityImageBackground}" />
 
         <Grid Grid.ColumnSpan="2">
             <Grid.RowDefinitions>

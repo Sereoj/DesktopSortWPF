@@ -5,11 +5,9 @@ namespace Test.Models.Helpers
 {
     internal class Imager : ViewModel
     {
-
         private static Imager _model;
 
         public static Imager Model => _model ??= new Imager();
-
 
         private string uri;
         private Visibility visible;
@@ -55,10 +53,7 @@ namespace Test.Models.Helpers
                     OnPropertyChanged("Uri");
                     break;
                 default:
-                    if (uri.IsFile())
-                    {
-                        Uri = uri;
-                    }
+                    Uri = uri;
                     break;
             }
             return Uri;
