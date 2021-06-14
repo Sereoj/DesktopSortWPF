@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="BackgroundWindowL" Color="#2A2B34"/>
+    <SolidColorBrush x:Key="BackgroundWindowD" Color="#3D3D4C"/>
+    <SolidColorBrush x:Key="BackgroundWindowM" Color="#F0F0F0"/>
+
+    <SolidColorBrush x:Key="ForegroundTextL" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="ForegroundTextD" Color="#F0F0F0"/>
+
+    <SolidColorBrush x:Key="BackgroundControlL" Color="#5B74CD"/>
+    <SolidColorBrush x:Key="BackgroundControlD" Color="#425595"/>
+
+</ResourceDictionary>

@@ -1,0 +1,105 @@
+﻿<UserControl
+    x:Class="Test.Views.Controls.Main"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Test.Views.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:Test.ViewModels"
+    xmlns:vmb="clr-namespace:Test.ViewModels.Base"
+    d:DesignHeight="450"
+    d:DesignWidth="764"
+    mc:Ignorable="d">
+    <UserControl.DataContext>
+        <vm:MainViewModel />
+    </UserControl.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="45" />
+            <ColumnDefinition Width="45" />
+        </Grid.ColumnDefinitions>
+        <TextBlock
+            Name="TextBoxInput"
+            Grid.Row="1"
+            Foreground="{DynamicResource ForegroundTextD}"
+            Style="{DynamicResource TextBlockLeft}"
+            Text="Укажите путь до папки" />
+        <TextBlock
+            Name="TextBoxOutput"
+            Grid.Row="2"
+            Foreground="{DynamicResource ForegroundTextD}"
+            Style="{DynamicResource TextBlockLeft}"
+            Text="Укажите путь до папки" />
+
+        <TextBox
+            Grid.Row="1"
+            Grid.Column="1"
+            Style="{DynamicResource TextBoxStyle}"
+            Text="{Binding TextBoxPath, Mode=TwoWay}">
+            <TextBox.ToolTip>
+                <ToolTip Content="Используйте клавишу Enter" />
+            </TextBox.ToolTip>
+            <TextBox.InputBindings>
+                <KeyBinding
+                    Key="Enter"
+                    Command="{Binding FileDialogButtonCommand}"
+                    CommandParameter="input" />
+            </TextBox.InputBindings>
+        </TextBox>
+        <TextBox
+            Grid.Row="2"
+            Grid.Column="1"
+            Style="{DynamicResource TextBoxStyle}"
+            Text="{Binding TextBoxPath1, Mode=TwoWay}">
+            <TextBox.ToolTip>
+                <ToolTip Content="Используйте клавишу Enter" />
+            </TextBox.ToolTip>
+            <TextBox.InputBindings>
+                <KeyBinding
+                    Key="Enter"
+                    Command="{Binding FileDialogButtonCommand}"
+                    CommandParameter="output" />
+            </TextBox.InputBindings>
+        </TextBox>
+
+        <Button
+            Grid.Row="1"
+            Grid.Column="2"
+            Command="{Binding FileDialogButtonCommand}"
+            CommandParameter="input"
+            Content="&#xE92f;"
+            Style="{DynamicResource ButtonIcons}" />
+        <Button
+            Grid.Row="2"
+            Grid.Column="2"
+            Command="{Binding FileDialogButtonCommand}"
+            CommandParameter="output"
+            Content="&#xE92f;"
+            Style="{DynamicResource ButtonIcons}" />
+
+
+        <Button
+            Grid.Row="3"
+            Grid.Column="1"
+            HorizontalAlignment="Left"
+            Command="{Binding CopyButtonCommand}"
+            Content="Копировать"
+            Style="{DynamicResource ButtonStyle}" />
+        <Button
+            Grid.Row="3"
+            Grid.Column="1"
+            HorizontalAlignment="Right"
+            Command="{Binding CutButtonCommand}"
+            Content="Переместить"
+            Style="{DynamicResource ButtonStyle}" />
+    </Grid>
+</UserControl>

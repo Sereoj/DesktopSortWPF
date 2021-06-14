@@ -1,0 +1,87 @@
+﻿<UserControl
+    x:Class="Test.Views.Controls.Settings"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Test.Views.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:uc="clr-namespace:Test.Views.Controls"
+    xmlns:vm="clr-namespace:Test.ViewModels"
+    d:DataContext="{d:DesignInstance Type=vm:SettingsWindowViewModel,
+                                     IsDesignTimeCreatable=True}"
+    d:DesignHeight="450"
+    d:DesignWidth="764"
+    mc:Ignorable="d">
+    <UserControl.DataContext>
+        <vm:SettingsWindowViewModel />
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type uc:FirstSettings}">
+            <local:FirstSettings />
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="10*" />
+        </Grid.ColumnDefinitions>
+        <Border
+            Grid.Row="1"
+            Grid.RowSpan="7"
+            Width="50"
+            Height="373"
+            Margin="10"
+            Background="{DynamicResource BackgroundWindowD}"
+            CornerRadius="10"
+            Opacity="0.8" />
+
+        <Border
+            Grid.Row="1"
+            Grid.RowSpan="7"
+            Grid.Column="1"
+            Width="684"
+            Height="373"
+            Margin="0,10,10,10"
+            Background="{DynamicResource BackgroundWindowD}"
+            CornerRadius="10"
+            Opacity="0.8">
+            <ContentPresenter Content="{Binding SelectedItem, Mode=TwoWay}" />
+        </Border>
+        <Button
+            Grid.Row="2"
+            Command="{Binding PageButtonCommand}"
+            CommandParameter="first"
+            Content="&#xE994;"
+            Style="{DynamicResource ButtonIconsSettings}" />
+        <Button
+            Grid.Row="3"
+            Command="{Binding PageButtonCommand}"
+            CommandParameter="second"
+            Content="&#xE995;"
+            Style="{DynamicResource ButtonIconsSettings}" />
+        <Button
+            Grid.Row="4"
+            Command="{Binding PageButtonCommand}"
+            CommandParameter="info"
+            Content="&#x0069;"
+            Style="{DynamicResource ButtonIconsSettings}" />
+        <Button
+            Name="UpdateButton"
+            Grid.Row="5"
+            Command="{Binding PageButtonCommand}"
+            CommandParameter="update"
+            Content="&#xEA2E;"
+            Style="{DynamicResource ButtonIconsSettings}"
+            Visibility="Visible" />
+    </Grid>
+</UserControl>
