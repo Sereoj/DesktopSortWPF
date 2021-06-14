@@ -9,10 +9,6 @@ namespace Test.ViewModels
     public class InfoSettingsViewModel : ViewModel, IApplicationContentView
     {
         private bool _isLoading;
-        private ViewModelCollection listVM;
-        private ModelCollection modelCollection;
-
-        public ICommand HelpMembers { get; }
 
         public string Name => "Настройки // О программе";
 
@@ -22,10 +18,9 @@ namespace Test.ViewModels
             set => Set(ref _isLoading, value);
         }
 
-        private bool CanHelpMembersCommandExecute(object p)
-        {
-            return true;
-        }
+        private ICommand _HelpMembers;
+        public ICommand HelpMembers => _HelpMembers ?? ( _HelpMembers = new RelayCommand(OnHelpMembersCommandExecuted, CanHelpMembersCommandExecute) );
+        private bool CanHelpMembersCommandExecute(object p) => true;
 
         private void OnHelpMembersCommandExecuted(object p)
         {
@@ -57,10 +52,6 @@ namespace Test.ViewModels
 
         public InfoSettingsViewModel(ViewModelCollection listVM, ModelCollection modelCollection)
         {
-            this.listVM = listVM;
-            this.modelCollection = modelCollection;
-
-            HelpMembers = new RelayCommand(OnHelpMembersCommandExecuted, CanHelpMembersCommandExecute);
         }
     }
 }

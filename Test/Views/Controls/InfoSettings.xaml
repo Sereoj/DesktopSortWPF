@@ -6,12 +6,11 @@
     xmlns:local="clr-namespace:Test.Views.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:Test.ViewModels"
+    d:DataContext="{d:DesignInstance Type=vm:InfoSettingsViewModel,
+                                     IsDesignTimeCreatable=True}"
     d:DesignHeight="373"
     d:DesignWidth="684"
     mc:Ignorable="d">
-    <UserControl.DataContext>
-        <vm:InfoSettingsViewModel />
-    </UserControl.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="24" />

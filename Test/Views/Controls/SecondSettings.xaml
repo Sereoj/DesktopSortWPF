@@ -11,9 +11,6 @@
     d:DesignHeight="373"
     d:DesignWidth="684"
     mc:Ignorable="d">
-    <UserControl.DataContext>
-        <vm:SecondSettingViewModel />
-    </UserControl.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="24" />
@@ -32,21 +29,21 @@
                 <CheckBox
                     Name="CheckIsUpdate"
                     Margin="15,16,419,219"
-                    Command="{Binding UpdateCheckBox}"
+                    Command="{Binding UpdateCheckBoxCommand}"
                     CommandParameter="{Binding ElementName=CheckIsUpdate}"
                     Content="Проверять обновления автоматически"
                     Style="{DynamicResource CheckBoxStyle}" />
                 <CheckBox
                     Name="CheckIsBackground"
                     Margin="15,42,419,193"
-                    Command="{Binding UpdateCheckBox}"
+                    Command="{Binding UpdateCheckBoxCommand}"
                     CommandParameter="{Binding ElementName=CheckIsBackground}"
                     Content="Отключить задний фон"
                     Style="{DynamicResource CheckBoxStyle}" />
                 <CheckBox
                     Name="CheckIsDeleteDefaultDirectory"
                     Margin="15,66,354,169"
-                    Command="{Binding UpdateCheckBox}"
+                    Command="{Binding UpdateCheckBoxCommand}"
                     CommandParameter="{Binding ElementName=CheckIsDeleteDefaultDirectory}"
                     Content="Удалить первоначальную папку [Не рекомендуется]"
                     Style="{DynamicResource CheckBoxStyle}" />
@@ -65,8 +62,6 @@
                     ItemsSource="{Binding ThemeTypesList, Mode=TwoWay}"
                     SelectedItem="{Binding ItemSelected, Mode=TwoWay}"
                     Style="{DynamicResource ComboBoxStyle}" />
-
-
             </Grid>
 
         </Grid>

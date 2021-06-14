@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using Test.ViewModels;
 
 namespace Test.Views.Controls
 {
@@ -10,6 +11,7 @@ namespace Test.Views.Controls
         public Settings()
         {
             InitializeComponent();
+            //DataContext = new SettingsWindowViewModel();
         }
     }
 }

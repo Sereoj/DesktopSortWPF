@@ -51,10 +51,7 @@ namespace Test.ViewModels
                     OnPropertyChanged("Uri");
                     break;
                 default:
-                    if (uri.IsFile())
-                    {
-                        Uri = uri;
-                    }
+                    Uri = uri;
                     break;
             }
             return Uri;

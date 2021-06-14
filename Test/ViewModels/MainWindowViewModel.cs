@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using Test.Infrastucture.Commands;
 using Test.Models;
@@ -13,12 +14,11 @@ namespace Test.ViewModels
     {
 
         #region Values
-        private object _SelectedItem;
-
-        public object SelectedItem
+        private UserControl _SelectedView;
+        public UserControl SelectedView
         {
-            get => _SelectedItem;
-            set => Set(ref _SelectedItem, value);
+            get => _SelectedView;
+            set => Set(ref _SelectedView, value);
         }
         private Visibility _VisibilityImageBackground;
         public Visibility VisibilityImageBackground
@@ -60,10 +60,8 @@ namespace Test.ViewModels
         public FileManagerVM FileManagerVM { get; set; }
         public MessengerVM MessengerVM { get; set; }
         public Version Version { get; }
-
         public MainViewModel MainViewModel { get; set; }
         public SettingsWindowViewModel SettingsWindowViewModel { get; set; }
-
         #endregion
 
         #region Commands
@@ -71,53 +69,40 @@ namespace Test.ViewModels
         #region Buttons
 
         #region MinimalizeApplicationCommand
-
-        public ICommand MinimalizeApplicationCommand { get; }
-
+        private ICommand _MinimalizeApplicationCommand;
+        public ICommand MinimalizeApplicationCommand => _MinimalizeApplicationCommand ?? ( _MinimalizeApplicationCommand = new RelayCommand(OnMinimalizeApplicationCommandExecuted, CanMinimalizeApplicationCommanddExecute) );
         private bool CanMinimalizeApplicationCommanddExecute(object p) => true;
-
         private void OnMinimalizeApplicationCommandExecuted(object p) => MainWindowState = WindowState.Minimized;
 
         #endregion
 
         #region CloseApplicationCommand
-
-        public ICommand CloseApplicationCommand { get; }
-
+        private ICommand _CloseApplicationCommand;
+        public ICommand CloseApplicationCommand => _CloseApplicationCommand ?? ( _CloseApplicationCommand = new RelayCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute) );
         private bool CanCloseApplicationCommandExecute(object p) => true;
-
         private void OnCloseApplicationCommandExecuted(object p) => Application.Current.Shutdown();
-
         #endregion
 
-
         #region PageButtonCommand
-
-        public ICommand PageButtonCommand { get; }
-        public ViewModelCollection ViewModelCollection
-        {
-            get;
-        }
-
+        private ICommand _PageButtonCommand;
+        public ICommand PageButtonCommand => _PageButtonCommand ?? ( _PageButtonCommand = new RelayCommand(OnPageButtonCommandExecuted, CanPageButtonCommandExecute) );
         private bool CanPageButtonCommandExecute(object p) => true;
-
         private void OnPageButtonCommandExecuted(object p)
         {
             switch ( p )
             {
                 case "settings":
-                SelectedItem = Settings;
+                    SelectedView = Settings;
+                    SelectedView.DataContext = SettingsWindowViewModel;
                 break;
                 case "home":
-                SelectedItem = Main;
+                    SelectedView = Main;
+                    SelectedView.DataContext = MainViewModel;
                 break;
             }
         }
-
         #endregion
-
         #endregion
-
         #endregion
 
         public void SetMessage(string message)
@@ -130,9 +115,6 @@ namespace Test.ViewModels
 
         private async Task Init()
         {
-            //По умолчанию Home
-            OnPageButtonCommandExecuted("home");
-
             var setting = ModelCollection.SettingsModel.Advanced.AdvancedConfig;
 
             if (!setting.IsBackground)
@@ -190,7 +172,6 @@ namespace Test.ViewModels
 
         public MainWindowViewModel()
         {
-
             ListVM = new ViewModelCollection();
             ModelCollection = new ModelCollection();
 
@@ -202,22 +183,13 @@ namespace Test.ViewModels
 
             FileManagerVM.PropertyChanged += Model_PropertyChanged;
             ImagerVM.PropertyChanged += Imager_PropertyChanged;
-
             Main = new Main();
             Settings = new Settings();
             MainViewModel = new MainViewModel(ListVM, ModelCollection);
             SettingsWindowViewModel = new SettingsWindowViewModel(ListVM, ModelCollection);
-
+            //По умолчанию Home
+            OnPageButtonCommandExecuted("home");
             Task.Run(() => Init());
-
-            #region Commands
-
-            MinimalizeApplicationCommand = new RelayCommand(OnMinimalizeApplicationCommandExecuted, CanMinimalizeApplicationCommanddExecute);
-            CloseApplicationCommand = new RelayCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute);
-            PageButtonCommand = new RelayCommand(OnPageButtonCommandExecuted, CanPageButtonCommandExecute);
-
-            #endregion
-
         }
     }
 }

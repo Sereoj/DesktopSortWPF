@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using Test.Infrastucture.Commands;
 using Test.Models;
@@ -9,13 +10,11 @@ namespace Test.ViewModels
 {
     public class SettingsWindowViewModel : ViewModel
     {
-
         #region Values
-        private readonly FirstSettings _firstSettings;
-        private readonly SecondSettings _secondSettings;
-        private readonly InfoSettings _infoSettings;
-        private readonly UpdateControl _updateContol;
-
+        private FirstSettings FirstSettings { get; set; }
+        private SecondSettings SecondSettings { get; set; }
+        private InfoSettings InfoSettings { get; set; }
+        private UpdateControl UpdateContol { get; set; }
 
         private Visibility visibility;
         public Visibility VisibilityUpdate
@@ -23,27 +22,12 @@ namespace Test.ViewModels
             get => visibility;
             set => Set(ref visibility, value);
         }
-        private object _selectedItem;
-        public object SelectedItem
+        private UserControl _SelectedView;
+        public UserControl SelectedView
         {
-            get => _selectedItem;
-            set => Set(ref _selectedItem, value);
+            get => _SelectedView;
+            set => Set(ref _SelectedView, value);
         }
-
-        public FirstSettingsViewModel FirstSettingsViewModel { get; set; }
-        public SecondSettingViewModel SecondSettingViewModel { get; set; }
-        public InfoSettingsViewModel InfoSettingsViewModel { get; set; }
-        public UpdateControlViewModel UpdateControlViewModel { get; set; }
-
-        #endregion
-
-
-
-        #region Commands
-
-        #region PageButtonCommand
-
-        public ICommand PageButtonCommand { get; }
         public ViewModelCollection ListVM
         {
             get;
@@ -54,72 +38,58 @@ namespace Test.ViewModels
             get;
             private set;
         }
+        public FirstSettingsViewModel FirstSettingsViewModel { get; set; }
+        public SecondSettingViewModel SecondSettingViewModel { get; set; }
+        public InfoSettingsViewModel InfoSettingsViewModel { get; set; }
+        public UpdateControlViewModel UpdateControlViewModel { get; set; }
+        #endregion
 
-        private bool CanPageButtonCommandExecute(object p)
-        {
-            return true;
-        }
-
+        private ICommand _PageButtonCommand;
+        public ICommand PageButtonCommand => _PageButtonCommand ?? ( _PageButtonCommand = new RelayCommand(OnPageButtonCommandExecuted, CanPageButtonCommandExecute) );
+        private bool CanPageButtonCommandExecute(object p) => true;
         private void OnPageButtonCommandExecuted(object p)
         {
             switch (p)
             {
                 case "first":
-                    SelectedItem = _firstSettings;
-                    break;
+                    SelectedView = FirstSettings;
+                    SelectedView.DataContext = FirstSettingsViewModel;
+                break;
                 case "second":
-                    SelectedItem = _secondSettings;
-                    break;
+                    SelectedView = SecondSettings;
+                    SelectedView.DataContext = SecondSettingViewModel;
+                break;
                 case "info":
-                    SelectedItem = _infoSettings;
-                    break;
+                    SelectedView = InfoSettings;
+                    SelectedView.DataContext = InfoSettingsViewModel;
+                break;
                 case "update":
-                    SelectedItem = _updateContol;
-                    break;
+                    SelectedView = UpdateContol;
+                    SelectedView.DataContext = UpdateControlViewModel;
+                break;
             }
         }
 
-        #endregion
-
-
-
-        #endregion
-
         public SettingsWindowViewModel()
         {
-            OnPageButtonCommandExecuted("first");
-
-            _firstSettings = new FirstSettings();
-            _infoSettings = new InfoSettings();
-            _secondSettings = new SecondSettings();
-            _updateContol = new UpdateControl();
-
-            #region Commands
-            PageButtonCommand = new RelayCommand(OnPageButtonCommandExecuted, CanPageButtonCommandExecute);
-            #endregion
         }
 
         public SettingsWindowViewModel(ViewModelCollection listVM, ModelCollection modelCollection)
         {
-
             ListVM = listVM;
             ModelCollection = modelCollection;
 
-            OnPageButtonCommandExecuted("first");
+            FirstSettings = new FirstSettings();
+            InfoSettings = new InfoSettings();
+            SecondSettings = new SecondSettings();
+            UpdateContol = new UpdateControl();
 
             FirstSettingsViewModel = new FirstSettingsViewModel(ListVM, ModelCollection);
             SecondSettingViewModel = new SecondSettingViewModel(ListVM, ModelCollection);
             InfoSettingsViewModel = new InfoSettingsViewModel(ListVM, ModelCollection);
             UpdateControlViewModel = new UpdateControlViewModel(ListVM, ModelCollection);
 
-            _firstSettings = new FirstSettings(ModelCollection);
-            _infoSettings = new InfoSettings(ModelCollection);
-            _secondSettings = new SecondSettings(ModelCollection);
-            _updateContol = new UpdateControl(ModelCollection);
-            
-            #region Commands
-            PageButtonCommand = new RelayCommand(OnPageButtonCommandExecuted, CanPageButtonCommandExecute);
-            #endregion
+            OnPageButtonCommandExecuted("first");
         }
 
     }

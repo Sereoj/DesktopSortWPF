@@ -36,6 +36,7 @@ namespace Test.ViewModels
             set
             {
                 Set(ref _itemSelected, value);
+                ThemeSet(value);
             }
             get => _itemSelected; 
         }
@@ -46,61 +47,100 @@ namespace Test.ViewModels
             set
             {
                 Set(ref _BackgroundChanger, value);
-                //BackgroundChange();
+                BackgroundChange();
             }
         }
 
-        public ICommand ButtonSaveCommand { get; }
-
-        private bool CanButtonSaveCommandExecute(object p)
-        {
-            return true;
-        }
+        private ICommand _ButtonSaveCommand;
+        public ICommand ButtonSaveCommand => _ButtonSaveCommand ?? ( _ButtonSaveCommand = new RelayCommand(OnButtonSaveCommandExecuted, CanButtonSaveCommandExecute) );
+        private bool CanButtonSaveCommandExecute(object p) => true;
 
         private void OnButtonSaveCommandExecuted(object p)
         {
-            MessageBox.Show("Save");
+            Settings.Update(Settings);
         }
 
-        public ICommand UpdateCheckBox { get; }
+        private ICommand _UpdateCheckBoxCommand;
+        public ICommand UpdateCheckBoxCommand => _UpdateCheckBoxCommand ?? ( _UpdateCheckBoxCommand = new RelayCommand(OnUpdateCheckBoxCommandExecuted, CanUpdateCheckBoxCommandExecute) );
 
-
-        private bool CanUpdateCheckBoxCommandExecute(object p)
-        {
-            return true;
-        }
+        private bool CanUpdateCheckBoxCommandExecute(object p) => true;
 
         private void OnUpdateCheckBoxCommandExecuted(object p)
         {
             var checkbox = p as CheckBox;
-            MessageBox.Show("Update");
+            if ( checkbox != null )
+            {
+                switch ( checkbox.Name )
+                {
+                    case "CheckIsUpdate":
+                        Settings.Advanced.AdvancedConfig.Update = ( bool )checkbox.IsChecked;
+                    break;
+                    case "CheckIsBackground":
+                        Settings.Advanced.AdvancedConfig.IsBackground = ( bool )checkbox.IsChecked;
+                        if ( !( bool )checkbox.IsChecked )
+                        {
+                            Imager.Visible = Visibility.Visible;
+                            Imager.Set(Settings.Advanced.AdvancedConfig.Background);
+                        }
+                        else
+                            Imager.Visible = Visibility.Hidden;
+                    break;
+                    case "CheckIsDeleteDefaultDirectory":
+                        Settings.Advanced.AdvancedConfig.DeleteDefaultDirectory = ( bool )checkbox.IsChecked;
+                    break;
+                }
+            }
+            Settings.Update(Settings);
         }
 
 
         public void Init()
         {
-            
+        }
+
+        private void BackgroundChange()
+        {
+            Imager.Set(BackgroundChanger);
+            Settings.Advanced.AdvancedConfig.Background = BackgroundChanger;
+        }
+        private void ThemeSet(ThemeTypes ItemSelected)
+        {
+            var ThemeModel = ModelCollection.ThemeModel;
+            switch ( ItemSelected )
+            {
+                case ThemeTypes.Dark:
+                ThemeModel.SetTheme(ThemeTypes.Dark);
+                break;
+                case ThemeTypes.Light:
+                ThemeModel.SetTheme(ThemeTypes.Light);
+                break;
+                case ThemeTypes.Classic:
+                ThemeModel.SetTheme(ThemeTypes.Classic);
+                break;
+                default:
+                ThemeModel.SetTheme(ThemeTypes.Light);
+                break;
+            }
+            Settings.Advanced.AdvancedConfig.Theme = ItemSelected.ToString();
+            Settings.Update(Settings);
         }
 
         public SecondSettingViewModel()
         {
             ThemeTypesList = new ObservableCollection<ThemeTypes>() { ThemeTypes.Light, ThemeTypes.Dark, ThemeTypes.Classic };
-
-            UpdateCheckBox = new RelayCommand(OnUpdateCheckBoxCommandExecuted, CanUpdateCheckBoxCommandExecute);
-            ButtonSaveCommand = new RelayCommand(OnButtonSaveCommandExecuted, CanButtonSaveCommandExecute);
         }
 
         public SecondSettingViewModel(ViewModelCollection listVM, ModelCollection modelCollection)
         {
             ListVM = listVM;
             ModelCollection = modelCollection;
+
+            Settings = ModelCollection.SettingsModel;
             Imager = ListVM.ImagerVM;
             ItemSelected = ThemeTypes.Dark;
 
             ThemeTypesList = new ObservableCollection<ThemeTypes>() { ThemeTypes.Light, ThemeTypes.Dark, ThemeTypes.Classic };
 
-            UpdateCheckBox = new RelayCommand(OnUpdateCheckBoxCommandExecuted, CanUpdateCheckBoxCommandExecute);
-            ButtonSaveCommand = new RelayCommand(OnButtonSaveCommandExecuted, CanButtonSaveCommandExecute);
         }
     }
 }

@@ -11,9 +11,6 @@
     d:DesignHeight="373"
     d:DesignWidth="684"
     mc:Ignorable="d">
-    <UserControl.DataContext>
-        <vm:UpdateControlViewModel />
-    </UserControl.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="24" />

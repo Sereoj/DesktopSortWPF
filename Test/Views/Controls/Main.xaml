@@ -7,12 +7,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:Test.ViewModels"
     xmlns:vmb="clr-namespace:Test.ViewModels.Base"
+    d:DataContext="{d:DesignInstance Type=vm:MainViewModel,
+                                     IsDesignTimeCreatable=True}"
     d:DesignHeight="450"
     d:DesignWidth="764"
     mc:Ignorable="d">
-    <UserControl.DataContext>
-        <vm:MainViewModel />
-    </UserControl.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*" />
@@ -85,8 +84,6 @@
             CommandParameter="output"
             Content="&#xE92f;"
             Style="{DynamicResource ButtonIcons}" />
-
-
         <Button
             Grid.Row="3"
             Grid.Column="1"

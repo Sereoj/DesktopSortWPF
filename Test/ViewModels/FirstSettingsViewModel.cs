@@ -48,13 +48,9 @@ namespace Test.ViewModels
         #endregion
 
         #region Commands
-
-        public ICommand ButtonIconChanger { get; }
-
-        public bool CanButtonIconChangerExecute(object p)
-        {
-            return true;
-        }
+        private ICommand _ButtonIconChanger;
+        public ICommand ButtonIconChanger => _ButtonIconChanger ?? ( _ButtonIconChanger = new RelayCommand(OnButtonIconChangerExecuted, CanButtonIconChangerExecute) );
+        public bool CanButtonIconChangerExecute(object p) => true;
         public void OnButtonIconChangerExecuted(object p)
         {
             using ( System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog() )
@@ -63,20 +59,15 @@ namespace Test.ViewModels
                 if ( openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK )
                 {
                     @IconPath = openFileDialog.FileName;
-                    
                 }
             }
         }
 
 
         #region ButtonSaveCommand
-        public ICommand ButtonSaveCommand { get; }
-
-        private bool CanButtonSaveCommandExecute(object p)
-        {
-            return true;
-        }
-
+        private ICommand _ButtonSaveCommand;
+        public ICommand ButtonSaveCommand => _ButtonSaveCommand ?? ( _ButtonSaveCommand = new RelayCommand(OnButtonSaveCommandExecuted, CanButtonSaveCommandExecute) );
+        private bool CanButtonSaveCommandExecute(object p) => true;
         private void OnButtonSaveCommandExecuted(object p)
         {
             UpdateSettings(LastActiveCheckBox);
@@ -86,13 +77,9 @@ namespace Test.ViewModels
         #endregion
 
         #region UpdateCheckBox
-
-        public ICommand UpdateCheckBox { get; }
-
-        private bool CanUpdateCheckBoxCommandExecute(object p)
-        {
-            return true;
-        }
+        private ICommand _UpdateCheckBox;
+        public ICommand UpdateCheckBox => _UpdateCheckBox ?? ( _UpdateCheckBox = new RelayCommand(OnUpdateCheckBoxCommandExecuted, CanUpdateCheckBoxCommandExecute) );
+        private bool CanUpdateCheckBoxCommandExecute(object p) => true;
 
         private void OnUpdateCheckBoxCommandExecuted(object p)
         {
@@ -227,9 +214,6 @@ namespace Test.ViewModels
 
             Model = modelCollection.SettingsModel;
 
-            UpdateCheckBox = new RelayCommand(OnUpdateCheckBoxCommandExecuted, CanUpdateCheckBoxCommandExecute);
-            ButtonSaveCommand = new RelayCommand(OnButtonSaveCommandExecuted, CanButtonSaveCommandExecute);
-            ButtonIconChanger = new RelayCommand(OnButtonIconChangerExecuted, CanButtonIconChangerExecute);
         }
 
         private void UpdateSettings(CheckBox lastActiveCheckBox)

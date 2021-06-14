@@ -20,7 +20,6 @@ namespace Test.ViewModels.Base
             MessengerVM = new MessengerVM();
             ImagerVM = new ImagerVM();
             IconChangerVM = new IconChangerVM();
-
             FileManagerVM = new FileManagerVM(MessengerVM, IconChangerVM);
         }
     }

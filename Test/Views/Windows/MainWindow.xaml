@@ -92,9 +92,8 @@
             <ContentPresenter
                 Grid.Row="1"
                 Grid.ColumnSpan="4"
-                Content="{Binding SelectedItem, Mode=TwoWay}" />
-            <!--<uc:Main Grid.Row="1" Grid.ColumnSpan="4" Visibility="Visible"/>
-            <uc:Settings Grid.Row="1" Grid.ColumnSpan="4" Visibility="Hidden"/>-->
+                Content="{Binding SelectedView}"
+                DataContext="{Binding SelectedView}" />
             <Button
                 Grid.Row="2"
                 Grid.Column="3"

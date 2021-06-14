@@ -12,7 +12,7 @@ using static Test.ViewModels.FileManagerVM;
 
 namespace Test.ViewModels
 {
-    public class MainViewModel: ViewModel
+    public class MainViewModel : ViewModel
     {
         private string _TextBoxPath;
         private string _TextBoxPath1;
@@ -39,11 +39,8 @@ namespace Test.ViewModels
         }
         public SettingsModel SettingsModel { get; }
 
-
-
-        #region FileDialogButtonCommand
-
-        public ICommand FileDialogButtonCommand { get; }
+        private ICommand _FileDialogButtonCommand;
+        public ICommand FileDialogButtonCommand => _FileDialogButtonCommand ?? ( _FileDialogButtonCommand = new RelayCommand(OnFileDialogButtonCommandExecuted, CanFileDialogButtonCommandExecute) );
 
         private bool CanFileDialogButtonCommandExecute(object p) => true;
 
@@ -69,11 +66,9 @@ namespace Test.ViewModels
             GC.Collect(4, GCCollectionMode.Forced, true);
         }
 
-        #endregion
-
         #region CopyButtonCommand
-
-        public ICommand CopyButtonCommand { get; }
+        private ICommand _CopyButtonCommand;
+        public ICommand CopyButtonCommand => _CopyButtonCommand ?? ( _CopyButtonCommand = new RelayCommand(OnCopyButtonCommandExecuted, CanCopyButtonCommandExecute) );
 
         private bool CanCopyButtonCommandExecute(object p) => true;
 
@@ -92,17 +87,14 @@ namespace Test.ViewModels
             }
             fileManager.DeleteDirectory(TextBoxPath, SettingsModel.Advanced.AdvancedConfig.DeleteDefaultDirectory);
             messager.Messager = "Работа завершилась!";
-
         }
 
         #endregion
 
         #region CutButtonCommand
-
-        public ICommand CutButtonCommand { get; }
-
+        private ICommand _CutButtonCommand;
+        public ICommand CutButtonCommand => _CutButtonCommand ?? ( _CutButtonCommand = new RelayCommand(OnCutButtonCommandExecuted, CanCutButtonCommandExecute) );
         private bool CanCutButtonCommandExecute(object p) => true;
-
         private void OnCutButtonCommandExecuted(object p)
         {
             var fileManager = ListVM.FileManagerVM;
@@ -124,19 +116,13 @@ namespace Test.ViewModels
 
         public MainViewModel()
         {
-            TextBoxPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-            TextBoxPath1 = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-
-            CopyButtonCommand = new RelayCommand(OnCopyButtonCommandExecuted, CanCopyButtonCommandExecute);
-            CutButtonCommand = new RelayCommand(OnCutButtonCommandExecuted, CanCutButtonCommandExecute);
-            FileDialogButtonCommand = new RelayCommand(OnFileDialogButtonCommandExecuted, CanFileDialogButtonCommandExecute);
         }
 
         public MainViewModel(ViewModelCollection listVM, ModelCollection modelCollection)
         {
             ListVM = listVM;
             ModelCollection = modelCollection;
-
+            
             SettingsModel = modelCollection.SettingsModel;
 
             var settings = SettingsModel.Advanced.AdvancedConfig;
@@ -144,6 +130,8 @@ namespace Test.ViewModels
             var InputPath = settings.InputPath;
             var OutputPath = settings.OutputPath;
 
+            TextBoxPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+            TextBoxPath1 = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             // Костыль
             if ( !string.IsNullOrEmpty(InputPath) && !string.IsNullOrEmpty(OutputPath) )
             {
