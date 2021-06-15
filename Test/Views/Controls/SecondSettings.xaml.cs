@@ -17,11 +17,11 @@ namespace Test.Views.Controls
         }
         public SecondSettings()
         {
-            InitializeComponent();
         }
 
         public SecondSettings(ModelCollection modelCollection)
         {
+            InitializeComponent();
             model2 = modelCollection.SettingsModel;
             UpdateCheckBox();
             UpdateTheme();
@@ -29,13 +29,13 @@ namespace Test.Views.Controls
 
         private void UpdateTheme()
         {
-            //BoxTheme.SelectedItem = model2.Advanced.AdvancedConfig.Theme;
+            BoxTheme.SelectedItem = model2.Advanced.AdvancedConfig.Theme;
         }
         private void UpdateCheckBox()
         {
-            //CheckIsUpdate.IsChecked = model2.Advanced.AdvancedConfig.Update;
-            //CheckIsBackground.IsChecked = model2.Advanced.AdvancedConfig.IsBackground;
-            //CheckIsDeleteDefaultDirectory.IsChecked = model2.Advanced.AdvancedConfig.DeleteDefaultDirectory;
+            CheckIsUpdate.IsChecked = model2.Advanced.AdvancedConfig.Update;
+            CheckIsBackground.IsChecked = model2.Advanced.AdvancedConfig.IsBackground;
+            CheckIsDeleteDefaultDirectory.IsChecked = model2.Advanced.AdvancedConfig.DeleteDefaultDirectory;
         }
     }
 }

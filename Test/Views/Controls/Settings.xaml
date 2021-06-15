@@ -75,6 +75,14 @@
             CommandParameter="update"
             Content="&#xEA2E;"
             Style="{DynamicResource ButtonIconsSettings}"
-            Visibility="Visible" />
+            Visibility="{Binding VisibilityUpdate}" />
+        <Button
+            Name="DevelopButton"
+            Grid.Row="6"
+            Command="{Binding PageButtonCommand}"
+            CommandParameter="develop"
+            Content="&#xE999;"
+            Style="{DynamicResource ButtonIconsSettings}"
+            Visibility="{Binding VisibilityDev}" />
     </Grid>
 </UserControl>

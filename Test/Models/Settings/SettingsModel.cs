@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Windows.Media;
 using System.Xml.Serialization;
 
 namespace Test.Models.Settings
@@ -30,10 +31,8 @@ namespace Test.Models.Settings
                     {
                         Update = true,
                         Background = "standard",
-                        IsBackground = true,
-                        Theme = "light",
-                        InputPath = string.Empty,
-                        OutputPath = string.Empty,
+                        IsBackground = false,
+                        Theme = Theme.Theme.ThemeTypes.Light,
                         DeleteDefaultDirectory = false
                     }
                 },

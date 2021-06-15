@@ -11,7 +11,6 @@ namespace Test.Views.Controls
         public Settings()
         {
             InitializeComponent();
-            //DataContext = new SettingsWindowViewModel();
         }
     }
 }

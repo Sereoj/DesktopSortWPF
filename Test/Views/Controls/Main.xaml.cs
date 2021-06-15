@@ -11,7 +11,6 @@ namespace Test.Views.Controls
         public Main()
         {
             InitializeComponent();
-            //DataContext = new MainViewModel();
         }
     }
 }

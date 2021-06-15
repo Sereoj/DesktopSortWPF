@@ -28,7 +28,7 @@ namespace Test.Models
         {
             return isGetState == false
                 ? Application.ProductVersion.Substring(0, 3)
-                : Application.ProductVersion.Substring(0, 3) + State;
+                : Application.ProductVersion.Substring(0, 3) + " " + State;
         }
     }
 }

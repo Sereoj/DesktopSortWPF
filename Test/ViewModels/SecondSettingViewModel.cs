@@ -121,7 +121,7 @@ namespace Test.ViewModels
                 ThemeModel.SetTheme(ThemeTypes.Light);
                 break;
             }
-            Settings.Advanced.AdvancedConfig.Theme = ItemSelected.ToString();
+            Settings.Advanced.AdvancedConfig.Theme = ItemSelected;
             Settings.Update(Settings);
         }
 
@@ -137,8 +137,7 @@ namespace Test.ViewModels
 
             Settings = ModelCollection.SettingsModel;
             Imager = ListVM.ImagerVM;
-            ItemSelected = ThemeTypes.Dark;
-
+            ItemSelected = Settings.Advanced.AdvancedConfig.Theme;
             ThemeTypesList = new ObservableCollection<ThemeTypes>() { ThemeTypes.Light, ThemeTypes.Dark, ThemeTypes.Classic };
 
         }

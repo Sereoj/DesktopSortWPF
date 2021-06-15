@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using Test.Infrastucture.Commands;
 using Test.Models;
 using Test.ViewModels.Base;
@@ -111,20 +112,27 @@ namespace Test.ViewModels
             Result = message;
         }
 
-        public void SetTitle() => Title = "Desktop Sort";
+        public void SetTitle(bool isDev) => Title = isDev ? "DS Develop" : "Desktop Sort";
 
         private async Task Init()
         {
             var setting = ModelCollection.SettingsModel.Advanced.AdvancedConfig;
 
+            ModelCollection.ThemeModel.SetTheme(setting.Theme);
             if (!setting.IsBackground)
             {
                 PathImageBackground = ImagerVM.Set(setting.Background);
             }
-
             // Применение title
-            SetTitle();
-            
+            if ( setting.Mode == ApplicationNavigationMode.Dev )
+            {
+                SetTitle(true);
+            }
+            else
+            {
+                SetTitle(false);
+            }
+
             SetMessage("Добро пожаловать! Версия: " + Version.Get(true));
 
             await Task.Delay(2000);
@@ -181,12 +189,13 @@ namespace Test.ViewModels
 
             Version = ModelCollection.VersionModel;
 
-            FileManagerVM.PropertyChanged += Model_PropertyChanged;
-            ImagerVM.PropertyChanged += Imager_PropertyChanged;
             Main = new Main();
             Settings = new Settings();
             MainViewModel = new MainViewModel(ListVM, ModelCollection);
             SettingsWindowViewModel = new SettingsWindowViewModel(ListVM, ModelCollection);
+
+            FileManagerVM.PropertyChanged += Model_PropertyChanged;
+            ImagerVM.PropertyChanged += Imager_PropertyChanged;
             //По умолчанию Home
             OnPageButtonCommandExecuted("home");
             Task.Run(() => Init());

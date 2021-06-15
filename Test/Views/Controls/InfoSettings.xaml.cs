@@ -8,13 +8,20 @@ namespace Test.Views.Controls
     /// </summary>
     public partial class InfoSettings : UserControl
     {
+
+        public ModelCollection ModelCollection
+        {
+            get;
+        }
         public InfoSettings()
         {
-            InitializeComponent();
         }
 
         public InfoSettings(ModelCollection modelCollection)
         {
+            InitializeComponent();
+            ModelCollection = modelCollection;
         }
+
     }
 }

@@ -17,28 +17,28 @@ namespace Test.Views.Controls
         }
         public FirstSettings()
         {
-            InitializeComponent();
-            //model2 = SettingsModel.Instance;
-            //UpdateCheckBox();
-
         }
 
         public FirstSettings(ModelCollection modelCollection)
         {
+            InitializeComponent();
             model2 = modelCollection.SettingsModel;
             UpdateCheckBox();
         }
 
         private void UpdateCheckBox()
         {
-            //var children = LogicalTreeHelper.GetChildren(CheckFormat1);
-            //var i = 0;
-
-            //foreach ( CheckBox item in children )
-            //{
-            //    i++;
-            //    item.IsChecked = model2.Items[i].IsChecked;
-            //}
+            var i = 0;
+            var maxCount = model2.Items.Count - 1;
+            foreach (var item in GridCheckbox.Children)
+            {
+                CheckBox checkbox = item as CheckBox;
+                if ( i <= maxCount )
+                {
+                    checkbox.IsChecked = model2.Items[i].IsChecked;
+                    i++;
+                }
+            }
         }
     }
 }

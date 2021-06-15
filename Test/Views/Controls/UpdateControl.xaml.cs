@@ -8,13 +8,18 @@ namespace Test.Views.Controls
     /// </summary>
     public partial class UpdateControl : UserControl
     {
+        public ModelCollection ModelCollection
+        {
+            get;
+        }
         public UpdateControl()
         {
-            InitializeComponent();
         }
 
         public UpdateControl(ModelCollection modelCollection)
         {
+            InitializeComponent();
+            ModelCollection = modelCollection;
         }
     }
 }

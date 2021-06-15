@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Test.ViewModels
 {
-    enum ApplicationNavigationMode
+    public enum ApplicationNavigationMode
     {
         /// <summary>
         /// Main - Основной режим (не скрытый от пользователя)

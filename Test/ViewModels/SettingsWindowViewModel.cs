@@ -15,12 +15,22 @@ namespace Test.ViewModels
         private SecondSettings SecondSettings { get; set; }
         private InfoSettings InfoSettings { get; set; }
         private UpdateControl UpdateContol { get; set; }
+        private Develop Develop
+        {
+            get; set;
+        }
 
         private Visibility visibility;
         public Visibility VisibilityUpdate
         {
             get => visibility;
             set => Set(ref visibility, value);
+        }
+        private Visibility visibilityDev;
+        public Visibility VisibilityDev
+        {
+            get => visibilityDev;
+            set => Set(ref visibilityDev, value);
         }
         private UserControl _SelectedView;
         public UserControl SelectedView
@@ -42,6 +52,7 @@ namespace Test.ViewModels
         public SecondSettingViewModel SecondSettingViewModel { get; set; }
         public InfoSettingsViewModel InfoSettingsViewModel { get; set; }
         public UpdateControlViewModel UpdateControlViewModel { get; set; }
+        public DevelopSettingsVM DevelopSettingsVM { get; set; }
         #endregion
 
         private ICommand _PageButtonCommand;
@@ -67,6 +78,10 @@ namespace Test.ViewModels
                     SelectedView = UpdateContol;
                     SelectedView.DataContext = UpdateControlViewModel;
                 break;
+                case "develop":
+                SelectedView = Develop;
+                SelectedView.DataContext = DevelopSettingsVM;
+                break;
             }
         }
 
@@ -79,15 +94,25 @@ namespace Test.ViewModels
             ListVM = listVM;
             ModelCollection = modelCollection;
 
-            FirstSettings = new FirstSettings();
-            InfoSettings = new InfoSettings();
-            SecondSettings = new SecondSettings();
-            UpdateContol = new UpdateControl();
+            FirstSettings = new FirstSettings(modelCollection);
+            InfoSettings = new InfoSettings(modelCollection);
+            SecondSettings = new SecondSettings(modelCollection);
+            UpdateContol = new UpdateControl(modelCollection);
+            Develop = new Develop(modelCollection);
 
             FirstSettingsViewModel = new FirstSettingsViewModel(ListVM, ModelCollection);
             SecondSettingViewModel = new SecondSettingViewModel(ListVM, ModelCollection);
             InfoSettingsViewModel = new InfoSettingsViewModel(ListVM, ModelCollection);
             UpdateControlViewModel = new UpdateControlViewModel(ListVM, ModelCollection);
+            DevelopSettingsVM = new DevelopSettingsVM(ListVM, ModelCollection);
+
+            VisibilityDev = Visibility.Hidden;
+            VisibilityUpdate = Visibility.Hidden;
+
+            if ( ModelCollection.SettingsModel.Advanced.AdvancedConfig.Mode == ApplicationNavigationMode.Dev )
+            {
+                VisibilityDev = Visibility.Visible;
+            }
 
             OnPageButtonCommandExecuted("first");
         }

@@ -1,4 +1,7 @@
-﻿using System.Xml.Serialization;
+﻿using System.Windows.Media;
+using System.Xml.Serialization;
+using Test.ViewModels;
+using static Test.Models.Theme.Theme;
 
 namespace Test.Models.Settings
 {
@@ -12,14 +15,12 @@ namespace Test.Models.Settings
         [XmlAttribute]
         public bool Update { get; set; }
         [XmlAttribute]
-        public string Theme { get; set; }
+        public ThemeTypes Theme { get; set; }
 
         [XmlAttribute]
         public bool DeleteDefaultDirectory { get; set; }
-
-        [XmlAttribute]
         public string InputPath { get; set; }
-        [XmlAttribute]
         public string OutputPath { get; set; }
+        public ApplicationNavigationMode Mode { get; set; }
     }
 }
