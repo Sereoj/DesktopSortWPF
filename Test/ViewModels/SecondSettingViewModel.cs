@@ -138,6 +138,7 @@ namespace Test.ViewModels
             Settings = ModelCollection.SettingsModel;
             Imager = ListVM.ImagerVM;
             ItemSelected = Settings.Advanced.AdvancedConfig.Theme;
+            BackgroundChanger = Settings.Advanced.AdvancedConfig.Background;
             ThemeTypesList = new ObservableCollection<ThemeTypes>() { ThemeTypes.Light, ThemeTypes.Dark, ThemeTypes.Classic };
 
         }
