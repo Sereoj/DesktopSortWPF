@@ -15,12 +15,10 @@ namespace Test.Models.Settings
         [XmlArray("Items")]
         [XmlArrayItem("Item")]
         public List<BasicConfig> Items { get; set; }
-
         public void Update(SettingsModel model)
         {
             Save(model);
         }
-
         public void Default()
         {
             var item = new SettingsModel

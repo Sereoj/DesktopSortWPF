@@ -106,6 +106,8 @@ namespace Test.ViewModels
             UpdateControlViewModel = new UpdateControlViewModel(ListVM, ModelCollection);
             DevelopSettingsVM = new DevelopSettingsVM(ListVM, ModelCollection);
 
+            ListVM.UpdateControlViewModel = UpdateControlViewModel;
+
             VisibilityDev = Visibility.Hidden;
             VisibilityUpdate = Visibility.Hidden;
 

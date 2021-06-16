@@ -194,6 +194,8 @@ namespace Test.ViewModels
             MainViewModel = new MainViewModel(ListVM, ModelCollection);
             SettingsWindowViewModel = new SettingsWindowViewModel(ListVM, ModelCollection);
 
+            ListVM.SettingsWindowViewModel = SettingsWindowViewModel;
+
             FileManagerVM.PropertyChanged += Model_PropertyChanged;
             ImagerVM.PropertyChanged += Imager_PropertyChanged;
             //По умолчанию Home

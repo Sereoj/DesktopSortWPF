@@ -13,6 +13,10 @@ namespace Test.ViewModels.Base
         public MessengerVM MessengerVM { get; set; }
         public ImagerVM ImagerVM { get; set; }
         public FileManagerVM FileManagerVM { get; set; }
+        public SettingsWindowViewModel SettingsWindowViewModel {
+            get; set;
+        }
+        public UpdateControlViewModel UpdateControlViewModel{ get; set; }
 
         public IconChangerVM IconChangerVM { get; set; }
         public ViewModelCollection()

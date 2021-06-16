@@ -23,16 +23,19 @@
             <Button
                 Width="210"
                 Margin="20,0,0,0"
+                Command="{Binding UpdateButtonCommand}"
                 Content="Принудительное обновление"
                 Style="{StaticResource ButtonStyleSettings}" />
             <Button
                 Width="210"
                 Margin="5,0,0,0"
+                Command="{Binding StandardSettingsCommand}"
                 Content="Стандартные настройки"
                 Style="{StaticResource ButtonStyleSettings}" />
             <Button
                 Width="210"
                 Margin="5,0,0,0"
+                Command="{Binding UserModeCommand}"
                 Content="Режим пользователя"
                 Style="{StaticResource ButtonStyleSettings}" />
         </WrapPanel>

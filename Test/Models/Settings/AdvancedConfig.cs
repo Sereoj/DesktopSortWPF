@@ -16,11 +16,13 @@ namespace Test.Models.Settings
         public bool Update { get; set; }
         [XmlAttribute]
         public ThemeTypes Theme { get; set; }
-
         [XmlAttribute]
         public bool DeleteDefaultDirectory { get; set; }
+        [XmlAttribute]
         public string InputPath { get; set; }
+        [XmlAttribute]
         public string OutputPath { get; set; }
+        [XmlAttribute]
         public ApplicationNavigationMode Mode { get; set; }
     }
 }
