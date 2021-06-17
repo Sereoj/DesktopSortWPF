@@ -112,7 +112,8 @@
             <StatusBar
                 Grid.Row="3"
                 Grid.ColumnSpan="4"
-                Background="{DynamicResource BackgroundWindowL}">
+                Background="{DynamicResource BackgroundWindowL}"
+                DataContext="{Binding ListVM.MessengerVM}">
                 <StatusBarItem>
                     <TextBlock
                         Margin="15,0,0,0"
@@ -123,9 +124,8 @@
                     <TextBlock
                         Margin="15,0,0,0"
                         Foreground="{DynamicResource ForegroundTextD}"
-                        Text="{Binding Result}" />
+                        Text="{Binding Messager}" />
                 </StatusBarItem>
-
             </StatusBar>
         </Grid>
     </Grid>

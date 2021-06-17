@@ -59,7 +59,9 @@ namespace Test.ViewModels
         public Main Main { get; set; }
         public ImagerVM ImagerVM { get; set; }
         public FileManagerVM FileManagerVM { get; set; }
-        public MessengerVM MessengerVM { get; set; }
+        public MessengerVM MessengerVM {
+            get; set;
+        }
         public Version Version { get; }
         public MainViewModel MainViewModel { get; set; }
         public SettingsWindowViewModel SettingsWindowViewModel { get; set; }
@@ -109,7 +111,6 @@ namespace Test.ViewModels
         public void SetMessage(string message)
         {
             MessengerVM.Messager = message;
-            Result = message;
         }
 
         public void SetTitle(bool isDev) => Title = isDev ? "DS Develop" : "Desktop Sort";
@@ -156,12 +157,6 @@ namespace Test.ViewModels
                 //}
             }
         }
-
-        private void Model_PropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName == "MessageChange")
-                OnPropertyChanged("Result");
-        }
         private void Imager_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             switch (e.PropertyName)
@@ -195,8 +190,6 @@ namespace Test.ViewModels
             SettingsWindowViewModel = new SettingsWindowViewModel(ListVM, ModelCollection);
 
             ListVM.SettingsWindowViewModel = SettingsWindowViewModel;
-
-            FileManagerVM.PropertyChanged += Model_PropertyChanged;
             ImagerVM.PropertyChanged += Imager_PropertyChanged;
             //По умолчанию Home
             OnPageButtonCommandExecuted("home");

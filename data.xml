@@ -1,9 +1,7 @@
 <?xml version="1.0"?>
 <Settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Advanced>
-    <AdvancedConfig Background="standard" IsBackground="false" Update="true" Theme="Light" DeleteDefaultDirectory="false">
-      <Mode>Main</Mode>
-    </AdvancedConfig>
+    <AdvancedConfig Background="standard" IsBackground="false" Update="true" Theme="Light" DeleteDefaultDirectory="false" Mode="Main" />
   </Advanced>
   <Items>
     <Item ID="1" IsChecked="false" Catalog="Word" Extension=".docx,.dotx,.doc,.dot" />

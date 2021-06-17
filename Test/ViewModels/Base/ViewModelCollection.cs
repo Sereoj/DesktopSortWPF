@@ -13,6 +13,7 @@ namespace Test.ViewModels.Base
         public MessengerVM MessengerVM { get; set; }
         public ImagerVM ImagerVM { get; set; }
         public FileManagerVM FileManagerVM { get; set; }
+        public UpdaterVM UpdaterVM { get; set; }
         public SettingsWindowViewModel SettingsWindowViewModel {
             get; set;
         }
@@ -25,6 +26,7 @@ namespace Test.ViewModels.Base
             ImagerVM = new ImagerVM();
             IconChangerVM = new IconChangerVM();
             FileManagerVM = new FileManagerVM(MessengerVM, IconChangerVM);
+            UpdaterVM = new UpdaterVM(MessengerVM);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using Test.Infrastucture.Commands;
 using Test.Models;
@@ -46,8 +47,8 @@ namespace Test.ViewModels
         }
 
         private void OnUpdateApplicationButtonExecuted(object p)
-        {
-            //GLUpdater.Model.GetNewApplication();       
+        {  
+            Task.Run(() => listVM.UpdaterVM.DownloadApplication("https://github.com/Sereoj/DesktopSortWPF/releases/download/Beta/Desktop.Sort.1.3.Beta.exe", "updater.exe"));
         }
 
         public void Init()

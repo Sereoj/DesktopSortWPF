@@ -164,6 +164,7 @@
     <Compile Include="Infrastucture\Commands\RelayCommand.cs" />
     <Compile Include="Models\FileManagerModel\StringHelperDirectory.cs" />
     <Compile Include="Models\Theme\Theme.cs" />
+    <Compile Include="Models\Updater\Updater.cs" />
     <Compile Include="ViewModels\DevelopSettingsVM.cs" />
     <Compile Include="ViewModels\IconChanger.cs" />
     <Compile Include="Models\ModelCollection.cs" />
@@ -187,6 +188,7 @@
     <Compile Include="ViewModels\SettingsWindowViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\UpdateControlViewModel.cs" />
+    <Compile Include="ViewModels\UpdaterVM.cs" />
     <Compile Include="Views\Controls\Develop.xaml.cs">
       <DependentUpon>Develop.xaml</DependentUpon>
     </Compile>

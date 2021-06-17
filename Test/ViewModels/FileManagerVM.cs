@@ -131,7 +131,7 @@ namespace Test.ViewModels
 
         private void SetMessage(string message)
         {
-            MessengerVM.Messager = message;
+            MessengerVM.SetMessage(message);
         }
 
         /// <summary>Валидация пути</summary>
