@@ -139,7 +139,13 @@ namespace Test.ViewModels
             Imager = ListVM.ImagerVM;
             ItemSelected = Settings.Advanced.AdvancedConfig.Theme;
             BackgroundChanger = Settings.Advanced.AdvancedConfig.Background;
-            ThemeTypesList = new ObservableCollection<ThemeTypes>() { ThemeTypes.Light, ThemeTypes.Dark, ThemeTypes.Classic };
+
+            ThemeTypesList = new ObservableCollection<ThemeTypes>() { ThemeTypes.Light, ThemeTypes.Dark};
+            
+            if ( Settings.Advanced.AdvancedConfig.Mode == ApplicationNavigationMode.Dev )
+            {
+                ThemeTypesList = new ObservableCollection<ThemeTypes>() { ThemeTypes.Light, ThemeTypes.Dark, ThemeTypes.Classic };
+            }
 
         }
     }

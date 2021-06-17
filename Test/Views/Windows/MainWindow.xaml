@@ -11,7 +11,7 @@
     Width="764"
     Height="506"
     Icon="/Test;component/Resources/Images/Icon/window.ico"
-    ResizeMode="NoResize"
+    ResizeMode="CanMinimize"
     WindowState="{Binding MainWindowState, Mode=TwoWay}"
     WindowStyle="None"
     mc:Ignorable="d">
@@ -52,7 +52,7 @@
                 <ColumnDefinition Width="45" />
                 <ColumnDefinition Width="45" />
             </Grid.ColumnDefinitions>
-
+            <Grid />
             <Grid
                 Grid.ColumnSpan="4"
                 Background="{DynamicResource BackgroundWindowL}"

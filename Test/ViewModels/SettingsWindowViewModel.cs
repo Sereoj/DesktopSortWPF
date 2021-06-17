@@ -85,6 +85,11 @@ namespace Test.ViewModels
             }
         }
 
+        public void SetPage(string page)
+        {
+            OnPageButtonCommandExecuted(page);
+        }
+
         public SettingsWindowViewModel()
         {
         }
@@ -110,13 +115,12 @@ namespace Test.ViewModels
 
             VisibilityDev = Visibility.Hidden;
             VisibilityUpdate = Visibility.Hidden;
+            OnPageButtonCommandExecuted("first");
 
             if ( ModelCollection.SettingsModel.Advanced.AdvancedConfig.Mode == ApplicationNavigationMode.Dev )
             {
                 VisibilityDev = Visibility.Visible;
             }
-
-            OnPageButtonCommandExecuted("first");
         }
 
     }

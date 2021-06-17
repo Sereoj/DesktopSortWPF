@@ -118,8 +118,9 @@ namespace Test.ViewModels
         private async Task Init()
         {
             var setting = ModelCollection.SettingsModel.Advanced.AdvancedConfig;
-
+            
             ModelCollection.ThemeModel.SetTheme(setting.Theme);
+            
             if (!setting.IsBackground)
             {
                 PathImageBackground = ImagerVM.Set(setting.Background);
@@ -145,16 +146,18 @@ namespace Test.ViewModels
             else
             {
                 SetMessage("Настройки для обновления приложения были применены");
+                ListVM.UpdaterVM.GetVersion();
+                ListVM.UpdaterVM.GetInfo();
                 await Task.Delay(2000);
-                //if (GLUpdater.Model.IsUpdate())
-                //{
-                //    SetMessage("Требуется обновление! Релиз: " + GLUpdater.Model.NewVersion);
-                //    OnPageButtonCommandExecuted("settings");
-                //}
-                //else
-                //{
-                //    SetMessage("Вы используете актуальную версию!");
-                //}
+                if ( ListVM.UpdaterVM.IsUpdate() )
+                {
+                    SetMessage("Требуется обновление! Релиз: " + ListVM.UpdaterVM.Version);
+                    ListVM.SettingsWindowViewModel.VisibilityUpdate = Visibility.Visible;
+                }
+                else
+                {
+                    SetMessage("Вы используете актуальную версию!");
+                }
             }
         }
         private void Imager_PropertyChanged(object sender, PropertyChangedEventArgs e)

@@ -21,7 +21,10 @@ namespace Test.ViewModels
 
         private Visibility _VisibilityUpdate;
         private bool _isLoading;
-        private ViewModelCollection listVM;
+        public ViewModelCollection listVM
+        {
+            get; set;
+        }
         private ModelCollection modelCollection;
 
         public Visibility VisibilityUpdate
@@ -47,9 +50,10 @@ namespace Test.ViewModels
         }
 
         private void OnUpdateApplicationButtonExecuted(object p)
-        {  
-            Task.Run(() => listVM.UpdaterVM.DownloadApplication("https://github.com/Sereoj/DesktopSortWPF/releases/download/Beta/Desktop.Sort.1.3.Beta.exe", "updater.exe"));
+        {
+            Task.Run(() => listVM.UpdaterVM.Download());
         }
+
 
         public void Init()
         {

@@ -34,12 +34,12 @@
                 FontSize="14"
                 Style="{DynamicResource TextBlockTitle}"
                 Text="Что нового:" />
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="1" DataContext="{Binding listVM.UpdaterVM}">
                 <TextBox
                     Margin="10"
                     Foreground="{DynamicResource ForegroundTextD}"
                     Style="{DynamicResource TextBoxStyleUpdate}"
-                    Text="{Binding UpdateInformation, Mode=TwoWay}" />
+                    Text="{Binding Info, Mode=TwoWay}" />
             </Grid>
         </Grid>
         <Grid Grid.Row="2">

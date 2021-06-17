@@ -164,7 +164,6 @@
     <Compile Include="Infrastucture\Commands\RelayCommand.cs" />
     <Compile Include="Models\FileManagerModel\StringHelperDirectory.cs" />
     <Compile Include="Models\Theme\Theme.cs" />
-    <Compile Include="Models\Updater\Updater.cs" />
     <Compile Include="ViewModels\DevelopSettingsVM.cs" />
     <Compile Include="ViewModels\IconChanger.cs" />
     <Compile Include="Models\ModelCollection.cs" />
