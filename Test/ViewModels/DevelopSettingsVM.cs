@@ -52,6 +52,7 @@ namespace Test.ViewModels
         {
             ListVM.SettingsWindowViewModel.VisibilityDev = System.Windows.Visibility.Hidden; 
             ModelCollection.SettingsModel.Advanced.AdvancedConfig.Mode = ApplicationNavigationMode.Main;
+            ModelCollection.SettingsModel.Update(ModelCollection.SettingsModel);
         }
 
         public DevelopSettingsVM()
