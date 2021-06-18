@@ -11,7 +11,8 @@ namespace Test.Models.Theme
     {
         public enum ThemeTypes
         {
-            Light, Dark, Classic
+            Light, Dark, Classic,
+            dark, light // for old versions
         }
 
         public ThemeTypes CurrentTheme { get; set; }
