@@ -1,4 +1,9 @@
-# DesktopSortWPF | [![Github All Releases](https://img.shields.io/github/downloads/Sereoj/DesktopSortWPF/total.svg)]()
+# DesktopSortWPF
+
+[![Release](https://img.shields.io/github/release/Sereoj/DesktopSortWPF.svg)](https://github.com/Sereoj/DesktopSortWPF/releases)
+[![Downloads](https://img.shields.io/github/downloads/Sereoj/DesktopSortWPF/total.svg)](https://github.com/Sereoj/DesktopSortWPF/releases)
+[![Donate](https://img.shields.io/badge/donate-$$$-purple.svg)](https://w2me.ru/donate)
+
 **Desktop Sort** - Это мгновенная сортировка файлов по папкам. Если придя за свое рабочее место вы обнаружите, что весь рабочий стол забит разными файлами, а ваш внутренний перфекционизм желает от этого всего избавиться, то **Desktop Sort** программа именно для вас!
 
 ⚠️ **Статус проекта: В разработке. (Возможны незначительные ошибки)**
@@ -22,9 +27,4 @@
 - Редактирование директорий и расширений для каждого переключателя.
 
 ## Скачать
-
-**.Net Framework 4.5**
-
-Рекомендую: [Загрузить последнюю версию DesktopSort WPF](https://github.com/Sereoj/DesktopSortWPF/releases)
-
-*Note: All download options are compatible with Windows 7 or higher. Other operating systems are not supported.*
+[**Download**](https://github.com/Sereoj/DesktopSortWPF/releases)
