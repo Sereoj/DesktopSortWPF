@@ -74,9 +74,14 @@
                 Style="{DynamicResource BaseTextBlock}"
                 Text="Укажите путь для установки заднего изображения" />
             <TextBox
-                Margin="15,27,139,27"
+                Margin="15,27,134,27"
                 Style="{DynamicResource TextBoxStyle}"
                 Text="{Binding BackgroundChanger}" />
+            <Button
+                Margin="516,32,144,34"
+                Command="{Binding FileDialogButtonCommand}"
+                Content="&#xE92f;"
+                Style="{StaticResource ButtonIcons}" />
             <Button
                 Width="114"
                 Margin="0,27,15,27"

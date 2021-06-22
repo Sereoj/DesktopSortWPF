@@ -40,6 +40,14 @@ namespace Test.ViewModels
                     Uri = "/Test;component/Resources/Images/Background.bmp";
                     OnPropertyChanged("Uri");
                     break;
+                case "standart":
+                    Uri = "/Test;component/Resources/Images/Background.bmp";
+                    OnPropertyChanged("Uri");
+                break;
+                case "default":
+                    Uri = "/Test;component/Resources/Images/Background.bmp";
+                    OnPropertyChanged("Uri");
+                break;
                 case "light":
                     Uri = "/Test;component/Resources/Images/light.bmp";
                     break;

@@ -93,6 +93,24 @@ namespace Test.ViewModels
             Settings.Update(Settings);
         }
 
+        private ICommand _FileDialogButtonCommand;
+        public ICommand FileDialogButtonCommand => _FileDialogButtonCommand ?? ( _FileDialogButtonCommand = new RelayCommand(OnFileDialogButtonCommandExecuted, CanFileDialogButtonCommandExecute) );
+
+        private bool CanFileDialogButtonCommandExecute(object p) => true;
+
+        private void OnFileDialogButtonCommandExecuted(object p)
+        {
+            System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog
+            {
+                Filter = "Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png"
+            };
+
+            if ( dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK )
+            {
+                BackgroundChanger = dialog.FileName;
+            }
+            dialog.Dispose();
+        }
 
         public void Init()
         {
