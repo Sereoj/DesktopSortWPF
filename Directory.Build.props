@@ -6,8 +6,6 @@
     <Company>Sereoj</Company>
     <Copyright>Copyright (C) World2Me</Copyright>
     <LangVersion>latest</LangVersion>
-    <Nullable>enable</Nullable>
-    <WarningsAsErrors>nullable</WarningsAsErrors>
   </PropertyGroup>
 
 </Project>
