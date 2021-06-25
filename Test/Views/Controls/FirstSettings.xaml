@@ -19,7 +19,7 @@
         <TextBlock
             Grid.Row="0"
             Margin="10,5,0,0"
-            FontSize="16"
+            FontSize="14"
             Style="{DynamicResource TextBlockTitle}"
             Text="{Binding Name}" />
         <Grid x:Name="GridCheckbox" Grid.Row="1">
