@@ -31,6 +31,27 @@ namespace Test.ViewModels
             set => Set(ref _updateTextExtension, value);
         }
 
+        private bool _onlyOldFiles;
+        public bool OnlyOldFiles
+        {
+            get => _onlyOldFiles;
+            set => Set(ref _onlyOldFiles, value);
+        }
+
+        private bool _onlyNewFiles;
+        public bool OnlyNewFiles
+        {
+            get => _onlyNewFiles;
+            set => Set(ref _onlyNewFiles, value);
+        }
+
+        private bool _onlyDuplicateFiles;
+        public bool OnlyDuplicateFiles
+        {
+            get => _onlyDuplicateFiles;
+            set => Set(ref _onlyDuplicateFiles, value);
+        }
+
         public string Name => "Настройки // Фильтрация";
 
         private bool _isLoading;
@@ -63,8 +84,6 @@ namespace Test.ViewModels
                 }
             }
         }
-
-
         #region ButtonSaveCommand
         private ICommand _ButtonSaveCommand;
         public ICommand ButtonSaveCommand => _ButtonSaveCommand ?? ( _ButtonSaveCommand = new RelayCommand(OnButtonSaveCommandExecuted, CanButtonSaveCommandExecute) );
@@ -93,6 +112,9 @@ namespace Test.ViewModels
             UpdateTextDirectory = item.Catalog;
             UpdateTextExtension = item.Extension;
             IconPath = item.IconPath;
+            OnlyOldFiles = item.OnlyOldFiles;
+            OnlyNewFiles = item.OnlyNewFiles;
+            OnlyDuplicateFiles = item.OnlyDuplicateFiles;
             if ( isChecked != null ) item.IsChecked = ( bool )isChecked;
         }
         #endregion 
@@ -122,6 +144,9 @@ namespace Test.ViewModels
                 item.Catalog = UpdateTextDirectory;
                 item.Extension = UpdateTextExtension;
                 item.IconPath = IconPath;
+                item.OnlyOldFiles = OnlyOldFiles;
+                item.OnlyNewFiles = OnlyNewFiles;
+                item.OnlyDuplicateFiles = OnlyDuplicateFiles;
                 item.IsChecked = ( bool )LastActiveCheckBox.IsChecked;
             }
         }

@@ -18,7 +18,7 @@ namespace Test.Models
             Final
         }
 
-        public static StageVersion State = StageVersion.Stable;
+        public static StageVersion State = StageVersion.PreAlpha;
 
         /// <summary>
         ///     Версия продукта.

@@ -235,16 +235,19 @@
                     Grid.Row="1"
                     Margin="0"
                     Content="Только старые файлы"
+                    IsChecked="{Binding OnlyOldFiles}"
                     Style="{StaticResource CheckBoxStyle}" />
                 <CheckBox
                     Grid.Row="2"
                     Margin="0"
                     Content="Только новые файлы"
+                    IsChecked="{Binding OnlyNewFiles}"
                     Style="{StaticResource CheckBoxStyle}" />
                 <CheckBox
                     Grid.Row="3"
                     Margin="0"
                     Content="Только повторяющие"
+                    IsChecked="{Binding OnlyDuplicateFiles}"
                     Style="{StaticResource CheckBoxStyle}" />
             </Grid>
 
