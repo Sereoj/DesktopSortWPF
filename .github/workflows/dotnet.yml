@@ -20,3 +20,7 @@ jobs:
       run: msbuild $env:SolutionPath /t:Rebuild
       env: 
         DeployExtension: False
+    - name: Publish
+      run: msbuild $env:SolutionPath /t:Publish
+      env: 
+        DeployExtension: False
