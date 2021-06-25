@@ -231,6 +231,21 @@
                     Command="{Binding ButtonIconChanger}"
                     Content="&#xE931;"
                     Style="{DynamicResource ButtonIconsSettings}" />
+                <CheckBox
+                    Grid.Row="1"
+                    Margin="0"
+                    Content="Только старые файлы"
+                    Style="{StaticResource CheckBoxStyle}" />
+                <CheckBox
+                    Grid.Row="2"
+                    Margin="0"
+                    Content="Только новые файлы"
+                    Style="{StaticResource CheckBoxStyle}" />
+                <CheckBox
+                    Grid.Row="3"
+                    Margin="0"
+                    Content="Только повторяющие"
+                    Style="{StaticResource CheckBoxStyle}" />
             </Grid>
 
         </Grid>

@@ -56,7 +56,8 @@ namespace Test.Models.Settings
                     new BasicConfig{ID = "18", IsChecked = false, Catalog = "Other\\Template7", Extension = ""},
                     new BasicConfig{ID = "19", IsChecked = false, Catalog = "Other\\Template8", Extension = ""},
                     new BasicConfig{ID = "20", IsChecked = false, Catalog = "Other\\Template9", Extension = ""},
-                    new BasicConfig{ID = "21", IsChecked = false, Catalog = "Other\\Template10", Extension = ""}
+                    new BasicConfig{ID = "21", IsChecked = false, Catalog = "Other\\Template10", Extension = ""},
+                    new BasicConfig{ID = "22", IsChecked = false, Catalog = "Unused files", Extension = ""},
                 }
             };
 
