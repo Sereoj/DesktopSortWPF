@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Threading;
 using Test.ViewModels.Base;
+using System.Net.Http;
 
 namespace Test.ViewModels
 {
@@ -63,41 +64,63 @@ namespace Test.ViewModels
             RequestVersionAsync(URL_Version);
         }
 
+        private async Task<bool> CheckForInternetConnectionAsync()
+        {
+            var client = new HttpClient();
+            using ( var tokSource = new CancellationTokenSource(5000) )
+            {
+                try
+                {
+                    await client.GetAsync("https://example.com/", tokSource.Token);
+                }
+                catch ( Exception )
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         private void RequestVersionAsync(string uri)
         {
-            new Thread(() =>
+            new Thread(async () =>
             {
-                ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
-                var client = new WebClient();
-                var getNewVersion = client.OpenReadTaskAsync(new Uri(uri, UriKind.Absolute)).Result;
-
-                using StreamReader StreamReader = new StreamReader(getNewVersion);
-                Version = StreamReader.ReadToEnd().Trim();
+                bool internet = await CheckForInternetConnectionAsync();
+                if ( internet )
+                {
+                    var client = new HttpClient();
+                    Version = client.GetStringAsync(new Uri(uri, UriKind.Absolute)).Result.Trim();
+                }
             }).Start();
         }
 
         private void RequestInfoAsync(string uri)
         {
-            new Thread(() =>
+            new Thread(async () =>
             {
-                ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
-                var client = new WebClient();
-                var getNewVersion = client.OpenReadTaskAsync(new Uri(uri, UriKind.Absolute)).Result;
-
-                using StreamReader StreamReader = new StreamReader(getNewVersion);
-                Info = StreamReader.ReadToEnd().Trim();
+                bool internet = await CheckForInternetConnectionAsync();
+                if ( internet )
+                {
+                    var client = new HttpClient();
+                    var getInfo = client.GetStringAsync(new Uri(uri, UriKind.Absolute)).Result.Trim();
+                    Info = getInfo;
+                }
             }).Start();
         }
 
         private void DownloadApplication(string url, string name)
         {
-            new Thread(() =>
+            new Thread(async () =>
             {
-                var client = new WebClient();
-                client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(Client_DownloadProgressChanged);
-                client.DownloadFileCompleted += new AsyncCompletedEventHandler(Client_DownloadFileCompleted);
+                bool internet = await CheckForInternetConnectionAsync();
+                if ( internet )
+                {
+                    var client = new WebClient();
+                    client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(Client_DownloadProgressChanged);
+                    client.DownloadFileCompleted += new AsyncCompletedEventHandler(Client_DownloadFileCompleted);
 
-                client.DownloadFileAsync(new Uri(url), name);
+                    client.DownloadFileAsync(new Uri(url), name);
+                }
             }).Start();
         }
 
