@@ -85,6 +85,15 @@
             Content="&#xE92f;"
             Style="{DynamicResource ButtonIcons}" />
         <Button
+            Grid.Row="4"
+            Grid.Column="1"
+            Width="160"
+            Height="42"
+            Command="{Binding IgnoreButtonCommand}"
+            Content="Игнорировать"
+            Style="{DynamicResource ButtonStyleSettings}"
+            Visibility="{Binding IgnoreFilesVisibility}" />
+        <Button
             Grid.Row="3"
             Grid.Column="1"
             HorizontalAlignment="Left"

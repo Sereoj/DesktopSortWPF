@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
 using Test.Infrastucture.Commands;
@@ -37,6 +38,14 @@ namespace Test.ViewModels
             get => _TextBoxPath1;
             set => Set(ref _TextBoxPath1, value);
         }
+
+        private Visibility _IgnoreFilesVisibility;
+        public Visibility IgnoreFilesVisibility
+        {
+            get => _IgnoreFilesVisibility;
+            set => Set(ref _IgnoreFilesVisibility, value);
+        }
+
         public SettingsModel SettingsModel { get; }
 
         private ICommand _FileDialogButtonCommand;
@@ -111,11 +120,33 @@ namespace Test.ViewModels
             fileManager.DeleteDirectory(TextBoxPath, SettingsModel.Advanced.AdvancedConfig.DeleteDefaultDirectory);
             messager.Messager = "Работа завершилась!";
         }
-
         #endregion
 
+        #region IgnoreButtonCommand
+        private ICommand _IgnoreButtonCommand;
+        public ICommand IgnoreButtonCommand => _IgnoreButtonCommand ?? ( _IgnoreButtonCommand = new RelayCommand(OnIgnoreButtonCommandExecuted, CanIgnoreButtonCommandExecute) );
+        private bool CanIgnoreButtonCommandExecute(object p) => true;
+        private void OnIgnoreButtonCommandExecuted(object p)
+        {
+            var fileManager = ListVM.FileManagerVM;
+            var messager = ListVM.MessengerVM;
+
+            fileManager.SetInput(TextBoxPath);
+            fileManager.SetOutput(TextBoxPath1);
+
+            foreach ( BasicConfig config in SettingsModel.Items )
+            {
+                if ( config.IsChecked )
+                    Task.Run(() => fileManager.SearchFilesAsyn(config, FileMode.Ignore));
+            }
+            fileManager.DeleteDirectory(TextBoxPath, SettingsModel.Advanced.AdvancedConfig.DeleteDefaultDirectory);
+            messager.Messager = "Работа завершилась!";
+        }
+        #endregion
+        
         public MainViewModel()
         {
+            IgnoreFilesVisibility = Visibility.Hidden;
         }
 
         public MainViewModel(ViewModelCollection listVM, ModelCollection modelCollection)
@@ -132,6 +163,13 @@ namespace Test.ViewModels
 
             TextBoxPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
             TextBoxPath1 = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            IgnoreFilesVisibility = Visibility.Hidden;
+
+            if ( settings.Mode == ApplicationNavigationMode.Dev )
+            {
+                IgnoreFilesVisibility = Visibility.Visible;
+            }
+
             // Костыль
             if ( !string.IsNullOrEmpty(InputPath) && !string.IsNullOrEmpty(OutputPath) )
             {

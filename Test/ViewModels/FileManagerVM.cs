@@ -103,14 +103,20 @@ namespace Test.ViewModels
                     switch (modeFile)
                     {
                         case FileMode.Copy:
-                            File.Copy(fileSingle, NewFile, true);
-                            await Task.Delay(delay);
-                            SetMessage(NewFile);
+                            if (!FileAction(fileSingle, config) )
+                            {
+                                File.Copy(fileSingle, NewFile, true);
+                                await Task.Delay(delay);
+                                SetMessage(NewFile);
+                            }
                             break;
                         case FileMode.Move:
-                            File.Move(fileSingle, NewFile);
-                            await Task.Delay(delay);
-                            SetMessage(NewFile);
+                            if (!FileAction(fileSingle, config) )
+                            {
+                                File.Move(fileSingle, NewFile);
+                                await Task.Delay(delay);
+                                SetMessage(NewFile);
+                            }
                             break;
                         case FileMode.Ignore:
                             File.Copy(fileSingle, NewFile, true);
@@ -124,6 +130,16 @@ namespace Test.ViewModels
 
             SetMessage("Задача завершена!");
             await Task.Delay(delay);
+        }
+
+        private bool FileAction(string fileSingle, BasicConfig config)
+        {
+            FileInfo fileInfo = new FileInfo(fileSingle);
+            if ( config.OnlyOldFiles )
+                return !( DateTime.Now.Year > fileInfo.CreationTime.Year );
+            if ( config.OnlyNewFiles )
+                return DateTime.Now.Year > fileInfo.CreationTime.Year;
+            return false;
         }
         #endregion
 
