@@ -293,7 +293,9 @@
   <ItemGroup>
     <Resource Include="Resources\Images\Background.bmp" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="MarkupExtension\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\Icon\window.ico" />
   </ItemGroup>

@@ -248,7 +248,8 @@
                     Margin="0"
                     Content="Только повторяющие"
                     IsChecked="{Binding OnlyDuplicateFiles}"
-                    Style="{StaticResource CheckBoxStyle}" />
+                    Style="{StaticResource CheckBoxStyle}"
+                    Visibility="Hidden" />
             </Grid>
 
         </Grid>

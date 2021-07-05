@@ -112,10 +112,6 @@ namespace Test.ViewModels
             dialog.Dispose();
         }
 
-        public void Init()
-        {
-        }
-
         private void BackgroundChange()
         {
             Imager.Set(BackgroundChanger);
@@ -142,7 +138,15 @@ namespace Test.ViewModels
             Settings.Advanced.AdvancedConfig.Theme = ItemSelected;
             Settings.Update(Settings);
         }
+        public void Init()
+        {
+            ThemeTypesList = new ObservableCollection<ThemeTypes>() { ThemeTypes.Light, ThemeTypes.Dark };
 
+            if ( Settings.Advanced.AdvancedConfig.Mode == ApplicationNavigationMode.Dev )
+            {
+                ThemeTypesList.Add(ThemeTypes.Classic);
+            }
+        }
         public SecondSettingViewModel()
         {
             ThemeTypesList = new ObservableCollection<ThemeTypes>() { ThemeTypes.Light, ThemeTypes.Dark, ThemeTypes.Classic };
@@ -158,12 +162,7 @@ namespace Test.ViewModels
             ItemSelected = Settings.Advanced.AdvancedConfig.Theme;
             BackgroundChanger = Settings.Advanced.AdvancedConfig.Background;
 
-            ThemeTypesList = new ObservableCollection<ThemeTypes>() { ThemeTypes.Light, ThemeTypes.Dark};
-            
-            if ( Settings.Advanced.AdvancedConfig.Mode == ApplicationNavigationMode.Dev )
-            {
-                ThemeTypesList = new ObservableCollection<ThemeTypes>() { ThemeTypes.Light, ThemeTypes.Dark, ThemeTypes.Classic };
-            }
+            Init();
 
         }
     }

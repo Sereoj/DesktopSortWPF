@@ -20,7 +20,10 @@ namespace Test.ViewModels
         public string UpdateTextDirectory
         {
             get => _updateTextDirectory;
-            set => Set(ref _updateTextDirectory, value);
+            set
+            {
+                Set(ref _updateTextDirectory, value);
+            }
         }
 
 

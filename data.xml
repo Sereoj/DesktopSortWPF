@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<Settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Advanced>
+    <AdvancedConfig Background="standard" IsBackground="false" Update="true" Theme="Light" DeleteDefaultDirectory="false" Mode="Main" />
+  </Advanced>
+  <Items>
+    <Item ID="1" IsChecked="false" Catalog="Word" Extension=".docx,.dotx,.doc,.dot" OnlyOldFiles="false" OnlyNewFiles="false" OnlyDuplicateFiles="false" />
+    <Item ID="2" IsChecked="false" Catalog="Excel" Extension=".xlsx,.xlsm,.xltx,.xltm,.xlam,.xls,.xlt,.xla" OnlyOldFiles="false" OnlyNewFiles="false" OnlyDuplicateFiles="false" />
+    <Item ID="3" IsChecked="false" Catalog="Access" Extension=".accdb,.mdb" OnlyOldFiles="false" OnlyNewFiles="false" OnlyDuplicateFiles="false" />
+    <Item ID="4" IsChecked="false" Catalog="Project" Extension=".mpp" OnlyOldFiles="false" OnlyNewFiles="false" OnlyDuplicateFiles="false" />
+    <Item ID="5" IsChecked="false" Catalog="PowerPoint" Extension="" OnlyOldFiles="false" OnlyNewFiles="false" OnlyDuplicateFiles="false" />
+    <Item ID="6" IsChecked="false" Catalog="OneNote" Extension="" OnlyOldFiles="false" OnlyNewFiles="false" OnlyDuplicateFiles="false" />
+    <Item ID="7" IsChecked="false" Catalog="Text" Extension=".txt,.log" OnlyOldFiles="false" OnlyNewFiles="false" OnlyDuplicateFiles="false" />
+    <Item ID="8" IsChecked="false" Catalog="Image" Extension=".bmp,.tif,.jpg,.gif,.png,.ico" OnlyOldFiles="false" OnlyNewFiles="false" OnlyDuplicateFiles="false" />
+    <Item ID="9" IsChecked="false" Catalog="Media" Extension=".avi,.mp4,.mpeg,.wmv,.mp3" OnlyOldFiles="false" OnlyNewFiles="false" OnlyDuplicateFiles="false" />
+    <Item ID="10" IsChecked="false" Catalog="Archive" Extension=".rar,.zip,.7z" OnlyOldFiles="false" OnlyNewFiles="false" OnlyDuplicateFiles="false" />
+    <Item ID="11" IsChecked="false" Catalog="eBook" Extension=".fb2,.epub,.mobi,.pdf,.djvu" OnlyOldFiles="false" OnlyNewFiles="false" OnlyDuplicateFiles="false" />
+    <Item ID="12" IsChecked="false" Catalog="Other\Template1" Extension="" OnlyOldFiles="false" OnlyNewFiles="false" OnlyDuplicateFiles="false" />
+    <Item ID="13" IsChecked="false" Catalog="Other\Template2" Extension="" OnlyOldFiles="false" OnlyNewFiles="false" OnlyDuplicateFiles="false" />
+    <Item ID="14" IsChecked="false" Catalog="Other\Template3" Extension="" OnlyOldFiles="false" OnlyNewFiles="false" OnlyDuplicateFiles="false" />
+    <Item ID="15" IsChecked="false" Catalog="Other\Template4" Extension="" OnlyOldFiles="false" OnlyNewFiles="false" OnlyDuplicateFiles="false" />
+    <Item ID="16" IsChecked="false" Catalog="Other\Template5" Extension="" OnlyOldFiles="false" OnlyNewFiles="false" OnlyDuplicateFiles="false" />
+    <Item ID="17" IsChecked="false" Catalog="Other\Template6" Extension="" OnlyOldFiles="false" OnlyNewFiles="false" OnlyDuplicateFiles="false" />
+    <Item ID="18" IsChecked="false" Catalog="Other\Template7" Extension="" OnlyOldFiles="false" OnlyNewFiles="false" OnlyDuplicateFiles="false" />
+    <Item ID="19" IsChecked="false" Catalog="Other\Template8" Extension="" OnlyOldFiles="false" OnlyNewFiles="false" OnlyDuplicateFiles="false" />
+    <Item ID="20" IsChecked="false" Catalog="Other\Template9" Extension="" OnlyOldFiles="false" OnlyNewFiles="false" OnlyDuplicateFiles="false" />
+    <Item ID="21" IsChecked="false" Catalog="Other\Template10" Extension="" OnlyOldFiles="false" OnlyNewFiles="false" OnlyDuplicateFiles="false" />
+    <Item ID="22" IsChecked="false" Catalog="Unused files" Extension="" OnlyOldFiles="false" OnlyNewFiles="false" OnlyDuplicateFiles="false" />
+  </Items>
+</Settings>
