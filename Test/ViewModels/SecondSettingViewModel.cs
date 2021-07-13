@@ -140,12 +140,7 @@ namespace Test.ViewModels
         }
         public void Init()
         {
-            ThemeTypesList = new ObservableCollection<ThemeTypes>() { ThemeTypes.Light, ThemeTypes.Dark };
-
-            if ( Settings.Advanced.AdvancedConfig.Mode == ApplicationNavigationMode.Dev )
-            {
-                ThemeTypesList.Add(ThemeTypes.Classic);
-            }
+            ThemeTypesList = new ObservableCollection<ThemeTypes>() { ThemeTypes.Light, ThemeTypes.Dark, ThemeTypes.Classic };
         }
         public SecondSettingViewModel()
         {

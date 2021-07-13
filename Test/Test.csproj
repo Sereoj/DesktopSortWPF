@@ -406,6 +406,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="MarkupExtension\" />
+    <Folder Include="Resources\Localization\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\Icon\window.ico" />

@@ -23,7 +23,7 @@ namespace Test.ViewModels
         }
 
         private ICommand _UpdateButtonCommand;
-        public ICommand UpdateButtonCommand => _UpdateButtonCommand ?? ( _UpdateButtonCommand = new RelayCommand(OnUpdateButtonCommandExecuted, CanUpdateButtonCommandExecute) );
+        public ICommand UpdateButtonCommand => _UpdateButtonCommand ??= ( _UpdateButtonCommand = new RelayCommand(OnUpdateButtonCommandExecuted, CanUpdateButtonCommandExecute) );
 
         private bool CanUpdateButtonCommandExecute(object p) => true;
 
@@ -31,10 +31,12 @@ namespace Test.ViewModels
         {
             ListVM.SettingsWindowViewModel.VisibilityUpdate = System.Windows.Visibility.Visible;
             ListVM.UpdateControlViewModel.VisibilityUpdate = System.Windows.Visibility.Visible;
+
+            ListVM.MessengerVM.SetMessage("Открыт доступ к принудительному обновлению");
         }
 
         private ICommand _StandardSettingsCommand;
-        public ICommand StandardSettingsCommand => _StandardSettingsCommand ?? ( _StandardSettingsCommand = new RelayCommand(OnStandardSettingsCommandExecuted, CanStandardSettingsCommandExecute) );
+        public ICommand StandardSettingsCommand => _StandardSettingsCommand ??= ( _StandardSettingsCommand = new RelayCommand(OnStandardSettingsCommandExecuted, CanStandardSettingsCommandExecute) );
 
         private bool CanStandardSettingsCommandExecute(object p) => true;
 
@@ -44,7 +46,7 @@ namespace Test.ViewModels
         }
 
         private ICommand _UserModeCommand;
-        public ICommand UserModeCommand => _UserModeCommand ?? ( _UserModeCommand = new RelayCommand(OnUserModeCommandExecuted, CanUserModeCommandExecute) );
+        public ICommand UserModeCommand => _UserModeCommand ??= ( _UserModeCommand = new RelayCommand(OnUserModeCommandExecuted, CanUserModeCommandExecute) );
 
         private bool CanUserModeCommandExecute(object p) => true;
 
@@ -52,6 +54,7 @@ namespace Test.ViewModels
         {
             ListVM.SettingsWindowViewModel.VisibilityDev = System.Windows.Visibility.Hidden; 
             ModelCollection.SettingsModel.Advanced.AdvancedConfig.Mode = ApplicationNavigationMode.Main;
+
             ModelCollection.SettingsModel.Update(ModelCollection.SettingsModel);
         }
 
