@@ -237,4 +237,37 @@
   <data name="SecondSettingsDeleteFirstDirectory" xml:space="preserve">
     <value>Delete original folder - Not recommended</value>
   </data>
+  <data name="InfoSettingsOpenSourceText" xml:space="preserve">
+    <value>Open source! C # + WPF + MVVM / Start Date 12/31/2020</value>
+  </data>
+  <data name="InfoSettingsDescriptionText" xml:space="preserve">
+    <value>Desktop Sort - This is an instant file sorting into folders. If you come to your workplace and find that your entire desktop is crammed with different files, and your inner perfectionism wants to get rid of all this, then Desktop Sort  for you!</value>
+  </data>
+  <data name="UpdateControlButtonDownload" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="UpdateControlText" xml:space="preserve">
+    <value>What is the news?</value>
+  </data>
+  <data name="UpdateControlTitle" xml:space="preserve">
+    <value>Settings // Update</value>
+  </data>
+  <data name="MessageWelcomeNVersion" xml:space="preserve">
+    <value>Welcome! Version:</value>
+  </data>
+  <data name="MessageIsUpdateFalse" xml:space="preserve">
+    <value>Check for  updates is disabled in the settings</value>
+  </data>
+  <data name="MessageIsUpdateTrue" xml:space="preserve">
+    <value>Update required! Release:</value>
+  </data>
+  <data name="MessageNoUpdates" xml:space="preserve">
+    <value>You are using the current version!</value>
+  </data>
+  <data name="MessageUsingSettingsForUpdate" xml:space="preserve">
+    <value>Settings for app update have been applied</value>
+  </data>
+  <data name="ButtonApply" xml:space="preserve">
+    <value>Apply</value>
+  </data>
 </root>

@@ -8,6 +8,7 @@ using Test.Models;
 using Test.Models.Settings;
 using Test.ViewModels.Base;
 using static Test.Models.Theme.Theme;
+using Localization = Test.Resources.Localization.Localization;
 
 namespace Test.ViewModels
 {
@@ -17,7 +18,7 @@ namespace Test.ViewModels
         private ThemeTypes _itemSelected;
         private bool _isLoading;
 
-        public string Name => "Настройки // Параметры приложения";
+        public string Name => Localization.SecondSettingsTitle;
 
         public bool IsLoading
         {

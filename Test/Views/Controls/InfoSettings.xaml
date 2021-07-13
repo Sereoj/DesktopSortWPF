@@ -35,7 +35,7 @@
                 FontSize="14"
                 FontWeight="Light"
                 Foreground="{DynamicResource ForegroundTextD}"
-                Text="Desktop Sort - Это мгновенная сортировка файлов по папкам. Если придя за свое рабочее место вы обнаружите, что весь рабочий стол забит разными файлами, а ваш внутренний перфекционизм желает от этого всего избавиться, то Desktop Sort программа именно для вас!"
+                Text="{x:Static CC:Localization.InfoSettingsDescriptionText}"
                 TextWrapping="Wrap" />
             <TextBlock
                 Margin="20,90,0,20"
@@ -43,7 +43,7 @@
                 FontSize="14"
                 FontWeight="Light"
                 Foreground="{DynamicResource ForegroundTextD}"
-                Text="Открытый исходный код! C# + WPF + MVVM / Дата старта 31.12.20" />
+                Text="{x:Static CC:Localization.InfoSettingsOpenSourceText}" />
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="24" />

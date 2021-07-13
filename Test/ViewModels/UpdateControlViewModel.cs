@@ -4,6 +4,7 @@ using System.Windows.Input;
 using Test.Infrastucture.Commands;
 using Test.Models;
 using Test.ViewModels.Base;
+using Localization = Test.Resources.Localization.Localization;
 
 namespace Test.ViewModels
 {
@@ -33,7 +34,7 @@ namespace Test.ViewModels
             set => Set(ref _VisibilityUpdate, value);
         }
 
-        public string Name => "Настройки // Обновление";
+        public string Name => Localization.UpdateControlTitle;
 
         public bool IsLoading
         {

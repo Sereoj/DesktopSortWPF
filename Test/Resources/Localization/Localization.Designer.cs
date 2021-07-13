@@ -61,6 +61,15 @@ namespace Test.Resources.Localization {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Применить.
+        /// </summary>
+        public static string ButtonApply {
+            get {
+                return ResourceManager.GetString("ButtonApply", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Создаваемая папка:.
         /// </summary>
         public static string FirstSettingsCatalogText {
@@ -304,6 +313,24 @@ namespace Test.Resources.Localization {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Desktop Sort - Это мгновенная сортировка файлов по папкам. Если придя за свое рабочее место вы обнаружите, что весь рабочий стол забит разными файлами, а ваш внутренний перфекционизм желает от этого всего избавиться, то Desktop Sort программа именно для вас!.
+        /// </summary>
+        public static string InfoSettingsDescriptionText {
+            get {
+                return ResourceManager.GetString("InfoSettingsDescriptionText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Открытый исходный код! C# + WPF + MVVM / Дата старта 31.12.20.
+        /// </summary>
+        public static string InfoSettingsOpenSourceText {
+            get {
+                return ResourceManager.GetString("InfoSettingsOpenSourceText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Настройки // О программе.
         /// </summary>
         public static string InfoSettingsTitle {
@@ -367,6 +394,51 @@ namespace Test.Resources.Localization {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Внимание, проверка на обновления приложения была выключена в настройках.
+        /// </summary>
+        public static string MessageIsUpdateFalse {
+            get {
+                return ResourceManager.GetString("MessageIsUpdateFalse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Требуется обновление! Релиз:.
+        /// </summary>
+        public static string MessageIsUpdateTrue {
+            get {
+                return ResourceManager.GetString("MessageIsUpdateTrue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Вы используете актуальную версию!.
+        /// </summary>
+        public static string MessageNoUpdates {
+            get {
+                return ResourceManager.GetString("MessageNoUpdates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Настройки для обновления приложения были применены.
+        /// </summary>
+        public static string MessageUsingSettingsForUpdate {
+            get {
+                return ResourceManager.GetString("MessageUsingSettingsForUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Добро пожаловать! Версия: .
+        /// </summary>
+        public static string MessageWelcomeNVersion {
+            get {
+                return ResourceManager.GetString("MessageWelcomeNVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Укажите путь до заднего изображения:.
         /// </summary>
         public static string SecondSettingsBackgroundText {
@@ -417,6 +489,33 @@ namespace Test.Resources.Localization {
         public static string SecondSettingsTitle {
             get {
                 return ResourceManager.GetString("SecondSettingsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Загрузить.
+        /// </summary>
+        public static string UpdateControlButtonDownload {
+            get {
+                return ResourceManager.GetString("UpdateControlButtonDownload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Что нового?.
+        /// </summary>
+        public static string UpdateControlText {
+            get {
+                return ResourceManager.GetString("UpdateControlText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Настройки // Обновление.
+        /// </summary>
+        public static string UpdateControlTitle {
+            get {
+                return ResourceManager.GetString("UpdateControlTitle", resourceCulture);
             }
         }
     }

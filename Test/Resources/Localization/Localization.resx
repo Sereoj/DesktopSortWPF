@@ -238,4 +238,37 @@
   <data name="InfoSettingsTitle3" xml:space="preserve">
     <value>Контакты</value>
   </data>
+  <data name="InfoSettingsOpenSourceText" xml:space="preserve">
+    <value>Открытый исходный код! C# + WPF + MVVM / Дата старта 31.12.20</value>
+  </data>
+  <data name="InfoSettingsDescriptionText" xml:space="preserve">
+    <value>Desktop Sort - Это мгновенная сортировка файлов по папкам. Если придя за свое рабочее место вы обнаружите, что весь рабочий стол забит разными файлами, а ваш внутренний перфекционизм желает от этого всего избавиться, то Desktop Sort программа именно для вас!</value>
+  </data>
+  <data name="UpdateControlTitle" xml:space="preserve">
+    <value>Настройки // Обновление</value>
+  </data>
+  <data name="UpdateControlText" xml:space="preserve">
+    <value>Что нового?</value>
+  </data>
+  <data name="UpdateControlButtonDownload" xml:space="preserve">
+    <value>Загрузить</value>
+  </data>
+  <data name="MessageWelcomeNVersion" xml:space="preserve">
+    <value>Добро пожаловать! Версия: </value>
+  </data>
+  <data name="MessageIsUpdateFalse" xml:space="preserve">
+    <value>Внимание, проверка на обновления приложения была выключена в настройках</value>
+  </data>
+  <data name="MessageIsUpdateTrue" xml:space="preserve">
+    <value>Требуется обновление! Релиз:</value>
+  </data>
+  <data name="MessageNoUpdates" xml:space="preserve">
+    <value>Вы используете актуальную версию!</value>
+  </data>
+  <data name="MessageUsingSettingsForUpdate" xml:space="preserve">
+    <value>Настройки для обновления приложения были применены</value>
+  </data>
+  <data name="ButtonApply" xml:space="preserve">
+    <value>Применить</value>
+  </data>
 </root>

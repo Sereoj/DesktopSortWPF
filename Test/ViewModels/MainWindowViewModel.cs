@@ -8,6 +8,7 @@ using Test.Infrastucture.Commands;
 using Test.Models;
 using Test.ViewModels.Base;
 using Test.Views.Controls;
+using Localization = Test.Resources.Localization.Localization;
 
 namespace Test.ViewModels
 {
@@ -125,26 +126,26 @@ namespace Test.ViewModels
             // Применение title
             SetTitle(setting.Mode == ApplicationNavigationMode.Dev);
 
-            SetMessage("Добро пожаловать! Версия: " + Version.Get(true));
+            SetMessage(Localization.MessageWelcomeNVersion + Version.Get(true));
 
             await Task.Delay(2000);
 
             if (!setting.Update)
-                SetMessage("Внимание, проверка на обновления приложения была выключена в настройках");
+                SetMessage(Localization.MessageIsUpdateFalse);
             else
             {
-                SetMessage("Настройки для обновления приложения были применены");
+                SetMessage(Localization.MessageUsingSettingsForUpdate);
                 ListVM.UpdaterVM.GetVersion();
                 ListVM.UpdaterVM.GetInfo();
                 await Task.Delay(2000);
                 if ( ListVM.UpdaterVM.IsUpdate() )
                 {
-                    SetMessage("Требуется обновление! Релиз: " + ListVM.UpdaterVM.Version);
+                    SetMessage(Localization.MessageIsUpdateTrue + ListVM.UpdaterVM.Version);
                     ListVM.SettingsWindowViewModel.VisibilityUpdate = Visibility.Visible;
                 }
                 else
                 {
-                    SetMessage("Вы используете актуальную версию!");
+                    SetMessage(Localization.MessageNoUpdates);
                 }
             }
         }

@@ -2,6 +2,7 @@
 using System.Windows.Input;
 using Test.Infrastucture.Commands;
 using Test.Models;
+using Test.Resources.Localization;
 using Test.ViewModels.Base;
 
 namespace Test.ViewModels
@@ -10,7 +11,7 @@ namespace Test.ViewModels
     {
         private bool _isLoading;
 
-        public string Name => "Настройки // О программе";
+        public string Name => Localization.InfoSettingsTitle;
 
         public bool IsLoading
         {

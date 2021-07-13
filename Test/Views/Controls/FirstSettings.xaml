@@ -291,7 +291,7 @@
                 Margin="0,42,14,12"
                 HorizontalAlignment="Right"
                 Command="{Binding ButtonSaveCommand}"
-                Content="Применить"
+                Content="{x:Static CC:Localization.ButtonApply}"
                 Style="{DynamicResource ButtonStyleSettings}" />
         </Grid>
     </Grid>

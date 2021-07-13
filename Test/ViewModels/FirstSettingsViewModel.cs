@@ -4,6 +4,7 @@ using System.Windows.Input;
 using Test.Infrastucture.Commands;
 using Test.Models;
 using Test.Models.Settings;
+using Test.Resources.Localization;
 using Test.ViewModels.Base;
 
 namespace Test.ViewModels
@@ -55,7 +56,7 @@ namespace Test.ViewModels
             set => Set(ref _onlyDuplicateFiles, value);
         }
 
-        public string Name => "Настройки // Фильтрация";
+        public string Name => Localization.FirstSettingsTitle;
 
         private bool _isLoading;
 
