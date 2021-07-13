@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.Globalization;
+using System.Windows;
 
 namespace Test
 {
@@ -9,6 +11,8 @@ namespace Test
     {
         protected override void OnStartup(StartupEventArgs e)
         {
+            //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(CultureInfo.InstalledUICulture.Name);
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
         }
     }
 }

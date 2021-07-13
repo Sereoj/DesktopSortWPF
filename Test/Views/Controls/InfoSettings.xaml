@@ -2,6 +2,7 @@
     x:Class="Test.Views.Controls.InfoSettings"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:CC="clr-namespace:Test.Resources.Localization"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Test.Views.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -60,7 +61,7 @@
                     Margin="10,5,0,0"
                     FontSize="14"
                     Style="{DynamicResource TextBlockTitle}"
-                    Text="Благодарности" />
+                    Text="{x:Static CC:Localization.InfoSettingsTitle2}" />
 
                 <Button
                     Grid.Row="1"
@@ -106,7 +107,7 @@
                 Margin="10,5,0,63"
                 FontSize="16"
                 Style="{DynamicResource TextBlockTitle}"
-                Text="Контакты" />
+                Text="{x:Static CC:Localization.InfoSettingsTitle3}" />
             <Grid Margin="20,40,20,10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="180" />

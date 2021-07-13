@@ -33,9 +33,9 @@ namespace Test.Views.Controls
             foreach (var item in GridCheckbox.Children)
             {
                 CheckBox checkbox = item as CheckBox;
-                if ( i <= maxCount )
+                if (i <= maxCount)
                 {
-                    checkbox.IsChecked = model2.Items[i].IsChecked;
+                    if (checkbox != null) checkbox.IsChecked = model2.Items[i].IsChecked;
                     i++;
                 }
             }

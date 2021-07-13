@@ -2,6 +2,7 @@
     x:Class="Test.Views.Controls.FirstSettings"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:CC="clr-namespace:Test.Resources.Localization"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:Test.ViewModels"
@@ -42,7 +43,7 @@
                 Name="CheckFormat1"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat1}"
-                Content="Microsoft Word"
+                Content="{x:Static CC:Localization.FirstSettingsCheckBox1}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat2"
@@ -50,7 +51,7 @@
                 Grid.Column="0"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat2}"
-                Content="Microsoft Excel"
+                Content="{x:Static CC:Localization.FirstSettingsCheckBox2}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat3"
@@ -58,7 +59,7 @@
                 Grid.Column="0"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat3}"
-                Content="Microsoft Access"
+                Content="{x:Static CC:Localization.FirstSettingsCheckBox3}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat4"
@@ -66,7 +67,7 @@
                 Grid.Column="0"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat4}"
-                Content="Microsoft Project"
+                Content="{x:Static CC:Localization.FirstSettingsCheckBox4}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat5"
@@ -74,7 +75,7 @@
                 Grid.Column="0"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat5}"
-                Content="Microsoft PowerPoint"
+                Content="{x:Static CC:Localization.FirstSettingsCheckBox5}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat6"
@@ -82,7 +83,7 @@
                 Grid.Column="0"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat6}"
-                Content="Microsoft OneNote"
+                Content="{x:Static CC:Localization.FirstSettingsCheckBox6}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat7"
@@ -90,7 +91,7 @@
                 Grid.Column="0"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat7}"
-                Content="Текстовые файлы"
+                Content="{x:Static CC:Localization.FirstSettingsCheckBox7}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat8"
@@ -98,7 +99,7 @@
                 Grid.Column="1"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat8}"
-                Content="Изображения"
+                Content="{x:Static CC:Localization.FirstSettingsCheckBox8}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat9"
@@ -106,7 +107,7 @@
                 Grid.Column="1"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat9}"
-                Content="Мультимедия"
+                Content="{x:Static CC:Localization.FirstSettingsCheckBox9}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat10"
@@ -114,7 +115,7 @@
                 Grid.Column="1"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat10}"
-                Content="Архивы"
+                Content="{x:Static CC:Localization.FirstSettingsCheckBox10}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat11"
@@ -122,7 +123,7 @@
                 Grid.Column="1"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat11}"
-                Content="Электронные книги"
+                Content="{x:Static CC:Localization.FirstSettingsCheckBox11}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat12"
@@ -130,7 +131,7 @@
                 Grid.Column="1"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat12}"
-                Content="Шаблон 1"
+                Content="{x:Static CC:Localization.FirstSettingsCheckBox12}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat13"
@@ -138,7 +139,7 @@
                 Grid.Column="1"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat13}"
-                Content="Шаблон 2"
+                Content="{x:Static CC:Localization.FirstSettingsCheckBox13}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat14"
@@ -146,7 +147,7 @@
                 Grid.Column="1"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat14}"
-                Content="Шаблон 3"
+                Content="{x:Static CC:Localization.FirstSettingsCheckBox14}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat15"
@@ -154,7 +155,7 @@
                 Grid.Column="2"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat15}"
-                Content="Шаблон 4"
+                Content="{x:Static CC:Localization.FirstSettingsCheckBox15}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat16"
@@ -162,7 +163,7 @@
                 Grid.Column="2"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat16}"
-                Content="Шаблон 5"
+                Content="{x:Static CC:Localization.FirstSettingsCheckBox16}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat17"
@@ -170,7 +171,7 @@
                 Grid.Column="2"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat17}"
-                Content="Шаблон 6"
+                Content="{x:Static CC:Localization.FirstSettingsCheckBox17}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat18"
@@ -178,7 +179,7 @@
                 Grid.Column="2"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat18}"
-                Content="Шаблон 7"
+                Content="{x:Static CC:Localization.FirstSettingsCheckBox18}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat19"
@@ -186,7 +187,7 @@
                 Grid.Column="2"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat19}"
-                Content="Шаблон 8"
+                Content="{x:Static CC:Localization.FirstSettingsCheckBox19}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat20"
@@ -194,7 +195,7 @@
                 Grid.Column="2"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat20}"
-                Content="Шаблон 9"
+                Content="{x:Static CC:Localization.FirstSettingsCheckBox20}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat21"
@@ -202,7 +203,7 @@
                 Grid.Column="2"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat21}"
-                Content="Шаблон 10"
+                Content="{x:Static CC:Localization.FirstSettingsCheckBox21}"
                 Style="{DynamicResource CheckBoxStyle}" />
 
             <Grid
@@ -224,7 +225,7 @@
                     Margin="5,5,0,0"
                     Foreground="{DynamicResource ForegroundTextD}"
                     Style="{DynamicResource TextBlockLeft}"
-                    Text="Иконка для папки:" />
+                    Text="{x:Static CC:Localization.FirstSettingsIconText}" />
                 <Button
                     Margin="0,0,5,0"
                     HorizontalAlignment="Right"
@@ -234,13 +235,13 @@
                 <CheckBox
                     Grid.Row="1"
                     Margin="0"
-                    Content="Только старые файлы"
+                    Content="{x:Static CC:Localization.FirstSettingsOldFilesText}"
                     IsChecked="{Binding OnlyOldFiles}"
                     Style="{StaticResource CheckBoxStyle}" />
                 <CheckBox
                     Grid.Row="2"
                     Margin="0"
-                    Content="Только новые файлы"
+                    Content="{x:Static CC:Localization.FirstSettingsNewFilesText}"
                     IsChecked="{Binding OnlyNewFiles}"
                     Style="{StaticResource CheckBoxStyle}" />
                 <CheckBox
@@ -264,7 +265,7 @@
                 Margin="10,-30,0,0"
                 Foreground="{DynamicResource ForegroundTextD}"
                 Style="{DynamicResource TextBlockLeft}"
-                Text="Создаваемая папка:" />
+                Text="{x:Static CC:Localization.FirstSettingsCatalogText}" />
             <TextBox
                 Name="TextBoxDirectory"
                 Grid.Column="0"
@@ -276,7 +277,7 @@
                 Margin="10,-30,0,0"
                 Foreground="{DynamicResource ForegroundTextD}"
                 Style="{DynamicResource TextBlockLeft}"
-                Text="Расширения:" />
+                Text="{x:Static CC:Localization.FirstSettingsExtensionText}" />
             <TextBox
                 Name="TextBoxExtension"
                 Grid.Column="1"

@@ -2,6 +2,7 @@
     x:Class="Test.Views.Controls.SecondSettings"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:CC="clr-namespace:Test.Resources.Localization"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Test.Views.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -31,28 +32,28 @@
                     Margin="15,16,419,219"
                     Command="{Binding UpdateCheckBoxCommand}"
                     CommandParameter="{Binding ElementName=CheckIsUpdate}"
-                    Content="Проверять обновления автоматически"
+                    Content="{x:Static CC:Localization.SecondSettingsCheckAutoUpdate}"
                     Style="{DynamicResource CheckBoxStyle}" />
                 <CheckBox
                     Name="CheckIsBackground"
                     Margin="15,42,419,193"
                     Command="{Binding UpdateCheckBoxCommand}"
                     CommandParameter="{Binding ElementName=CheckIsBackground}"
-                    Content="Отключить задний фон"
+                    Content="{x:Static CC:Localization.SecondSettingsDisableBackground}"
                     Style="{DynamicResource CheckBoxStyle}" />
                 <CheckBox
                     Name="CheckIsDeleteDefaultDirectory"
                     Margin="15,66,354,169"
                     Command="{Binding UpdateCheckBoxCommand}"
                     CommandParameter="{Binding ElementName=CheckIsDeleteDefaultDirectory}"
-                    Content="Удалить первоначальную папку [Не рекомендуется]"
+                    Content="{x:Static CC:Localization.SecondSettingsDeleteFirstDirectory}"
                     Style="{DynamicResource CheckBoxStyle}" />
                 <TextBlock
                     Margin="395,17,184,221"
                     FontSize="14.5"
                     Foreground="{DynamicResource ForegroundTextD}"
                     Style="{DynamicResource BaseTextBlock}"
-                    Text="Выбор темы:" />
+                    Text="{x:Static CC:Localization.SecondSettingsThemeText}" />
                 <ComboBox
                     Name="BoxTheme"
                     Width="160"
@@ -72,7 +73,7 @@
                 FontSize="12"
                 Foreground="{DynamicResource ForegroundTextD}"
                 Style="{DynamicResource BaseTextBlock}"
-                Text="Укажите путь для установки заднего изображения" />
+                Text="{x:Static CC:Localization.SecondSettingsBackgroundText}" />
             <TextBox
                 Margin="15,27,134,27"
                 Style="{DynamicResource TextBoxStyle}"

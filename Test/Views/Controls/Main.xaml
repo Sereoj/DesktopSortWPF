@@ -2,6 +2,7 @@
     x:Class="Test.Views.Controls.Main"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:CC="clr-namespace:Test.Resources.Localization"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Test.Views.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -31,13 +32,13 @@
             Grid.Row="1"
             Foreground="{DynamicResource ForegroundTextD}"
             Style="{DynamicResource TextBlockLeft}"
-            Text="Укажите путь до папки" />
+            Text="{x:Static CC:Localization.MainLeftText}" />
         <TextBlock
             Name="TextBoxOutput"
             Grid.Row="2"
             Foreground="{DynamicResource ForegroundTextD}"
             Style="{DynamicResource TextBlockLeft}"
-            Text="Укажите путь до папки" />
+            Text="{x:Static CC:Localization.MainLeftText}" />
 
         <TextBox
             Grid.Row="1"
@@ -90,7 +91,7 @@
             Width="160"
             Height="42"
             Command="{Binding IgnoreButtonCommand}"
-            Content="Игнорировать"
+            Content="{x:Static CC:Localization.MainButtonIgnore}"
             Style="{DynamicResource ButtonStyleSettings}"
             Visibility="{Binding IgnoreFilesVisibility}" />
         <Button
@@ -98,14 +99,14 @@
             Grid.Column="1"
             HorizontalAlignment="Left"
             Command="{Binding CopyButtonCommand}"
-            Content="Копировать"
+            Content="{x:Static CC:Localization.MainButtonCopy}"
             Style="{DynamicResource ButtonStyle}" />
         <Button
             Grid.Row="3"
             Grid.Column="1"
             HorizontalAlignment="Right"
             Command="{Binding CutButtonCommand}"
-            Content="Переместить"
+            Content="{x:Static CC:Localization.MainButtonCut}"
             Style="{DynamicResource ButtonStyle}" />
     </Grid>
 </UserControl>
