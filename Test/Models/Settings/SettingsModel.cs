@@ -66,7 +66,7 @@ namespace Test.Models.Settings
 
         public void Save<T>(T subject)
         {
-            var path = Environment.CurrentDirectory + "\\data.xml";
+            var path = Path.Combine(Environment.CurrentDirectory, "data.xml");
             var xml = new XmlSerializer(typeof(SettingsModel));
             using var file = new FileStream(path, FileMode.Create);
             xml.Serialize(file, subject);

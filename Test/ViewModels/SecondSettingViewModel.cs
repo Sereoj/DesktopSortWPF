@@ -52,7 +52,7 @@ namespace Test.ViewModels
         }
 
         private ICommand _ButtonSaveCommand;
-        public ICommand ButtonSaveCommand => _ButtonSaveCommand ?? ( _ButtonSaveCommand = new RelayCommand(OnButtonSaveCommandExecuted, CanButtonSaveCommandExecute) );
+        public ICommand ButtonSaveCommand => _ButtonSaveCommand ??= ( _ButtonSaveCommand = new RelayCommand(OnButtonSaveCommandExecuted, CanButtonSaveCommandExecute) );
         private bool CanButtonSaveCommandExecute(object p) => true;
 
         private void OnButtonSaveCommandExecuted(object p)
@@ -61,7 +61,7 @@ namespace Test.ViewModels
         }
 
         private ICommand _UpdateCheckBoxCommand;
-        public ICommand UpdateCheckBoxCommand => _UpdateCheckBoxCommand ?? ( _UpdateCheckBoxCommand = new RelayCommand(OnUpdateCheckBoxCommandExecuted, CanUpdateCheckBoxCommandExecute) );
+        public ICommand UpdateCheckBoxCommand => _UpdateCheckBoxCommand ??= new RelayCommand(OnUpdateCheckBoxCommandExecuted, CanUpdateCheckBoxCommandExecute);
 
         private bool CanUpdateCheckBoxCommandExecute(object p) => true;
 
@@ -94,7 +94,7 @@ namespace Test.ViewModels
         }
 
         private ICommand _FileDialogButtonCommand;
-        public ICommand FileDialogButtonCommand => _FileDialogButtonCommand ?? ( _FileDialogButtonCommand = new RelayCommand(OnFileDialogButtonCommandExecuted, CanFileDialogButtonCommandExecute) );
+        public ICommand FileDialogButtonCommand => _FileDialogButtonCommand ??= ( _FileDialogButtonCommand = new RelayCommand(OnFileDialogButtonCommandExecuted, CanFileDialogButtonCommandExecute) );
 
         private bool CanFileDialogButtonCommandExecute(object p) => true;
 
@@ -117,25 +117,25 @@ namespace Test.ViewModels
             Imager.Set(BackgroundChanger);
             Settings.Advanced.AdvancedConfig.Background = BackgroundChanger;
         }
-        private void ThemeSet(ThemeTypes ItemSelected)
+        private void ThemeSet(ThemeTypes itemSelected)
         {
-            var ThemeModel = ModelCollection.ThemeModel;
-            switch ( ItemSelected )
+            var themeModel = ModelCollection.ThemeModel;
+            switch ( itemSelected )
             {
                 case ThemeTypes.Dark:
-                ThemeModel.SetTheme(ThemeTypes.Dark);
+                themeModel.SetTheme(ThemeTypes.Dark);
                 break;
                 case ThemeTypes.Light:
-                ThemeModel.SetTheme(ThemeTypes.Light);
+                themeModel.SetTheme(ThemeTypes.Light);
                 break;
                 case ThemeTypes.Classic:
-                ThemeModel.SetTheme(ThemeTypes.Classic);
+                themeModel.SetTheme(ThemeTypes.Classic);
                 break;
                 default:
-                ThemeModel.SetTheme(ThemeTypes.Light);
+                themeModel.SetTheme(ThemeTypes.Light);
                 break;
             }
-            Settings.Advanced.AdvancedConfig.Theme = ItemSelected;
+            Settings.Advanced.AdvancedConfig.Theme = itemSelected;
             Settings.Update(Settings);
         }
         public void Init()

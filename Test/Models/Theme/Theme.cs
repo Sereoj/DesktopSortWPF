@@ -36,6 +36,10 @@ namespace Test.Models.Theme
                 case ThemeTypes.Dark: themeName = "dark"; break;
                 case ThemeTypes.Light: themeName = "light"; break;
                 case ThemeTypes.Classic: themeName = "classic"; break;
+
+                // Fix for old config
+                case ThemeTypes.dark: themeName = "dark"; break;
+                case ThemeTypes.light: themeName = "light"; break;
             }
 
             try

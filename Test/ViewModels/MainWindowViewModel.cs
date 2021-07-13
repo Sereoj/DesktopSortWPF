@@ -73,7 +73,7 @@ namespace Test.ViewModels
 
         #region MinimalizeApplicationCommand
         private ICommand _MinimalizeApplicationCommand;
-        public ICommand MinimalizeApplicationCommand => _MinimalizeApplicationCommand ?? ( _MinimalizeApplicationCommand = new RelayCommand(OnMinimalizeApplicationCommandExecuted, CanMinimalizeApplicationCommanddExecute) );
+        public ICommand MinimalizeApplicationCommand => _MinimalizeApplicationCommand ??= ( _MinimalizeApplicationCommand = new RelayCommand(OnMinimalizeApplicationCommandExecuted, CanMinimalizeApplicationCommanddExecute) );
         private bool CanMinimalizeApplicationCommanddExecute(object p) => true;
         private void OnMinimalizeApplicationCommandExecuted(object p) => MainWindowState = WindowState.Minimized;
 
@@ -81,14 +81,14 @@ namespace Test.ViewModels
 
         #region CloseApplicationCommand
         private ICommand _CloseApplicationCommand;
-        public ICommand CloseApplicationCommand => _CloseApplicationCommand ?? ( _CloseApplicationCommand = new RelayCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute) );
+        public ICommand CloseApplicationCommand => _CloseApplicationCommand ??= ( _CloseApplicationCommand = new RelayCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute) );
         private bool CanCloseApplicationCommandExecute(object p) => true;
         private void OnCloseApplicationCommandExecuted(object p) => Application.Current.Shutdown();
         #endregion
 
         #region PageButtonCommand
         private ICommand _PageButtonCommand;
-        public ICommand PageButtonCommand => _PageButtonCommand ?? ( _PageButtonCommand = new RelayCommand(OnPageButtonCommandExecuted, CanPageButtonCommandExecute) );
+        public ICommand PageButtonCommand => _PageButtonCommand ??= ( _PageButtonCommand = new RelayCommand(OnPageButtonCommandExecuted, CanPageButtonCommandExecute) );
         private bool CanPageButtonCommandExecute(object p) => true;
         private void OnPageButtonCommandExecuted(object p)
         {
@@ -121,28 +121,16 @@ namespace Test.ViewModels
             
             ModelCollection.ThemeModel.SetTheme(setting.Theme);
             
-            if (!setting.IsBackground)
-            {
-                PathImageBackground = ImagerVM.Set(setting.Background);
-            }
+            if (!setting.IsBackground) PathImageBackground = ImagerVM.Set(setting.Background);
             // Применение title
-            if ( setting.Mode == ApplicationNavigationMode.Dev )
-            {
-                SetTitle(true);
-            }
-            else
-            {
-                SetTitle(false);
-            }
+            SetTitle(setting.Mode == ApplicationNavigationMode.Dev);
 
             SetMessage("Добро пожаловать! Версия: " + Version.Get(true));
 
             await Task.Delay(2000);
 
             if (!setting.Update)
-            {
                 SetMessage("Внимание, проверка на обновления приложения была выключена в настройках");
-            }
             else
             {
                 SetMessage("Настройки для обновления приложения были применены");
@@ -196,7 +184,7 @@ namespace Test.ViewModels
             ImagerVM.PropertyChanged += Imager_PropertyChanged;
             //По умолчанию Home
             OnPageButtonCommandExecuted("home");
-            Task.Run(() => Init());
+            Task.Run(Init);
         }
     }
 }

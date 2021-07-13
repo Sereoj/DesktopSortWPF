@@ -3,6 +3,7 @@ using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Threading;
 using Test.ViewModels.Base;
 using System.Net.Http;
@@ -37,21 +38,19 @@ namespace Test.ViewModels
         {
             get => _Info; set => Set(ref _Info, value);
         }
+
+        public string FullPath
+        { get; set; }
         public bool IsUpdate()
         {
-            var current = new Models.Version().Get(false);
-            var result = current.CompareTo(Version);
-            if ( result > 0 )
-                return false;
-            else if ( result < 0 )
-                return true;
-            else
-                return false;
+            string current = new Models.Version().Get(false);
+            int result = current.CompareTo(Version);
+            return result <= 0 && result < 0;
         }
         public void Download()
         {
-            string name = Path.GetFileName(URL_Application);
-            DownloadApplication(URL_Application, name);
+            FullPath = Path.Combine(Environment.CurrentDirectory, "Desktop Sort " + Version + ".exe");
+            DownloadApplication(URL_Application, FullPath);
         }
 
         public void GetInfo()
@@ -133,7 +132,7 @@ namespace Test.ViewModels
 
         private void Client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
         {
-            MessengerVM.SetMessage(Version);
+            MessengerVM.SetMessage("Desktop Sort " + Version + " загружен.");
             if ( e.Error != null )
             {
                 MessengerVM.SetMessage(e.Error.Message);
@@ -142,6 +141,7 @@ namespace Test.ViewModels
             {
                 MessengerVM.Messager = e.Cancelled.ToString();
             }
+            Process.Start(FullPath);
         }
         public UpdaterVM()
         {
