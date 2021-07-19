@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -9,7 +10,9 @@ using Test.Models;
 using Test.Models.Settings;
 using Test.ViewModels.Base;
 using Test.Views.Controls;
+using WPFLocalizeExtension.ValueConverters;
 using Localization = Test.Resources.Localization.Localization;
+using Version = Test.Models.Version;
 
 namespace Test.ViewModels
 {
@@ -115,7 +118,12 @@ namespace Test.ViewModels
 
         public void SetMessage(string message)
         {
-            MessengerVM.Messenger = message;
+            MessengerVM.SetMessage(message);
+        }
+
+        public void SetMessage(string message,string sec)
+        {
+            MessengerVM.SetMessage(message, sec);
         }
 
         public void SetTitle(bool isDev) => Title = isDev ? "DS Develop" : "Desktop Sort";
@@ -129,26 +137,25 @@ namespace Test.ViewModels
             // Применение title
             SetTitle(setting.Mode == ApplicationNavigationMode.Dev);
 
-            SetMessage(Localization.MessageWelcomeNVersion + Version.Get(true));
-
+            SetMessage("MessageWelcomeNVersion", Version.Get(false));
             await Task.Delay(2000);
-
+            SetMessage(null, null);
             if (!setting.Update)
-                SetMessage(Localization.MessageIsUpdateFalse);
+                SetMessage("MessageIsUpdateFalse");
             else
             {
-                SetMessage(Localization.MessageUsingSettingsForUpdate);
+                SetMessage("MessageUsingSettingsForUpdate");
                 ListVM.UpdaterVM.GetVersion();
                 ListVM.UpdaterVM.GetInfo();
                 await Task.Delay(2000);
                 if ( ListVM.UpdaterVM.IsUpdate() )
                 {
-                    SetMessage(Localization.MessageIsUpdateTrue + ListVM.UpdaterVM.Version);
+                    SetMessage("Localization.MessageIsUpdateTrue", ListVM.UpdaterVM.Version);
                     ListVM.SettingsWindowViewModel.VisibilityUpdate = Visibility.Visible;
                 }
                 else
                 {
-                    SetMessage(Localization.MessageNoUpdates);
+                    SetMessage("MessageNoUpdates");
                 }
             }
         }

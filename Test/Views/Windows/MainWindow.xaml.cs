@@ -4,6 +4,8 @@ using Test.Models;
 using Test.Models.Settings;
 using Test.ViewModels;
 using Test.ViewModels.Base;
+using WPFLocalizeExtension.Deprecated.Extensions;
+using WPFLocalizeExtension.Extensions;
 
 namespace Test
 {
@@ -12,6 +14,18 @@ namespace Test
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static readonly DependencyProperty FormatSegment1Property = DependencyProperty.RegisterAttached(
+            "FormatSegment1", typeof(string), typeof(LocExtension), new PropertyMetadata(default(string)));
+
+        public static void SetFormatSegment1(DependencyObject element, string value)
+        {
+            element.SetValue(FormatSegment1Property, value);
+        }
+
+        public static string GetFormatSegment1(DependencyObject element)
+        {
+            return (string)element.GetValue(FormatSegment1Property);
+        }
         public MainWindow()
         {
             var listVm = new ViewModelCollection();

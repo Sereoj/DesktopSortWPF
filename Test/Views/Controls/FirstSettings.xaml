@@ -26,7 +26,7 @@
             Margin="10,5,0,0"
             FontSize="14"
             Style="{DynamicResource TextBlockTitle}"
-            Text="{Binding Name}" />
+            Text="{lex:Loc {Binding Name}}" />
         <Grid x:Name="GridCheckbox" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
@@ -227,6 +227,7 @@
                 </Grid.RowDefinitions>
                 <TextBlock
                     Margin="5,5,0,0"
+                    FontSize="13"
                     Foreground="{DynamicResource ForegroundTextD}"
                     Style="{DynamicResource TextBlockLeft}"
                     Text="{lex:Loc FirstSettingsIconText}" />

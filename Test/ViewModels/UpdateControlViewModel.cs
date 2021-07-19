@@ -34,7 +34,7 @@ namespace Test.ViewModels
             set => Set(ref _VisibilityUpdate, value);
         }
 
-        public string Name => Localization.UpdateControlTitle;
+        public string Name => "UpdateControlTitle";
 
         public bool IsLoading
         {

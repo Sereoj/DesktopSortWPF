@@ -27,7 +27,7 @@
             Margin="10,5,0,0"
             FontSize="14"
             Style="{DynamicResource TextBlockTitle}"
-            Text="{Binding Name}" />
+            Text="{lex:Loc {Binding Name}}" />
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition />

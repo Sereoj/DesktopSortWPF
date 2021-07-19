@@ -11,7 +11,7 @@ namespace Test.ViewModels
     {
         private bool _isLoading;
 
-        public string Name => Localization.InfoSettingsTitle;
+        public string Name => "InfoSettingsTitle";
 
         public bool IsLoading
         {
@@ -20,7 +20,7 @@ namespace Test.ViewModels
         }
 
         private ICommand _HelpMembers;
-        public ICommand HelpMembers => _HelpMembers ?? ( _HelpMembers = new RelayCommand(OnHelpMembersCommandExecuted, CanHelpMembersCommandExecute) );
+        public ICommand HelpMembers => _HelpMembers ??= new RelayCommand(OnHelpMembersCommandExecuted, CanHelpMembersCommandExecute);
         private bool CanHelpMembersCommandExecute(object p) => true;
 
         private void OnHelpMembersCommandExecuted(object p)

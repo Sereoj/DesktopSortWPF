@@ -253,13 +253,13 @@
     <value>Settings // Update</value>
   </data>
   <data name="MessageWelcomeNVersion" xml:space="preserve">
-    <value>Welcome! Version: </value>
+    <value>Welcome! Version: {0}</value>
   </data>
   <data name="MessageIsUpdateFalse" xml:space="preserve">
     <value>Check for  updates is disabled in the settings</value>
   </data>
   <data name="MessageIsUpdateTrue" xml:space="preserve">
-    <value>Update required! Release:</value>
+    <value>Update required! Release: {0}</value>
   </data>
   <data name="MessageNoUpdates" xml:space="preserve">
     <value>You are using the current version!</value>

@@ -118,10 +118,17 @@
                         Text="Info: " />
                 </StatusBarItem>
                 <StatusBarItem>
-                    <TextBlock
-                        Margin="15,0,0,0"
-                        Foreground="{DynamicResource ForegroundTextD}"
-                        Text="{Binding Messenger}" />
+                    <TextBlock Margin="15,0,0,0" Foreground="{DynamicResource ForegroundTextD}">
+                        <TextBlock.Text>
+                            <MultiBinding Converter="{lex:StringFormatConverter}">
+                                <Binding
+                                    Converter="{lex:TranslateConverter}"
+                                    FallbackValue=""
+                                    Path="Messenger" />
+                                <Binding FallbackValue="" Path="SecondMessenger" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
                 </StatusBarItem>
             </StatusBar>
         </Grid>

@@ -18,7 +18,7 @@ namespace Test.ViewModels
     {
         private bool _isLoading;
 
-        public string Name => Localization.SecondSettingsTitle;
+        public string Name => "SecondSettingsTitle";
 
         public bool IsLoading
         {

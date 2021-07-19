@@ -254,13 +254,13 @@
     <value>Загрузить</value>
   </data>
   <data name="MessageWelcomeNVersion" xml:space="preserve">
-    <value>Добро пожаловать! Версия: </value>
+    <value>Добро пожаловать! Версия: {0}</value>
   </data>
   <data name="MessageIsUpdateFalse" xml:space="preserve">
     <value>Внимание, проверка на обновления приложения была выключена в настройках</value>
   </data>
   <data name="MessageIsUpdateTrue" xml:space="preserve">
-    <value>Требуется обновление! Релиз:</value>
+    <value>Требуется обновление! Релиз: {0}</value>
   </data>
   <data name="MessageNoUpdates" xml:space="preserve">
     <value>Вы используете актуальную версию!</value>

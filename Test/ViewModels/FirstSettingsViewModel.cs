@@ -56,7 +56,7 @@ namespace Test.ViewModels
             set => Set(ref _onlyDuplicateFiles, value);
         }
 
-        public string Name => Localization.FirstSettingsTitle;
+        public string Name => "FirstSettingsTitle";
 
         private bool _isLoading;
 
