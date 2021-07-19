@@ -51,7 +51,7 @@
             </Grid.ColumnDefinitions>
             <Button
                 Grid.Column="1"
-                Width="200"
+                Width="180"
                 Height="40"
                 Command="{Binding UpdateApplicationButton}"
                 Content="{x:Static CC:Localization.UpdateControlButtonDownload}"

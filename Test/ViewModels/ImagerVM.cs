@@ -18,7 +18,6 @@ namespace Test.ViewModels
             }
         }
 
-
         public Visibility Visible
         {
             get => visible;
