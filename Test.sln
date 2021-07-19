@@ -9,6 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Tests", "Test.Tests\Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestUpdateConsole", "TestUpdateConsole\TestUpdateConsole.csproj", "{0A9790E5-B760-446E-9540-BD695404D32F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{99638C50-410F-48C1-8911-987B47E65DDD}"
+	ProjectSection(SolutionItems) = preProject
+		Resources.Designer.t4 = Resources.Designer.t4
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,8 +37,8 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		RESX_PrefixTranslations = False
-		RESX_NeutralResourcesLanguage = ru-RU
 		SolutionGuid = {AC5F9C1A-3DA8-43D7-8FB8-2B6396EF1DB1}
+		RESX_NeutralResourcesLanguage = ru-RU
+		RESX_PrefixTranslations = False
 	EndGlobalSection
 EndGlobal

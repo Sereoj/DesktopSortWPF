@@ -271,4 +271,7 @@
   <data name="ButtonApply" xml:space="preserve">
     <value>Применить</value>
   </data>
+  <data name="SecondSettingsLangText" xml:space="preserve">
+    <value>Язык:</value>
+  </data>
 </root>

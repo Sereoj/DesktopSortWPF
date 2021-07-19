@@ -31,6 +31,7 @@ namespace Test.Models.Settings
                         Background = "standard",
                         IsBackground = false,
                         Theme = Theme.Theme.ThemeTypes.Light,
+                        Language = Locale.Translation.English,
                         DeleteDefaultDirectory = false
                     }
                 },

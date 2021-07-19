@@ -253,7 +253,7 @@
     <value>Настройки // Обновление</value>
   </data>
   <data name="MessageWelcomeNVersion" xml:space="preserve">
-    <value>Добро пожаловать! Версия: Добро пожаловать! Версия: Добро пожаловать! Версия: </value>
+    <value>Добро пожаловать! Версия: </value>
   </data>
   <data name="MessageIsUpdateFalse" xml:space="preserve">
     <value>Внимание, проверка на обновления приложения была выключена в настройках</value>
@@ -269,5 +269,8 @@
   </data>
   <data name="ButtonApply" xml:space="preserve">
     <value>Применить</value>
+  </data>
+  <data name="SecondSettingsLangText" xml:space="preserve">
+    <value>Язык:</value>
   </data>
 </root>

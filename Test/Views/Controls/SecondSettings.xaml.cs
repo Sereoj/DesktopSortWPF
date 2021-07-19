@@ -3,6 +3,8 @@ using System.Windows;
 using System.Windows.Controls;
 using Test.Models;
 using Test.Models.Settings;
+using WPFLocalizeExtension.Providers;
+using Localization = Test.Resources.Localization.Localization;
 
 namespace Test.Views.Controls
 {
@@ -25,6 +27,7 @@ namespace Test.Views.Controls
             model2 = modelCollection.SettingsModel;
             UpdateCheckBox();
             UpdateTheme();
+            Console.WriteLine(WPFLocalizeExtension.Providers.ResxLocalizationProvider.GetDefaultDictionary(this));
         }
 
         private void UpdateTheme()

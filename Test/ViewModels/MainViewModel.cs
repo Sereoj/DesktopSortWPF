@@ -84,7 +84,7 @@ namespace Test.ViewModels
         private void OnCopyButtonCommandExecuted(object p)
         {
             var fileManager = ListVM.FileManagerVM;
-            var messager = ListVM.MessengerVM;
+            var messenger = ListVM.MessengerVM;
             
             fileManager.SetInput(TextBoxPath);
             fileManager.SetOutput(TextBoxPath1);
@@ -95,7 +95,7 @@ namespace Test.ViewModels
                     Task.Run(( ) => fileManager.SearchFilesAsyn(config, FileMode.Copy));
             }
             fileManager.DeleteDirectory(TextBoxPath, SettingsModel.Advanced.AdvancedConfig.DeleteDefaultDirectory);
-            messager.Messager = "Работа завершилась!";
+            messenger.SetMessage("Работа завершилась!");
         }
 
         #endregion
@@ -107,7 +107,7 @@ namespace Test.ViewModels
         private void OnCutButtonCommandExecuted(object p)
         {
             var fileManager = ListVM.FileManagerVM;
-            var messager = ListVM.MessengerVM;
+            var messenger = ListVM.MessengerVM;
 
             fileManager.SetInput(TextBoxPath);
             fileManager.SetOutput(TextBoxPath1);
@@ -118,7 +118,7 @@ namespace Test.ViewModels
                     Task.Run(() => fileManager.SearchFilesAsyn(config, FileMode.Move));
             }
             fileManager.DeleteDirectory(TextBoxPath, SettingsModel.Advanced.AdvancedConfig.DeleteDefaultDirectory);
-            messager.Messager = "Работа завершилась!";
+            messenger.SetMessage("Работа завершилась!");
         }
         #endregion
 
@@ -129,7 +129,7 @@ namespace Test.ViewModels
         private void OnIgnoreButtonCommandExecuted(object p)
         {
             var fileManager = ListVM.FileManagerVM;
-            var messager = ListVM.MessengerVM;
+            var messenger = ListVM.MessengerVM;
 
             fileManager.SetInput(TextBoxPath);
             fileManager.SetOutput(TextBoxPath1);
@@ -140,7 +140,7 @@ namespace Test.ViewModels
                     Task.Run(() => fileManager.SearchFilesAsyn(config, FileMode.Ignore));
             }
             fileManager.DeleteDirectory(TextBoxPath, SettingsModel.Advanced.AdvancedConfig.DeleteDefaultDirectory);
-            messager.Messager = "Работа завершилась!";
+            messenger.SetMessage("Работа завершилась!");
         }
         #endregion
         

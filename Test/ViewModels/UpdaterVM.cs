@@ -139,7 +139,7 @@ namespace Test.ViewModels
             }
             if ( e.Cancelled )
             {
-                MessengerVM.Messager = e.Cancelled.ToString();
+                MessengerVM.SetMessage(e.Cancelled.ToString());
             }
             Process.Start(FullPath);
         }

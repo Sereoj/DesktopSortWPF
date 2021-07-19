@@ -253,7 +253,7 @@
     <value>Settings // Update</value>
   </data>
   <data name="MessageWelcomeNVersion" xml:space="preserve">
-    <value>Welcome! Version:</value>
+    <value>Welcome! Version: </value>
   </data>
   <data name="MessageIsUpdateFalse" xml:space="preserve">
     <value>Check for  updates is disabled in the settings</value>
@@ -269,5 +269,8 @@
   </data>
   <data name="ButtonApply" xml:space="preserve">
     <value>Apply</value>
+  </data>
+  <data name="SecondSettingsLangText" xml:space="preserve">
+    <value>Language:</value>
   </data>
 </root>

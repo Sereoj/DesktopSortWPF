@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:gif="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
+    xmlns:lex="http://wpflocalizeextension.codeplex.com"
     xmlns:local="clr-namespace:Test.Models.Helpers"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:uc="clr-namespace:Test.Views.Controls"
@@ -11,22 +12,13 @@
     Title="{Binding Title}"
     Width="764"
     Height="506"
+    d:DataContext="{d:DesignInstance Type=vm:MainWindowViewModel,
+                                     IsDesignTimeCreatable=True}"
     Icon="/Test;component/Resources/Images/Icon/window.ico"
     ResizeMode="CanMinimize"
     WindowState="{Binding MainWindowState, Mode=TwoWay}"
     WindowStyle="None"
     mc:Ignorable="d">
-    <Window.DataContext>
-        <vm:MainWindowViewModel />
-    </Window.DataContext>
-    <Window.Resources>
-        <DataTemplate DataType="{x:Type uc:Main}">
-            <uc:Main />
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type uc:Settings}">
-            <uc:Settings />
-        </DataTemplate>
-    </Window.Resources>
     <Grid Background="{DynamicResource BackgroundWindowL}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="625*" />
@@ -72,6 +64,7 @@
                     Source="/Test;component/Resources/Images/Icon/window.ico" />
             </Border>
             <TextBlock
+                Grid.Row="0"
                 Grid.Column="0"
                 Height="21.373"
                 Margin="28,5,54,1.8"
@@ -80,17 +73,20 @@
                 Text="{Binding Title}" />
 
             <Button
+                Grid.Row="0"
                 Grid.Column="2"
                 Command="{Binding MinimalizeApplicationCommand}"
                 Content="&#x005F;"
                 Style="{DynamicResource ButtonToolbar}" />
             <Button
+                Grid.Row="0"
                 Grid.Column="3"
                 Command="{Binding CloseApplicationCommand}"
                 Content="&#x0078;"
                 Style="{DynamicResource ButtonToolbar}" />
             <ContentPresenter
                 Grid.Row="1"
+                Grid.Column="0"
                 Grid.ColumnSpan="4"
                 Content="{Binding SelectedView}"
                 DataContext="{Binding SelectedView}" />
@@ -111,6 +107,7 @@
 
             <StatusBar
                 Grid.Row="3"
+                Grid.Column="0"
                 Grid.ColumnSpan="4"
                 Background="{DynamicResource BackgroundWindowL}"
                 DataContext="{Binding ListVM.MessengerVM}">
@@ -124,7 +121,7 @@
                     <TextBlock
                         Margin="15,0,0,0"
                         Foreground="{DynamicResource ForegroundTextD}"
-                        Text="{Binding Messager}" />
+                        Text="{Binding Messenger}" />
                 </StatusBarItem>
             </StatusBar>
         </Grid>

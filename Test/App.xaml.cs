@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Globalization;
 using System.Windows;
+using Test.Models;
+using Test.ViewModels;
+using Test.ViewModels.Base;
+using Localization = Test.Resources.Localization.Localization;
 
 namespace Test
 {
@@ -11,8 +15,6 @@ namespace Test
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(CultureInfo.InstalledUICulture.Name);
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
         }
     }
 }

@@ -7,6 +7,8 @@ using Test.Infrastucture.Commands;
 using Test.Models;
 using Test.Models.Settings;
 using Test.ViewModels.Base;
+using WPFLocalizeExtension.Engine;
+using WPFLocalizeExtension.Providers;
 using static Test.Models.Theme.Theme;
 using Localization = Test.Resources.Localization.Localization;
 
@@ -14,8 +16,6 @@ namespace Test.ViewModels
 {
     public class SecondSettingViewModel : ViewModel, IApplicationContentView
     {
-
-        private ThemeTypes _itemSelected;
         private bool _isLoading;
 
         public string Name => Localization.SecondSettingsTitle;
@@ -29,17 +29,32 @@ namespace Test.ViewModels
         public ImagerVM Imager { get; set; }
 
         public ObservableCollection<ThemeTypes> ThemeTypesList { get; set; }
+        public ObservableCollection<Locale.Translation> LangCollection
+        {
+            get; set;
+        }
 
         public ViewModelCollection ListVM { get; set; }
         public ModelCollection ModelCollection { get; set; }
-        public ThemeTypes ItemSelected
+        private ThemeTypes _themeSelected;
+        public ThemeTypes ThemeSelected
         {
             set
             {
-                Set(ref _itemSelected, value);
+                Set(ref _themeSelected, value);
                 ThemeSet(value);
             }
-            get => _itemSelected; 
+            get => _themeSelected; 
+        }
+        private Locale.Translation _langSelected;
+        public Locale.Translation LangSelected
+        {
+            set
+            {
+                Set(ref _langSelected, value);
+                SetLang(value);
+            }
+            get => _langSelected;
         }
         private string _BackgroundChanger;
         public string BackgroundChanger
@@ -139,27 +154,39 @@ namespace Test.ViewModels
             Settings.Advanced.AdvancedConfig.Theme = itemSelected;
             Settings.Update(Settings);
         }
+
+        private void SetLang(Locale.Translation itemTranslation)
+        {
+            Locale.Set(itemTranslation);
+            Settings.Advanced.AdvancedConfig.Language = itemTranslation;
+            Settings.Update(Settings);
+        }
         public void Init()
         {
             ThemeTypesList = new ObservableCollection<ThemeTypes>() { ThemeTypes.Light, ThemeTypes.Dark, ThemeTypes.Classic };
+            LangCollection = new ObservableCollection<Locale.Translation>()
+                {Locale.Translation.Russia, Locale.Translation.English};
         }
         public SecondSettingViewModel()
         {
             ThemeTypesList = new ObservableCollection<ThemeTypes>() { ThemeTypes.Light, ThemeTypes.Dark, ThemeTypes.Classic };
+            LangCollection = new ObservableCollection<Locale.Translation>()
+                {Locale.Translation.Russia, Locale.Translation.English};
         }
 
         public SecondSettingViewModel(ViewModelCollection listVM, ModelCollection modelCollection)
         {
+            LocalizeDictionary.Instance.Culture = new System.Globalization.CultureInfo("ru");
             ListVM = listVM;
             ModelCollection = modelCollection;
 
             Settings = ModelCollection.SettingsModel;
             Imager = ListVM.ImagerVM;
-            ItemSelected = Settings.Advanced.AdvancedConfig.Theme;
+            ThemeSelected = Settings.Advanced.AdvancedConfig.Theme;
+            LangSelected = Settings.Advanced.AdvancedConfig.Language;
             BackgroundChanger = Settings.Advanced.AdvancedConfig.Background;
 
             Init();
-
         }
     }
 }

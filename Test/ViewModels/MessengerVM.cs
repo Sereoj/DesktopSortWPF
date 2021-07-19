@@ -10,12 +10,12 @@ namespace Test.ViewModels
     public class MessengerVM : ViewModel
     {
         private string _message;
-        public string Messager
+        public string Messenger
         {
             set => Set(ref _message, value);
             get => _message;
         }
 
-        public void SetMessage(string message) => Messager = message; // alternative
+        public void SetMessage(string message) => Messenger = message; // alternative
     }
 }

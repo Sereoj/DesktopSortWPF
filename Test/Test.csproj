@@ -320,12 +320,9 @@
     <Compile Include="Infrastucture\Commands\Base\Command.cs" />
     <Compile Include="Infrastucture\Commands\RelayCommand.cs" />
     <Compile Include="Models\FileManagerModel\StringHelperDirectory.cs" />
+    <Compile Include="Models\Settings\Locale.cs" />
     <Compile Include="Models\Theme\Theme.cs" />
-    <Compile Include="Resources\Localization\Localization.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Localization.resx</DependentUpon>
-    </Compile>
+    <Compile Include="Resources\Localization\Localization.Designer.cs" />
     <Compile Include="ViewModels\DevelopSettingsVM.cs" />
     <Compile Include="ViewModels\IconChanger.cs" />
     <Compile Include="Models\ModelCollection.cs" />
@@ -380,25 +377,13 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Localization\Localization.en.resx" />
-    <EmbeddedResource Include="Resources\Localization\Localization.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Localization.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Localization\Localization.resx" />
     <EmbeddedResource Include="Resources\Localization\Localization.ru.resx" />
     <Resource Include="Resources\Fonts\Comfortaa.ttf" />
     <Resource Include="Resources\Fonts\OpenSans\Bold.ttf" />

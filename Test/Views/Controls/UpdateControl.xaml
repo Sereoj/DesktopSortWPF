@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:CC="clr-namespace:Test.Resources.Localization"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lex="http://wpflocalizeextension.codeplex.com"
     xmlns:local="clr-namespace:Test.Views.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:Test.ViewModels"
@@ -11,6 +12,9 @@
                                      IsDesignTimeCreatable=True}"
     d:DesignHeight="373"
     d:DesignWidth="684"
+    lex:LocalizeDictionary.IncludeInvariantCulture="False"
+    lex:ResxLocalizationProvider.DefaultAssembly="Test"
+    lex:ResxLocalizationProvider.DefaultDictionary="Localization"
     mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
@@ -34,7 +38,7 @@
                 Margin="10,10,0,0"
                 FontSize="14"
                 Style="{DynamicResource TextBlockTitle}"
-                Text="{x:Static CC:Localization.UpdateControlText}" />
+                Text="{lex:Loc UpdateControlText}" />
             <Grid Grid.Row="1" DataContext="{Binding listVM.UpdaterVM}">
                 <TextBox
                     Margin="10"
@@ -54,7 +58,7 @@
                 Width="180"
                 Height="40"
                 Command="{Binding UpdateApplicationButton}"
-                Content="{x:Static CC:Localization.UpdateControlButtonDownload}"
+                Content="{lex:Loc UpdateControlButtonDownload}"
                 Style="{DynamicResource ButtonStyleSettings}"
                 Visibility="{Binding VisibilityUpdate, Mode=TwoWay}" />
         </Grid>

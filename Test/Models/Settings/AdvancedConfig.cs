@@ -17,6 +17,8 @@ namespace Test.Models.Settings
         [XmlAttribute]
         public ThemeTypes Theme { get; set; }
         [XmlAttribute]
+        public Locale.Translation Language { get; set; }
+        [XmlAttribute]
         public bool DeleteDefaultDirectory { get; set; }
         [XmlAttribute]
         public string InputPath { get; set; }

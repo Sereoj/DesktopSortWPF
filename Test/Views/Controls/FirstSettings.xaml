@@ -4,12 +4,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:CC="clr-namespace:Test.Resources.Localization"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lex="http://wpflocalizeextension.codeplex.com"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:Test.ViewModels"
     d:DataContext="{d:DesignInstance Type=vm:FirstSettingsViewModel,
                                      IsDesignTimeCreatable=True}"
     d:DesignHeight="373"
     d:DesignWidth="684"
+    lex:LocalizeDictionary.IncludeInvariantCulture="False"
+    lex:ResxLocalizationProvider.DefaultAssembly="Test"
+    lex:ResxLocalizationProvider.DefaultDictionary="Localization"
     mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
@@ -43,7 +47,7 @@
                 Name="CheckFormat1"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat1}"
-                Content="{x:Static CC:Localization.FirstSettingsCheckBox1}"
+                Content="{lex:Loc FirstSettingsCheckBox1}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat2"
@@ -51,7 +55,7 @@
                 Grid.Column="0"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat2}"
-                Content="{x:Static CC:Localization.FirstSettingsCheckBox2}"
+                Content="{lex:Loc FirstSettingsCheckBox2}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat3"
@@ -59,7 +63,7 @@
                 Grid.Column="0"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat3}"
-                Content="{x:Static CC:Localization.FirstSettingsCheckBox3}"
+                Content="{lex:Loc FirstSettingsCheckBox3}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat4"
@@ -67,7 +71,7 @@
                 Grid.Column="0"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat4}"
-                Content="{x:Static CC:Localization.FirstSettingsCheckBox4}"
+                Content="{lex:Loc FirstSettingsCheckBox4}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat5"
@@ -75,7 +79,7 @@
                 Grid.Column="0"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat5}"
-                Content="{x:Static CC:Localization.FirstSettingsCheckBox5}"
+                Content="{lex:Loc FirstSettingsCheckBox5}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat6"
@@ -83,7 +87,7 @@
                 Grid.Column="0"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat6}"
-                Content="{x:Static CC:Localization.FirstSettingsCheckBox6}"
+                Content="{lex:Loc FirstSettingsCheckBox6}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat7"
@@ -91,7 +95,7 @@
                 Grid.Column="0"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat7}"
-                Content="{x:Static CC:Localization.FirstSettingsCheckBox7}"
+                Content="{lex:Loc FirstSettingsCheckBox7}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat8"
@@ -99,7 +103,7 @@
                 Grid.Column="1"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat8}"
-                Content="{x:Static CC:Localization.FirstSettingsCheckBox8}"
+                Content="{lex:Loc FirstSettingsCheckBox8}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat9"
@@ -107,7 +111,7 @@
                 Grid.Column="1"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat9}"
-                Content="{x:Static CC:Localization.FirstSettingsCheckBox9}"
+                Content="{lex:Loc FirstSettingsCheckBox9}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat10"
@@ -115,7 +119,7 @@
                 Grid.Column="1"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat10}"
-                Content="{x:Static CC:Localization.FirstSettingsCheckBox10}"
+                Content="{lex:Loc FirstSettingsCheckBox10}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat11"
@@ -123,7 +127,7 @@
                 Grid.Column="1"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat11}"
-                Content="{x:Static CC:Localization.FirstSettingsCheckBox11}"
+                Content="{lex:Loc FirstSettingsCheckBox11}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat12"
@@ -131,7 +135,7 @@
                 Grid.Column="1"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat12}"
-                Content="{x:Static CC:Localization.FirstSettingsCheckBox12}"
+                Content="{lex:Loc FirstSettingsCheckBox12}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat13"
@@ -139,7 +143,7 @@
                 Grid.Column="1"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat13}"
-                Content="{x:Static CC:Localization.FirstSettingsCheckBox13}"
+                Content="{lex:Loc FirstSettingsCheckBox13}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat14"
@@ -147,7 +151,7 @@
                 Grid.Column="1"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat14}"
-                Content="{x:Static CC:Localization.FirstSettingsCheckBox14}"
+                Content="{lex:Loc FirstSettingsCheckBox14}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat15"
@@ -155,7 +159,7 @@
                 Grid.Column="2"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat15}"
-                Content="{x:Static CC:Localization.FirstSettingsCheckBox15}"
+                Content="{lex:Loc FirstSettingsCheckBox15}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat16"
@@ -163,7 +167,7 @@
                 Grid.Column="2"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat16}"
-                Content="{x:Static CC:Localization.FirstSettingsCheckBox16}"
+                Content="{lex:Loc FirstSettingsCheckBox16}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat17"
@@ -171,7 +175,7 @@
                 Grid.Column="2"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat17}"
-                Content="{x:Static CC:Localization.FirstSettingsCheckBox17}"
+                Content="{lex:Loc FirstSettingsCheckBox17}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat18"
@@ -179,7 +183,7 @@
                 Grid.Column="2"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat18}"
-                Content="{x:Static CC:Localization.FirstSettingsCheckBox18}"
+                Content="{lex:Loc FirstSettingsCheckBox18}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat19"
@@ -187,7 +191,7 @@
                 Grid.Column="2"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat19}"
-                Content="{x:Static CC:Localization.FirstSettingsCheckBox19}"
+                Content="{lex:Loc FirstSettingsCheckBox19}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat20"
@@ -195,7 +199,7 @@
                 Grid.Column="2"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat20}"
-                Content="{x:Static CC:Localization.FirstSettingsCheckBox20}"
+                Content="{lex:Loc FirstSettingsCheckBox20}"
                 Style="{DynamicResource CheckBoxStyle}" />
             <CheckBox
                 Name="CheckFormat21"
@@ -203,7 +207,7 @@
                 Grid.Column="2"
                 Command="{Binding UpdateCheckBox}"
                 CommandParameter="{Binding ElementName=CheckFormat21}"
-                Content="{x:Static CC:Localization.FirstSettingsCheckBox21}"
+                Content="{lex:Loc FirstSettingsCheckBox21}"
                 Style="{DynamicResource CheckBoxStyle}" />
 
             <Grid
@@ -225,7 +229,7 @@
                     Margin="5,5,0,0"
                     Foreground="{DynamicResource ForegroundTextD}"
                     Style="{DynamicResource TextBlockLeft}"
-                    Text="{x:Static CC:Localization.FirstSettingsIconText}" />
+                    Text="{lex:Loc FirstSettingsIconText}" />
                 <Button
                     Margin="0,0,5,0"
                     HorizontalAlignment="Right"
@@ -235,13 +239,13 @@
                 <CheckBox
                     Grid.Row="1"
                     Margin="0"
-                    Content="{x:Static CC:Localization.FirstSettingsOldFilesText}"
+                    Content="{lex:Loc FirstSettingsOldFilesText}"
                     IsChecked="{Binding OnlyOldFiles}"
                     Style="{StaticResource CheckBoxStyle}" />
                 <CheckBox
                     Grid.Row="2"
                     Margin="0"
-                    Content="{x:Static CC:Localization.FirstSettingsNewFilesText}"
+                    Content="{lex:Loc FirstSettingsNewFilesText}"
                     IsChecked="{Binding OnlyNewFiles}"
                     Style="{StaticResource CheckBoxStyle}" />
                 <CheckBox
@@ -265,7 +269,7 @@
                 Margin="10,-30,0,0"
                 Foreground="{DynamicResource ForegroundTextD}"
                 Style="{DynamicResource TextBlockLeft}"
-                Text="{x:Static CC:Localization.FirstSettingsCatalogText}" />
+                Text="{lex:Loc FirstSettingsCatalogText}" />
             <TextBox
                 Name="TextBoxDirectory"
                 Grid.Column="0"
@@ -277,7 +281,7 @@
                 Margin="10,-30,0,0"
                 Foreground="{DynamicResource ForegroundTextD}"
                 Style="{DynamicResource TextBlockLeft}"
-                Text="{x:Static CC:Localization.FirstSettingsExtensionText}" />
+                Text="{lex:Loc FirstSettingsExtensionText}" />
             <TextBox
                 Name="TextBoxExtension"
                 Grid.Column="1"
@@ -291,7 +295,7 @@
                 Margin="0,42,14,12"
                 HorizontalAlignment="Right"
                 Command="{Binding ButtonSaveCommand}"
-                Content="{x:Static CC:Localization.ButtonApply}"
+                Content="{lex:Loc ButtonApply}"
                 Style="{DynamicResource ButtonStyleSettings}" />
         </Grid>
     </Grid>

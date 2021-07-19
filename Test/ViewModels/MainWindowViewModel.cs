@@ -6,6 +6,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using Test.Infrastucture.Commands;
 using Test.Models;
+using Test.Models.Settings;
 using Test.ViewModels.Base;
 using Test.Views.Controls;
 using Localization = Test.Resources.Localization.Localization;
@@ -54,7 +55,10 @@ namespace Test.ViewModels
         {
             get; set;
         }
-
+        public string NameOfResourceKey
+        {
+            get; set;
+        }
         public ModelCollection ModelCollection { get; set; }
         public Settings Settings { get; set; }
         public Main Main { get; set; }
@@ -111,7 +115,7 @@ namespace Test.ViewModels
 
         public void SetMessage(string message)
         {
-            MessengerVM.Messager = message;
+            MessengerVM.Messenger = message;
         }
 
         public void SetTitle(bool isDev) => Title = isDev ? "DS Develop" : "Desktop Sort";
@@ -121,7 +125,6 @@ namespace Test.ViewModels
             var setting = ModelCollection.SettingsModel.Advanced.AdvancedConfig;
             
             ModelCollection.ThemeModel.SetTheme(setting.Theme);
-            
             if (!setting.IsBackground) PathImageBackground = ImagerVM.Set(setting.Background);
             // Применение title
             SetTitle(setting.Mode == ApplicationNavigationMode.Dev);
@@ -167,8 +170,16 @@ namespace Test.ViewModels
 
         public MainWindowViewModel()
         {
-            ListVM = new ViewModelCollection();
-            ModelCollection = new ModelCollection();
+            Main = new Main();
+            Settings = new Settings();
+
+            OnPageButtonCommandExecuted("home");
+        }
+
+        public MainWindowViewModel(ViewModelCollection listVM, ModelCollection modelCollection)
+        {
+            ListVM = listVM;
+            ModelCollection = modelCollection;
 
             MessengerVM = ListVM.MessengerVM;
             ImagerVM = ListVM.ImagerVM;
@@ -178,14 +189,16 @@ namespace Test.ViewModels
 
             Main = new Main();
             Settings = new Settings();
+
             MainViewModel = new MainViewModel(ListVM, ModelCollection);
             SettingsWindowViewModel = new SettingsWindowViewModel(ListVM, ModelCollection);
 
             ListVM.SettingsWindowViewModel = SettingsWindowViewModel;
             ImagerVM.PropertyChanged += Imager_PropertyChanged;
-            //По умолчанию Home
-            OnPageButtonCommandExecuted("home");
+
             Task.Run(Init);
+
+            OnPageButtonCommandExecuted("home");
         }
     }
 }
