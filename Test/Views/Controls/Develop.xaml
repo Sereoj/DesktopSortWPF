@@ -42,6 +42,12 @@
                 Command="{Binding UserModeCommand}"
                 Content="Режим пользователя"
                 Style="{StaticResource ButtonStyleSettings}" />
+            <Button
+                Width="210"
+                Margin="20,10,0,0"
+                Command="{Binding SendMessageCommand}"
+                Content="Отправить сообщение"
+                Style="{StaticResource ButtonStyleSettings}" />
         </WrapPanel>
     </Grid>
 </UserControl>

@@ -7,6 +7,7 @@ using System.Windows.Input;
 using Test.Infrastucture.Commands;
 using Test.Models;
 using Test.Models.Settings;
+using Test.Resources.Localization;
 using Test.ViewModels.Base;
 
 namespace Test.ViewModels
@@ -56,6 +57,17 @@ namespace Test.ViewModels
             ModelCollection.SettingsModel.Advanced.AdvancedConfig.Mode = ApplicationNavigationMode.Main;
 
             ModelCollection.SettingsModel.Update(ModelCollection.SettingsModel);
+        }
+
+        private ICommand _SendMessageCommand;
+        public ICommand SendMessageCommand => _SendMessageCommand ??= (_SendMessageCommand = new RelayCommand(OnSendMessageCommandExecuted, CanSendMessageCommandExecute));
+
+        private bool CanSendMessageCommandExecute(object p) => true;
+
+        private void OnSendMessageCommandExecuted(object p)
+        {
+            var random = new Random().Next(0,100);
+            ListVM.MessengerVM.SetMessage("MessageWelcomeNVersion", random.ToString());
         }
 
         public DevelopSettingsVM()

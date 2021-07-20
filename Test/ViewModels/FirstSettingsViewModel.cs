@@ -102,7 +102,7 @@ namespace Test.ViewModels
 
         #region UpdateCheckBox
         private ICommand _UpdateCheckBox;
-        public ICommand UpdateCheckBox => _UpdateCheckBox ?? ( _UpdateCheckBox = new RelayCommand(OnUpdateCheckBoxCommandExecuted, CanUpdateCheckBoxCommandExecute) );
+        public ICommand UpdateCheckBox => _UpdateCheckBox ??= new RelayCommand(OnUpdateCheckBoxCommandExecuted, CanUpdateCheckBoxCommandExecute);
         private bool CanUpdateCheckBoxCommandExecute(object p) => true;
 
         private void OnUpdateCheckBoxCommandExecuted(object p)
@@ -111,15 +111,31 @@ namespace Test.ViewModels
             var isChecked = checkbox?.IsChecked;
             var matches = Regex.Matches(checkbox.Name, @"(\d+)");
             var id = int.Parse(matches[0].Groups[1].Value) - 1;
-            var item = Model.Items[id];
-            LastActiveCheckBox = checkbox;
-            UpdateTextDirectory = item.Catalog;
-            UpdateTextExtension = item.Extension;
-            IconPath = item.IconPath;
-            OnlyOldFiles = item.OnlyOldFiles;
-            OnlyNewFiles = item.OnlyNewFiles;
-            OnlyDuplicateFiles = item.OnlyDuplicateFiles;
-            if ( isChecked != null ) item.IsChecked = ( bool )isChecked;
+            var item = Model.Items.Find(match: config => int.Parse(config.ID) == id);
+
+            if (item != null)
+            {
+                LastActiveCheckBox = checkbox;
+                UpdateTextDirectory = item.Catalog;
+                UpdateTextExtension = item.Extension;
+                IconPath = item.IconPath;
+                OnlyOldFiles = item.OnlyOldFiles;
+                OnlyNewFiles = item.OnlyNewFiles;
+                OnlyDuplicateFiles = item.OnlyDuplicateFiles;
+                if (isChecked != null) item.IsChecked = (bool)isChecked;
+            }
+            else
+            {
+                BasicConfig config = new BasicConfig()
+                {
+                    ID = id.ToString(),
+                    Catalog = UpdateTextDirectory,
+                    Extension = UpdateTextExtension,
+                    IsChecked = isChecked != null && (bool) isChecked
+                };
+                Model.Items.Add(config);
+            }
+
         }
         #endregion 
         #endregion
@@ -134,7 +150,6 @@ namespace Test.ViewModels
             ModelCollection = modelCollection;
 
             Model = modelCollection.SettingsModel;
-
         }
 
         private void UpdateSettings(CheckBox lastActiveCheckBox)
@@ -151,7 +166,7 @@ namespace Test.ViewModels
                 item.OnlyOldFiles = OnlyOldFiles;
                 item.OnlyNewFiles = OnlyNewFiles;
                 item.OnlyDuplicateFiles = OnlyDuplicateFiles;
-                item.IsChecked = ( bool )LastActiveCheckBox.IsChecked;
+                if (LastActiveCheckBox.IsChecked != null) item.IsChecked = (bool) LastActiveCheckBox.IsChecked;
             }
         }
 
