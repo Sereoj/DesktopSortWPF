@@ -95,7 +95,7 @@ namespace Test.ViewModels
                     Task.Run(( ) => fileManager.SearchFilesAsyn(config, FileMode.Copy));
             }
             fileManager.DeleteDirectory(TextBoxPath, SettingsModel.Advanced.AdvancedConfig.DeleteDefaultDirectory);
-            messenger.SetMessage("Работа завершилась!");
+            messenger.SetMessage("WorkCompleted");
         }
 
         #endregion
@@ -118,7 +118,7 @@ namespace Test.ViewModels
                     Task.Run(() => fileManager.SearchFilesAsyn(config, FileMode.Move));
             }
             fileManager.DeleteDirectory(TextBoxPath, SettingsModel.Advanced.AdvancedConfig.DeleteDefaultDirectory);
-            messenger.SetMessage("Работа завершилась!");
+            messenger.SetMessage("WorkCompleted");
         }
         #endregion
 
@@ -140,7 +140,7 @@ namespace Test.ViewModels
                     Task.Run(() => fileManager.SearchFilesAsyn(config, FileMode.Ignore));
             }
             fileManager.DeleteDirectory(TextBoxPath, SettingsModel.Advanced.AdvancedConfig.DeleteDefaultDirectory);
-            messenger.SetMessage("Работа завершилась!");
+            messenger.SetMessage("WorkCompleted");
         }
         #endregion
         

@@ -75,7 +75,7 @@ namespace Test.ViewModels
 
         #region Commands
         private ICommand _ButtonIconChanger;
-        public ICommand ButtonIconChanger => _ButtonIconChanger ?? ( _ButtonIconChanger = new RelayCommand(OnButtonIconChangerExecuted, CanButtonIconChangerExecute) );
+        public ICommand ButtonIconChanger => _ButtonIconChanger ??= ( _ButtonIconChanger = new RelayCommand(OnButtonIconChangerExecuted, CanButtonIconChangerExecute) );
         public bool CanButtonIconChangerExecute(object p) => true;
         public void OnButtonIconChangerExecuted(object p)
         {
@@ -110,7 +110,7 @@ namespace Test.ViewModels
             var checkbox = p as CheckBox;
             var isChecked = checkbox?.IsChecked;
             var matches = Regex.Matches(checkbox.Name, @"(\d+)");
-            var id = int.Parse(matches[0].Groups[1].Value) - 1;
+            var id = int.Parse(matches[0].Groups[1].Value);
             var item = Model.Items.Find(match: config => int.Parse(config.ID) == id);
 
             if (item != null)
@@ -157,8 +157,8 @@ namespace Test.ViewModels
             if(lastActiveCheckBox != null)
             {
                 var matches = Regex.Matches(lastActiveCheckBox.Name, @"(\d+)");
-                var id = int.Parse(matches[0].Groups[1].Value) - 1;
-                var item = Model.Items[id];
+                var id = int.Parse(matches[0].Groups[1].Value);
+                var item = Model.Items.Find(match: config => int.Parse(config.ID) == id);
 
                 item.Catalog = UpdateTextDirectory;
                 item.Extension = UpdateTextExtension;

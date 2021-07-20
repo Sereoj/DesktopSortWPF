@@ -38,7 +38,7 @@ namespace Test.ViewModels
             if (Validate(input))
             {
                 INPUT_PATH = input;
-                SetMessage("Проверка: " + input);
+                SetMessage("CheckPath", input);
             }
         }
 
@@ -48,7 +48,7 @@ namespace Test.ViewModels
             if (Validate(output))
             {
                 OUTPUT_PATH = output;
-                SetMessage("Проверка: " + output);
+                SetMessage("CheckPath",output);
             }
         }
 
@@ -70,7 +70,7 @@ namespace Test.ViewModels
                 await SearchFilesAsyn(file, modeFile);
             }
 
-            SetMessage("Работа завершилась!");
+            SetMessage("WorkCompleted");
         }
 
         /*
@@ -84,22 +84,29 @@ namespace Test.ViewModels
             string Icon = @config.IconPath;
 
             var NewDirectory = Path.Combine(OUTPUT_PATH, PathNewDirectory);
-            SetMessage("Начало выполнения: " + PathNewDirectory);
+            SetMessage("WorkStartedText", PathNewDirectory);
             await Task.Delay(delay);
 
             try
             {
                 var files = GetFilesList(INPUT_PATH, PatternExtension);
-
-                if (files != null && NewDirectory.IsPathExists() && files.ToList().Count > 0 )
+                try
                 {
-                    NewDirectory.CreateDirectory();
-                    IconChanger.FolderIcon(NewDirectory, Icon);
+                    if (NewDirectory.IsPathExists() && files.ToList().Count != 0)
+                    {
+                        NewDirectory.CreateDirectory();
+                        if(Icon != null)
+                            IconChanger.FolderIcon(NewDirectory, Icon);
+                    }
+                }
+                catch(FileNotFoundException e)
+                {
+                    SetMessage(null,e.Message);
                 }
 
                 foreach (var fileSingle in files)
                 {
-                    var NewFile = Path.Combine(NewDirectory + "\\" + Path.GetFileName(fileSingle));
+                    var NewFile = Path.Combine(NewDirectory + @"\" + Path.GetFileName(fileSingle));
                     switch (modeFile)
                     {
                         case FileMode.Copy:
@@ -107,7 +114,7 @@ namespace Test.ViewModels
                             {
                                 File.Copy(fileSingle, NewFile, true);
                                 await Task.Delay(delay);
-                                SetMessage(NewFile);
+                                SetMessage("FileText", NewFile);
                             }
                             break;
                         case FileMode.Move:
@@ -115,20 +122,19 @@ namespace Test.ViewModels
                             {
                                 File.Move(fileSingle, NewFile);
                                 await Task.Delay(delay);
-                                SetMessage(NewFile);
+                                SetMessage("FileText",NewFile);
                             }
                             break;
                         case FileMode.Ignore:
                             File.Copy(fileSingle, NewFile, true);
-                            await Task.Delay(delay);
-                            SetMessage(NewFile);
+                            await Task.Delay(delay * 10);
+                            SetMessage("FileText",NewFile);
                             break;
                     }
                 }
             }
             catch{}
-
-            SetMessage("Задача завершена!");
+            SetMessage("TaskSuccessText");
             await Task.Delay(delay);
         }
 
@@ -147,7 +153,12 @@ namespace Test.ViewModels
 
         private void SetMessage(string message)
         {
+            SetMessage(null, null);
             MessengerVM.SetMessage(message);
+        }
+        private void SetMessage(string message, string message1)
+        {
+            MessengerVM.SetMessage(message,message1);
         }
 
         /// <summary>Валидация пути</summary>

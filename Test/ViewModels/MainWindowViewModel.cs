@@ -118,6 +118,7 @@ namespace Test.ViewModels
 
         public void SetMessage(string message)
         {
+            SetMessage(null, null);
             MessengerVM.SetMessage(message);
         }
 
@@ -139,7 +140,6 @@ namespace Test.ViewModels
 
             SetMessage("MessageWelcomeNVersion", Version.Get(false));
             await Task.Delay(2000);
-            SetMessage(null, null);
             if (!setting.Update)
                 SetMessage("MessageIsUpdateFalse");
             else

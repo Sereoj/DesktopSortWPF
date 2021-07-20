@@ -273,4 +273,19 @@
   <data name="SecondSettingsLangText" xml:space="preserve">
     <value>Язык:</value>
   </data>
+  <data name="TaskSuccessText" xml:space="preserve">
+    <value>Задача завершена!</value>
+  </data>
+  <data name="WorkStartedText" xml:space="preserve">
+    <value>Начало выполнения: {0}</value>
+  </data>
+  <data name="FileText" xml:space="preserve">
+    <value>Файл - {0}</value>
+  </data>
+  <data name="CheckPath" xml:space="preserve">
+    <value>Проверка: {0}</value>
+  </data>
+  <data name="WorkCompleted" xml:space="preserve">
+    <value>Работа завершена!</value>
+  </data>
 </root>
