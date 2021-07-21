@@ -58,8 +58,6 @@ namespace DesktopSort.UI.ViewModels
         {
             ListVM.SettingsWindowViewModel.VisibilityUpdate = Visibility.Visible;
             ListVM.UpdateControlViewModel.VisibilityUpdate = Visibility.Visible;
-
-            ListVM.MessengerVM.SetMessage("Открыт доступ к принудительному обновлению");
         }
 
         private bool CanStandardSettingsCommandExecute(object p)
@@ -71,6 +69,7 @@ namespace DesktopSort.UI.ViewModels
         {
             ModelCollection.SettingsModel.Default();
             ModelCollection.IsDefaultSettings = true;
+            ModelCollection.IsDefaultSettings = false;
         }
 
         private bool CanUserModeCommandExecute(object p)

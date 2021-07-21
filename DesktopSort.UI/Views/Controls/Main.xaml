@@ -47,7 +47,7 @@
             Style="{DynamicResource TextBoxStyle}"
             Text="{Binding TextBoxPath, Mode=TwoWay}">
             <TextBox.ToolTip>
-                <ToolTip Content="Используйте клавишу Enter" />
+                <ToolTip Content="{lex:Loc MainTooltipText}" />
             </TextBox.ToolTip>
             <TextBox.InputBindings>
                 <KeyBinding
@@ -62,7 +62,7 @@
             Style="{DynamicResource TextBoxStyle}"
             Text="{Binding TextBoxPath1, Mode=TwoWay}">
             <TextBox.ToolTip>
-                <ToolTip Content="Используйте клавишу Enter" />
+                <ToolTip Content="{lex:Loc MainTooltipText}" />
             </TextBox.ToolTip>
             <TextBox.InputBindings>
                 <KeyBinding

@@ -288,4 +288,13 @@
   <data name="WorkCompleted" xml:space="preserve">
     <value>Work completed!</value>
   </data>
+  <data name="UpdaterDownloadProcessText" xml:space="preserve">
+    <value>Uploaded: {0}</value>
+  </data>
+  <data name="UpdaterDownloadFileCompleted" xml:space="preserve">
+    <value>Desktop Sort {0} loaded.</value>
+  </data>
+  <data name="MainTooltipText" xml:space="preserve">
+    <value>Use Enter</value>
+  </data>
 </root>

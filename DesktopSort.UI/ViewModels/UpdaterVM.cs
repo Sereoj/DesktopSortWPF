@@ -152,16 +152,16 @@ namespace DesktopSort.UI.ViewModels
 
         private void Client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
-            var progress = "Загружено " + (e.BytesReceived / 1024f).ToString("#0.##") + "КБ" + " / " +
-                           (e.TotalBytesToReceive / 1024f).ToString("#0.##") + "КБ" + " | " + e.ProgressPercentage +
+            var progress = (e.BytesReceived / 1024f).ToString("#0.##") + "Kbps" + " / " +
+                           (e.TotalBytesToReceive / 1024f).ToString("#0.##") + "Kbps" + " | " + e.ProgressPercentage +
                            "%";
 
-            MessengerVM.SetMessage(progress);
+            MessengerVM.SetMessage("UpdaterDownloadProcessText", progress);
         }
 
         private void Client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
         {
-            MessengerVM.SetMessage("Desktop Sort " + Version + " загружен.");
+            MessengerVM.SetMessage("UpdaterDownloadFileCompleted", Version);
             if (e.Error != null) MessengerVM.SetMessage(e.Error.Message);
             if (e.Cancelled) MessengerVM.SetMessage(e.Cancelled.ToString());
             Process.Start(FullPath);
