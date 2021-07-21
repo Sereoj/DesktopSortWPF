@@ -7,7 +7,6 @@ namespace DesktopSort.UI.Models
     /// </summary>
     public class Version
     {
-        public Version() { }
         public enum StageVersion
         {
             PreAlpha,
@@ -18,7 +17,7 @@ namespace DesktopSort.UI.Models
             Final
         }
 
-        public static StageVersion State = StageVersion.Stable;
+        static public StageVersion State = StageVersion.Stable;
 
         /// <summary>
         ///     Версия продукта.

@@ -8,20 +8,59 @@ namespace DesktopSort.UI.Models.Settings
         Индивидуальная настройка каждого объекта, который имеет id и "включен" ли он. 
         */
         [XmlAttribute]
-        public string ID { get; set; }
+        public string ID
+        {
+            get;
+            set;
+        }
+
         [XmlAttribute]
-        public bool IsChecked { get; set; }
+        public bool IsChecked
+        {
+            get;
+            set;
+        }
+
         [XmlAttribute]
-        public string Catalog { get; set; }
+        public string Catalog
+        {
+            get;
+            set;
+        }
+
         [XmlAttribute]
-        public string Extension { get; set; }
+        public string Extension
+        {
+            get;
+            set;
+        }
+
         [XmlAttribute]
-        public string IconPath { get; set; }
+        public string IconPath
+        {
+            get;
+            set;
+        }
+
         [XmlAttribute]
-        public bool OnlyOldFiles{ get; set; }
+        public bool OnlyOldFiles
+        {
+            get;
+            set;
+        }
+
         [XmlAttribute]
-        public bool OnlyNewFiles{ get; set; }
+        public bool OnlyNewFiles
+        {
+            get;
+            set;
+        }
+
         [XmlAttribute]
-        public bool OnlyDuplicateFiles{ get; set; }
+        public bool OnlyDuplicateFiles
+        {
+            get;
+            set;
+        }
     }
 }

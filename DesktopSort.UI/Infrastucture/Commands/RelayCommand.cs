@@ -14,12 +14,12 @@ namespace DesktopSort.UI.Infrastucture.Commands
             _CanExecute = CanExecute;
         }
 
-        public override bool CanExecute(object parameter)
+        override public bool CanExecute(object parameter)
         {
             return _CanExecute?.Invoke(parameter) ?? true;
         }
 
-        public override void Execute(object parameter)
+        override public void Execute(object parameter)
         {
             if (!CanExecute(parameter)) return;
             _Execute(parameter);

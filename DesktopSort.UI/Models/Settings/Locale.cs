@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using WPFLocalizeExtension.Engine;
 
 namespace DesktopSort.UI.Models.Settings
 {
@@ -10,16 +11,16 @@ namespace DesktopSort.UI.Models.Settings
             Russia
         }
 
-        public static void Set(Translation langCode)
+        static public void Set(Translation langCode)
         {
-            string lang = langCode switch
+            var lang = langCode switch
             {
                 Translation.Russia => "ru-RU",
                 Translation.English => "en-US",
                 _ => "en-US"
             };
 
-            WPFLocalizeExtension.Engine.LocalizeDictionary.Instance.Culture = new CultureInfo(lang);
+            LocalizeDictionary.Instance.Culture = new CultureInfo(lang);
         }
     }
 }

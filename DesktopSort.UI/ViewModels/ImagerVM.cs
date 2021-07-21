@@ -5,16 +5,13 @@ namespace DesktopSort.UI.ViewModels
 {
     public class ImagerVM : ViewModel
     {
-
         private string uri;
         private Visibility visible;
+
         public string Uri
         {
             get => uri;
-            set
-            {
-                Set(ref uri, value);
-            }
+            set => Set(ref uri, value);
         }
 
         public Visibility Visible
@@ -23,7 +20,7 @@ namespace DesktopSort.UI.ViewModels
             set
             {
                 visible = value;
-                if (visible  == Visibility.Hidden)
+                if (visible == Visibility.Hidden)
                     OnPropertyChanged("BackHidden");
                 else
                     OnPropertyChanged("BackVisible");
@@ -41,11 +38,11 @@ namespace DesktopSort.UI.ViewModels
                 case "standart":
                     Uri = "/DesktopSort.UI;component/Resources/Images/Background.bmp";
                     OnPropertyChanged("Uri");
-                break;
+                    break;
                 case "default":
                     Uri = "/DesktopSort.UI;component/Resources/Images/Background.bmp";
                     OnPropertyChanged("Uri");
-                break;
+                    break;
                 case "light":
                     Uri = "/DesktopSort.UI;component/Resources/Images/light.bmp";
                     break;
@@ -60,6 +57,7 @@ namespace DesktopSort.UI.ViewModels
                     Uri = uri;
                     break;
             }
+
             return Uri;
         }
     }

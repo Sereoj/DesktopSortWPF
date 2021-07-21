@@ -4,14 +4,10 @@ using DesktopSort.UI.Models;
 namespace DesktopSort.UI.Views.Controls
 {
     /// <summary>
-    /// Логика взаимодействия для UpdateContol.xaml
+    ///     Логика взаимодействия для UpdateContol.xaml
     /// </summary>
     public partial class UpdateControl : UserControl
     {
-        public ModelCollection ModelCollection
-        {
-            get;
-        }
         public UpdateControl()
         {
         }
@@ -20,6 +16,11 @@ namespace DesktopSort.UI.Views.Controls
         {
             InitializeComponent();
             ModelCollection = modelCollection;
+        }
+
+        public ModelCollection ModelCollection
+        {
+            get;
         }
     }
 }

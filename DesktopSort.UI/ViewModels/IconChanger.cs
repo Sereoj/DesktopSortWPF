@@ -11,12 +11,10 @@ namespace DesktopSort.UI.ViewModels
         {
             var iniPath = Path.Combine(targetFolderPath, "desktop.ini");
             if (iniPath.IsPathExists())
-            {
                 File.SetAttributes(
-                   iniPath,
-                   File.GetAttributes(iniPath) &
-                   ~( FileAttributes.Hidden | FileAttributes.System ));
-            }
+                    iniPath,
+                    File.GetAttributes(iniPath) &
+                    ~(FileAttributes.Hidden | FileAttributes.System));
 
             var iniContents = new StringBuilder()
                 .AppendLine("[.ShellClassInfo]")
@@ -27,8 +25,8 @@ namespace DesktopSort.UI.ViewModels
             File.WriteAllText(iniPath, iniContents);
 
             File.SetAttributes(
-               iniPath,
-               File.GetAttributes(iniPath) | FileAttributes.Hidden | FileAttributes.System);
+                iniPath,
+                File.GetAttributes(iniPath) | FileAttributes.Hidden | FileAttributes.System);
 
             File.SetAttributes(
                 targetFolderPath,

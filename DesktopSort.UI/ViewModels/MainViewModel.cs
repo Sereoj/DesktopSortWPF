@@ -14,16 +14,58 @@ namespace DesktopSort.UI.ViewModels
 {
     public class MainViewModel : ViewModel
     {
+        private ICommand _FileDialogButtonCommand;
+
+        private Visibility _IgnoreFilesVisibility;
         private string _TextBoxPath;
         private string _TextBoxPath1;
+
+        public MainViewModel()
+        {
+            IgnoreFilesVisibility = Visibility.Hidden;
+        }
+
+        public MainViewModel(ViewModelCollection listVM, ModelCollection modelCollection)
+        {
+            ListVM = listVM;
+            ModelCollection = modelCollection;
+
+            SettingsModel = modelCollection.SettingsModel;
+
+            var settings = SettingsModel.Advanced.AdvancedConfig;
+
+            var InputPath = settings.InputPath;
+            var OutputPath = settings.OutputPath;
+
+            TextBoxPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+            TextBoxPath1 = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            IgnoreFilesVisibility = Visibility.Hidden;
+
+
+            if (settings.Mode == ApplicationNavigationMode.Dev) IgnoreFilesVisibility = Visibility.Visible;
+
+            // Костыль
+            if (!string.IsNullOrEmpty(InputPath) && !string.IsNullOrEmpty(OutputPath))
+            {
+                TextBoxPath = InputPath;
+                TextBoxPath1 = OutputPath;
+            }
+            //else if ( GLConsole.Checker() )
+            //{
+            //    TextBoxPath = GLConsole.Param1;
+            //    TextBoxPath1 = GLConsole.Param2;
+            //}
+        }
+
         public ViewModelCollection ListVM
         {
-            get; set;
+            get;
+            set;
         }
+
         public ModelCollection ModelCollection
         {
             get;
-            private set;
         }
 
         public string TextBoxPath
@@ -38,17 +80,19 @@ namespace DesktopSort.UI.ViewModels
             set => Set(ref _TextBoxPath1, value);
         }
 
-        private Visibility _IgnoreFilesVisibility;
         public Visibility IgnoreFilesVisibility
         {
             get => _IgnoreFilesVisibility;
             set => Set(ref _IgnoreFilesVisibility, value);
         }
 
-        public SettingsModel SettingsModel { get; }
+        public SettingsModel SettingsModel
+        {
+            get;
+        }
 
-        private ICommand _FileDialogButtonCommand;
-        public ICommand FileDialogButtonCommand => _FileDialogButtonCommand ??= new RelayCommand(OnFileDialogButtonCommandExecuted, CanFileDialogButtonCommandExecute);
+        public ICommand FileDialogButtonCommand => _FileDialogButtonCommand ??=
+            new RelayCommand(OnFileDialogButtonCommandExecuted, CanFileDialogButtonCommandExecute);
 
         private bool CanFileDialogButtonCommandExecute(object p)
         {
@@ -68,6 +112,7 @@ namespace DesktopSort.UI.ViewModels
                         TextBoxPath1 = betterFolder.SelectedFolder;
                         break;
                 }
+
             betterFolder.Disposed += BetterFolder_Disposed;
             betterFolder.Dispose();
         }
@@ -78,8 +123,11 @@ namespace DesktopSort.UI.ViewModels
         }
 
         #region CopyButtonCommand
+
         private ICommand _CopyButtonCommand;
-        public ICommand CopyButtonCommand => _CopyButtonCommand ??= new RelayCommand(OnCopyButtonCommandExecuted, CanCopyButtonCommandExecute);
+
+        public ICommand CopyButtonCommand => _CopyButtonCommand ??=
+            new RelayCommand(OnCopyButtonCommandExecuted, CanCopyButtonCommandExecute);
 
         private bool CanCopyButtonCommandExecute(object p)
         {
@@ -90,15 +138,13 @@ namespace DesktopSort.UI.ViewModels
         {
             var fileManager = ListVM.FileManagerVM;
             var messenger = ListVM.MessengerVM;
-            
+
             fileManager.SetInput(TextBoxPath);
             fileManager.SetOutput(TextBoxPath1);
 
-            foreach ( BasicConfig config in SettingsModel.Items )
-            {
-                if ( config.IsChecked )
-                    Task.Run(( ) => fileManager.SearchFilesAsyn(config, FileMode.Copy));
-            }
+            foreach (var config in SettingsModel.Items)
+                if (config.IsChecked)
+                    Task.Run(() => fileManager.SearchFilesAsyn(config, FileMode.Copy));
             fileManager.DeleteDirectory(TextBoxPath, SettingsModel.Advanced.AdvancedConfig.DeleteDefaultDirectory);
             messenger.SetMessage("WorkCompleted");
         }
@@ -106,8 +152,12 @@ namespace DesktopSort.UI.ViewModels
         #endregion
 
         #region CutButtonCommand
+
         private ICommand _CutButtonCommand;
-        public ICommand CutButtonCommand => _CutButtonCommand ??= new RelayCommand(OnCutButtonCommandExecuted, CanCutButtonCommandExecute);
+
+        public ICommand CutButtonCommand => _CutButtonCommand ??=
+            new RelayCommand(OnCutButtonCommandExecuted, CanCutButtonCommandExecute);
+
         private bool CanCutButtonCommandExecute(object p)
         {
             return true;
@@ -121,19 +171,22 @@ namespace DesktopSort.UI.ViewModels
             fileManager.SetInput(TextBoxPath);
             fileManager.SetOutput(TextBoxPath1);
 
-            foreach ( BasicConfig config in SettingsModel.Items)
-            {
+            foreach (var config in SettingsModel.Items)
                 if (config.IsChecked)
                     Task.Run(() => fileManager.SearchFilesAsyn(config, FileMode.Move));
-            }
             fileManager.DeleteDirectory(TextBoxPath, SettingsModel.Advanced.AdvancedConfig.DeleteDefaultDirectory);
             messenger.SetMessage("WorkCompleted");
         }
+
         #endregion
 
         #region IgnoreButtonCommand
+
         private ICommand _IgnoreButtonCommand;
-        public ICommand IgnoreButtonCommand => _IgnoreButtonCommand ??= new RelayCommand(OnIgnoreButtonCommandExecuted, CanIgnoreButtonCommandExecute);
+
+        public ICommand IgnoreButtonCommand => _IgnoreButtonCommand ??=
+            new RelayCommand(OnIgnoreButtonCommandExecuted, CanIgnoreButtonCommandExecute);
+
         private bool CanIgnoreButtonCommandExecute(object p)
         {
             return true;
@@ -147,54 +200,13 @@ namespace DesktopSort.UI.ViewModels
             fileManager.SetInput(TextBoxPath);
             fileManager.SetOutput(TextBoxPath1);
 
-            foreach ( BasicConfig config in SettingsModel.Items )
-            {
-                if ( config.IsChecked )
+            foreach (var config in SettingsModel.Items)
+                if (config.IsChecked)
                     Task.Run(() => fileManager.SearchFilesAsyn(config, FileMode.Ignore));
-            }
             fileManager.DeleteDirectory(TextBoxPath, SettingsModel.Advanced.AdvancedConfig.DeleteDefaultDirectory);
             messenger.SetMessage("WorkCompleted");
         }
+
         #endregion
-        
-        public MainViewModel()
-        {
-            IgnoreFilesVisibility = Visibility.Hidden;
-        }
-
-        public MainViewModel(ViewModelCollection listVM, ModelCollection modelCollection)
-        {
-            ListVM = listVM;
-            ModelCollection = modelCollection;
-            
-            SettingsModel = modelCollection.SettingsModel;
-
-            var settings = SettingsModel.Advanced.AdvancedConfig;
-
-            var InputPath = settings.InputPath;
-            var OutputPath = settings.OutputPath;
-
-            TextBoxPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-            TextBoxPath1 = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            IgnoreFilesVisibility = Visibility.Hidden;
-
-
-            if ( settings.Mode == ApplicationNavigationMode.Dev )
-            {
-                IgnoreFilesVisibility = Visibility.Visible;
-            }
-
-            // Костыль
-            if ( !string.IsNullOrEmpty(InputPath) && !string.IsNullOrEmpty(OutputPath) )
-            {
-                TextBoxPath = InputPath;
-                TextBoxPath1 = OutputPath;
-            }
-            //else if ( GLConsole.Checker() )
-            //{
-            //    TextBoxPath = GLConsole.Param1;
-            //    TextBoxPath1 = GLConsole.Param2;
-            //}
-        }
     }
 }

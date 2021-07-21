@@ -7,7 +7,7 @@ namespace DesktopSort.UI
     /// </summary>
     internal partial class App : Application
     {
-        protected override void OnStartup(StartupEventArgs e)
+        override protected void OnStartup(StartupEventArgs e)
         {
         }
     }

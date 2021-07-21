@@ -4,14 +4,10 @@ using DesktopSort.UI.Models;
 namespace DesktopSort.UI.Views.Controls
 {
     /// <summary>
-    /// Логика взаимодействия для Develop.xaml
+    ///     Логика взаимодействия для Develop.xaml
     /// </summary>
     public partial class Develop : UserControl
     {
-        public ModelCollection ModelCollection
-        {
-            get;
-        }
         public Develop()
         {
         }
@@ -20,6 +16,11 @@ namespace DesktopSort.UI.Views.Controls
         {
             InitializeComponent();
             ModelCollection = modelCollection;
+        }
+
+        public ModelCollection ModelCollection
+        {
+            get;
         }
     }
 }

@@ -6,14 +6,6 @@ namespace DesktopSort.UI.Models
     public class ModelCollection : ViewModel
     {
         private bool isDefaultSettings;
-        public bool IsDefaultSettings
-        {
-            get => isDefaultSettings;
-            set => Set(ref isDefaultSettings, value);
-        }
-        public SettingsModel SettingsModel { get; set; }
-        public Theme.Theme ThemeModel { get; set; }
-        public Version VersionModel { get; set; }
 
         public ModelCollection()
         {
@@ -24,6 +16,30 @@ namespace DesktopSort.UI.Models
             VersionModel = new Version();
 
             IsDefaultSettings = false;
+        }
+
+        public bool IsDefaultSettings
+        {
+            get => isDefaultSettings;
+            set => Set(ref isDefaultSettings, value);
+        }
+
+        public SettingsModel SettingsModel
+        {
+            get;
+            set;
+        }
+
+        public Theme.Theme ThemeModel
+        {
+            get;
+            set;
+        }
+
+        public Version VersionModel
+        {
+            get;
+            set;
         }
     }
 }

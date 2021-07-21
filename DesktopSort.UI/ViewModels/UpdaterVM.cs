@@ -7,46 +7,74 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using DesktopSort.UI.ViewModels.Base;
+using Version = DesktopSort.UI.Models.Version;
 
 namespace DesktopSort.UI.ViewModels
 {
     public class UpdaterVM : ViewModel
     {
+        private string _Info;
+
+        public UpdaterVM()
+        {
+        }
+
+        public UpdaterVM(MessengerVM messengerVM)
+        {
+            URL_Application = "https://raw.githubusercontent.com/Sereoj/uploads/main/ds_new/Test.exe";
+            URL_Info = "https://raw.githubusercontent.com/Sereoj/uploads/main/ds_new/info.txt";
+            URL_Version = "https://raw.githubusercontent.com/Sereoj/uploads/main/ds_new/version.txt";
+            MessengerVM = messengerVM;
+        }
+
         public string URL_Info
         {
-            get; set;
+            get;
+            set;
         }
+
         public string URL_Version
         {
-            get; set;
+            get;
+            set;
         }
 
         public string URL_Application
         {
-            get; set;
+            get;
+            set;
         }
+
         private MessengerVM MessengerVM
         {
-            get;set;
+            get;
         }
+
         public string Version
         {
-            get; private set;
+            get;
+            private set;
         }
-        private string _Info;
+
         public string Info
         {
-            get => _Info; set => Set(ref _Info, value);
+            get => _Info;
+            set => Set(ref _Info, value);
         }
 
         public string FullPath
-        { get; set; }
+        {
+            get;
+            set;
+        }
+
         public bool IsUpdate()
         {
-            string current = new Models.Version().Get(false);
-            int result = current.CompareTo(Version);
+            var current = new Version().Get(false);
+            var result = current.CompareTo(Version);
             return result <= 0 && result < 0;
         }
+
         public void Download()
         {
             FullPath = Path.Combine(Environment.CurrentDirectory, "Desktop Sort " + Version + ".exe");
@@ -66,17 +94,16 @@ namespace DesktopSort.UI.ViewModels
         private async Task<bool> CheckForInternetConnectionAsync()
         {
             var client = new HttpClient();
-            using ( var tokSource = new CancellationTokenSource(5000) )
-            {
+            using (var tokSource = new CancellationTokenSource(5000))
                 try
                 {
                     await client.GetAsync("https://example.com/", tokSource.Token);
                 }
-                catch ( Exception )
+                catch (Exception)
                 {
                     return false;
                 }
-            }
+
             return true;
         }
 
@@ -84,8 +111,8 @@ namespace DesktopSort.UI.ViewModels
         {
             new Thread(async () =>
             {
-                bool internet = await CheckForInternetConnectionAsync();
-                if ( internet )
+                var internet = await CheckForInternetConnectionAsync();
+                if (internet)
                 {
                     var client = new HttpClient();
                     Version = client.GetStringAsync(new Uri(uri, UriKind.Absolute)).Result.Trim();
@@ -97,8 +124,8 @@ namespace DesktopSort.UI.ViewModels
         {
             new Thread(async () =>
             {
-                bool internet = await CheckForInternetConnectionAsync();
-                if ( internet )
+                var internet = await CheckForInternetConnectionAsync();
+                if (internet)
                 {
                     var client = new HttpClient();
                     var getInfo = client.GetStringAsync(new Uri(uri, UriKind.Absolute)).Result.Trim();
@@ -111,12 +138,12 @@ namespace DesktopSort.UI.ViewModels
         {
             new Thread(async () =>
             {
-                bool internet = await CheckForInternetConnectionAsync();
-                if ( internet )
+                var internet = await CheckForInternetConnectionAsync();
+                if (internet)
                 {
                     var client = new WebClient();
-                    client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(Client_DownloadProgressChanged);
-                    client.DownloadFileCompleted += new AsyncCompletedEventHandler(Client_DownloadFileCompleted);
+                    client.DownloadProgressChanged += Client_DownloadProgressChanged;
+                    client.DownloadFileCompleted += Client_DownloadFileCompleted;
 
                     client.DownloadFileAsync(new Uri(url), name);
                 }
@@ -125,7 +152,9 @@ namespace DesktopSort.UI.ViewModels
 
         private void Client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
-            var progress = "Загружено " + (  e.BytesReceived / 1024f ).ToString("#0.##") + "КБ" + " / " + (  e.TotalBytesToReceive / 1024f ).ToString("#0.##") + "КБ" + " | " + e.ProgressPercentage + "%";
+            var progress = "Загружено " + (e.BytesReceived / 1024f).ToString("#0.##") + "КБ" + " / " +
+                           (e.TotalBytesToReceive / 1024f).ToString("#0.##") + "КБ" + " | " + e.ProgressPercentage +
+                           "%";
 
             MessengerVM.SetMessage(progress);
         }
@@ -133,25 +162,9 @@ namespace DesktopSort.UI.ViewModels
         private void Client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
         {
             MessengerVM.SetMessage("Desktop Sort " + Version + " загружен.");
-            if ( e.Error != null )
-            {
-                MessengerVM.SetMessage(e.Error.Message);
-            }
-            if ( e.Cancelled )
-            {
-                MessengerVM.SetMessage(e.Cancelled.ToString());
-            }
+            if (e.Error != null) MessengerVM.SetMessage(e.Error.Message);
+            if (e.Cancelled) MessengerVM.SetMessage(e.Cancelled.ToString());
             Process.Start(FullPath);
-        }
-        public UpdaterVM()
-        {
-        }
-        public UpdaterVM(MessengerVM messengerVM)
-        {
-            URL_Application = "https://raw.githubusercontent.com/Sereoj/uploads/main/ds_new/Test.exe";
-            URL_Info = "https://raw.githubusercontent.com/Sereoj/uploads/main/ds_new/info.txt";
-            URL_Version = "https://raw.githubusercontent.com/Sereoj/uploads/main/ds_new/version.txt";
-            MessengerVM = messengerVM;
         }
     }
 }

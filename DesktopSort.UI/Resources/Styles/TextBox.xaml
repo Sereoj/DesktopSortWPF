@@ -10,7 +10,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
-                    <Border CornerRadius="15" Background ="{DynamicResource BackgroundWindowD}" BorderBrush="{DynamicResource BackgroundControlL}" BorderThickness="1">
+                    <Border CornerRadius="15" Background="{DynamicResource BackgroundWindowD}"
+                            BorderBrush="{DynamicResource BackgroundControlL}" BorderThickness="1">
                         <ScrollViewer Margin="15,0,20,0"
                                       HorizontalAlignment="Left"
                                       VerticalAlignment="Center"
@@ -26,20 +27,20 @@
         <Setter Property="Foreground" Value="{DynamicResource ForeContentLightColor}" />
         <Setter Property="SelectionBrush" Value="{DynamicResource BackSelectedColor}" />
         <Setter Property="Height" Value="230" />
-        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="TextWrapping" Value="Wrap" />
         <Setter Property="Cursor" Value="IBeam" />
         <Setter Property="AllowDrop" Value="true" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
                     <ScrollViewer Margin="15,10,15,10"
-                                      HorizontalAlignment="Left"
-                                      Focusable="False"
-                                      x:Name="PART_ContentHost" />
+                                  HorizontalAlignment="Left"
+                                  Focusable="False"
+                                  x:Name="PART_ContentHost" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="IsHitTestVisible" Value="False"/>
-        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="IsHitTestVisible" Value="False" />
+        <Setter Property="TextWrapping" Value="Wrap" />
     </Style>
 </ResourceDictionary>

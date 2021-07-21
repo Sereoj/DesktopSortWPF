@@ -1,33 +1,82 @@
 ﻿using System.Text.RegularExpressions;
-using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Input;
 using DesktopSort.UI.Infrastucture.Commands;
 using DesktopSort.UI.Models;
 using DesktopSort.UI.Models.Settings;
 using DesktopSort.UI.ViewModels.Base;
+using CheckBox = System.Windows.Controls.CheckBox;
 
 namespace DesktopSort.UI.ViewModels
 {
     public class FirstSettingsViewModel : ViewModel, IApplicationContentView
     {
-        #region values
-        public SettingsModel Model { get; set; }
-        public CheckBox LastActiveCheckBox { get; set; }
+        public FirstSettingsViewModel()
+        {
+        }
 
-        public string IconPath { get; set; }
+        public FirstSettingsViewModel(ViewModelCollection listVM, ModelCollection modelCollection)
+        {
+            ListVM = listVM;
+            ModelCollection = modelCollection;
+
+            Model = modelCollection.SettingsModel;
+        }
+
+        public void Init()
+        {
+            // throw new System.NotImplementedException();
+        }
+
+        private void UpdateSettings(CheckBox lastActiveCheckBox)
+        {
+            if (lastActiveCheckBox != null)
+            {
+                var matches = Regex.Matches(lastActiveCheckBox.Name, @"(\d+)");
+                var id = int.Parse(matches[0].Groups[1].Value);
+                var item = Model.Items.Find(config => int.Parse(config.ID) == id);
+
+                item.Catalog = UpdateTextDirectory;
+                item.Extension = UpdateTextExtension;
+                item.IconPath = IconPath;
+                item.OnlyOldFiles = OnlyOldFiles;
+                item.OnlyNewFiles = OnlyNewFiles;
+                item.OnlyDuplicateFiles = OnlyDuplicateFiles;
+                if (LastActiveCheckBox.IsChecked != null) item.IsChecked = (bool) LastActiveCheckBox.IsChecked;
+            }
+        }
+
+        #region values
+
+        public SettingsModel Model
+        {
+            get;
+            set;
+        }
+
+        public CheckBox LastActiveCheckBox
+        {
+            get;
+            set;
+        }
+
+        public string IconPath
+        {
+            get;
+            set;
+        }
 
         private string _updateTextDirectory;
+
         public string UpdateTextDirectory
         {
             get => _updateTextDirectory;
-            set
-            {
-                Set(ref _updateTextDirectory, value);
-            }
+            set => Set(ref _updateTextDirectory, value);
         }
 
 
         private string _updateTextExtension;
+
         public string UpdateTextExtension
         {
             get => _updateTextExtension;
@@ -35,6 +84,7 @@ namespace DesktopSort.UI.ViewModels
         }
 
         private bool _onlyOldFiles;
+
         public bool OnlyOldFiles
         {
             get => _onlyOldFiles;
@@ -42,6 +92,7 @@ namespace DesktopSort.UI.ViewModels
         }
 
         private bool _onlyNewFiles;
+
         public bool OnlyNewFiles
         {
             get => _onlyNewFiles;
@@ -49,6 +100,7 @@ namespace DesktopSort.UI.ViewModels
         }
 
         private bool _onlyDuplicateFiles;
+
         public bool OnlyDuplicateFiles
         {
             get => _onlyDuplicateFiles;
@@ -64,17 +116,28 @@ namespace DesktopSort.UI.ViewModels
             get;
             set;
         }
+
         public ModelCollection ModelCollection
         {
-            get; set;
+            get;
+            set;
         }
 
-        public bool IsLoading { get => _isLoading; set => Set(ref _isLoading, value); }
+        public bool IsLoading
+        {
+            get => _isLoading;
+            set => Set(ref _isLoading, value);
+        }
+
         #endregion
 
         #region Commands
+
         private ICommand _ButtonIconChanger;
-        public ICommand ButtonIconChanger => _ButtonIconChanger ??= ( _ButtonIconChanger = new RelayCommand(OnButtonIconChangerExecuted, CanButtonIconChangerExecute) );
+
+        public ICommand ButtonIconChanger => _ButtonIconChanger ??= _ButtonIconChanger =
+            new RelayCommand(OnButtonIconChangerExecuted, CanButtonIconChangerExecute);
+
         public bool CanButtonIconChangerExecute(object p)
         {
             return true;
@@ -82,16 +145,18 @@ namespace DesktopSort.UI.ViewModels
 
         public void OnButtonIconChangerExecuted(object p)
         {
-            using System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            using var openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "icon files (*.ico)|*.ico";
-            if ( openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK )
-            {
-                @IconPath = openFileDialog.FileName;
-            }
+            if (openFileDialog.ShowDialog() == DialogResult.OK) IconPath = openFileDialog.FileName;
         }
+
         #region ButtonSaveCommand
+
         private ICommand _ButtonSaveCommand;
-        public ICommand ButtonSaveCommand => _ButtonSaveCommand ??= new RelayCommand(OnButtonSaveCommandExecuted, CanButtonSaveCommandExecute);
+
+        public ICommand ButtonSaveCommand => _ButtonSaveCommand ??=
+            new RelayCommand(OnButtonSaveCommandExecuted, CanButtonSaveCommandExecute);
+
         private bool CanButtonSaveCommandExecute(object p)
         {
             return true;
@@ -106,8 +171,12 @@ namespace DesktopSort.UI.ViewModels
         #endregion
 
         #region UpdateCheckBox
+
         private ICommand _UpdateCheckBox;
-        public ICommand UpdateCheckBox => _UpdateCheckBox ??= new RelayCommand(OnUpdateCheckBoxCommandExecuted, CanUpdateCheckBoxCommandExecute);
+
+        public ICommand UpdateCheckBox => _UpdateCheckBox ??=
+            new RelayCommand(OnUpdateCheckBoxCommandExecuted, CanUpdateCheckBoxCommandExecute);
+
         private bool CanUpdateCheckBoxCommandExecute(object p)
         {
             return true;
@@ -119,7 +188,7 @@ namespace DesktopSort.UI.ViewModels
             var isChecked = checkbox?.IsChecked;
             var matches = Regex.Matches(checkbox.Name, @"(\d+)");
             var id = int.Parse(matches[0].Groups[1].Value);
-            var item = Model.Items.Find(match: config => int.Parse(config.ID) == id);
+            var item = Model.Items.Find(config => int.Parse(config.ID) == id);
 
             if (item != null)
             {
@@ -130,11 +199,11 @@ namespace DesktopSort.UI.ViewModels
                 OnlyOldFiles = item.OnlyOldFiles;
                 OnlyNewFiles = item.OnlyNewFiles;
                 OnlyDuplicateFiles = item.OnlyDuplicateFiles;
-                if (isChecked != null) item.IsChecked = (bool)isChecked;
+                if (isChecked != null) item.IsChecked = (bool) isChecked;
             }
             else
             {
-                BasicConfig config = new BasicConfig()
+                var config = new BasicConfig
                 {
                     ID = id.ToString(),
                     Catalog = UpdateTextDirectory,
@@ -143,44 +212,10 @@ namespace DesktopSort.UI.ViewModels
                 };
                 Model.Items.Add(config);
             }
-
         }
-        #endregion 
+
         #endregion
 
-        public FirstSettingsViewModel()
-        {
-        }
-
-        public FirstSettingsViewModel(ViewModelCollection listVM, ModelCollection modelCollection)
-        {
-            ListVM = listVM;
-            ModelCollection = modelCollection;
-
-            Model = modelCollection.SettingsModel;
-        }
-
-        private void UpdateSettings(CheckBox lastActiveCheckBox)
-        {
-            if(lastActiveCheckBox != null)
-            {
-                var matches = Regex.Matches(lastActiveCheckBox.Name, @"(\d+)");
-                var id = int.Parse(matches[0].Groups[1].Value);
-                var item = Model.Items.Find(match: config => int.Parse(config.ID) == id);
-
-                item.Catalog = UpdateTextDirectory;
-                item.Extension = UpdateTextExtension;
-                item.IconPath = IconPath;
-                item.OnlyOldFiles = OnlyOldFiles;
-                item.OnlyNewFiles = OnlyNewFiles;
-                item.OnlyDuplicateFiles = OnlyDuplicateFiles;
-                if (LastActiveCheckBox.IsChecked != null) item.IsChecked = (bool) LastActiveCheckBox.IsChecked;
-            }
-        }
-
-        public void Init()
-        {
-           // throw new System.NotImplementedException();
-        }
+        #endregion
     }
 }

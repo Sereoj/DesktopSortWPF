@@ -9,8 +9,21 @@ using DesktopSort.UI.ViewModels.Base;
 
 namespace DesktopSort.UI.ViewModels
 {
-    public partial class FileManagerVM : ViewModel
+    public class FileManagerVM : ViewModel
     {
+        public enum FileMode : byte
+        {
+            Copy, // Копирование
+            Move, // Перемещение
+            Ignore // Игнорирование, использование в качестве тестирования функционала, игнорирования работы с файлами. 
+        }
+
+
+        public FileManagerVM(MessengerVM messengerVM, IconChangerVM iconChanger)
+        {
+            MessengerVM = messengerVM;
+            IconChanger = iconChanger;
+        }
 
         #region закрытые поля
 
@@ -19,17 +32,17 @@ namespace DesktopSort.UI.ViewModels
 
         private readonly int delay = 100;
 
-        public MessengerVM MessengerVM { get; }
-        public IconChangerVM IconChanger { get; }
+        public MessengerVM MessengerVM
+        {
+            get;
+        }
+
+        public IconChangerVM IconChanger
+        {
+            get;
+        }
 
         #endregion
-
-        public enum FileMode : byte
-        {
-            Copy, // Копирование
-            Move, // Перемещение
-            Ignore // Игнорирование, использование в качестве тестирования функционала, игнорирования работы с файлами. 
-        }
 
         #region Публичные методы
 
@@ -48,13 +61,13 @@ namespace DesktopSort.UI.ViewModels
             if (Validate(output))
             {
                 OUTPUT_PATH = output;
-                SetMessage("CheckPath",output);
+                SetMessage("CheckPath", output);
             }
         }
 
-        public void DeleteDirectory(string path,bool directory = false)
+        public void DeleteDirectory(string path, bool directory = false)
         {
-            if ( directory )
+            if (directory)
                 path.DeleteDirectory();
         }
 
@@ -62,9 +75,9 @@ namespace DesktopSort.UI.ViewModels
         * Поиск файлов небезопасный, получение данных исключительно от программы.
         * Первая функция.
         */
-        public async Task SearchFiles(List<BasicConfig> Files, FileMode modeFile)
+        async public Task SearchFiles(List<BasicConfig> Files, FileMode modeFile)
         {
-            foreach (BasicConfig file in Files)
+            foreach (var file in Files)
             {
                 await Task.Delay(delay);
                 await SearchFilesAsyn(file, modeFile);
@@ -77,11 +90,11 @@ namespace DesktopSort.UI.ViewModels
         * Поиск файлов небезопасный, получение данных исключительно от программы.
         * Вторая функция.
         */
-        public async Task SearchFilesAsyn(BasicConfig config, FileMode modeFile)
+        async public Task SearchFilesAsyn(BasicConfig config, FileMode modeFile)
         {
-            string PathNewDirectory = @config.Catalog;
-            string PatternExtension = config.Extension;
-            string Icon = @config.IconPath;
+            var PathNewDirectory = config.Catalog;
+            var PatternExtension = config.Extension;
+            var Icon = config.IconPath;
 
             var NewDirectory = Path.Combine(OUTPUT_PATH, PathNewDirectory);
             SetMessage("WorkStartedText", PathNewDirectory);
@@ -95,13 +108,13 @@ namespace DesktopSort.UI.ViewModels
                     if (NewDirectory.IsPathExists() && files.ToList().Count != 0)
                     {
                         NewDirectory.CreateDirectory();
-                        if(Icon != null)
+                        if (Icon != null)
                             IconChanger.FolderIcon(NewDirectory, Icon);
                     }
                 }
-                catch(FileNotFoundException e)
+                catch (FileNotFoundException e)
                 {
-                    SetMessage(null,e.Message);
+                    SetMessage(null, e.Message);
                 }
 
                 foreach (var fileSingle in files)
@@ -110,43 +123,49 @@ namespace DesktopSort.UI.ViewModels
                     switch (modeFile)
                     {
                         case FileMode.Copy:
-                            if (!FileAction(fileSingle, config) )
+                            if (!FileAction(fileSingle, config))
                             {
                                 File.Copy(fileSingle, NewFile, true);
                                 await Task.Delay(delay);
                                 SetMessage("FileText", NewFile);
                             }
+
                             break;
                         case FileMode.Move:
-                            if (!FileAction(fileSingle, config) )
+                            if (!FileAction(fileSingle, config))
                             {
                                 File.Move(fileSingle, NewFile);
                                 await Task.Delay(delay);
-                                SetMessage("FileText",NewFile);
+                                SetMessage("FileText", NewFile);
                             }
+
                             break;
                         case FileMode.Ignore:
                             File.Copy(fileSingle, NewFile, true);
                             await Task.Delay(delay * 10);
-                            SetMessage("FileText",NewFile);
+                            SetMessage("FileText", NewFile);
                             break;
                     }
                 }
             }
-            catch{}
+            catch
+            {
+            }
+
             SetMessage("TaskSuccessText");
             await Task.Delay(delay);
         }
 
         private bool FileAction(string fileSingle, BasicConfig config)
         {
-            FileInfo fileInfo = new FileInfo(fileSingle);
-            if ( config.OnlyOldFiles )
-                return !( DateTime.Now.Year > fileInfo.CreationTime.Year );
-            if ( config.OnlyNewFiles )
+            var fileInfo = new FileInfo(fileSingle);
+            if (config.OnlyOldFiles)
+                return !(DateTime.Now.Year > fileInfo.CreationTime.Year);
+            if (config.OnlyNewFiles)
                 return DateTime.Now.Year > fileInfo.CreationTime.Year;
             return false;
         }
+
         #endregion
 
         #region Закрытые методы
@@ -156,9 +175,10 @@ namespace DesktopSort.UI.ViewModels
             SetMessage(null, null);
             MessengerVM.SetMessage(message);
         }
+
         private void SetMessage(string message, string message1)
         {
-            MessengerVM.SetMessage(message,message1);
+            MessengerVM.SetMessage(message, message1);
         }
 
         /// <summary>Валидация пути</summary>
@@ -174,6 +194,7 @@ namespace DesktopSort.UI.ViewModels
                 Path.CreateDirectory();
                 return true;
             }
+
             return true;
         }
 
@@ -187,12 +208,5 @@ namespace DesktopSort.UI.ViewModels
         }
 
         #endregion
-
-
-        public FileManagerVM(MessengerVM messengerVM, IconChangerVM iconChanger)
-        {
-            MessengerVM = messengerVM;
-            IconChanger = iconChanger;
-        }
     }
 }

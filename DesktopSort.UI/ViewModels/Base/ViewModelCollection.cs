@@ -2,16 +2,6 @@
 {
     public class ViewModelCollection
     {
-        public MessengerVM MessengerVM { get; set; }
-        public ImagerVM ImagerVM { get; set; }
-        public FileManagerVM FileManagerVM { get; set; }
-        public UpdaterVM UpdaterVM { get; set; }
-        public SettingsWindowViewModel SettingsWindowViewModel {
-            get; set;
-        }
-        public UpdateControlViewModel UpdateControlViewModel{ get; set; }
-
-        public IconChangerVM IconChangerVM { get; set; }
         public ViewModelCollection()
         {
             MessengerVM = new MessengerVM();
@@ -19,6 +9,48 @@
             IconChangerVM = new IconChangerVM();
             FileManagerVM = new FileManagerVM(MessengerVM, IconChangerVM);
             UpdaterVM = new UpdaterVM(MessengerVM);
+        }
+
+        public MessengerVM MessengerVM
+        {
+            get;
+            set;
+        }
+
+        public ImagerVM ImagerVM
+        {
+            get;
+            set;
+        }
+
+        public FileManagerVM FileManagerVM
+        {
+            get;
+            set;
+        }
+
+        public UpdaterVM UpdaterVM
+        {
+            get;
+            set;
+        }
+
+        public SettingsWindowViewModel SettingsWindowViewModel
+        {
+            get;
+            set;
+        }
+
+        public UpdateControlViewModel UpdateControlViewModel
+        {
+            get;
+            set;
+        }
+
+        public IconChangerVM IconChangerVM
+        {
+            get;
+            set;
         }
     }
 }

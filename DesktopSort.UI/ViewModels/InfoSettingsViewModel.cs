@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Windows.Input;
 using DesktopSort.UI.Infrastucture.Commands;
 using DesktopSort.UI.Models;
@@ -8,7 +9,34 @@ namespace DesktopSort.UI.ViewModels
 {
     public class InfoSettingsViewModel : ViewModel, IApplicationContentView
     {
+        private ICommand _HelpMembers;
+
         private bool _isLoading;
+
+        public InfoSettingsViewModel()
+        {
+        }
+
+        public InfoSettingsViewModel(ViewModelCollection listVM, ModelCollection modelCollection)
+        {
+            ListVm = listVM;
+            ModelCollection = modelCollection;
+        }
+
+        public ViewModelCollection ListVm
+        {
+            get;
+            set;
+        }
+
+        public ModelCollection ModelCollection
+        {
+            get;
+            set;
+        }
+
+        public ICommand HelpMembers =>
+            _HelpMembers ??= new RelayCommand(OnHelpMembersCommandExecuted, CanHelpMembersCommandExecute);
 
         public string Name => "InfoSettingsTitle";
 
@@ -18,8 +46,11 @@ namespace DesktopSort.UI.ViewModels
             set => Set(ref _isLoading, value);
         }
 
-        private ICommand _HelpMembers;
-        public ICommand HelpMembers => _HelpMembers ??= new RelayCommand(OnHelpMembersCommandExecuted, CanHelpMembersCommandExecute);
+        public void Init()
+        {
+            throw new NotImplementedException();
+        }
+
         private bool CanHelpMembersCommandExecute(object p)
         {
             return true;
@@ -27,7 +58,7 @@ namespace DesktopSort.UI.ViewModels
 
         private void OnHelpMembersCommandExecuted(object p)
         {
-            switch(p)
+            switch (p)
             {
                 case "member1":
                     Process.Start("https://github.com/sergiostranges");
@@ -42,19 +73,6 @@ namespace DesktopSort.UI.ViewModels
                     Process.Start("https://github.com/sereoj");
                     break;
             }
-        }
-
-        public void Init()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public InfoSettingsViewModel()
-        {
-        }
-
-        public InfoSettingsViewModel(ViewModelCollection listVM, ModelCollection modelCollection)
-        {
         }
     }
 }

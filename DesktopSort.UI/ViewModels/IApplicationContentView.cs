@@ -2,9 +2,16 @@
 {
     public interface IApplicationContentView
     {
-        string Name { get; }
+        string Name
+        {
+            get;
+        }
 
-        bool IsLoading { get; set; }
+        bool IsLoading
+        {
+            get;
+            set;
+        }
 
         void Init();
     }

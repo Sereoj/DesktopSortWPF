@@ -2,23 +2,23 @@
 
 namespace DesktopSort.UI.Models.FileManagerModel
 {
-    public static class StringHelperDirectory
+    static public class StringHelperDirectory
     {
-        public static void CreateDirectory(this string Path)
+        static public void CreateDirectory(this string Path)
         {
             Directory.CreateDirectory(Path);
         }
 
         /// <summary>Проверка директории</summary>
         /// <param name="Path"></param>
-        public static bool IsPathExists(this string Path)
+        static public bool IsPathExists(this string Path)
         {
             return !Directory.Exists(Path);
         }
 
         /// <summary>Удаление директории</summary>
         /// <param name="Path"></param>
-        public static void DeleteDirectory(this string Path)
+        static public void DeleteDirectory(this string Path)
         {
             Directory.Delete(Path, true);
         }

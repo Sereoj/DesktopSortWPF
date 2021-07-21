@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Controls;
 using DesktopSort.UI.Models;
 using DesktopSort.UI.Models.Settings;
@@ -10,14 +11,6 @@ namespace DesktopSort.UI.Views.Controls
     /// </summary>
     public partial class SecondSettings : UserControl
     {
-        private SettingsModel _model2;
-
-        public SettingsModel Model2
-        {
-            get => _model2;
-            set => _model2 = value;
-        }
-
         public SecondSettings()
         {
         }
@@ -31,7 +24,13 @@ namespace DesktopSort.UI.Views.Controls
             UpdateTheme();
         }
 
-        private void ModelCollection_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        public SettingsModel Model2
+        {
+            get;
+            set;
+        }
+
+        private void ModelCollection_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             var model = sender as ModelCollection;
             if (model.IsDefaultSettings)
@@ -47,6 +46,7 @@ namespace DesktopSort.UI.Views.Controls
         {
             BoxTheme.SelectedItem = Model2.Advanced.AdvancedConfig.Theme;
         }
+
         private void UpdateCheckBox()
         {
             CheckIsUpdate.IsChecked = Model2.Advanced.AdvancedConfig.Update;

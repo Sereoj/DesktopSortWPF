@@ -171,8 +171,8 @@
                     <Border CornerRadius="10" Background="{TemplateBinding Background}">
                         <ContentPresenter
                             Content="{TemplateBinding Content}"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center" />
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center" />
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">

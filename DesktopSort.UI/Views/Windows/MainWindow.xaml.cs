@@ -18,14 +18,14 @@ namespace DesktopSort.UI.Views.Windows
             var modelCollection = new ModelCollection();
             Locale.Set(modelCollection.SettingsModel.Advanced.AdvancedConfig.Language);
             var mainWindowViewModel = new MainWindowViewModel(listVm, modelCollection);
-            this.DataContext = mainWindowViewModel;
+            DataContext = mainWindowViewModel;
             InitializeComponent();
         }
 
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if ( e.LeftButton != MouseButtonState.Pressed )
+            if (e.LeftButton != MouseButtonState.Pressed)
                 return;
             DragMove();
         }

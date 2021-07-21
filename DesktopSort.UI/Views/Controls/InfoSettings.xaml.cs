@@ -8,11 +8,6 @@ namespace DesktopSort.UI.Views.Controls
     /// </summary>
     public partial class InfoSettings : UserControl
     {
-
-        public ModelCollection ModelCollection
-        {
-            get;
-        }
         public InfoSettings()
         {
         }
@@ -23,5 +18,9 @@ namespace DesktopSort.UI.Views.Controls
             ModelCollection = modelCollection;
         }
 
+        public ModelCollection ModelCollection
+        {
+            get;
+        }
     }
 }

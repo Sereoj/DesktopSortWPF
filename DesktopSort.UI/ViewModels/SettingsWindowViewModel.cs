@@ -10,89 +10,7 @@ namespace DesktopSort.UI.ViewModels
 {
     public class SettingsWindowViewModel : ViewModel
     {
-        #region Values
-        private FirstSettings FirstSettings { get; set; }
-        private SecondSettings SecondSettings { get; set; }
-        private InfoSettings InfoSettings { get; set; }
-        private UpdateControl UpdateContol { get; set; }
-        private Develop Develop
-        {
-            get; set;
-        }
-
-        private Visibility visibility;
-        public Visibility VisibilityUpdate
-        {
-            get => visibility;
-            set => Set(ref visibility, value);
-        }
-        private Visibility visibilityDev;
-        public Visibility VisibilityDev
-        {
-            get => visibilityDev;
-            set => Set(ref visibilityDev, value);
-        }
-        private UserControl _SelectedView;
-        public UserControl SelectedView
-        {
-            get => _SelectedView;
-            set => Set(ref _SelectedView, value);
-        }
-        public ViewModelCollection ListVM
-        {
-            get;
-            private set;
-        }
-        public ModelCollection ModelCollection
-        {
-            get;
-            private set;
-        }
-        public FirstSettingsViewModel FirstSettingsViewModel { get; set; }
-        public SecondSettingViewModel SecondSettingViewModel { get; set; }
-        public InfoSettingsViewModel InfoSettingsViewModel { get; set; }
-        public UpdateControlViewModel UpdateControlViewModel { get; set; }
-        public DevelopSettingsVM DevelopSettingsVM { get; set; }
-        #endregion
-
         private ICommand _PageButtonCommand;
-        public ICommand PageButtonCommand => _PageButtonCommand ??= new RelayCommand(OnPageButtonCommandExecuted, CanPageButtonCommandExecute);
-        private bool CanPageButtonCommandExecute(object p)
-        {
-            return true;
-        }
-
-        private void OnPageButtonCommandExecuted(object p)
-        {
-            switch (p)
-            {
-                case "first":
-                    SelectedView = FirstSettings;
-                    SelectedView.DataContext = FirstSettingsViewModel;
-                break;
-                case "second":
-                    SelectedView = SecondSettings;
-                    SelectedView.DataContext = SecondSettingViewModel;
-                break;
-                case "info":
-                    SelectedView = InfoSettings;
-                    SelectedView.DataContext = InfoSettingsViewModel;
-                break;
-                case "update":
-                    SelectedView = UpdateContol;
-                    SelectedView.DataContext = UpdateControlViewModel;
-                break;
-                case "develop":
-                SelectedView = Develop;
-                SelectedView.DataContext = DevelopSettingsVM;
-                break;
-            }
-        }
-
-        public void SetPage(string page)
-        {
-            OnPageButtonCommandExecuted(page);
-        }
 
         public SettingsWindowViewModel()
         {
@@ -121,11 +39,141 @@ namespace DesktopSort.UI.ViewModels
             VisibilityUpdate = Visibility.Hidden;
             OnPageButtonCommandExecuted("first");
 
-            if ( ModelCollection.SettingsModel.Advanced.AdvancedConfig.Mode == ApplicationNavigationMode.Dev )
-            {
+            if (ModelCollection.SettingsModel.Advanced.AdvancedConfig.Mode == ApplicationNavigationMode.Dev)
                 VisibilityDev = Visibility.Visible;
+        }
+
+        public ICommand PageButtonCommand => _PageButtonCommand ??=
+            new RelayCommand(OnPageButtonCommandExecuted, CanPageButtonCommandExecute);
+
+        private bool CanPageButtonCommandExecute(object p)
+        {
+            return true;
+        }
+
+        private void OnPageButtonCommandExecuted(object p)
+        {
+            switch (p)
+            {
+                case "first":
+                    SelectedView = FirstSettings;
+                    SelectedView.DataContext = FirstSettingsViewModel;
+                    break;
+                case "second":
+                    SelectedView = SecondSettings;
+                    SelectedView.DataContext = SecondSettingViewModel;
+                    break;
+                case "info":
+                    SelectedView = InfoSettings;
+                    SelectedView.DataContext = InfoSettingsViewModel;
+                    break;
+                case "update":
+                    SelectedView = UpdateContol;
+                    SelectedView.DataContext = UpdateControlViewModel;
+                    break;
+                case "develop":
+                    SelectedView = Develop;
+                    SelectedView.DataContext = DevelopSettingsVM;
+                    break;
             }
         }
 
+        public void SetPage(string page)
+        {
+            OnPageButtonCommandExecuted(page);
+        }
+
+        #region Values
+
+        private FirstSettings FirstSettings
+        {
+            get;
+        }
+
+        private SecondSettings SecondSettings
+        {
+            get;
+        }
+
+        private InfoSettings InfoSettings
+        {
+            get;
+        }
+
+        private UpdateControl UpdateContol
+        {
+            get;
+        }
+
+        private Develop Develop
+        {
+            get;
+        }
+
+        private Visibility visibility;
+
+        public Visibility VisibilityUpdate
+        {
+            get => visibility;
+            set => Set(ref visibility, value);
+        }
+
+        private Visibility visibilityDev;
+
+        public Visibility VisibilityDev
+        {
+            get => visibilityDev;
+            set => Set(ref visibilityDev, value);
+        }
+
+        private UserControl _SelectedView;
+
+        public UserControl SelectedView
+        {
+            get => _SelectedView;
+            set => Set(ref _SelectedView, value);
+        }
+
+        public ViewModelCollection ListVM
+        {
+            get;
+        }
+
+        public ModelCollection ModelCollection
+        {
+            get;
+        }
+
+        public FirstSettingsViewModel FirstSettingsViewModel
+        {
+            get;
+            set;
+        }
+
+        public SecondSettingViewModel SecondSettingViewModel
+        {
+            get;
+            set;
+        }
+
+        public InfoSettingsViewModel InfoSettingsViewModel
+        {
+            get;
+            set;
+        }
+
+        public UpdateControlViewModel UpdateControlViewModel
+        {
+            get;
+            set;
+        }
+
+        public DevelopSettingsVM DevelopSettingsVM
+        {
+            get;
+            set;
+        }
+
+        #endregion
     }
 }

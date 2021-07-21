@@ -2,13 +2,13 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
 
-    <SolidColorBrush x:Key="BackgroundWindowL" Color="#FFFFFF"/>
-    <SolidColorBrush x:Key="BackgroundWindowD" Color="#EDEDED"/>
-    <SolidColorBrush x:Key="BackgroundWindowM" Color="#D4D4D4"/>
+    <SolidColorBrush x:Key="BackgroundWindowL" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="BackgroundWindowD" Color="#EDEDED" />
+    <SolidColorBrush x:Key="BackgroundWindowM" Color="#D4D4D4" />
 
-    <SolidColorBrush x:Key="ForegroundTextL" Color="#FFFFFF"/>
-    <SolidColorBrush x:Key="ForegroundTextD" Color="#000000"/>
+    <SolidColorBrush x:Key="ForegroundTextL" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="ForegroundTextD" Color="#000000" />
 
-    <SolidColorBrush x:Key="BackgroundControlL" Color="#85AFFF"/>
-    <SolidColorBrush x:Key="BackgroundControlD" Color="#5080D8"/>
+    <SolidColorBrush x:Key="BackgroundControlL" Color="#85AFFF" />
+    <SolidColorBrush x:Key="BackgroundControlD" Color="#5080D8" />
 </ResourceDictionary>

@@ -2,11 +2,15 @@
 {
     public class AdvancedSettings
     {
-        public AdvancedConfig AdvancedConfig { get; set; }
-
         public AdvancedSettings()
         {
             AdvancedConfig = new AdvancedConfig();
+        }
+
+        public AdvancedConfig AdvancedConfig
+        {
+            get;
+            set;
         }
     }
 }
