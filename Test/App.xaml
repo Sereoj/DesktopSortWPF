@@ -1,15 +1,14 @@
 ﻿<Application
-    x:Class="Test.App"
+    x:Class="DesktopSort.UI.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:Test"
     x:ClassModifier="internal"
     StartupUri="Views/Windows/MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary x:Name="dark" Source="/Resources/Colors/dark.xaml" />
-                <ResourceDictionary x:Name="light" Source="/Resources/Colors/light.xaml" />
+                <ResourceDictionary x:Name="Dark" Source="/Resources/Colors/dark.xaml" />
+                <ResourceDictionary x:Name="Light" Source="/Resources/Colors/light.xaml" />
 
                 <ResourceDictionary Source="/Resources/Styles/Buttons.xaml" />
                 <ResourceDictionary Source="/Resources/Styles/TextBlocks.xaml" />

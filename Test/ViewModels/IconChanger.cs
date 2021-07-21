@@ -1,9 +1,9 @@
 ﻿using System.IO;
 using System.Text;
-using Test.ViewModels.Base;
-using Test.Models.FileManagerModel;
+using DesktopSort.UI.Models.FileManagerModel;
+using DesktopSort.UI.ViewModels.Base;
 
-namespace Test.ViewModels
+namespace DesktopSort.UI.ViewModels
 {
     public class IconChangerVM : ViewModel
     {

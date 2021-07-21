@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using Test.Infrastucture.Commands;
-using Test.Models;
-using Test.Models.Settings;
-using Test.ViewModels.Base;
-using WPFLocalizeExtension.Engine;
-using WPFLocalizeExtension.Providers;
-using static Test.Models.Theme.Theme;
-using Localization = Test.Resources.Localization.Localization;
+using DesktopSort.UI.Infrastucture.Commands;
+using DesktopSort.UI.Models;
+using DesktopSort.UI.Models.Settings;
+using DesktopSort.UI.ViewModels.Base;
+using static DesktopSort.UI.Models.Theme.Theme;
 
-namespace Test.ViewModels
+namespace DesktopSort.UI.ViewModels
 {
     public class SecondSettingViewModel : ViewModel, IApplicationContentView
     {

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Test.ViewModels.Base;
+﻿using DesktopSort.UI.ViewModels.Base;
 
-namespace Test.ViewModels
+namespace DesktopSort.UI.ViewModels
 {
     public class MessengerVM : ViewModel
     {

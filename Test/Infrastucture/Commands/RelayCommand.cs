@@ -1,7 +1,7 @@
 ﻿using System;
-using Test.Infrastucture.Commands.Base;
+using DesktopSort.UI.Infrastucture.Commands.Base;
 
-namespace Test.Infrastucture.Commands
+namespace DesktopSort.UI.Infrastucture.Commands
 {
     internal class RelayCommand : Command
     {

@@ -1,6 +1,6 @@
 ﻿using System.Xml.Serialization;
 
-namespace Test.Models.Settings
+namespace DesktopSort.UI.Models.Settings
 {
     public class BasicConfig
     {

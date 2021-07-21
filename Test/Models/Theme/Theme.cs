@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 
-namespace Test.Models.Theme
+namespace DesktopSort.UI.Models.Theme
 {
     /*
     * Модуль смены темы приложения

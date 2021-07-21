@@ -1,14 +1,12 @@
 ﻿<UserControl
-    x:Class="Test.Views.Controls.InfoSettings"
+    x:Class="DesktopSort.UI.Views.Controls.InfoSettings"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:CC="clr-namespace:Test.Resources.Localization"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:lex="http://wpflocalizeextension.codeplex.com"
-    xmlns:local="clr-namespace:Test.Views.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:vm="clr-namespace:Test.ViewModels"
-    d:DataContext="{d:DesignInstance Type=vm:InfoSettingsViewModel,
+    xmlns:viewModels="clr-namespace:DesktopSort.UI.ViewModels"
+    d:DataContext="{d:DesignInstance Type=viewModels:InfoSettingsViewModel,
                                      IsDesignTimeCreatable=True}"
     d:DesignHeight="373"
     d:DesignWidth="684"

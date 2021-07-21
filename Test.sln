@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{1A21368F-85AD-45C0-B61B-A90526DED6E2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopSort.UI", "Test\DesktopSort.UI.csproj", "{1A21368F-85AD-45C0-B61B-A90526DED6E2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Tests", "Test.Tests\Test.Tests.csproj", "{4484412B-ABA0-45C7-8DF9-A1A9723A4984}"
 EndProject
@@ -37,8 +37,8 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {AC5F9C1A-3DA8-43D7-8FB8-2B6396EF1DB1}
-		RESX_NeutralResourcesLanguage = ru-RU
 		RESX_PrefixTranslations = False
+		RESX_NeutralResourcesLanguage = ru-RU
+		SolutionGuid = {AC5F9C1A-3DA8-43D7-8FB8-2B6396EF1DB1}
 	EndGlobalSection
 EndGlobal

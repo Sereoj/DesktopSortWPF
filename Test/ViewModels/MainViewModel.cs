@@ -3,15 +3,14 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
-using Test.Infrastucture.Commands;
-using Test.Models;
-using Test.Models.FileManagerModel;
-using Test.Models.Settings;
-using Test.ViewModels.Base;
+using DesktopSort.UI.Infrastucture.Commands;
+using DesktopSort.UI.Models;
+using DesktopSort.UI.Models.Settings;
+using DesktopSort.UI.ViewModels.Base;
 using WK.Libraries.BetterFolderBrowserNS;
-using static Test.ViewModels.FileManagerVM;
+using static DesktopSort.UI.ViewModels.FileManagerVM;
 
-namespace Test.ViewModels
+namespace DesktopSort.UI.ViewModels
 {
     public class MainViewModel : ViewModel
     {

@@ -1,13 +1,12 @@
 ﻿using System.Text.RegularExpressions;
 using System.Windows.Controls;
 using System.Windows.Input;
-using Test.Infrastucture.Commands;
-using Test.Models;
-using Test.Models.Settings;
-using Test.Resources.Localization;
-using Test.ViewModels.Base;
+using DesktopSort.UI.Infrastucture.Commands;
+using DesktopSort.UI.Models;
+using DesktopSort.UI.Models.Settings;
+using DesktopSort.UI.ViewModels.Base;
 
-namespace Test.ViewModels
+namespace DesktopSort.UI.ViewModels
 {
     public class FirstSettingsViewModel : ViewModel, IApplicationContentView
     {

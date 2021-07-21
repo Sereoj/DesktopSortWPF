@@ -1,12 +1,12 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using Test.Infrastucture.Commands;
-using Test.Models;
-using Test.ViewModels.Base;
-using Test.Views.Controls;
+using DesktopSort.UI.Infrastucture.Commands;
+using DesktopSort.UI.Models;
+using DesktopSort.UI.ViewModels.Base;
+using DesktopSort.UI.Views.Controls;
 
-namespace Test.ViewModels
+namespace DesktopSort.UI.ViewModels
 {
     public class SettingsWindowViewModel : ViewModel
     {

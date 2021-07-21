@@ -1,14 +1,11 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
-using Test.Models;
-using Test.Models.Settings;
-using Test.ViewModels;
-using Test.ViewModels.Base;
-using WPFLocalizeExtension.Deprecated.Extensions;
-using WPFLocalizeExtension.Extensions;
+using DesktopSort.UI.Models;
+using DesktopSort.UI.Models.Settings;
+using DesktopSort.UI.ViewModels;
+using DesktopSort.UI.ViewModels.Base;
 
-namespace Test
+namespace DesktopSort.UI.Views.Windows
 {
     /// <summary>
     ///     Логика взаимодействия для MainWindow.xaml

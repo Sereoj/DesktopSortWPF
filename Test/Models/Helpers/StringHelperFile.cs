@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace Test.Models.Helpers
+namespace DesktopSort.UI.Models.Helpers
 {
     public static class StringHelperFile
     {

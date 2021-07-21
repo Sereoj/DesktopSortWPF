@@ -1,4 +1,4 @@
-﻿namespace Test.ViewModels
+﻿namespace DesktopSort.UI.ViewModels
 {
     public interface IApplicationContentView
     {

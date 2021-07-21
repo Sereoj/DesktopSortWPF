@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace Test.ViewModels.Base
+namespace DesktopSort.UI.ViewModels.Base
 {
     public abstract class ViewModel : INotifyPropertyChanged
     {

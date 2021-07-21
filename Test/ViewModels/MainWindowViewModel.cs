@@ -1,20 +1,15 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
-using Test.Infrastucture.Commands;
-using Test.Models;
-using Test.Models.Settings;
-using Test.ViewModels.Base;
-using Test.Views.Controls;
-using WPFLocalizeExtension.ValueConverters;
-using Localization = Test.Resources.Localization.Localization;
-using Version = Test.Models.Version;
+using DesktopSort.UI.Infrastucture.Commands;
+using DesktopSort.UI.Models;
+using DesktopSort.UI.ViewModels.Base;
+using DesktopSort.UI.Views.Controls;
+using Version = DesktopSort.UI.Models.Version;
 
-namespace Test.ViewModels
+namespace DesktopSort.UI.ViewModels
 {
     public class MainWindowViewModel : ViewModel
     {

@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Test.Models.Settings;
-using Test.ViewModels.Base;
+﻿using DesktopSort.UI.Models.Settings;
+using DesktopSort.UI.ViewModels.Base;
 
-namespace Test.Models
+namespace DesktopSort.UI.Models
 {
     public class ModelCollection : ViewModel
     {

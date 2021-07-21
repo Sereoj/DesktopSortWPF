@@ -1,12 +1,11 @@
 ﻿using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using Test.Infrastucture.Commands;
-using Test.Models;
-using Test.ViewModels.Base;
-using Localization = Test.Resources.Localization.Localization;
+using DesktopSort.UI.Infrastucture.Commands;
+using DesktopSort.UI.Models;
+using DesktopSort.UI.ViewModels.Base;
 
-namespace Test.ViewModels
+namespace DesktopSort.UI.ViewModels
 {
     public class UpdateControlViewModel : ViewModel, IApplicationContentView
     {

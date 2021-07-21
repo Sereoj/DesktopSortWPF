@@ -1,7 +1,7 @@
 ﻿using System.Windows.Controls;
-using Test.Models;
+using DesktopSort.UI.Models;
 
-namespace Test.Views.Controls
+namespace DesktopSort.UI.Views.Controls
 {
     /// <summary>
     ///     Логика взаимодействия для InfoSettings.xaml

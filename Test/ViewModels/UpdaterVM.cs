@@ -1,14 +1,14 @@
 ﻿using System;
-using System.IO;
-using System.Net;
-using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Threading;
-using Test.ViewModels.Base;
+using System.IO;
+using System.Net;
 using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
+using DesktopSort.UI.ViewModels.Base;
 
-namespace Test.ViewModels
+namespace DesktopSort.UI.ViewModels
 {
     public class UpdaterVM : ViewModel
     {

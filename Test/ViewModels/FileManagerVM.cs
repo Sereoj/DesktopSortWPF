@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Test.Models.Settings;
-using Test.ViewModels.Base;
-using Test.Models.FileManagerModel;
+using DesktopSort.UI.Models.FileManagerModel;
+using DesktopSort.UI.Models.Settings;
+using DesktopSort.UI.ViewModels.Base;
 
-namespace Test.ViewModels
+namespace DesktopSort.UI.ViewModels
 {
     public partial class FileManagerVM : ViewModel
     {

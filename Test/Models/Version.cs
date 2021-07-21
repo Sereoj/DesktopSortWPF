@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace Test.Models
+namespace DesktopSort.UI.Models
 {
     /// <summary>
     ///     Получение информации о продукте.

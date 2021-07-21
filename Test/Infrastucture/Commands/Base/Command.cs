@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace Test.Infrastucture.Commands.Base
+namespace DesktopSort.UI.Infrastucture.Commands.Base
 {
     internal abstract class Command : ICommand
     {

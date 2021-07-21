@@ -1,8 +1,7 @@
 ﻿using System.Windows;
-using Test.ViewModels.Base;
-using Test.Models.Helpers;
+using DesktopSort.UI.ViewModels.Base;
 
-namespace Test.ViewModels
+namespace DesktopSort.UI.ViewModels
 {
     public class ImagerVM : ViewModel
     {

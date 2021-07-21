@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Test.Models;
-
-namespace Test.ViewModels.Base
+﻿namespace DesktopSort.UI.ViewModels.Base
 {
     public class ViewModelCollection
     {

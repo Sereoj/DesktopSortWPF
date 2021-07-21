@@ -1,12 +1,6 @@
-﻿using System;
-using System.Globalization;
-using System.Windows;
-using Test.Models;
-using Test.ViewModels;
-using Test.ViewModels.Base;
-using Localization = Test.Resources.Localization.Localization;
+﻿using System.Windows;
 
-namespace Test
+namespace DesktopSort.UI
 {
     /// <summary>
     ///     Логика взаимодействия для App.xaml

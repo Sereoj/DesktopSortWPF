@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Windows.Media;
 using System.Xml.Serialization;
 
-namespace Test.Models.Settings
+namespace DesktopSort.UI.Models.Settings
 {
     [XmlRoot("Settings")]
     [Serializable]

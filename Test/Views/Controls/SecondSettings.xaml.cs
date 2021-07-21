@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Windows;
 using System.Windows.Controls;
-using Test.Models;
-using Test.Models.Settings;
-using WPFLocalizeExtension.Providers;
-using Localization = Test.Resources.Localization.Localization;
+using DesktopSort.UI.Models;
+using DesktopSort.UI.Models.Settings;
 
-namespace Test.Views.Controls
+namespace DesktopSort.UI.Views.Controls
 {
     /// <summary>
     ///     Логика взаимодействия для SecondSettings.xaml

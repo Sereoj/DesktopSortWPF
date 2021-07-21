@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace Test.Models.FileManagerModel
+namespace DesktopSort.UI.Models.FileManagerModel
 {
     public static class StringHelperDirectory
     {

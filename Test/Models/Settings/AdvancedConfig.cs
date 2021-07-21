@@ -1,9 +1,8 @@
-﻿using System.Windows.Media;
-using System.Xml.Serialization;
-using Test.ViewModels;
-using static Test.Models.Theme.Theme;
+﻿using System.Xml.Serialization;
+using DesktopSort.UI.ViewModels;
+using static DesktopSort.UI.Models.Theme.Theme;
 
-namespace Test.Models.Settings
+namespace DesktopSort.UI.Models.Settings
 {
 
     public class AdvancedConfig

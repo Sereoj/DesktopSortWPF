@@ -1,9 +1,8 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using Test.Models;
-using Test.Models.Settings;
+﻿using System.Windows.Controls;
+using DesktopSort.UI.Models;
+using DesktopSort.UI.Models.Settings;
 
-namespace Test.Views.Controls
+namespace DesktopSort.UI.Views.Controls
 {
     /// <summary>
     ///     Логика взаимодействия для FirstSettings.xaml

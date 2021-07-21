@@ -1,11 +1,10 @@
 ﻿using System.Diagnostics;
 using System.Windows.Input;
-using Test.Infrastucture.Commands;
-using Test.Models;
-using Test.Resources.Localization;
-using Test.ViewModels.Base;
+using DesktopSort.UI.Infrastucture.Commands;
+using DesktopSort.UI.Models;
+using DesktopSort.UI.ViewModels.Base;
 
-namespace Test.ViewModels
+namespace DesktopSort.UI.ViewModels
 {
     public class InfoSettingsViewModel : ViewModel, IApplicationContentView
     {
