@@ -25,9 +25,21 @@ namespace Test.Views.Controls
         {
             InitializeComponent();
             model2 = modelCollection.SettingsModel;
+            modelCollection.PropertyChanged += ModelCollection_PropertyChanged;
             UpdateCheckBox();
             UpdateTheme();
-            Console.WriteLine(WPFLocalizeExtension.Providers.ResxLocalizationProvider.GetDefaultDictionary(this));
+        }
+
+        private void ModelCollection_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            var model = sender as ModelCollection;
+            if (model.IsDefaultSettings)
+            {
+                Console.WriteLine(model.IsDefaultSettings);
+                model2 = model.SettingsModel.Load<SettingsModel>("data.xml");
+                UpdateCheckBox();
+                UpdateTheme();
+            }
         }
 
         private void UpdateTheme()

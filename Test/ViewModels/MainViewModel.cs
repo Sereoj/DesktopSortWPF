@@ -165,6 +165,7 @@ namespace Test.ViewModels
             TextBoxPath1 = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             IgnoreFilesVisibility = Visibility.Hidden;
 
+
             if ( settings.Mode == ApplicationNavigationMode.Dev )
             {
                 IgnoreFilesVisibility = Visibility.Visible;

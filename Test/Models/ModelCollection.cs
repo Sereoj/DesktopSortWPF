@@ -8,8 +8,14 @@ using Test.ViewModels.Base;
 
 namespace Test.Models
 {
-    public class ModelCollection
+    public class ModelCollection : ViewModel
     {
+        private bool isDefaultSettings;
+        public bool IsDefaultSettings
+        {
+            get => isDefaultSettings;
+            set => Set(ref isDefaultSettings, value);
+        }
         public SettingsModel SettingsModel { get; set; }
         public Theme.Theme ThemeModel { get; set; }
         public Version VersionModel { get; set; }
@@ -21,6 +27,8 @@ namespace Test.Models
 
             ThemeModel = new Theme.Theme();
             VersionModel = new Version();
+
+            IsDefaultSettings = false;
         }
     }
 }

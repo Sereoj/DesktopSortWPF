@@ -176,7 +176,6 @@ namespace Test.ViewModels
 
         public SecondSettingViewModel(ViewModelCollection listVM, ModelCollection modelCollection)
         {
-            LocalizeDictionary.Instance.Culture = new System.Globalization.CultureInfo("ru");
             ListVM = listVM;
             ModelCollection = modelCollection;
 

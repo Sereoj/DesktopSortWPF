@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Resources;
 using System.Runtime.InteropServices;
 using System.Windows;
 
@@ -26,7 +27,7 @@ using System.Windows;
 //атрибута NeutralResourceLanguage ниже.  Обновите "en-US" в
 //строка внизу для обеспечения соответствия настройки UICulture в файле проекта.
 
-//[assembly: NeutralResourcesLanguage("en-US", UltimateResourceFallbackLocation.Satellite)]
+//[assembly: NeutralResourcesLanguage("en-US", UltimateResourceFallbackLocation.MainAssembly)]
 
 
 [assembly: ThemeInfo(

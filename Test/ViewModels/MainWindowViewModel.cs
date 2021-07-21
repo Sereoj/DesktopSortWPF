@@ -201,11 +201,24 @@ namespace Test.ViewModels
             SettingsWindowViewModel = new SettingsWindowViewModel(ListVM, ModelCollection);
 
             ListVM.SettingsWindowViewModel = SettingsWindowViewModel;
+
+            SettingsWindowViewModel.PropertyChanged += SettingsWindowViewModel_PropertyChanged;
             ImagerVM.PropertyChanged += Imager_PropertyChanged;
 
             Task.Run(Init);
 
             OnPageButtonCommandExecuted("home");
+        }
+
+        private void SettingsWindowViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            SettingsWindowViewModel model = sender as SettingsWindowViewModel;
+            
+            if (model.VisibilityDev == Visibility.Hidden)
+            {
+                SetTitle(false);
+                MainViewModel.IgnoreFilesVisibility = Visibility.Hidden;
+            }
         }
     }
 }

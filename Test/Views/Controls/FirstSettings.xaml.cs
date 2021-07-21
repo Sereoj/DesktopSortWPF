@@ -23,7 +23,18 @@ namespace Test.Views.Controls
         {
             InitializeComponent();
             model2 = modelCollection.SettingsModel;
+            modelCollection.PropertyChanged += ModelCollection_PropertyChanged;
             UpdateCheckBox();
+        }
+
+        private void ModelCollection_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            var model = sender as ModelCollection;
+            if (model.IsDefaultSettings)
+            {
+                model2 = model.SettingsModel.Load<SettingsModel>("data.xml");
+                UpdateCheckBox();
+            }
         }
 
         private void UpdateCheckBox()

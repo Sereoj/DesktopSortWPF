@@ -44,6 +44,7 @@ namespace Test.ViewModels
         private void OnStandardSettingsCommandExecuted(object p)
         {
             ModelCollection.SettingsModel.Default();
+            ModelCollection.IsDefaultSettings = true;
         }
 
         private ICommand _UserModeCommand;
