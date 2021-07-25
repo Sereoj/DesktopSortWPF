@@ -1,9 +1,11 @@
 ﻿using System.Collections.ObjectModel;
+using System.IO;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
 using DesktopSort.UI.Infrastucture.Commands;
 using DesktopSort.UI.Models;
+using DesktopSort.UI.Models.FileManagerModel;
 using DesktopSort.UI.Models.Settings;
 using DesktopSort.UI.ViewModels.Base;
 using static DesktopSort.UI.Models.Theme.Theme;
@@ -131,10 +133,12 @@ namespace DesktopSort.UI.ViewModels
 
         public void Init()
         {
+            
             ThemeTypesList = new ObservableCollection<ThemeTypes>
                 {ThemeTypes.Light, ThemeTypes.Dark, ThemeTypes.Classic};
+        
             LangCollection = new ObservableCollection<Locale.Translation>
-                {Locale.Translation.Russia, Locale.Translation.English};
+                    {Locale.Translation.Russia, Locale.Translation.English};
         }
 
         private bool CanButtonSaveCommandExecute(object p)

@@ -8,7 +8,8 @@ namespace DesktopSort.UI.Models.Settings
         public enum Translation
         {
             English,
-            Russia
+            Russia,
+            NotFound
         }
 
         static public void Set(Translation langCode)

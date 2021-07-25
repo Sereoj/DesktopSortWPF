@@ -1,12 +1,15 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Threading;
 using DesktopSort.UI.Infrastucture.Commands;
 using DesktopSort.UI.Models;
 using DesktopSort.UI.ViewModels.Base;
 using DesktopSort.UI.Views.Controls;
+using Version = DesktopSort.UI.Models.Version;
 
 namespace DesktopSort.UI.ViewModels
 {

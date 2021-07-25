@@ -2,10 +2,16 @@
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Threading;
+using DesktopSort.UI.MarkupExtension;
+using DesktopSort.UI.Models.FileManagerModel;
 using DesktopSort.UI.ViewModels.Base;
 using Version = DesktopSort.UI.Models.Version;
 
@@ -21,7 +27,7 @@ namespace DesktopSort.UI.ViewModels
 
         public UpdaterVM(MessengerVM messengerVM)
         {
-            URL_Application = "https://raw.githubusercontent.com/Sereoj/uploads/main/ds_new/Test.exe";
+            URL_Application = "https://raw.githubusercontent.com/Sereoj/uploads/main/ds_new/updater.zip";
             URL_Info = "https://raw.githubusercontent.com/Sereoj/uploads/main/ds_new/info.txt";
             URL_Version = "https://raw.githubusercontent.com/Sereoj/uploads/main/ds_new/version.txt";
             MessengerVM = messengerVM;
@@ -62,7 +68,7 @@ namespace DesktopSort.UI.ViewModels
             set => Set(ref _Info, value);
         }
 
-        public string FullPath
+        public string FullPathArchive
         {
             get;
             set;
@@ -77,8 +83,9 @@ namespace DesktopSort.UI.ViewModels
 
         public void Download()
         {
-            FullPath = Path.Combine(Environment.CurrentDirectory, "Desktop Sort " + Version + ".exe");
-            DownloadApplication(URL_Application, FullPath);
+            FullPathArchive = Path.Combine(Environment.CurrentDirectory, "update.zip");
+            DownloadApplication(@"https://raw.githubusercontent.com/Sereoj/uploads/main/ds_new/DesktopSort.Updater.exe", Path.Combine(Environment.CurrentDirectory, "DesktopSort.Updater.exe"));
+            DownloadApplication(URL_Application, FullPathArchive);
         }
 
         public void GetInfo()
@@ -164,7 +171,10 @@ namespace DesktopSort.UI.ViewModels
             MessengerVM.SetMessage("UpdaterDownloadFileCompleted", Version);
             if (e.Error != null) MessengerVM.SetMessage(e.Error.Message);
             if (e.Cancelled) MessengerVM.SetMessage(e.Cancelled.ToString());
-            Process.Start(FullPath);
+
+            Thread.Sleep(2000);
+            Process.Start("DesktopSort.Updater.exe");
+            OnPropertyChanged("OnCloseProgram");
         }
     }
 }
