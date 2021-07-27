@@ -201,7 +201,7 @@ namespace DesktopSort.UI.ViewModels
         {
             var dialog = new OpenFileDialog
             {
-                Filter = @"Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png"
+                Filter = @"Image files (*.jpg, *.jpeg, *.png, *.gif) | *.jpg; *.jpeg; *.png; *.gif"
             };
 
             if (dialog.ShowDialog() == DialogResult.OK) BackgroundChanger = dialog.FileName;
