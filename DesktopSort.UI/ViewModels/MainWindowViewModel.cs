@@ -87,7 +87,7 @@ namespace DesktopSort.UI.ViewModels
                 await Task.Delay(2000);
                 if (ListVM.UpdaterVM.IsUpdate())
                 {
-                    SetMessage("Localization.MessageIsUpdateTrue", ListVM.UpdaterVM.Version);
+                    SetMessage("MessageIsUpdateTrue", ListVM.UpdaterVM.Version);
                     ListVM.SettingsWindowViewModel.VisibilityUpdate = Visibility.Visible;
                 }
                 else

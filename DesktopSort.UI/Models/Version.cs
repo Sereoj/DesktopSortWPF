@@ -26,8 +26,8 @@ namespace DesktopSort.UI.Models
         public string Get(bool isGetState)
         {
             return isGetState == false
-                ? Application.ProductVersion.Substring(0, 3)
-                : Application.ProductVersion.Substring(0, 3) + " " + State;
+                ? Application.ProductVersion.Substring(0, 5)
+                : Application.ProductVersion.Substring(0, 5) + " " + State;
         }
     }
 }
