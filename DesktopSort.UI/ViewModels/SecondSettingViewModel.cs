@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows;
 using System.Windows.Forms;
@@ -34,9 +35,9 @@ namespace DesktopSort.UI.ViewModels
                 {Locale.Translation.Russia, Locale.Translation.English};
         }
 
-        public SecondSettingViewModel(ViewModelCollection listVM, ModelCollection modelCollection)
+        public SecondSettingViewModel(ViewModelCollection listVm, ModelCollection modelCollection)
         {
-            ListVM = listVM;
+            ListVM = listVm;
             ModelCollection = modelCollection;
 
             Settings = ModelCollection.SettingsModel;
@@ -133,12 +134,20 @@ namespace DesktopSort.UI.ViewModels
 
         public void Init()
         {
-            
             ThemeTypesList = new ObservableCollection<ThemeTypes>
                 {ThemeTypes.Light, ThemeTypes.Dark, ThemeTypes.Classic};
-        
-            LangCollection = new ObservableCollection<Locale.Translation>
-                    {Locale.Translation.Russia, Locale.Translation.English};
+
+            LangCollection = new ObservableCollection<Locale.Translation>();
+            if (File.Exists(Path.Combine(Environment.CurrentDirectory, "ru/DesktopSort.UI.resources.dll")) &&
+                File.Exists(Path.Combine(Environment.CurrentDirectory, "en/DesktopSort.UI.resources.dll")))
+            {
+                LangCollection.Add(Locale.Translation.English);
+                LangCollection.Add(Locale.Translation.Russia);
+            }
+            else
+            {
+                LangCollection.Add(Locale.Translation.NotFound);
+            }
         }
 
         private bool CanButtonSaveCommandExecute(object p)
@@ -158,8 +167,7 @@ namespace DesktopSort.UI.ViewModels
 
         private void OnUpdateCheckBoxCommandExecuted(object p)
         {
-            var checkbox = p as CheckBox;
-            if (checkbox != null)
+            if (p is CheckBox checkbox)
                 switch (checkbox.Name)
                 {
                     case "CheckIsUpdate":
@@ -193,7 +201,7 @@ namespace DesktopSort.UI.ViewModels
         {
             var dialog = new OpenFileDialog
             {
-                Filter = "Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png"
+                Filter = @"Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png"
             };
 
             if (dialog.ShowDialog() == DialogResult.OK) BackgroundChanger = dialog.FileName;
